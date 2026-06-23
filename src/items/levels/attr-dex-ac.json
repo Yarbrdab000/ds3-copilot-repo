@@ -1,0 +1,68 @@
+{
+  "name": "Dexterity: AC Milestone (+1 AC)",
+  "type": "feat",
+  "img": "icons/equipment/shield/buckler-wooden-boss-steel.webp",
+  "effects": [
+    {
+      "name": "Dexterity AC",
+      "img": "icons/equipment/shield/buckler-wooden-boss-steel.webp",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "transfer": true,
+      "disabled": false,
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      }
+    }
+  ],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 AC.</p><p>Apply ONCE when your invested Dexterity reaches 3 points.</p><p><em>This card applies its bonus automatically while on your sheet.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "dexterity-ac-milestone-1-ac"
+  }
+}

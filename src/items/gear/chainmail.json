@@ -1,0 +1,56 @@
+{
+  "name": "Chainmail",
+  "type": "equipment",
+  "img": "icons/equipment/chest/shirt-collared-chain-steel.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Interlocked rings, heavy but trusted.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 armor",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 20,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": 16,
+      "dex": 0,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "heavy",
+      "baseItem": ""
+    },
+    "properties": [
+      "stealthDisadvantage"
+    ],
+    "proficient": null,
+    "strength": 13,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "chainmail"
+  }
+}

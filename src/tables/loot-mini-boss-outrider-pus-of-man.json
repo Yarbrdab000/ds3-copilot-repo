@@ -1,0 +1,77 @@
+{
+  "name": "Loot — Mini-boss (Outrider / Pus of Man)",
+  "img": "icons/creatures/abilities/mouth-teeth-rows-red.webp",
+  "description": "<p>Mini-boss kill. <strong>Souls: 1,000 (fixed)</strong> — plus a guaranteed bonus drop below.</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "<strong>Titanite Chunk</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        2
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Ember</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        3,
+        3
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Estus Shard</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        4,
+        4
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A catalyst — roll on <em>Loot — Catalyst Find</em>.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        5,
+        5
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Titanite Chunk</strong> ×2 (a fat haul).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        6,
+        6
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

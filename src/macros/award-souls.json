@@ -1,0 +1,13 @@
+{
+  "name": "Ashen: Award Souls",
+  "type": "script",
+  "scope": "global",
+  "command": "const A = globalThis;\nfunction getLedger() {\n  let a = game.actors.find(x => x.getFlag(\"ashen\", \"role\") === \"souls\");\n  if (!a) a = game.actors.getName(\"Bonfire Ledger\");\n  if (!a) ui.notifications.warn(\"Ashen: no 'Bonfire Ledger' actor found. Import the Ashen actors pack.\");\n  return a;\n}\nasync function getSouls(a, k) { return Number(a?.getFlag(\"ashen\", k) ?? 0); }\nasync function setSouls(a, k, v) { return a.setFlag(\"ashen\", k, Math.max(0, Math.round(v))); }\nasync function askNumber(title, label) {\n  const content = '<form><div class=\"form-group\"><label>' + label + '</label>' +\n    '<input type=\"number\" name=\"n\" value=\"0\" autofocus/></div></form>';\n  return await new Promise((resolve) => {\n    new Dialog({\n      title, content,\n      buttons: {\n        ok: { label: \"OK\", callback: (h) => resolve(Number(h[0].querySelector('[name=n]').value) || 0) },\n        cancel: { label: \"Cancel\", callback: () => resolve(null) }\n      },\n      default: \"ok\", close: () => resolve(null)\n    }).render(true);\n  });\n}\n\n\nconst a = getLedger(); if (!a) return;\nconst n = await askNumber(\"Award Souls\", \"Souls gained (added to CARRIED):\");\nif (n === null) return;\nconst carried = await getSouls(a, \"carried\");\nawait setSouls(a, \"carried\", carried + n);\nui.notifications.info(\"Ashen: +\" + n + \" souls. Carried = \" + (carried + n) + \".\");\nChatMessage.create({ content: \"<b>+\" + n + \" souls</b> reclaimed from the fallen. Carried pool: \" + (carried + n) + \".\" });\n",
+  "img": "icons/commodities/currency/coins-plain-gold.webp",
+  "author": null,
+  "flags": {
+    "ashen": {
+      "kind": "macro"
+    }
+  }
+}

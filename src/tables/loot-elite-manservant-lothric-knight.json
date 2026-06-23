@@ -1,0 +1,77 @@
+{
+  "name": "Loot — Elite (Manservant / Lothric Knight)",
+  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "description": "<p>Roll when an elite dies. <strong>Souls: 100–150 (fixed).</strong></p>",
+  "formula": "1d8",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "<strong>Titanite Shard</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        3
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Firebomb</strong> ×2.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        4,
+        5
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Ember</strong> ×1 (kindle at a bonfire for +10 max HP).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        6,
+        6
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A weapon — roll on <em>Loot — Weapon Find</em>.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        7,
+        7
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Estus Shard</strong> ×1 (the Fire Keeper adds an Estus charge).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        8,
+        8
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

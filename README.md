@@ -1,1 +1,57 @@
-# ds3-copilot-repo
+# Ashen — A Dark Souls III One-Shot
+
+A **4–6 hour Dark Souls III–themed D&D 5e one-shot** for **3–6 players**, packaged as a
+[Foundry VTT](https://foundryvtt.com/) module (built to run on **[The Forge](https://forge-vtt.com/)**).
+
+> *Awaken in the Cemetery of Ash. Fall to Iudex Gundyr. Rest at Firelink Shrine. Climb the
+> High Wall of Lothric. Face Vordt of the Boreal Valley. Die. Learn. Overcome.*
+
+This repo holds the **source** for the adventure (clean JSON/Markdown) plus tooling to **compile it
+into a Foundry module** you can drag-and-drop. It's designed so a first-time DM can run a great
+session without wrestling with mechanics or setup.
+
+## What's inside
+
+| Folder | Contents |
+|---|---|
+| `design/` | The full, locked design spec (rules, leveling, bosses, progression). |
+| `src/actors/` | Pregen PCs (10 DS3 classes) + the bestiary (hollows + 5 bosses). |
+| `src/items/` | Weapons, Estus, Embers, catalysts, the spell catalog, attribute/level effects. |
+| `src/journals/` | Rules bible, DM handbook, codex, handouts, Tell-Ladder cards. |
+| `src/scenes/` | The 7 scene/map definitions. |
+| `src/tables/` | Roll tables (soul rewards, loot, upgrade costs). |
+| `src/macros/` | Souls tracker, frostbite, level-up helper, summon-sign macros. |
+| `maps/`, `tokens/` | Placeholder battlemap & token art + sourcing guidance. |
+| `tools/` | The Node build script (Foundry CLI pack/unpack). |
+| `packs/` | Compiled compendium packs (build output). |
+
+## The pitch (the design in one screen)
+
+- **Soulslike layer over stock 5e.** Bonfires (the only rest), Estus flasks, a **shared party
+  soul pool** (currency + XP), and a **death-loop**: wipe → respawn at the bonfire, drop your
+  souls as a bloodstain, learn the boss's tell, try again.
+- **A windowed defense system.** Every enemy attack unfolds across **3 windows** (wind-up →
+  commit → impact). You choose **Dodge / Block / Parry** *and when* — and each move has a hidden
+  "right answer" you learn by dying. **It's read-driven, not stat-driven: "get gud."**
+- **DS3 leveling.** Start level 3, climb toward 10. Each level: **raise an attribute** (every
+  point does something) **or learn a spell** (tiered sorceries / miracles / pyromancies), plus a
+  Weapon-Art/Skill pick at 6 and 9.
+- **The path:** Cemetery of Ash → **Iudex Gundyr** → Firelink Shrine (hub) → High Wall of Lothric
+  (+ a killable **secret dragon** and two mini-bosses) → **Vordt of the Boreal Valley.**
+
+## Build & import
+
+See **[IMPORT.md](IMPORT.md)** for the dead-simple "drag it into The Forge and play" guide, and
+`tools/` for compiling the source into a module.
+
+```bash
+npm install        # installs the Foundry CLI
+npm run build      # compiles src/ JSON into packs/ compendia
+```
+
+## Legal / copyright
+
+This is a **personal, non-commercial fan work**. All D&D mechanics use **SRD 5.1** open content only.
+All Dark Souls III references are original homebrew **inspired by** the game — no FromSoftware
+copyrighted text, art, or assets are reproduced or shipped. Bring your own (owned/licensed) art and
+music; the repo ships only original or placeholder media plus links to free/CC sources.

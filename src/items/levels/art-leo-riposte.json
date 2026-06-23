@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Leo Riposte",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-sword-pommel-glowing.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Your ripostes (after a successful Parry) deal +2 weapon dice of damage.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-leo-riposte"
+  }
+}

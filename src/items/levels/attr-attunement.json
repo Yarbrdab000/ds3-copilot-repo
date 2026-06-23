@@ -1,0 +1,41 @@
+{
+  "name": "Attribute: Attunement +1",
+  "type": "feat",
+  "img": "icons/magic/symbols/runes-star-orange.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "charges": 1
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 spell charge.</p><p>Grows your casting pool (base 3 + Attunement). Track on a sheet resource named 'Charges'; refills at a bonfire. No ActiveEffect.</p><p><em>Homebrew bonus — tracked by the DM / on a sheet resource (see the Rules bible).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-attunement-1"
+  }
+}

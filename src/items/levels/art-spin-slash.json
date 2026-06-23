@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Spin Slash",
+  "type": "feat",
+  "img": "icons/skills/melee/sword-twirl-blue.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Replace one Strike: make a single attack roll against every creature adjacent to you; apply it separately to each.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-spin-slash"
+  }
+}

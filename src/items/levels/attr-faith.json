@@ -1,0 +1,41 @@
+{
+  "name": "Attribute: Faith +1",
+  "type": "feat",
+  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "miraclePower": 1
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 miracle healing & damage.</p><p>Invested points also GATE miracle tiers: 1 -> T1, 3 -> T2, 5 -> T3. Homebrew bonus added to each miracle by the caster; the DM verifies the gate.</p><p><em>Homebrew bonus — tracked by the DM / on a sheet resource (see the Rules bible).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-faith-1"
+  }
+}

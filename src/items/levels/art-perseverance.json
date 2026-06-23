@@ -1,0 +1,42 @@
+{
+  "name": "Weapon Art: Perseverance",
+  "type": "feat",
+  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Reaction: gain temporary HP equal to your level and become immune to stagger/forced movement until the end of your next turn.</strong></p><p>Recharges at a bonfire (long rest).</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-perseverance"
+  }
+}

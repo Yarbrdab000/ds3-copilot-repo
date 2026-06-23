@@ -1,0 +1,41 @@
+{
+  "name": "Attribute: Endurance +1",
+  "type": "feat",
+  "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "poise": 1
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 Poise.</p><p>POISE is a homebrew counter tracked on your sheet. At Poise 3 you ignore stagger/forced movement from minor hits; at Poise 5 you gain +1 Defensive Reaction per round. No ActiveEffect — the DM tracks it.</p><p><em>Homebrew bonus — tracked by the DM / on a sheet resource (see the Rules bible).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-endurance-1"
+  }
+}

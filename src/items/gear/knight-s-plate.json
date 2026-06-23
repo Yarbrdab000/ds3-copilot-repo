@@ -1,0 +1,56 @@
+{
+  "name": "Knight's Plate",
+  "type": "equipment",
+  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Full steel — the Lothric ideal of defense.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 armor",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 20,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": 18,
+      "dex": 0,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "heavy",
+      "baseItem": ""
+    },
+    "properties": [
+      "stealthDisadvantage"
+    ],
+    "proficient": null,
+    "strength": 15,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "knight-s-plate"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Weapon Art: Crystallize",
+  "type": "feat",
+  "img": "icons/magic/light/explosion-star-glow-blue.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Caster Weapon Art.</em></p><p><strong>Once per bonfire: when a spell you cast misses every target or is fully resisted, refund its charge cost.</strong></p><p>Recharges at a bonfire (long rest).</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-crystallize"
+  }
+}

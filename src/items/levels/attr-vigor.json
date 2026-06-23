@@ -1,0 +1,68 @@
+{
+  "name": "Attribute: Vigor +1",
+  "type": "feat",
+  "img": "icons/magic/life/heart-cross-strong-red.webp",
+  "effects": [
+    {
+      "name": "Vigor",
+      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.hp.bonuses.overall",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "transfer": true,
+      "disabled": false,
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      }
+    }
+  ],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +3 maximum HP.</p><p>The tank pick. Each point is a flat, permanent +3 to your HP maximum.</p><p><em>This card applies its bonus automatically while on your sheet.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-vigor-1"
+  }
+}

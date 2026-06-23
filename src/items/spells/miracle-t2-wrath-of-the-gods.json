@@ -1,0 +1,161 @@
+{
+  "name": "Wrath of the Gods",
+  "type": "spell",
+  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "tier": 2,
+      "group": "miracle",
+      "charges": 2
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Vengeful spirits wheel about you, smiting the wicked.</em></p><p><strong>15-ft aura for the scene (concentration); enemies entering take 3d8 radiant (Wis save halves) and are slowed.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — costs <strong>2 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Spirit Guardians</em>.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 miracle",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "level": 3,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "minute"
+    },
+    "range": {
+      "value": "",
+      "units": "self",
+      "special": ""
+    },
+    "target": {
+      "affects": {
+        "type": "",
+        "count": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "type": "sphere",
+        "size": "15",
+        "units": "ft",
+        "width": "",
+        "contiguous": false
+      }
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": true,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "type": "save",
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 3,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "identifier": "wrath-of-the-gods"
+  }
+}

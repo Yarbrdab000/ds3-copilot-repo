@@ -1,0 +1,146 @@
+{
+  "name": "Bountiful Sunlight",
+  "type": "spell",
+  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "tier": 3,
+      "group": "miracle",
+      "charges": 3
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Warm sunlight floods the field, closing every wound it touches.</em></p><p><strong>Up to 6 creatures within a 30-ft sphere each regain 3d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 miracle — costs <strong>3 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Mass Cure Wounds</em>.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 miracle",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "level": 5,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "6",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "type": "",
+        "size": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "type": "heal",
+        "healing": {
+          "number": 3,
+          "denomination": 8,
+          "bonus": "@mod",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        }
+      }
+    },
+    "identifier": "bountiful-sunlight"
+  }
+}

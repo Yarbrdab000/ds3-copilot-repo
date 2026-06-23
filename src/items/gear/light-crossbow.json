@@ -1,0 +1,195 @@
+{
+  "name": "Light Crossbow",
+  "type": "weapon",
+  "img": "icons/weapons/crossbows/crossbow-simple-brown.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "scaling": {
+        "stat": "Dexterity",
+        "ability": "dex",
+        "grade": "D",
+        "factor": 0.5
+      },
+      "upgrade": 0
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Mechanical reach for the careful; the bolt does the work, not the arm.</em></p><hr><p><strong>Scaling:</strong> Dexterity &mdash; Grade D. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Dexterity modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 1 &nbsp; <strong>+4:</strong> 2 &nbsp; <strong>+5:</strong> 2.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 weapon",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 3,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "range": {
+      "value": "80",
+      "long": "320",
+      "units": "ft",
+      "reach": null
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "damage": {
+      "base": {
+        "number": 1,
+        "denomination": 8,
+        "bonus": "",
+        "types": [
+          "piercing"
+        ],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      },
+      "versatile": {
+        "number": null,
+        "denomination": null,
+        "bonus": "",
+        "types": [],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      }
+    },
+    "properties": [
+      "amm",
+      "lod",
+      "two"
+    ],
+    "proficient": null,
+    "type": {
+      "value": "simpleR",
+      "baseItem": "lightcrossbow"
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "attack",
+        "name": "",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "",
+          "units": "",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "attack": {
+          "ability": "dex",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": false,
+          "parts": [
+            {
+              "number": 1,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "piercing"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        }
+      }
+    },
+    "identifier": "light-crossbow"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Loot — Catalyst Find",
+  "img": "icons/weapons/staves/staff-simple-gold.webp",
+  "description": "<p>Which catalyst dropped/restocked?</p>",
+  "formula": "1d3",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "<strong>Sorcerer's Staff</strong> (sorceries / Intelligence).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        1
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Talisman</strong> (miracles / Faith).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        2,
+        2
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Pyromancy Flame</strong> (pyromancies; Andre upgrades it).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        3,
+        3
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

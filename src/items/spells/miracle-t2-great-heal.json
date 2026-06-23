@@ -1,0 +1,145 @@
+{
+  "name": "Great Heal",
+  "type": "spell",
+  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "tier": 2,
+      "group": "miracle",
+      "charges": 2
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A broader benediction mends the whole party.</em></p><p><strong>Up to 6 creatures within 30 ft each regain 2d8 + your Faith modifier HP (10-minute cast — between fights).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — costs <strong>2 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Prayer of Healing</em>.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 miracle",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "level": 2,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "6",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "type": "",
+        "size": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "type": "heal",
+        "healing": {
+          "number": 2,
+          "denomination": 8,
+          "bonus": "@mod",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        }
+      }
+    },
+    "identifier": "great-heal"
+  }
+}

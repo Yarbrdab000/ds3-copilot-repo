@@ -1,0 +1,37 @@
+{
+  "name": "Auto-Backbone: Extra Attack (L5 martials)",
+  "type": "feat",
+  "img": "icons/skills/melee/spear-tips-triple-orange.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> Attack twice when you take the Attack action.</p><p>Reminder card. If your chassis is martial, gaining 5th class level grants this automatically; drop this card on if your sheet didn't add it.</p><p><em>Homebrew bonus — tracked by the DM / on a sheet resource (see the Rules bible).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "auto-backbone-extra-attack-l5-martials"
+  }
+}

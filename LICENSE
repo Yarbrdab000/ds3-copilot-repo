@@ -1,0 +1,36 @@
+Ashen — A Dark Souls III–inspired Dungeons & Dragons one-shot for Foundry VTT
+=============================================================================
+
+This is a personal, non-commercial fan project.
+
+GAME RULES CONTENT
+------------------
+All Dungeons & Dragons mechanical content in this project is derived solely from
+the System Reference Document 5.1 ("SRD 5.1") by Wizards of the Coast LLC, which
+is licensed under the Creative Commons Attribution 4.0 International License
+(https://creativecommons.org/licenses/by/4.0/legalcode).
+
+  "This work includes material from the System Reference Document 5.1 ('SRD 5.1')
+   by Wizards of the Coast LLC and available at
+   https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is
+   licensed under the Creative Commons Attribution 4.0 International License."
+
+ORIGINAL CONTENT
+----------------
+The homebrew rules, stat blocks, encounter and level design, journal text, and
+build tooling authored in this repository are original works "inspired by" the
+Dark Souls series. They are released for personal use.
+
+DARK SOULS III
+--------------
+Dark Souls III and all related names, characters, art, and assets are the property
+of FromSoftware, Inc. and Bandai Namco Entertainment. This project ships NO
+FromSoftware copyrighted text, art, audio, or assets. Names and concepts are used
+in a transformative, non-commercial, fan-homage capacity only. This project is not
+affiliated with, endorsed by, or sponsored by FromSoftware or Bandai Namco.
+
+ART & AUDIO
+-----------
+No FromSoftware art or audio is included. Battlemaps and tokens shipped here are
+original/placeholder schematics; the DM supplies their own or sourced art and
+licensed audio (see the curated free-source list in the module).

@@ -1,0 +1,77 @@
+{
+  "name": "Shrine Handmaid — Restock",
+  "img": "icons/magic/holy/saint-glass-portrait-halo.webp",
+  "description": "<p>When the party returns to Firelink, roll to see what new stock the Handmaid offers (prices in the shop journal).</p>",
+  "formula": "1d6",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "<strong>Estus Shard</strong> now in stock (1,000 souls).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        2
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A <strong>catalyst</strong> in stock — roll <em>Catalyst Find</em> (1,500 souls).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        3,
+        3
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Firebombs</strong> restocked, ×5 (50 souls each).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        4,
+        4
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Titanite Shards</strong> ×3 (200 souls each).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        5,
+        5
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Ember</strong> in stock (600 souls).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        6,
+        6
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

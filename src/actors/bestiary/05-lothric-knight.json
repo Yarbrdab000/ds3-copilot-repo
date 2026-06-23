@@ -1,0 +1,438 @@
+{
+  "name": "Lothric Knight",
+  "type": "npc",
+  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "souls": 150,
+      "role": "elite-guard"
+    }
+  },
+  "system": {
+    "abilities": {
+      "str": {
+        "value": 15,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "dex": {
+        "value": 13,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "con": {
+        "value": 14,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "int": {
+        "value": 6,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "wis": {
+        "value": 9,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      },
+      "cha": {
+        "value": 6,
+        "proficient": 0,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        },
+        "max": null
+      }
+    },
+    "attributes": {
+      "ac": {
+        "flat": 17,
+        "calc": "flat",
+        "formula": ""
+      },
+      "hp": {
+        "value": 30,
+        "max": 30,
+        "temp": null,
+        "tempmax": null,
+        "formula": "4d8+12"
+      },
+      "init": {
+        "ability": "",
+        "bonus": "0"
+      },
+      "movement": {
+        "burrow": 0,
+        "climb": 0,
+        "fly": 0,
+        "swim": 0,
+        "walk": 30,
+        "units": "ft",
+        "hover": false
+      },
+      "attunement": {
+        "max": 3
+      },
+      "senses": {
+        "darkvision": 30,
+        "blindsight": 0,
+        "tremorsense": 0,
+        "truesight": 0,
+        "units": "ft",
+        "special": ""
+      },
+      "spellcasting": "",
+      "exhaustion": 0,
+      "concentration": {
+        "ability": "",
+        "bonuses": {
+          "save": ""
+        },
+        "limit": 1
+      },
+      "hd": {
+        "spent": 0
+      }
+    },
+    "details": {
+      "biography": {
+        "value": "<p><em>Disciplined elite guard. A real threat in numbers; the wall's last line before Vordt.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Disciplined Thrust</strong> (1d10+4, reach): dodge ADV (sidestep) W2; parry ADV W2 (clean thrust).</li></ul>",
+        "public": ""
+      },
+      "alignment": "Hollow",
+      "race": null,
+      "type": {
+        "value": "humanoid",
+        "subtype": "",
+        "swarm": "",
+        "custom": ""
+      },
+      "environment": "Lothric",
+      "cr": 2,
+      "spellLevel": 0,
+      "source": {
+        "book": "Ashen",
+        "page": "",
+        "custom": "DS3",
+        "license": "CC-BY-4.0",
+        "rules": "2014"
+      }
+    },
+    "traits": {
+      "size": "med",
+      "di": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dr": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dv": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "ci": {
+        "value": [],
+        "custom": ""
+      },
+      "languages": {
+        "value": [],
+        "custom": ""
+      },
+      "dm": {
+        "amount": {},
+        "bypasses": []
+      }
+    },
+    "skills": {},
+    "bonuses": {
+      "mwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "msak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rsak": {
+        "attack": "",
+        "damage": ""
+      },
+      "abilities": {
+        "check": "",
+        "save": "",
+        "skill": ""
+      },
+      "spell": {
+        "dc": ""
+      }
+    },
+    "resources": {
+      "legact": {
+        "value": 0,
+        "max": 0
+      },
+      "legres": {
+        "value": 0,
+        "max": 0
+      },
+      "lair": {
+        "value": false,
+        "initiative": null
+      }
+    },
+    "spells": {},
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "tools": {},
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    }
+  },
+  "items": [
+    {
+      "name": "Disciplined Thrust",
+      "type": "weapon",
+      "img": "icons/skills/melee/strike-slashes-orange.webp",
+      "effects": [],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Bestiary",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "equipped": true,
+        "identified": true,
+        "proficient": 1,
+        "range": {
+          "value": null,
+          "long": null,
+          "units": "ft",
+          "reach": "10"
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 10,
+            "bonus": "4",
+            "types": [
+              "piercing"
+            ],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          },
+          "versatile": {
+            "number": null,
+            "denomination": null,
+            "bonus": "",
+            "types": [],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          }
+        },
+        "properties": [],
+        "type": {
+          "value": "natural",
+          "baseItem": ""
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "name": "",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "str",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": []
+            }
+          }
+        },
+        "identifier": "disciplined-thrust"
+      }
+    }
+  ],
+  "prototypeToken": {
+    "name": "Lothric Knight",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "randomImg": false,
+    "alpha": 1,
+    "flags": {},
+    "texture": {
+      "src": "icons/equipment/chest/breastplate-helmet-metal.webp",
+      "tint": "#ffffff",
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "alphaThreshold": 0.75
+    },
+    "sight": {
+      "angle": 360,
+      "enabled": false,
+      "range": 0,
+      "brightness": 0,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "appendNumber": true,
+    "prependAdjective": false
+  }
+}

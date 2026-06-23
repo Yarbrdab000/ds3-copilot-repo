@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Quickstep",
+  "type": "feat",
+  "img": "icons/skills/movement/feet-winged-sandals-tan.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Bonus action: teleport up to 15 ft to a space you can see. This movement never provokes opportunity attacks.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-quickstep"
+  }
+}

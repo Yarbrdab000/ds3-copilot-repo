@@ -1,0 +1,140 @@
+{
+  "name": "Estus Flask",
+  "type": "consumable",
+  "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "estus": true
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>An emerald flask, ever full of warm Estus. The Unkindled's lifeline.</em></p><p><strong>Quaff (action, or bonus action with Estus Mastery):</strong> regain 2d4+2 HP and spend 1 charge. Refills at a bonfire.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 Estus",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": true,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "max": "3",
+      "spent": 0,
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "autoDestroy": false
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "heal",
+        "name": "Quaff",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "type": "self",
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "healing": {
+          "number": 2,
+          "denomination": 4,
+          "bonus": "2",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        }
+      }
+    },
+    "identifier": "estus-flask"
+  }
+}

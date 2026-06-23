@@ -1,0 +1,129 @@
+{
+  "name": "Tears of Denial",
+  "type": "spell",
+  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "tier": 2,
+      "group": "miracle",
+      "charges": 2
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>The gods deny death its due — once.</em></p><p><strong>For the next hour, the first time the target would drop to 0 HP it instead drops to 1. The ultimate clutch save.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — costs <strong>2 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Death Ward</em>.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 miracle",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "level": 4,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "range": {
+      "value": "",
+      "units": "touch",
+      "special": ""
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "type": "",
+        "size": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "type": "utility"
+      }
+    },
+    "identifier": "tears-of-denial"
+  }
+}

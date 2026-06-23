@@ -1,0 +1,64 @@
+{
+  "name": "Farm Pocket — Hollow Courtyard",
+  "img": "icons/environment/settlement/wall-tower-gray.webp",
+  "description": "<p>The High Wall courtyard respawns on rest. Roll once per cleared wave to keep the grind interesting. <strong>Each wave ≈ 120–240 souls (fixed).</strong></p>",
+  "formula": "1d8",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "Just souls — the grind pays out (120–240).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        4
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A <strong>Hollow Manservant</strong> (elite) joins the next wave — roll <em>Loot — Elite</em> when it falls.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        5,
+        6
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Titanite Shard</strong> ×1 dropped in the muck.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        7,
+        7
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A <strong>bloodstain</strong> from a fallen Unkindled: <strong>+200 souls</strong> if reclaimed.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        8,
+        8
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

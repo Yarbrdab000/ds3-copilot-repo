@@ -1,0 +1,74 @@
+{
+  "name": "Attribute: Dexterity +1",
+  "type": "feat",
+  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "effects": [
+    {
+      "name": "Dexterity",
+      "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.bonuses.rwak.attack",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.bonuses.rwak.damage",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "transfer": true,
+      "disabled": false,
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      }
+    }
+  ],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 to finesse/ranged attack & damage rolls.</p><p>At 3 points invested you also gain +1 AC (apply the 'Dexterity: AC Milestone' card once).</p><p><em>This card applies its bonus automatically while on your sheet.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-dexterity-1"
+  }
+}

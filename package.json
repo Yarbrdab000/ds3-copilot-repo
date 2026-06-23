@@ -1,0 +1,17 @@
+{
+  "name": "ashen-of-lothric",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build tooling for the Ashen Dark Souls III one-shot Foundry VTT module.",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs pack",
+    "build:world": "node tools/build.mjs world",
+    "unpack": "node tools/build.mjs unpack",
+    "clean": "node tools/build.mjs clean",
+    "validate": "node tools/build.mjs validate"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^1.0.0"
+  }
+}

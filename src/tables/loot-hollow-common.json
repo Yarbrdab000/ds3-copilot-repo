@@ -1,0 +1,77 @@
+{
+  "name": "Loot — Hollow (common)",
+  "img": "icons/creatures/skeletons/skeleton-worn-skull-tan.webp",
+  "description": "<p>Roll when a common Hollow dies. <strong>Souls: 30–60 (fixed).</strong> The roll decides any extra drop.</p>",
+  "formula": "1d10",
+  "replacement": true,
+  "displayRoll": true,
+  "sort": 0,
+  "flags": {},
+  "results": [
+    {
+      "type": "text",
+      "text": "Nothing but souls — just the kill (30–60 souls).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        1,
+        5
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "A handful of scrap: <strong>+15 bonus souls</strong>.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        6,
+        7
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Firebomb</strong> ×1 (drag from the gear compendium).",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        8,
+        8
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Titanite Shard</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        9,
+        9
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Estus Shard fragment</strong> — the DM notes it; 3 fragments fuse into 1 Estus Shard.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        10,
+        10
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    }
+  ]
+}

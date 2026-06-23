@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Charge",
+  "type": "feat",
+  "img": "icons/skills/movement/arrow-upward-yellow.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Move up to your speed in a straight line and make one attack; on a hit the target is knocked prone.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-charge"
+  }
+}

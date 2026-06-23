@@ -1,0 +1,1174 @@
+{
+  "name": "Knight (Tank)",
+  "type": "character",
+  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "pregen": true,
+      "dsClass": "Knight"
+    }
+  },
+  "system": {
+    "abilities": {
+      "str": {
+        "value": 15,
+        "proficient": 1,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "dex": {
+        "value": 10,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "con": {
+        "value": 14,
+        "proficient": 1,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "int": {
+        "value": 10,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "wis": {
+        "value": 11,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "cha": {
+        "value": 9,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      }
+    },
+    "attributes": {
+      "ac": {
+        "flat": null,
+        "calc": "default",
+        "formula": ""
+      },
+      "hp": {
+        "value": 30,
+        "max": 30,
+        "temp": null,
+        "tempmax": null,
+        "bonuses": {
+          "level": "",
+          "overall": ""
+        }
+      },
+      "init": {
+        "ability": "",
+        "bonus": "0",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "movement": {
+        "burrow": null,
+        "climb": null,
+        "fly": null,
+        "swim": null,
+        "walk": 30,
+        "units": "ft",
+        "hover": false
+      },
+      "attunement": {
+        "max": 3
+      },
+      "senses": {
+        "darkvision": 0,
+        "blindsight": 0,
+        "tremorsense": 0,
+        "truesight": 0,
+        "units": "ft",
+        "special": ""
+      },
+      "spellcasting": "",
+      "death": {
+        "success": 0,
+        "failure": 0,
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "exhaustion": 0,
+      "inspiration": false,
+      "concentration": {
+        "ability": "",
+        "bonuses": {
+          "save": ""
+        },
+        "limit": 1,
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      }
+    },
+    "details": {
+      "biography": {
+        "value": "<p>A Lothric knight clad in steel. Holds the line, blocks for the party, and never breaks.</p>",
+        "public": ""
+      },
+      "alignment": "Unkindled",
+      "race": null,
+      "background": null,
+      "originalClass": "",
+      "xp": {
+        "value": 0
+      },
+      "level": 3,
+      "appearance": "",
+      "trait": "",
+      "ideal": "",
+      "bond": "",
+      "flaw": ""
+    },
+    "traits": {
+      "size": "med",
+      "di": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dr": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dv": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "ci": {
+        "value": [],
+        "custom": ""
+      },
+      "languages": {
+        "value": [
+          "common"
+        ],
+        "custom": ""
+      },
+      "weaponProf": {
+        "value": [
+          "sim",
+          "mar"
+        ],
+        "custom": "",
+        "mastery": {
+          "value": [],
+          "bonus": []
+        }
+      },
+      "armorProf": {
+        "value": [
+          "lgt",
+          "med",
+          "hvy",
+          "shl"
+        ],
+        "custom": ""
+      },
+      "dm": {
+        "amount": {},
+        "bypasses": []
+      }
+    },
+    "skills": {
+      "acr": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "ani": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "arc": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "ath": {
+        "value": 1,
+        "ability": "str",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "dec": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "his": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "ins": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "itm": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "inv": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "med": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "nat": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "prc": {
+        "value": 1,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "prf": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "per": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "rel": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "slt": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "ste": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      },
+      "sur": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        }
+      }
+    },
+    "bonuses": {
+      "mwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "msak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rsak": {
+        "attack": "",
+        "damage": ""
+      },
+      "abilities": {
+        "check": "",
+        "save": "",
+        "skill": ""
+      },
+      "spell": {
+        "dc": ""
+      }
+    },
+    "spells": {
+      "spell1": {
+        "value": 0,
+        "override": null
+      },
+      "spell2": {
+        "value": 0,
+        "override": null
+      },
+      "spell3": {
+        "value": 0,
+        "override": null
+      },
+      "spell4": {
+        "value": 0,
+        "override": null
+      },
+      "spell5": {
+        "value": 0,
+        "override": null
+      },
+      "spell6": {
+        "value": 0,
+        "override": null
+      },
+      "spell7": {
+        "value": 0,
+        "override": null
+      },
+      "spell8": {
+        "value": 0,
+        "override": null
+      },
+      "spell9": {
+        "value": 0,
+        "override": null
+      },
+      "pact": {
+        "value": 0,
+        "override": null
+      },
+      "spell0": {
+        "value": 0,
+        "override": null
+      }
+    },
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "tools": {},
+    "resources": {
+      "primary": {
+        "value": null,
+        "max": null,
+        "sr": false,
+        "lr": true,
+        "label": ""
+      },
+      "secondary": {
+        "value": null,
+        "max": null,
+        "sr": false,
+        "lr": false,
+        "label": ""
+      },
+      "tertiary": {
+        "value": null,
+        "max": null,
+        "sr": false,
+        "lr": false,
+        "label": ""
+      }
+    },
+    "favorites": [],
+    "bastion": {
+      "name": "",
+      "description": ""
+    }
+  },
+  "items": [
+    {
+      "name": "Fighter",
+      "type": "class",
+      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "effects": [],
+      "flags": {},
+      "system": {
+        "identifier": "fighter",
+        "levels": 3,
+        "hitDice": "d10",
+        "hitDiceUsed": 0,
+        "primaryAbility": {
+          "value": [],
+          "all": false
+        },
+        "saves": [
+          "str",
+          "con"
+        ],
+        "skills": {
+          "number": 2,
+          "choices": [],
+          "value": []
+        },
+        "spellcasting": {
+          "progression": "none",
+          "ability": ""
+        },
+        "description": {
+          "value": "<p>DS3 Fighter chassis. Level it up one step each time the party rests at the Fire Keeper.</p>"
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Pregen",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "advancement": []
+      }
+    },
+    {
+      "name": "Base Actions (Strike / Dodge / Block / Parry)",
+      "type": "feat",
+      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "effects": [],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "<p><strong>Strike</strong> — a weapon Attack (two at L5+).</p><p><strong>Dodge</strong> — always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe → advantage next attack).</p><p><strong>Block</strong> — costs your reaction, no roll: a good shield negates physical (heavy hits force a Str save vs guard-break); a lesser/no shield halves and takes chip.</p><p><strong>Parry</strong> — costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (riposte window); failure takes full damage. See the Rules bible.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Core",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {},
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "Everyone",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "base-actions"
+      }
+    },
+    {
+      "name": "Longsword",
+      "type": "weapon",
+      "img": "icons/weapons/swords/sword-guard-purple.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "scaling": {
+            "stat": "Strength",
+            "ability": "str",
+            "grade": "C",
+            "factor": 0.75
+          },
+          "upgrade": 0
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>A straight knight's sword, reliable in any hand.</em></p><p><strong>Two-handed:</strong> 1d10 instead.</p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade C. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Strength modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 2 &nbsp; <strong>+4:</strong> 3 &nbsp; <strong>+5:</strong> 3.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "DS3 weapon",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 3,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "equipped": true,
+        "rarity": "",
+        "identified": true,
+        "container": null,
+        "crewed": false,
+        "range": {
+          "value": null,
+          "long": null,
+          "units": "ft",
+          "reach": null
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "damage": {
+          "base": {
+            "number": 1,
+            "denomination": 8,
+            "bonus": "",
+            "types": [
+              "slashing"
+            ],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          },
+          "versatile": {
+            "number": 1,
+            "denomination": 10,
+            "bonus": "",
+            "types": [
+              "slashing"
+            ],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          }
+        },
+        "properties": [
+          "ver"
+        ],
+        "proficient": null,
+        "type": {
+          "value": "martialM",
+          "baseItem": "longsword"
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "name": "",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "str",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": false,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "slashing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "identifier": "longsword"
+      }
+    },
+    {
+      "name": "Knight Shield",
+      "type": "equipment",
+      "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+      "effects": [],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "<p><em>A solid steel shield — the heart of the Block reaction.</em></p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "DS3 armor",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 20,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "equipped": true,
+        "rarity": "",
+        "identified": true,
+        "container": null,
+        "crewed": false,
+        "armor": {
+          "value": 2,
+          "dex": null,
+          "magicalBonus": null
+        },
+        "type": {
+          "value": "shield",
+          "baseItem": ""
+        },
+        "properties": [],
+        "proficient": null,
+        "strength": null,
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "activities": {},
+        "identifier": "knight-shield"
+      }
+    },
+    {
+      "name": "Knight's Plate",
+      "type": "equipment",
+      "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+      "effects": [],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "<p><em>Full steel — the Lothric ideal of defense.</em></p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "DS3 armor",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 20,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "equipped": true,
+        "rarity": "",
+        "identified": true,
+        "container": null,
+        "crewed": false,
+        "armor": {
+          "value": 18,
+          "dex": 0,
+          "magicalBonus": null
+        },
+        "type": {
+          "value": "heavy",
+          "baseItem": ""
+        },
+        "properties": [
+          "stealthDisadvantage"
+        ],
+        "proficient": null,
+        "strength": 15,
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "activities": {},
+        "identifier": "knight-s-plate"
+      }
+    },
+    {
+      "name": "Estus Flask",
+      "type": "consumable",
+      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "estus": true
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>An emerald flask, ever full of warm Estus. The Unkindled's lifeline.</em></p><p><strong>Quaff (action, or bonus action with Estus Mastery):</strong> regain 2d4+2 HP and spend 1 charge. Refills at a bonfire.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "DS3 Estus",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 1,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "equipped": true,
+        "rarity": "",
+        "identified": true,
+        "container": null,
+        "crewed": false,
+        "type": {
+          "value": "potion",
+          "subtype": ""
+        },
+        "properties": [],
+        "uses": {
+          "max": "3",
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ],
+          "autoDestroy": false
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "heal",
+            "name": "Quaff",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "itemUses",
+                  "target": "",
+                  "value": "1",
+                  "scaling": {
+                    "mode": "",
+                    "formula": ""
+                  }
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "units": "self",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "type": "self",
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "healing": {
+              "number": 2,
+              "denomination": 4,
+              "bonus": "2",
+              "types": [
+                "healing"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            }
+          }
+        },
+        "identifier": "estus-flask"
+      }
+    },
+    {
+      "name": "Attribute: Vigor +1",
+      "type": "feat",
+      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "effects": [
+        {
+          "name": "Vigor",
+          "img": "icons/magic/life/heart-cross-strong-red.webp",
+          "type": "base",
+          "system": {},
+          "changes": [
+            {
+              "key": "system.attributes.hp.bonuses.overall",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "transfer": true,
+          "disabled": false,
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "duration": {
+            "startTime": null,
+            "seconds": null,
+            "combat": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          }
+        }
+      ],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "<p><strong>Grants:</strong> +3 maximum HP.</p><p>The tank pick. Each point is a flat, permanent +3 to your HP maximum.</p><p><em>This card applies its bonus automatically while on your sheet.</em></p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Leveling",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {},
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "attribute-vigor-1"
+      }
+    },
+    {
+      "name": "Attribute: Vigor +1",
+      "type": "feat",
+      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "effects": [
+        {
+          "name": "Vigor",
+          "img": "icons/magic/life/heart-cross-strong-red.webp",
+          "type": "base",
+          "system": {},
+          "changes": [
+            {
+              "key": "system.attributes.hp.bonuses.overall",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "transfer": true,
+          "disabled": false,
+          "description": "",
+          "origin": null,
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "duration": {
+            "startTime": null,
+            "seconds": null,
+            "combat": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          }
+        }
+      ],
+      "flags": {},
+      "system": {
+        "description": {
+          "value": "<p><strong>Grants:</strong> +3 maximum HP.</p><p>The tank pick. Each point is a flat, permanent +3 to your HP maximum.</p><p><em>This card applies its bonus automatically while on your sheet.</em></p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Leveling",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {},
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "attribute-vigor-1"
+      }
+    }
+  ],
+  "prototypeToken": {
+    "name": "Knight",
+    "displayName": 30,
+    "actorLink": true,
+    "width": 1,
+    "height": 1,
+    "lockRotation": false,
+    "rotation": 0,
+    "disposition": 1,
+    "displayBars": 30,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": ""
+    },
+    "randomImg": false,
+    "alpha": 1,
+    "flags": {},
+    "texture": {
+      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "tint": "#ffffff",
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "alphaThreshold": 0.75
+    },
+    "sight": {
+      "angle": 360,
+      "enabled": true,
+      "range": 0,
+      "brightness": 0,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "appendNumber": false,
+    "prependAdjective": false
+  }
+}

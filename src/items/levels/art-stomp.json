@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Stomp",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Martial Weapon Art.</em></p><p><strong>Bonus action: shove a creature within reach (Athletics vs Athletics/Acrobatics). On a success, your next attack against it this turn has advantage.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-stomp"
+  }
+}

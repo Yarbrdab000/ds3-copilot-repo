@@ -1,0 +1,36 @@
+{
+  "name": "Ashen — Weapon Scaling & Upgrades",
+  "flags": {},
+  "pages": [
+    {
+      "name": "How Scaling Works (One Lookup, No Math)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 100000,
+      "text": {
+        "format": 1,
+        "content": "<p>In Dark Souls, a weapon's power comes from two things: how well it <strong>scales</strong> with your stat, and how far you've <strong>upgraded</strong> it with titanite. Ashen models both with simple, consistent math &mdash; and a printed grid so nobody multiplies anything at the table.</p>\n<h2>Damage on a hit</h2>\n<p style=\"text-align:center\"><strong>Weapon dice&nbsp; + &nbsp;Scaling bonus&nbsp; + &nbsp;Upgrade (+N)</strong></p>\n<ul>\n<li><strong>Weapon dice</strong> &mdash; printed on the weapon (e.g. a Greataxe rolls 1d12).</li>\n<li><strong>Scaling bonus</strong> &mdash; one number you read off the grid (next page) using your <em>governing stat's modifier</em> and the weapon's <em>grade</em>. This <em>replaces</em> the usual \"add your ability modifier to damage\" step &mdash; so you never add your stat twice.</li>\n<li><strong>Upgrade (+N)</strong> &mdash; if Andre has reinforced the weapon, add +N to <em>both</em> attack and damage. The sheet already includes this; you don't track it by hand.</li>\n</ul>\n<h2>To-hit is unchanged</h2>\n<p>Your attack roll is the normal <strong>d20 + proficiency + governing modifier + upgrade</strong>. Scaling only ever touches <em>damage</em> &mdash; just like a weapon's AR in the games. There is no \"accuracy stat\"; landing and avoiding hits is the dodge/block/parry minigame, not your numbers.</p>\n<h2>The one formula (for the curious)</h2>\n<p><code>Scaling bonus = floor( governing modifier &times; grade factor )</code>, where the factors are <strong>S&nbsp;2.0 / A&nbsp;1.5 / B&nbsp;1.0 / C&nbsp;0.75 / D&nbsp;0.5 / E&nbsp;0.25</strong>. Grade <strong>B is exactly normal 5e</strong> (your full modifier). Higher grades reward stat investment; lower grades barely care who swings the weapon. You never need this formula at the table &mdash; just read the grid.</p>"
+      }
+    },
+    {
+      "name": "The Scaling Grid (read your row)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 200000,
+      "text": {
+        "format": 1,
+        "content": "<p>Find your weapon's <strong>grade</strong> (left column) and your <strong>governing stat modifier</strong> (top). That cell is the flat damage you add to every hit. Each weapon card also reprints its own row, so pickups need no chart.</p>\n<table><thead><tr><th>Grade</th><th>+0</th><th>+1</th><th>+2</th><th>+3</th><th>+4</th><th>+5</th><th>+6</th></tr></thead><tbody>\n<tr><td><strong>S</strong> (&times;2.0)</td><td>0</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td></tr>\n<tr><td><strong>A</strong> (&times;1.5)</td><td>0</td><td>1</td><td>3</td><td>4</td><td>6</td><td>7</td><td>9</td></tr>\n<tr><td><strong>B</strong> (&times;1.0)</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>\n<tr><td><strong>C</strong> (&times;0.75)</td><td>0</td><td>0</td><td>1</td><td>2</td><td>3</td><td>3</td><td>4</td></tr>\n<tr><td><strong>D</strong> (&times;0.5)</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td><td>3</td></tr>\n<tr><td><strong>E</strong> (&times;0.25)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>\n</tbody></table>\n<p><em>Example:</em> a <strong>Greataxe</strong> is <strong>Strength, Grade A</strong>. With a +4 Strength modifier you add <strong>6</strong>: a hit deals 1d12 + 6 (+ any upgrade). Pour points into Strength and that climbs fast &mdash; an S-grade weapon at +5 would add 10.</p>\n<h2>Governing stat by weapon family</h2>\n<ul>\n<li><strong>Strength</strong> &mdash; greataxes, maces, most heavy/blunt weapons, the longsword.</li>\n<li><strong>Dexterity</strong> &mdash; daggers, scimitars, thrusting swords, spears, bows &amp; crossbows.</li>\n<li><strong>Intelligence</strong> &mdash; staves (sorceries). <strong>Faith</strong> &mdash; talismans (miracles). Pyromancy flames use the higher of the two.</li>\n</ul>\n<p>Each weapon scales off a <strong>single</strong> stat in Ashen (the wiki's primary one) to keep the lookup to one cell. A few weapons split scaling in the source game; we use the dominant stat.</p>"
+      }
+    },
+    {
+      "name": "The Upgrade Path (Andre & Titanite)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 300000,
+      "text": {
+        "format": 1,
+        "content": "<p>At Firelink, <strong>Andre of Astora</strong> reinforces weapons with titanite recovered from the High Wall. Upgrading is flat, predictable, and capped for a one-shot so the numbers stay sane against 75&ndash;150 HP bosses.</p>\n<h2>What an upgrade does</h2>\n<p>Each <strong>+1</strong> adds <strong>+1 to attack and +1 to damage</strong>. The reachable cap this session is <strong>+3</strong>. (Think of a +3 weapon like a +3 magic weapon in 5e &mdash; it's a real power spike, which is why titanite is scarce.)</p>\n<h2>Cost</h2>\n<p>Each <strong>+1</strong> step costs <strong>1 Titanite Shard + 200 souls</strong> at Andre's forge. A <strong>Titanite Chunk</strong> substitutes for the shards of a full jump to +3.</p>\n<table><thead><tr><th>Reinforce to</th><th>Cost (cumulative)</th><th>Effect (cumulative)</th></tr></thead><tbody>\n<tr><td><strong>+1</strong></td><td>1 Titanite Shard + 200 souls</td><td>+1 attack / +1 damage</td></tr>\n<tr><td><strong>+2</strong></td><td>2 Titanite Shards + 400 souls</td><td>+2 attack / +2 damage</td></tr>\n<tr><td><strong>+3</strong></td><td>3 Titanite Shards <em>(or 1 Titanite Chunk)</em> + 600 souls</td><td>+3 attack / +3 damage</td></tr>\n</tbody></table>\n<p><em>Titanite Shards and Chunks drop from elites, bosses, and the loot tables. A Chunk is worth roughly three Shards and jumps a weapon straight toward +3.</em></p>\n<h2>Catalysts upgrade too</h2>\n<p>Andre tempers staves, talismans, and the pyromancy flame the same way; on a catalyst, each +1 adds <strong>+1 to spell attack rolls and +1 to spell damage</strong>. Catalysts <em>also</em> scale: read the grid using the catalyst's grade and your Intelligence or Faith modifier, and add that to a spell's damage or healing.</p>\n<h2>DM note</h2>\n<p>To apply an upgrade in Foundry, bump the weapon's <code>upgrade</code> flag and add +N to the activity's attack &amp; damage bonus (or just say it out loud and add the flat number &mdash; the math is identical). The weapon card's <em>Upgrade</em> line tracks the current level.</p>"
+      }
+    }
+  ]
+}

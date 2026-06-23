@@ -1,0 +1,52 @@
+{
+  "name": "Ember",
+  "type": "consumable",
+  "img": "icons/magic/fire/flame-burning-embers-orange.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "ember": true
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A warm cinder, the last of someone's fire.</em></p><p><strong>Use at a bonfire (Kindle macro):</strong> gain +10 maximum HP until you die. Lost on death.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 ember",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "type": {
+      "value": "trinket",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true
+    },
+    "activities": {},
+    "identifier": "ember"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Attribute: Intelligence +1",
+  "type": "feat",
+  "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "sorceryPower": 1
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Grants:</strong> +1 sorcery damage.</p><p>Invested points also GATE sorcery tiers: 1 -> T1, 3 -> T2, 5 -> T3. Homebrew bonus added to each sorcery's damage by the caster; the DM verifies the gate.</p><p><em>Homebrew bonus — tracked by the DM / on a sheet resource (see the Rules bible).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "attribute-intelligence-1"
+  }
+}

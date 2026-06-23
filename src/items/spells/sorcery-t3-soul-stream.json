@@ -1,0 +1,129 @@
+{
+  "name": "Soul Stream",
+  "type": "spell",
+  "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "tier": 3,
+      "group": "sorcery",
+      "charges": 3
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A torrent of souls hardens into an impassable veil.</em></p><p><strong>Raise a wall of solid soul-force (as Wall of Force) for up to 10 minutes (concentration). Control the arena.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — costs <strong>3 charges</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Wall of Force</em>.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 sorcery",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "level": 5,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "range": {
+      "value": "120",
+      "units": "ft",
+      "special": ""
+    },
+    "target": {
+      "affects": {
+        "type": "",
+        "count": "",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "type": "",
+        "size": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "Cast",
+        "img": "",
+        "type": "utility"
+      }
+    },
+    "identifier": "soul-stream"
+  }
+}

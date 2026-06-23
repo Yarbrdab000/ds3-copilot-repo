@@ -1,0 +1,65 @@
+{
+  "name": "Talisman",
+  "type": "equipment",
+  "img": "icons/magic/holy/saint-glass-portrait-halo.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "catalyst": true,
+      "scaling": {
+        "stat": "Faith",
+        "grade": "A",
+        "factor": 1.5
+      }
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A sacred medium for prayers to the gods.</em></p><p><strong>Spellcasting focus:</strong> channels Miracles (Faith).</p><hr><p><strong>Catalyst Scaling:</strong> Faith &mdash; Grade A. Add this to each spell's damage/healing based on your Faith modifier &mdash; <strong>+2:</strong> 3 &nbsp; <strong>+3:</strong> 4 &nbsp; <strong>+4:</strong> 6 &nbsp; <strong>+5:</strong> 7.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 catalyst",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "foc"
+    ],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "talisman"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "name": "Firebomb",
+  "type": "consumable",
+  "img": "icons/weapons/thrown/bomb-fuse-blue.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>A clay urn of black powder and pitch.</em></p><p><strong>Throw (range 30/60):</strong> Dex save in a 5-ft burst, 2d6 fire (half on save). Consumed on use.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 throwable",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 50,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "type": {
+      "value": "trinket",
+      "subtype": ""
+    },
+    "properties": [],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "recovery": [],
+      "autoDestroy": true
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "name": "Throw",
+        "img": "",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "30",
+          "long": "60",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": "radius",
+            "size": "5"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "",
+            "formula": "13"
+          }
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        }
+      }
+    },
+    "identifier": "firebomb"
+  }
+}

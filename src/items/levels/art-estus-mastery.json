@@ -1,0 +1,37 @@
+{
+  "name": "Weapon Art: Estus Mastery",
+  "type": "feat",
+  "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>Universal Weapon Art.</em></p><p><strong>Gain +1 Estus charge (raise your Estus Flask's max uses by 1), and you may quaff Estus as a bonus action.</strong></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Leveling",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "activities": {},
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "Skill pick (L6 or L9)",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "identifier": "weapon-art-estus-mastery"
+  }
+}
