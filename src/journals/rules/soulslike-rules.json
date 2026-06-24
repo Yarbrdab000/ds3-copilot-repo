@@ -43,6 +43,16 @@
       }
     },
     {
+      "name": "Cinders: The Party's Lives",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 450000,
+      "text": {
+        "format": 1,
+        "content": "<p><strong>Cinders</strong> are the party&rsquo;s lives &mdash; the last sparks of the First Flame you carry. They are what let an Unkindled rise from death instead of going <em>Hollow</em> for good. The whole party shares <strong>one pool</strong>.</p>\n<h2>How Cinders work</h2>\n<ul>\n<li><strong>One shared pool.</strong> Every hero draws from the same Cinders. When anyone falls, the fire that lifts them comes from the common pool.</li>\n<li><strong>Spend one to rise.</strong> When a hero drops to 0 HP, the party can spend <strong>1 Cinder</strong> to pull them back to their feet &mdash; a Souls &ldquo;YOU DIED&rdquo;, then up and fighting. On a full wipe, spend <strong>1 Cinder</strong> to respawn together at the last bonfire.</li>\n<li><strong>They do <u>not</u> refill at a bonfire.</strong> HP, Estus and spell charges all come back when you rest &mdash; Cinders never do. They only ever go down.</li>\n<li><strong>When the Cinders run out</strong>, the fire can no longer lift you. The next fall is real: you must be saved the hard way, and a wipe with none left means the Flame goes out. <em>Don&rsquo;t let the pool hit zero before the end.</em></li>\n</ul>\n<blockquote><p>A Cinder is <strong>not</strong> an <em>Ember</em>. An Ember is a kindling item you burn at a bonfire for bonus HP; a <strong>Cinder is a life</strong> &mdash; your ability to rise at all.</p></blockquote>\n<h2>Why it&rsquo;s built this way</h2>\n<p>Death in Ashen is cheap on purpose &mdash; you respawn, you keep your character, you lose only ground and souls. Cinders are the one thing that makes death finally <em>bite</em>: a finite, shared, slowly-draining measure of how much fire the party has left. Spend them on bold plays and hard lessons; just don&rsquo;t arrive at the final fight on empty.</p>"
+      }
+    },
+    {
       "name": "Combat: The Defensive Reaction System",
       "type": "text",
       "title": { "show": true, "level": 1 },
