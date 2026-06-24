@@ -73,6 +73,16 @@
       }
     },
     {
+      "name": "Combat Cheat Card (Print Me)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 360000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>Print this page, or keep it open in a side tab — the whole fight loop on one card.</em></p>\n<h2>The attack loop</h2>\n<ol>\n<li>Name the move &amp; narrate <b>beat 1</b> (the wind-up = the telegraph — always give it).</li>\n<li>Target declares <b>Dodge / Block / Parry</b> and which window they commit to.</li>\n<li>Resolve vs the boss card grid: <b>ADV / normal / DIS / X</b> on the d20.</li>\n<li>Narrate a wound or a whiff — never a number. Clean parry → stagger + free party riposte.</li>\n</ol>\n<h2>Block legend (deterministic — no Str save)</h2>\n<table>\n<tr><td><b>—</b></td><td>ordinary — blocks normally</td></tr>\n<tr><td><b>half</b></td><td>a lesser shield halves it</td></tr>\n<tr><td><b>chip</b></td><td>heavy hit still chips through</td></tr>\n<tr><td><b>X</b></td><td>unblockable — a raised guard does nothing; step out instead</td></tr>\n</table>\n<h2>Reactions</h2>\n<ul>\n<li><b>Dodge</b> — free &amp; unlimited. ADV on the right window, DIS on the wrong one.</li>\n<li><b>Block &amp; Parry</b> share <b>one reaction per round</b>. Endurance/Poise 5+ → a second reaction.</li>\n<li><b>Parry</b> — ADV only on the parry window; success = stagger + riposte.</li>\n</ul>\n<h2>Don&rsquo;t forget</h2>\n<ul>\n<li><b>Frostbite</b> stacks (Outrider / Vordt) → Exhaustion when the bar fills.</li>\n<li><b>Phase triggers:</b> Gundyr at 0 HP → Pus of Man; Vordt at 50% → frenzy.</li>\n<li><b>Outrider anti-turtle:</b> no PC damaged it last round → it gains +1 action.</li>\n<li><b>On a wipe:</b> Drop Bloodstain, reset the boss/area, advance the Tell Ladder one rung.</li>\n</ul>\n<blockquote><p><b>Track only:</b> boss HP · each PC&rsquo;s reaction this round · Frostbite stacks. Everything else is on the boss card.</p></blockquote>"
+      }
+    },
+    {
       "name": "Running Bonfires, Souls & Death",
       "type": "text",
       "title": { "show": true, "level": 1 },
