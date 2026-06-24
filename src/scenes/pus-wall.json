@@ -1,0 +1,61 @@
+{
+  "name": "6 · Pus-of-Man Wall & Shortcut",
+  "active": false,
+  "navigation": true,
+  "navName": "Pus Wall",
+  "navOrder": 6,
+  "sort": 600,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "A rampart walk where a 'corpse' hollow erupts into the Pus of Man as the party passes. Tight footing near ledges (grab + ground slam matter). A kicked-down ladder/lift opens the shortcut back toward Firelink. Fire roughly halves this fight — reward firebombs and pyromancy."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 3000,
+  "height": 2200,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#0d0b0e",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

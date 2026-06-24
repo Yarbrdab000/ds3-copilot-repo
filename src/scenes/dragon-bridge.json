@@ -1,0 +1,61 @@
+{
+  "name": "4 · Dragon Bridge — Cover & Perches",
+  "active": false,
+  "navigation": true,
+  "navName": "Dragon Bridge",
+  "navOrder": 4,
+  "sort": 400,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "A long, exposed bridge raked by the Dragon's fire. Mark CLEAR fire lanes down the open span and CONCRETE cover (archways, fallen rubble, the dead zone beneath/behind the perch). Three solutions: bypass via cover, flank ~50 dmg to drive it to a new visible perch, or chase & kill (path C). Charging the open bridge = Teaching Death #2."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 4000,
+  "height": 2000,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#14110c",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

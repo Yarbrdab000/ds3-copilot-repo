@@ -168,7 +168,25 @@ const ACTORS = [
     bioHtml: card("The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2\u20133 legendary actions.",
       ["<strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; block risks guard-break (Str DC 15).", "<strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.", "<strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on.", "<strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.", "<strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1."],
       "(1) the cold builds \u2014 don't huddle near him; (2) break sideways out of his charge, then punish the overhead; (3) fire and lightning crack his frozen joints.") ,
-    attacks: [attack({ name: "Great Mace", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 })] })
+    attacks: [attack({ name: "Great Mace", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 })] }),
+
+  // ───── Firelink Shrine NPCs (friendly / service) ─────
+  npc({ name: "Fire Keeper", img: "icons/magic/fire/flame-burning-women-blue.webp", ac: 12, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 0, role: "service-npc", disposition: 1,
+    str: 9, dex: 12, con: 12, int: 13, wis: 16, cha: 15, ctype: "humanoid",
+    bioHtml: "<p><em>\"Welcome to Firelink Shrine, Unkindled One. I shall stay by your side until the day you become Cinder.\"</em></p><p><strong>Service \u2014 leveling.</strong> Blind, gentle, and bound to the flame, the Fire Keeper turns banked souls into strength. Run the <strong>Level Up</strong> macro and walk the player through the <em>Level-Up Menu Cards</em> journal. She also reinforces the Estus Flask with Estus Shards (add a charge, cap 6). Non-combatant \u2014 if she is ever threatened, the scene is already lost.</p>" }),
+  npc({ name: "Shrine Handmaid", img: "icons/magic/death/hand-withered-gray.webp", ac: 11, hp: 18, hpFormula: "4d8", cr: 0.5, souls: 0, role: "service-npc", disposition: 1,
+    str: 8, dex: 9, con: 10, int: 11, wis: 12, cha: 8, ctype: "humanoid",
+    bioHtml: "<p><em>\"Ahh, hello. Have you come for goods? Or perhaps... to relieve yourself of souls?\"</em></p><p><strong>Service \u2014 shop.</strong> A hunched crone who trades in banked souls. Prices and stock are in the <em>Firelink Services</em> journal; the <em>Shrine Handmaid \u2014 Restock</em> roll table drifts her inventory between visits. Non-combatant.</p>" }),
+  npc({ name: "Andre of Astora", img: "icons/skills/trades/smithing-anvil-silver-red.webp", ac: 14, hp: 38, hpFormula: "5d8+15", cr: 2, souls: 0, role: "service-npc", disposition: 1,
+    str: 16, dex: 12, con: 16, int: 11, wis: 12, cha: 12, ctype: "humanoid",
+    bioHtml: "<p><em>\"Need something reinforced? You've come to the right place. Titanite, and I'll see to the rest.\"</em></p><p><strong>Service \u2014 the forge.</strong> A tireless blacksmith who reinforces weapons and catalysts with titanite + souls (cap +3) and stokes the Pyromancy Flame. Upgrade tables are in the <em>Firelink Services</em> and <em>Weapon Scaling &amp; Upgrades</em> journals. Burly enough to defend himself, but not meant to fight.</p>",
+    attacks: [attack({ name: "Smith's Hammer", n: 1, d: 8, bonus: 3, types: [BL] })] }),
+  npc({ name: "Sword Master", img: "icons/skills/melee/sword-katana-gray.webp", ac: 16, hp: 60, hpFormula: "8d8+24", cr: 4, souls: 800, role: "duel-npc-and-mercy-valve", disposition: 0, walk: 35,
+    str: 13, dex: 18, con: 16, int: 12, wis: 14, cha: 11, ctype: "humanoid",
+    bioHtml: card("<strong>Two roles.</strong> (1) Optional <em>duel</em> by the shrine steps \u2014 a fast, parry-heavy katana master who teaches the defensive game and drops 800 souls + a fine blade if bested (disposition starts neutral; he turns hostile only if challenged). (2) The <strong>mercy valve</strong>: after repeated wipes, the DM may drop him as a <em>controllable ally token</em> (a summon sign answered) to steady a struggling party for one fight. Set his disposition to friendly when summoned.",
+      ["<strong>Iaido Double-Slash</strong> (2 x 1d8+4): dodge ADV W2; parry ADV only on W3 (the second cut).", "<strong>Parry Stance</strong> (reaction): he parries the next melee attack you telegraph \u2014 feint or go unorthodox.", "<strong>Step Thrust</strong> (reach 1d10+4): sidestep the line W1; parry ADV W2."],
+      "(1) he reads obvious swings \u2014 mix your timing; (2) his double-slash over-commits on the second cut; (3) he's a teacher, not a wall \u2014 patience wins.") ,
+    attacks: [attack({ name: "Uchigatana", n: 1, d: 8, bonus: 4, types: [SL], ability: "dex" })] })
 ];
 
 async function main() {

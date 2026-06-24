@@ -1,0 +1,61 @@
+{
+  "name": "5 · Outrider Arena",
+  "active": false,
+  "navigation": true,
+  "navName": "Outrider",
+  "navOrder": 5,
+  "sort": 500,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "A tight, enclosed chamber for the Outrider Knight duel — nowhere to turtle. Keep it mostly open with one or two pillars to break charge lanes. The Outrider punishes passivity (extra action if undamaged last round); Frost claws build Frostbite. Teaching Death #3 for a party that plays too safe."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 2600,
+  "height": 2600,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#0b0e12",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

@@ -1,0 +1,61 @@
+{
+  "name": "3 · High Wall — Entry & Hollow Courtyard",
+  "active": false,
+  "navigation": true,
+  "navName": "High Wall",
+  "navOrder": 3,
+  "sort": 300,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "Two-part map: a gated entry hall opening onto a courtyard farm. Place Hollows, a Hollow Soldier (the future Pus of Man), archers on the ramparts, and a Starving Hound pack. This is the soul-farming pocket (Farm Pocket roll table). A Hollow Soldier here can erupt into the Pus of Man (High Wall) if you want a scare before the Outrider."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 3600,
+  "height": 2800,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#10110f",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

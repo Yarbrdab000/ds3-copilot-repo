@@ -1,0 +1,61 @@
+{
+  "name": "7 · Vordt Arena — Fog Gate",
+  "active": false,
+  "navigation": true,
+  "navName": "Vordt",
+  "navOrder": 7,
+  "sort": 700,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "Pre-bonfire + fog gate, then a long frozen hall for Vordt of the Boreal Valley — the climax. Wide enough to run his Frost Charge lane. Phase 2 at 50% adds a cold aura (don't huddle), Frostbreath cone, and Grab-Leap (Teaching Death #4). Vulnerable to fire & lightning. Victory bonfire past the far gate."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 3000,
+  "height": 3000,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#0a0f16",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

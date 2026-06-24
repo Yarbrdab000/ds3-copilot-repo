@@ -1,0 +1,61 @@
+{
+  "name": "1 · Cemetery of Ash — Gundyr's Arena",
+  "active": false,
+  "navigation": true,
+  "navName": "Cemetery",
+  "navOrder": 1,
+  "sort": 100,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "Open grave-strewn slope funnelling DOWN into a circular arena. Scatter ruined pillars (cover) on the approach; the arena floor is clear for Iudex Gundyr. Coiled-sword bonfire at the far edge (do NOT light until after the fight). Teaches W1/W2/W3 on the trash hollows, then the parry on Gundyr; remember the Pus of Man eruption at 0 HP."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 3000,
+  "height": 2400,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#0c0a08",
+  "grid": {
+    "type": 1,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0.2,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": true,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}

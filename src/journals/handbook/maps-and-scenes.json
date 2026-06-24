@@ -1,0 +1,36 @@
+{
+  "name": "Ashen — Maps & Scene Briefs",
+  "flags": {},
+  "pages": [
+    {
+      "name": "How the Maps Ship (and How to Dress Them)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 100000,
+      "text": {
+        "format": 1,
+        "content": "<p>Ashen ships <strong>blank, grid-ready placeholder scenes</strong> &mdash; correct size, square 5-ft grid, mood-tinted background &mdash; but <strong>no map art</strong>. That keeps the module copyright-safe (no FromSoftware imagery) and lets you use whatever battlemaps you like. Every scene also carries a one-paragraph <em>layout brief</em> on its <code>flags.ashen.brief</code>, summarised on the next page.</p>\n<h2>Running it bare</h2>\n<p>You can play on the blank grid as-is: it's sized per encounter, the squares are 5 ft, and token vision/fog are on. Narrate the terrain from the brief and drop tokens. For a one-shot, this is totally fine.</p>\n<h2>Dropping in a battlemap (2 minutes)</h2>\n<ol>\n<li>Find a map image (sources below). Note its pixel size.</li>\n<li>Open the scene &rarr; <strong>Configure</strong> (gear) &rarr; <strong>Background</strong>: set the image as the background source.</li>\n<li>On the <strong>Dimensions</strong> tab, set <em>Width</em> and <em>Height</em> to the image's pixels, then adjust <strong>Grid Size</strong> so one square lands on one map square (use the grid-alignment tool). Keep <em>Grid Distance</em> = 5 ft.</li>\n<li>Save. Re-place any tokens. Done.</li>\n</ol>\n<p><em>Tip:</em> if a map is already gridded at 70 px/square, set Grid Size to 70 rather than rescaling the image.</p>"
+      }
+    },
+    {
+      "name": "Scene Sizes & Layout Briefs",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 200000,
+      "text": {
+        "format": 1,
+        "content": "<p>Default placeholder sizes (square 5-ft grid). Match your art to roughly these square counts for a clean fit.</p>\n<table><thead><tr><th>Scene</th><th>Squares</th><th>Pixels</th><th>The space</th></tr></thead><tbody>\n<tr><td><strong>0 · Region Overview</strong></td><td>gridless</td><td>3200×2400</td><td>Between-scene map; show the dragon in sight, orient backtracking.</td></tr>\n<tr><td><strong>1 · Cemetery / Gundyr</strong></td><td>30×24</td><td>3000×2400</td><td>Grave slope funnels into a circular arena; pillars for cover on approach.</td></tr>\n<tr><td><strong>2 · Firelink Hub</strong></td><td>28×22</td><td>2800×2200</td><td>Safe hub; Fire Keeper, Handmaid, Andre, Sword Master, central bonfire.</td></tr>\n<tr><td><strong>3 · High Wall / Courtyard</strong></td><td>36×28</td><td>3600×2800</td><td>Entry hall → farm courtyard; hollows, archers on ramparts, hound pack.</td></tr>\n<tr><td><strong>4 · Dragon Bridge</strong></td><td>40×20</td><td>4000×2000</td><td>Long exposed span; mark fire lanes, cover, and the dead zone under the perch.</td></tr>\n<tr><td><strong>5 · Outrider Arena</strong></td><td>26×26</td><td>2600×2600</td><td>Tight enclosed duel; 1–2 pillars to break charge lanes, nowhere to turtle.</td></tr>\n<tr><td><strong>6 · Pus Wall &amp; Shortcut</strong></td><td>30×22</td><td>3000×2200</td><td>Rampart walk with ledges; corpse erupts; a kicked ladder opens the shortcut.</td></tr>\n<tr><td><strong>7 · Vordt Arena</strong></td><td>30×30</td><td>3000×3000</td><td>Fog gate → long frozen hall; room to run the Frost Charge; victory bonfire beyond.</td></tr>\n</tbody></table>\n<p>The full encounter detail (enemy placement, cover, the three Dragon solutions, the Teaching-Death beats) lives in the <strong>DM Codex</strong> journal and on each scene's brief flag.</p>"
+      }
+    },
+    {
+      "name": "Free / CC Map & Token Sources",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 300000,
+      "text": {
+        "format": 1,
+        "content": "<p>A curated starting list for grim, ruined, snowy, castle-rampart maps and dark-fantasy tokens. <strong>Always check the individual asset's licence</strong> before using it &mdash; terms vary by creator, and some free tiers are personal-use or CC-BY-NC (fine for a private, non-monetised game; credit where asked).</p>\n<h2>Battlemaps</h2>\n<ul>\n<li><strong>Dyson Logos</strong> (dysonlogos.blog) &mdash; huge free dungeon/keep library, commercial-friendly with credit. Great for ruined halls and ramparts.</li>\n<li><strong>2-Minute Tabletop</strong> &mdash; free + paid maps and map-making assets; dark-fantasy and castle sets.</li>\n<li><strong>Forgotten Adventures</strong> &mdash; enormous free map &amp; asset library (CC-BY-NC); excellent grim/ruined/snow tilesets and pre-made maps.</li>\n<li><strong>Cartography Assets</strong> (cartographyassets.com) &mdash; filter by free; many CC maps and brushes.</li>\n<li><strong>r/battlemaps</strong> &amp; <strong>r/dndmaps</strong> &mdash; lots of free maps; read each poster's usage note.</li>\n<li><strong>Czepeku</strong> (free samples) &amp; <strong>Tom Cartos</strong> &mdash; cinematic maps incl. snowy keeps and bridges (mostly paid; some free).</li>\n</ul>\n<h2>Tokens &amp; portraits</h2>\n<ul>\n<li><strong>Forgotten Adventures Tokens</strong> &mdash; thousands of free top-down tokens (undead, knights, beasts) fitting the hollow/knight roster.</li>\n<li><strong>Game-icons.net</strong> (CC-BY 3.0) &mdash; the same icon set Foundry uses; perfect for item cards, abilities, and minimalist tokens.</li>\n<li><strong>Foundry core art</strong> (the <code>icons/</code> paths already used throughout this module) &mdash; ships with Foundry, safe to use.</li>\n<li><strong>Token Stamp 2</strong> (rolladvantage) &mdash; free tool to frame any image into a round token.</li>\n</ul>\n<h2>Make your own (optional)</h2>\n<ul>\n<li><strong>Dungeondraft</strong> (paid, one-time) &mdash; quick custom battlemaps; pairs well with Forgotten Adventures asset packs.</li>\n<li><strong>Inkarnate</strong> / <strong>Wonderdraft</strong> &mdash; region/overview maps for Scene 0.</li>\n</ul>\n<p><em>None of these are FromSoftware assets.</em> Use them to evoke Lothric's mood without shipping copyrighted art in the module.</p>"
+      }
+    }
+  ]
+}

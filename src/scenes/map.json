@@ -1,0 +1,61 @@
+{
+  "name": "0 · Region Overview (Cemetery → Vordt)",
+  "active": false,
+  "navigation": true,
+  "navName": "Map",
+  "navOrder": 0,
+  "sort": 0,
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "ashen": {
+      "brief": "Gridless overview the players can see between scenes: Cemetery of Ash → Firelink Shrine (hub) → High Wall (farm + Dragon Bridge fork) → Outrider → Pus Wall shortcut → Vordt. Use it to show the dragon perched in sight on the bridge and to orient backtracking to Firelink."
+    }
+  },
+  "background": {
+    "src": null,
+    "offsetX": 0,
+    "offsetY": 0,
+    "fit": "fill",
+    "tint": "#ffffff"
+  },
+  "foreground": null,
+  "foregroundElevation": 20,
+  "thumb": null,
+  "width": 3200,
+  "height": 2400,
+  "padding": 0.25,
+  "initial": {
+    "x": null,
+    "y": null,
+    "scale": null
+  },
+  "backgroundColor": "#08090b",
+  "grid": {
+    "type": 0,
+    "size": 100,
+    "style": "solidLines",
+    "thickness": 1,
+    "color": "#000000",
+    "alpha": 0,
+    "distance": 5,
+    "units": "ft"
+  },
+  "tokenVision": true,
+  "fogExploration": false,
+  "fogReset": null,
+  "fogOverlay": null,
+  "fogUnexploredColor": "#000000",
+  "fogExploredColor": "#000000",
+  "drawings": [],
+  "tokens": [],
+  "lights": [],
+  "notes": [],
+  "sounds": [],
+  "templates": [],
+  "tiles": [],
+  "walls": [],
+  "regions": []
+}
