@@ -203,9 +203,13 @@ function buildActivity(s) {
 function buildSpell(s) {
   const g = SCHOOL_GROUP[s.group];
   const charges = TIER_CHARGES[s.tier];
+  const valve = (s.activity === "attack" && s.parts && s.parts.length)
+    ? `<p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in ${s.parts[0][3]} damage (minimum 1) — a caster always chips.</p>`
+    : "";
   const desc =
     `<p><em>${s.flavor}</em></p>` +
     `<p><strong>${s.rules}</strong></p>` +
+    valve +
     `<hr/><p><strong>Ashen:</strong> Tier ${s.tier} ${s.group} — costs <strong>${charges} charge${charges > 1 ? "s" : ""}</strong>. ` +
     `Gated by ${g.stat}; requires a <strong>${g.catalyst}</strong> in hand. Based on SRD <em>${s.srd}</em>.</p>`;
   const template = s.template

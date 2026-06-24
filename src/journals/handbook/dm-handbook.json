@@ -23,6 +23,16 @@
       }
     },
     {
+      "name": "What Each Fight Hunts (and the Counter)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 250000,
+      "text": {
+        "format": 1,
+        "content": "<p>Every major fight in <em>Ashen</em> quietly <strong>hunts a habit</strong> — a playstyle or character build it is designed to punish. This is your at-a-glance prep table: know what each fight preys on, then coach the counter through the Tell Ladder (never by stating it outright).</p>\n<table>\n<tr><td><strong>Fight</strong></td><td><strong>Hunts (the habit / build it preys on)</strong></td><td><strong>Counter to coach</strong></td></tr>\n<tr><td><strong>Iudex Gundyr</strong></td><td>The reckless and the relieved — players who panic-block his clean swings, and a party that celebrates the \"win\" on an empty Estus.</td><td>Parry his honest swings; keep one flask and a held action for the eruption.</td></tr>\n<tr><td><strong>Pus of Man</strong> (from Gundyr)</td><td>Resource-drained, clustered parties; punishes spending your last flask on a boss that is not fully dead.</td><td>Hold resources, spread out, and bring fire — it is fire-weak.</td></tr>\n<tr><td><strong>Outrider Knight</strong></td><td><strong>The turtle.</strong> Shield-campers and passive, defensive builds — it hastes when ignored and pounces the most defensive PC.</td><td>Stay aggressive (deal damage every round) and sidestep the charge instead of walling it.</td></tr>\n<tr><td><strong>Pus of Man</strong> (High Wall)</td><td>Fireless parties in tight formation who stroll past \"corpses.\" A shock ambush on the unprepared.</td><td>Carry a firebomb or pyromancy; don&rsquo;t bunch into the poison cone.</td></tr>\n<tr><td><strong>The Dragon</strong></td><td><strong>The DPS racer.</strong> Glass cannons and brave open-ground play — you cannot out-damage it from the open bridge.</td><td>Positioning over damage: advance cover-to-cover into the dead zone, then strike.</td></tr>\n<tr><td><strong>Vordt</strong></td><td><strong>The clusterer.</strong> Bunched parties that ignore the status bar — the frenzy charge shreds a cluster and Frostbite stacks into Exhaustion.</td><td>Spread out, bait the charge out of the lane, manage Frostbite, and hit the frost-brittle joints with fire/thunder.</td></tr>\n</table>\n<h2>Why this matters for your table</h2>\n<p>The build triangle — <strong>bruiser / turtle / caster</strong> — means no single party answers every fight the same way. The turtle that walls Gundyr gets <em>devoured</em> by the Outrider; the caster who races the Dragon down gets torched. Let each fight expose a different weakness, and let the party adapt at the bonfire. That adaptation <em>is</em> the game.</p>"
+      }
+    },
+    {
       "name": "Running the Defensive Reaction System",
       "type": "text",
       "title": { "show": true, "level": 1 },

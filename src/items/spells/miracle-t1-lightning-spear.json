@@ -12,7 +12,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>Hurl a spear of sunlight forged from faith.</em></p><p><strong>Spell attack; 4d6 radiant, and the next attack against the target has advantage.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — costs <strong>1 charge</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Guiding Bolt</em>.</p>",
+      "value": "<p><em>Hurl a spear of sunlight forged from faith.</em></p><p><strong>Spell attack; 4d6 radiant, and the next attack against the target has advantage.</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in radiant damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — costs <strong>1 charge</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Guiding Bolt</em>.</p>",
       "chat": ""
     },
     "source": {

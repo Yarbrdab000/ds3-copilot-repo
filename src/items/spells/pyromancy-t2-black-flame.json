@@ -12,7 +12,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>Dark fire that burns body and soul, feeding the caster.</em></p><p><strong>Melee spell attack; 3d6 necrotic and you regain half the damage dealt. Repeatable each turn (concentration).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 pyromancy — costs <strong>2 charges</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Vampiric Touch</em>.</p>",
+      "value": "<p><em>Dark fire that burns body and soul, feeding the caster.</em></p><p><strong>Melee spell attack; 3d6 necrotic and you regain half the damage dealt. Repeatable each turn (concentration).</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in necrotic damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 2 pyromancy — costs <strong>2 charges</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Vampiric Touch</em>.</p>",
       "chat": ""
     },
     "source": {

@@ -154,7 +154,7 @@ const ACTORS = [
     str: 18, dex: 12, con: 15, ctype: "undead",
     bioHtml: card("First major boss; the forgiving teacher. <strong>Be generous.</strong> At 0 HP he does NOT die \u2014 the Pus of Man erupts (deploy the <em>Pus of Man (Gundyr Eruption)</em> actor). 2 legendary actions: halberd jab 1d10+4; 5-ft reposition.",
       ["<strong>Overhead Chop</strong> (2d10+4): parry ADV W3 \u2014 the move that teaches parry.", "<strong>Wide Sweep</strong> (arc 2d10+4): dodge ADV W2; unparryable.", "<strong>Thrust Lunge</strong> (reach 2d10+4): dodge/parry ADV W2.", "<strong>Shield Kick</strong> (1d8+4, push): unparryable &amp; unblockable \u2014 it exists to punish turtling; dodge W2."],
-      "(1) overhead hangs before it falls \u2192 parry it; (2) the sweep can only be slipped under; (3) when he 'dies', he doesn't \u2014 keep a flask.") ,
+      "(1) overhead hangs before it falls \u2192 parry it; (2) the sweep can only be slipped under; (3) his shield-bash can't be blocked or parried \u2014 don't raise your guard, just step out of it; (4) when he 'dies', he doesn't \u2014 keep a flask.") ,
     attacks: [attack({ name: "Halberd Chop", n: 2, d: 10, bonus: 4, types: [SL], reach: 10 })] }),
   npc({ name: "Pus of Man (Gundyr Eruption)", img: "icons/creatures/tentacles/tentacles-thorned-purple.webp", ac: 15, ...bossHP(3, "act1"), cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
     str: 18, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
