@@ -48,29 +48,70 @@ const MACROS = [
     body: `
 const MODULE_ID = "ashen-of-lothric";
 const packs = game.packs.filter(p => p.metadata.packageName === MODULE_ID);
-if (!packs.length) return ui.notifications.error("Ashen: module compendiums not found. Enable the 'Ashen' module first.");
-const proceed = await Dialog.confirm({
-  title: "Assemble Adventure",
-  content: "<p>Import <b>all Ashen content</b> (" + packs.length + " compendiums) into this world, each in its own labelled folder?</p><p>Best run once on a fresh world.</p>"
-});
-if (!proceed) return;
-let total = 0;
+if (!packs.length) return ui.notifications.error("Ashen: module compendiums not found. Enable the 'Ashen' module in Settings \\u2192 Manage Modules first, then re-run this macro.");
+
+const FPREFIX = "Ashen \\u2014 ";
+const alreadyHere = game.folders.filter(f => f.name && f.name.indexOf(FPREFIX) === 0);
+let mode = "fresh";
+if (alreadyHere.length) {
+  mode = await new Promise((resolve) => {
+    new Dialog({
+      title: "Assemble Adventure \\u2014 already assembled?",
+      content: "<p>This world already has <b>" + alreadyHere.length + "</b> Ashen folder(s) \\u2014 it looks like the adventure was assembled here before.</p>" +
+        "<p><b>Fill gaps</b> imports only what is missing (safe, no duplicates). <b>Re-import all</b> brings everything in again and may create duplicates.</p>",
+      buttons: {
+        skip: { label: "Fill gaps (safe)", callback: () => resolve("skip") },
+        force: { label: "Re-import all", callback: () => resolve("force") },
+        cancel: { label: "Cancel", callback: () => resolve(null) }
+      },
+      default: "skip", close: () => resolve(null)
+    }).render(true);
+  });
+  if (!mode) return;
+} else {
+  const proceed = await Dialog.confirm({
+    title: "Assemble Adventure",
+    content: "<p>Import <b>all Ashen content</b> (" + packs.length + " compendiums) into this world, each in its own labelled folder?</p><p>Takes a few seconds. Safe to re-run later \\u2014 it will not duplicate what is already here.</p>"
+  });
+  if (!proceed) return;
+}
+
+let imported = 0, skipped = 0, failed = 0;
 for (const pack of packs) {
-  const folderName = String(pack.metadata.label || pack.metadata.name).replace(/^Ashen:\\s*/, "Ashen \\u2014 ");
+  const folderName = String(pack.metadata.label || pack.metadata.name).replace(/^Ashen:\\s*/, FPREFIX);
+  const folder = game.folders.find(f => f.type === pack.metadata.type && f.name === folderName);
+  const have = folder ? (folder.contents?.length ?? 0) : 0;
+  if (mode === "skip" && have > 0) { skipped += have; continue; }
   try {
-    const imported = await pack.importAll({ folderName });
-    const n = Array.isArray(imported) ? imported.length : (pack.index?.size ?? 0);
-    total += n;
+    const docs = await pack.importAll({ folderName });
+    const n = Array.isArray(docs) ? docs.length : (pack.index?.size ?? 0);
+    imported += n;
     ui.notifications.info("Ashen: imported " + folderName + " (" + n + ").");
   } catch (e) {
+    failed++;
     console.error("Ashen assemble error for " + pack.collection, e);
     ui.notifications.warn("Ashen: failed to import " + folderName + " (see console).");
   }
 }
-ChatMessage.create({ content: "<h3>Adventure assembled.</h3>" +
-  "<p>Imported " + total + " documents from " + packs.length + " Ashen compendiums into this world. Look for the <b>Ashen \\u2014</b> folders in the Journals, Actors, Items, Scenes, Tables and Macros tabs.</p>" +
-  "<p>Next: read the <b>Rules Bible</b> and <b>DM Handbook</b> journals, then drag the <b>Cemetery of Ash</b> scene onto the canvas to begin.</p>" });
-ui.notifications.info("Ashen: assembly complete (" + total + " documents).");
+
+// Make the souls tracker work out of the box: ensure the Bonfire Ledger has its flags initialised.
+const ledger = game.actors.find(x => x.getFlag("ashen", "role") === "souls") || game.actors.getName("Bonfire Ledger");
+if (ledger) {
+  for (const k of ["banked", "carried", "bloodstain"]) {
+    if (ledger.getFlag("ashen", k) == null) await ledger.setFlag("ashen", k, 0);
+  }
+}
+
+const lines = ["<h3>Adventure assembled.</h3>"];
+lines.push("<p>Imported <b>" + imported + "</b> document(s)" +
+  (skipped ? ", skipped <b>" + skipped + "</b> already present" : "") +
+  (failed ? ", <b>" + failed + "</b> pack(s) failed (see console)" : "") +
+  ". Find them under the <b>Ashen \\u2014</b> folders in the Journals, Actors, Items, Scenes, Tables and Macros tabs.</p>");
+lines.push("<p><b>Start here:</b> open the <b>Rules Bible</b>, then the <b>DM Handbook</b> (read its Quick-Start page), have each player grab a <b>Pregen</b>, and drag <b>1 \\u00b7 Cemetery of Ash</b> onto the canvas.</p>");
+lines.push("<p>The shared souls live on the <b>Bonfire Ledger</b> actor \\u2014 drive it with the Ashen tracker macros (Award / Bank / Spend / Bonfire Rest), never by hand.</p>");
+if (!ledger) lines.push("<p style=\\"color:#a33\\"><b>Heads up:</b> no Bonfire Ledger actor found \\u2014 make sure the <b>Pregen Characters</b> pack imported (it carries the ledger).</p>");
+ChatMessage.create({ content: lines.join("") });
+ui.notifications.info("Ashen: assembly complete \\u2014 " + imported + " imported" + (skipped ? ", " + skipped + " skipped" : "") + (failed ? ", " + failed + " failed" : "") + ".");
 `
   },
   {

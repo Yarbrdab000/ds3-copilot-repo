@@ -17,7 +17,9 @@ The build produces an **installable module zip** with all content as compendiums
    **Settings → Manage Modules**.
 4. Open the **Macros** compendium (right sidebar → **Compendium Packs → Ashen** folder → *Macros &
    Trackers*), drag **"Ashen: Assemble Adventure"** to your hotbar, and click it. Confirm the prompt.
-   It imports every Ashen compendium into the world in labelled folders.
+   It imports every Ashen compendium into the world in labelled folders and initialises the souls
+   tracker. **Safe to re-run** — if you click it again it offers to fill only what's missing instead
+   of duplicating content.
 5. You're in. Read **"How to run it"** below.
 
 ---
@@ -30,8 +32,8 @@ Use this to drop content into an **existing** world a piece at a time.
 2. Install + enable the module as above.
 3. Open the compendiums (right sidebar → **Compendium Packs** → the *Ashen* folder) and **import**
    what you need: drag the Pregens, Bestiary, Scenes, Journals, Tables, and Macros into your world.
-   (Importing the **Bestiary** actors pack also brings in the **Bonfire Ledger** actor the souls
-   macros depend on.)
+   (Importing the **Pregen Characters** actors pack also brings in the **Bonfire Ledger** actor the
+   souls macros depend on — import it even if players bring their own sheets.)
 
 ---
 
@@ -47,9 +49,10 @@ Open these in order — they're written to be read in ~20 minutes total:
 
 ### The trackers (set up once)
 - **Souls pool:** the shared party souls live on the **Bonfire Ledger** actor (imported with the
-  Bestiary pack) as *banked* / *carried* / *bloodstain* totals. You never edit it by hand — use the
-  macros: **Award Souls**, **Bank Souls (at Bonfire)**, **Spend Banked Souls**, **Drop Bloodstain
-  (on Wipe)**, and **Reclaim Bloodstain**.
+  **Pregen Characters** pack) as *banked* / *carried* / *bloodstain* totals. You never edit it by
+  hand — use the macros: **Award Souls**, **Bank Souls (at Bonfire)**, **Spend Banked Souls**, **Drop
+  Bloodstain (on Wipe)**, and **Reclaim Bloodstain**. (The Assemble Adventure macro initialises these
+  totals to 0 for you.)
 - **Leveling:** the **Level Up** macro spends banked souls and tells each player which Level-Up Menu
   Card to apply. **Bonfire Rest** restores HP/Estus/charges and reminds you to respawn enemies.
 - **Frostbite & embers:** **Add Frostbite Stack** advances the build-up bar (auto-applies Exhaustion
