@@ -13,7 +13,7 @@ roll with **advantage**, guess wrong and you roll with **disadvantage**.
 
 The twist: the defensive roll is **flat — no stats added.** Only your *timing read*
 matters. It's skill, not numbers — "get gud" at the table. Stats just give you tools
-(more reactions, guard-break resistance), never the result.
+(an extra strike, an extra reaction, a quickcast slot), never the result.
 
 **Dodge** is free and unlimited (success = no damage + reposition for a backstab).
 **Block** spends your reaction and leans on your shield. **Parry** spends your
@@ -43,8 +43,8 @@ the grid is the puzzle.**
 
 The defensive d20 is rolled **flat — no ability modifier.** The *only* thing that
 swings the roll is your window read. A clumsy character who reads the tell beats a
-nimble one who panics. Stats give you **tools, not results** (more reactions,
-guard-break resistance, passive AC for when you *don't* react) — they never roll the
+nimble one who panics. Stats give you **tools, not results** (an extra strike or reaction,
+a caster's quickcast, passive AC for when you *don't* react) — they never roll the
 dodge for you.
 
 ## The three defenses
@@ -52,19 +52,23 @@ dodge for you.
 - **Dodge** — always free, unlimited. Flat d20 vs the move's Dodge DC. Success = no
   damage + reposition 5 ft; end up *behind* the enemy and your next attack gets
   advantage (footwork → backstabs). The staple.
-- **Block** — costs your reaction, no roll. A good shield negates physical damage, but
-  heavy/charging moves force a Strength save vs guard-break. Lesser shields just halve
-  + chip. Some moves are unblockable.
+- **Block** — costs your reaction, no roll. Your shield subtracts a flat **% per damage type**;
+  heavier shields reduce more, bucklers less. It chips at low tiers and **never staggers**
+  (that's parry's job). Charges, grabs and shield-kicks are **unblockable** — sidestep instead.
 - **Parry** — costs your reaction. Flat d20, but **only one window gives advantage;
   every other window is disadvantage.** Success = negate the hit *and* stagger the
   enemy (it loses its next action + opens a party-wide riposte). Fail = full damage,
   no reduction. High risk, high reward — and only clean weapon swings can be parried.
 
-## Reaction economy (this is what pushes dodging)
+## How your stats shape your turn (bounded action economy)
 
-Dodge is free every turn. Block and Parry cost your one reaction per round.
-Endurance/Poise points buy *extra* reactions — so investing in defense literally lets
-you do more of it.
+Your base turn is **1 Action + 1 Bonus + 1 Reaction**, and most picks make it *better*,
+not *bigger*. **Dodge** is free and unlimited. **Block** and **Parry** share your one
+reaction; **Endurance/Poise 5** grants a second. **3 points in your attack stat** (Str
+for melee, Dex for finesse/ranged) adds a **+1 strike** (cap 3, +off-hand if dual-wielding).
+**Int/Faith 5** lets a caster fire one **Tier-1 spell as a Bonus Action**. The pick-scarcity
+means you can only ever max one track, so builds stay distinct — and it all stays *within*
+your turn, so a boss's attack cadence is unaffected.
 
 ## Scales from mooks to bosses
 
