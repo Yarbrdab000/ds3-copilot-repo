@@ -1,0 +1,37 @@
+{
+  "name": "Twinkling Titanite",
+  "type": "loot",
+  "img": "icons/commodities/gems/gem-faceted-radiant-blue.webp",
+  "effects": [],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>A rare, shimmering titanite. Reinforces what ordinary shards cannot &mdash; unique blades and the Pyromancy Flame.</em></p><p><strong>Andre&rsquo;s forge:</strong> spend one to ascend a unique weapon or the Pyromancy Flame one reinforcement step beyond the reach of common titanite.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 material",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0.1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 2000,
+      "denomination": "gp"
+    },
+    "rarity": "rare",
+    "identified": true,
+    "container": null,
+    "type": {
+      "value": "material"
+    },
+    "properties": [],
+    "identifier": "twinkling-titanite"
+  }
+}
