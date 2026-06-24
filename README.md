@@ -49,6 +49,25 @@ npm install        # installs the Foundry CLI
 npm run build      # compiles src/ JSON into packs/ compendia
 ```
 
+### Printable table aids (no Foundry needed)
+
+Want a paper backup at the table? Render the DM combat aids to standalone,
+print-ready HTML — open in any browser and press Ctrl/Cmd&nbsp;+&nbsp;P:
+
+```bash
+npm run print              # builds all three into print-out/
+node tools/print.mjs list  # see the targets
+```
+
+| Target | File | What it is |
+| --- | --- | --- |
+| `cheat-card` | `combat-cheat-card.html` | The one-page combat loop + block legend + reaction economy |
+| `boss-grids` | `boss-quick-grids.html` | Every boss moveset grid on one sheet |
+| `battle-kit` | `battle-kit.html` | The cheat card followed by all the boss grids |
+
+The HTML is pulled from the same source JSON the module ships, so a printout can
+never drift from what's in Foundry. Output lands in `print-out/` (gitignored).
+
 ## Legal / copyright
 
 This is a **personal, non-commercial fan work**. All D&D mechanics use **SRD 5.1** open content only.

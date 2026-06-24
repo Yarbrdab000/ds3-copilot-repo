@@ -6,6 +6,7 @@
 /packs/**/LOCK
 /packs/**/*.log
 /dist/
+/print-out/
 
 # Node
 /node_modules/
