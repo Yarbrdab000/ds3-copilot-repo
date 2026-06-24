@@ -118,7 +118,7 @@
     },
     "details": {
       "biography": {
-        "value": "<p><em>Elite cleaver-wielder; the reliable courtyard farm target.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Heavy Cleaver Overhead</strong> (2d6+3): dodge ADV W2; parry ADV W3; blocking risks guard-break (Str DC 12).</li></ul>",
+        "value": "<p><em>Elite cleaver-wielder; the reliable courtyard farm target.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Heavy Cleaver Overhead</strong> (2d6+3): dodge ADV W2; parry ADV W3; blockable but chips through (heavy).</li></ul>",
         "public": ""
       },
       "alignment": "Hollow",

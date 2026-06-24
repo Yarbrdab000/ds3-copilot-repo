@@ -73,11 +73,11 @@
         "formula": ""
       },
       "hp": {
-        "value": 75,
-        "max": 75,
+        "value": 190,
+        "max": 190,
         "temp": null,
         "tempmax": null,
-        "formula": "10d10+20"
+        "formula": "190"
       },
       "init": {
         "ability": "",
@@ -118,7 +118,7 @@
     },
     "details": {
       "biography": {
-        "value": "<p><em>Fast, relentless duel that PUNISHES passivity (Teaching Death #3). <strong>Anti-turtle:</strong> if no PC damaged it last round, it gains an extra action this round. Frost claws build Frostbite.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.</li><li><strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; block risks guard-break (Str DC 14).</li><li><strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive.</li></ul><p><strong>Tell Ladder:</strong> (1) standing still feeds it; (2) the triple-swipe over-commits on the last claw; (3) cut sideways out of its charge lane.</p>",
+        "value": "<p><em>Fast, relentless duel that PUNISHES passivity (Teaching Death #3). <strong>Anti-turtle:</strong> if no PC damaged it last round, it gains an extra action this round. Frost claws build Frostbite.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.</li><li><strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; unblockable (a charge — don't try to wall it).</li><li><strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive.</li></ul><p><strong>Tell Ladder:</strong> (1) standing still feeds it; (2) the triple-swipe over-commits on the last claw; (3) cut sideways out of its charge lane.</p>",
         "public": ""
       },
       "alignment": "Hollow",

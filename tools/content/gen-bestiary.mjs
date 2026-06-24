@@ -104,14 +104,21 @@ function npc({ name, img, ac, hp, hpFormula, walk = 30, fly = 0, reach = 5, cr, 
 
 const FIRE = "fire", COLD = "cold", PI = "piercing", SL = "slashing", BL = "bludgeoning";
 
-// Boss HP model (spec §11): HP is NOT an attrition clock — successful defenses negate damage,
-// so HP measures "how many rounds of correct reading the party must sustain."
-//   HP = target_rounds × party_size × expected_damage_per_turn
-// 4-player baseline at ~10 expected dmg/turn (TUNABLE). expected_dmg already bakes in misses.
-// RE-AUDIT after a real pregen damage test, then rescale by your actual headcount (see DM Handbook).
+// ── Boss HP model (spec §11) ─────────────────────────────────────────────────
+// HP is NOT an attrition clock — a correct defense negates the hit, so HP measures
+// "how many rounds of correct reading the party must sustain."
+//   Boss HP = target_rounds × party_size × per-player damage/round (DPP)
+// DPP is MEASURED from the real pregens (weapon dice + scaling grade + upgrade + invested
+// Str/Dex + Extra Attack/milestone strike + Rage/Sneak), taken as the midpoint of a
+// defensive vs aggressive party at each act's level band. Re-audit at the table with the
+// round-1 rule (see DM Handbook "Damage & Boss HP"). HP here is tuned for PARTY_BASELINE
+// players; the Level-Up/Assemble flow and Handbook tell the DM to scale ×(players / 4).
 const PARTY_BASELINE = 4;
-const DMG_PER_TURN = 10;
-function bossHP(targetRounds) { return Math.round(targetRounds * PARTY_BASELINE * DMG_PER_TURN); }
+const DPP = { act1: 5.5, mini: 12, dragon: 9, vordt: 26 }; // per-player dmg/round by act band
+function bossHP(targetRounds, band) {
+  const v = Math.round((targetRounds * PARTY_BASELINE * DPP[band]) / 5) * 5; // round to nearest 5
+  return { hp: v, hpFormula: String(v) };
+}
 
 function card(title, moves, tell) {
   let h = `<p><em>${title}</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul>`;
@@ -133,7 +140,7 @@ const ACTORS = [
     bioHtml: card("Crossbow / throwing-knife harasser. Close the distance.", ["<strong>Snap Shot / Backstab</strong> (1d8+3, ADV if you're unaware): dodge ADV W2 if you see the tell; unparryable (ranged)."]),
     attacks: [attack({ name: "Snap Shot", n: 1, d: 8, bonus: 3, types: [PI], ability: "dex", ranged: true, range: [80, 320] })] }),
   npc({ name: "Hollow Manservant", img: "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp", ac: 13, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 100, role: "elite-farm", str: 15, dex: 10, con: 13,
-    bioHtml: card("Elite cleaver-wielder; the reliable courtyard farm target.", ["<strong>Heavy Cleaver Overhead</strong> (2d6+3): dodge ADV W2; parry ADV W3; blocking risks guard-break (Str DC 12)."]),
+    bioHtml: card("Elite cleaver-wielder; the reliable courtyard farm target.", ["<strong>Heavy Cleaver Overhead</strong> (2d6+3): dodge ADV W2; parry ADV W3; blockable but chips through (heavy)."]),
     attacks: [attack({ name: "Heavy Cleaver", n: 2, d: 6, bonus: 3, types: [SL] })] }),
   npc({ name: "Lothric Knight", img: "icons/equipment/chest/breastplate-helmet-metal.webp", ac: 17, hp: 30, hpFormula: "4d8+12", cr: 2, souls: 150, role: "elite-guard", str: 15, dex: 13, con: 14,
     bioHtml: card("Disciplined elite guard. A real threat in numbers; the wall's last line before Vordt.", ["<strong>Disciplined Thrust</strong> (1d10+4, reach): dodge ADV (sidestep) W2; parry ADV W2 (clean thrust)."]),
@@ -143,39 +150,39 @@ const ACTORS = [
     attacks: [attack({ name: "Pounce", n: 1, d: 6, bonus: 2, types: [PI], ability: "dex" })] }),
 
   // ───── Bosses / minis (6) ─────
-  npc({ name: "Iudex Gundyr", img: "icons/skills/melee/strike-weapon-polearm-blood-red.webp", ac: 16, hp: 90, hpFormula: "12d10+24", cr: 5, souls: 2500, role: "major-boss", size: "lg", legact: 2,
+  npc({ name: "Iudex Gundyr", img: "icons/skills/melee/strike-weapon-polearm-blood-red.webp", ac: 16, ...bossHP(3.4, "act1"), cr: 5, souls: 2500, role: "major-boss", size: "lg", legact: 2,
     str: 18, dex: 12, con: 15, ctype: "undead",
     bioHtml: card("First major boss; the forgiving teacher. <strong>Be generous.</strong> At 0 HP he does NOT die \u2014 the Pus of Man erupts (deploy the <em>Pus of Man (Gundyr Eruption)</em> actor). 2 legendary actions: halberd jab 1d10+4; 5-ft reposition.",
-      ["<strong>Overhead Chop</strong> (2d10+4): parry ADV W3 \u2014 the move that teaches parry.", "<strong>Wide Sweep</strong> (arc 2d10+4): dodge ADV W2; unparryable.", "<strong>Thrust Lunge</strong> (reach 2d10+4): dodge/parry ADV W2.", "<strong>Shield Kick</strong> (1d8+4, push): unparryable; block risks guard-break (Str DC 15)."],
+      ["<strong>Overhead Chop</strong> (2d10+4): parry ADV W3 \u2014 the move that teaches parry.", "<strong>Wide Sweep</strong> (arc 2d10+4): dodge ADV W2; unparryable.", "<strong>Thrust Lunge</strong> (reach 2d10+4): dodge/parry ADV W2.", "<strong>Shield Kick</strong> (1d8+4, push): unparryable &amp; unblockable \u2014 it exists to punish turtling; dodge W2."],
       "(1) overhead hangs before it falls \u2192 parry it; (2) the sweep can only be slipped under; (3) when he 'dies', he doesn't \u2014 keep a flask.") ,
     attacks: [attack({ name: "Halberd Chop", n: 2, d: 10, bonus: 4, types: [SL], reach: 10 })] }),
-  npc({ name: "Pus of Man (Gundyr Eruption)", img: "icons/creatures/tentacles/tentacles-thorned-purple.webp", ac: 15, hp: 110, hpFormula: "13d10+39", cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
+  npc({ name: "Pus of Man (Gundyr Eruption)", img: "icons/creatures/tentacles/tentacles-thorned-purple.webp", ac: 15, ...bossHP(3, "act1"), cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
     str: 18, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("Phase 2 of Gundyr \u2014 the black tendril-mass. Souls roll into Gundyr's 2,500. <strong>Vulnerable to fire.</strong> This is Teaching Death #1 against a relieved, low-Estus party.",
       ["<strong>Tendril Multi-lash</strong> (up to 3 PCs, 2d8+4 each): dodge ADV W2; unparryable.", "<strong>Grab</strong> (1d10 + grappled 2d6/rd, escape DC 14): dodge EARLY on W1; un-block/parry.", "<strong>Ground Slam</strong> (10-ft burst 3d8 + prone): dodge out on W1; punishes clustering."]),
     attacks: [attack({ name: "Tendril Lash", n: 2, d: 8, bonus: 4, types: [BL], reach: 15 })] }),
-  npc({ name: "Outrider Knight", img: "icons/creatures/magical/spirit-undead-armored-blue.webp", ac: 17, hp: 75, hpFormula: "10d10+20", cr: 4, souls: 1000, role: "mini-boss", size: "med", walk: 40,
+  npc({ name: "Outrider Knight", img: "icons/creatures/magical/spirit-undead-armored-blue.webp", ac: 17, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "med", walk: 40,
     str: 16, dex: 16, con: 14, ctype: "undead",
     bioHtml: card("Fast, relentless duel that PUNISHES passivity (Teaching Death #3). <strong>Anti-turtle:</strong> if no PC damaged it last round, it gains an extra action this round. Frost claws build Frostbite.",
-      ["<strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.", "<strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; block risks guard-break (Str DC 14).", "<strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive."],
+      ["<strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.", "<strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; unblockable (a charge \u2014 don't try to wall it).", "<strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive."],
       "(1) standing still feeds it; (2) the triple-swipe over-commits on the last claw; (3) cut sideways out of its charge lane.") ,
     attacks: [attack({ name: "Frost Claw", n: 1, d: 8, bonus: 3, types: [SL], ability: "dex" })] }),
-  npc({ name: "Pus of Man (High Wall)", img: "icons/creatures/tentacles/tentacles-suctioncups-pink.webp", ac: 14, hp: 85, hpFormula: "10d10+30", cr: 4, souls: 1000, role: "mini-boss", size: "lg", reach: 15,
+  npc({ name: "Pus of Man (High Wall)", img: "icons/creatures/tentacles/tentacles-suctioncups-pink.webp", ac: 14, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "lg", reach: 15,
     str: 17, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("A 'dead' hollow on the wall bursts into an abomination as the party passes. <strong>Vulnerable to fire (takes double)</strong> \u2014 a firebomb or pyromancer roughly halves the fight.",
       ["<strong>Whipping Tendrils</strong> (up to 2 PCs, 2d6+3): dodge ADV W2; unparryable.", "<strong>Lunge Bite</strong> (2d8+3): parry ADV W2 \u2014 a clean, committed lunge.", "<strong>Black Spew</strong> (15-ft cone 3d6 poison + reduced healing): dodge out on W1; unparryable."],
       "One rung is enough: fire makes it scream and shrivel.") ,
     attacks: [attack({ name: "Lunge Bite", n: 2, d: 8, bonus: 3, types: [PI], reach: 15 })] }),
-  npc({ name: "The Dragon", img: "icons/creatures/reptiles/dragon-fire-breathing-orange.webp", ac: 18, hp: 150, hpFormula: "16d12+48", cr: 8, souls: 4000, role: "secret-boss", size: "huge", walk: 40, fly: 80,
+  npc({ name: "The Dragon", img: "icons/creatures/reptiles/dragon-fire-breathing-orange.webp", ac: 18, ...bossHP(5.5, "dragon"), cr: 8, souls: 4000, role: "secret-boss", size: "huge", walk: 40, fly: 80,
     str: 23, dex: 12, con: 19, ctype: "dragon",
     bioHtml: card("Optional, killable secret boss on the rampart \u2014 visible the whole time. Teaching Death #2: charging the open bridge = incineration. <strong>Three paths:</strong> (A) bypass via cover; (B) flank ~50 dmg in the dead zone \u2192 it flies to a new visible perch; (C) chase &amp; kill for the full reward + unique drop. Souls 3,000\u20134,000 (path C only).",
       ["<strong>Fire Breath</strong> (bridge rake, 4d8 fire): unblock/parry/dodge in the open \u2014 the ONLY answer is COVER. The dead zone beneath/behind it is safe.", "<strong>Tail Sweep</strong> (dead-zone, arc 3d10 + prone): dodge ADV W2; unparryable.", "<strong>Claw &amp; Bite</strong> (3d8+5): the bite (W3) is parryable \u2014 staggers a dragon."],
       "(1) the open bridge is a killing field; (2) the fire comes in waves \u2014 advance in the lulls; (3) beneath/behind it the flame can't reach, but mind the tail.") ,
     attacks: [attack({ name: "Fire Breath (4d8, Dex save)", n: 4, d: 8, bonus: 0, types: [FIRE], ranged: true, range: [60, 60] }), attack({ name: "Claw", n: 3, d: 8, bonus: 5, types: [SL], reach: 10 })] }),
-  npc({ name: "Vordt of the Boreal Valley", img: "icons/skills/melee/strike-weapon-polearm-ice-blue.webp", ac: 18, hp: 120, hpFormula: "16d10+32", cr: 6, souls: 3000, role: "major-boss", size: "lg", walk: 40, legact: 3,
+  npc({ name: "Vordt of the Boreal Valley", img: "icons/skills/melee/strike-weapon-polearm-ice-blue.webp", ac: 18, ...bossHP(6, "vordt"), cr: 6, souls: 3000, role: "major-boss", size: "lg", walk: 40, legact: 3,
     str: 20, dex: 11, con: 15, ctype: "monstrosity", vuln: [FIRE, "lightning"],
     bioHtml: card("The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2\u20133 legendary actions.",
-      ["<strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; block risks guard-break (Str DC 15).", "<strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.", "<strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on.", "<strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.", "<strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1."],
+      ["<strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; blockable but chips hard (heavy).", "<strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.", "<strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on; unblockable (charge).", "<strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.", "<strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1."],
       "(1) the cold builds \u2014 don't huddle near him; (2) break sideways out of his charge, then punish the overhead; (3) fire and lightning crack his frozen joints.") ,
     attacks: [attack({ name: "Great Mace", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 })] }),
 

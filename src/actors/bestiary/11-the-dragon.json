@@ -73,11 +73,11 @@
         "formula": ""
       },
       "hp": {
-        "value": 150,
-        "max": 150,
+        "value": 200,
+        "max": 200,
         "temp": null,
         "tempmax": null,
-        "formula": "16d12+48"
+        "formula": "200"
       },
       "init": {
         "ability": "",

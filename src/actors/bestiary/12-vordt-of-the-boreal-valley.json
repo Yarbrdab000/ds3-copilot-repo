@@ -73,11 +73,11 @@
         "formula": ""
       },
       "hp": {
-        "value": 120,
-        "max": 120,
+        "value": 625,
+        "max": 625,
         "temp": null,
         "tempmax": null,
-        "formula": "16d10+32"
+        "formula": "625"
       },
       "init": {
         "ability": "",
@@ -118,7 +118,7 @@
     },
     "details": {
       "biography": {
-        "value": "<p><em>The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2–3 legendary actions.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; block risks guard-break (Str DC 15).</li><li><strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.</li><li><strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on.</li><li><strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.</li><li><strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1.</li></ul><p><strong>Tell Ladder:</strong> (1) the cold builds — don't huddle near him; (2) break sideways out of his charge, then punish the overhead; (3) fire and lightning crack his frozen joints.</p>",
+        "value": "<p><em>The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2–3 legendary actions.</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul><li><strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; blockable but chips hard (heavy).</li><li><strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.</li><li><strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on; unblockable (charge).</li><li><strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.</li><li><strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1.</li></ul><p><strong>Tell Ladder:</strong> (1) the cold builds — don't huddle near him; (2) break sideways out of his charge, then punish the overhead; (3) fire and lightning crack his frozen joints.</p>",
         "public": ""
       },
       "alignment": "Hollow",
