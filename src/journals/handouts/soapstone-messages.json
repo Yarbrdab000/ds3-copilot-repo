@@ -1,0 +1,16 @@
+{
+  "name": "Ashen — Messages on the Ground",
+  "flags": {},
+  "pages": [
+    {
+      "name": "Soapstone Messages (reveal as scene flavor)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 100000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>DM tool.</em> The faint orange scrawls left by other Unkindled across worlds. Drop these as <strong>scene notes / journal pins</strong> for atmosphere and the occasional hint &mdash; some true, some useless, a few outright lies, exactly as in the games. Reveal one or two as the party enters a space; never explain them. They make the world feel haunted and lived-in.</p>\n<h2>Genuinely helpful</h2>\n<ul>\n<li>\"Try tail, then weakness.\" <em>(near the Dragon)</em></li>\n<li>\"Parry, then visions of triumph.\" <em>(Gundyr / Sword Master)</em></li>\n<li>\"Fire ahead.\" <em>(before a Pus of Man)</em></li>\n<li>\"Be wary of charge.\" <em>(Outrider / Vordt)</em></li>\n<li>\"Don't give up, skeleton!\" <em>(after a wipe)</em></li>\n<li>\"Time for crab... no, cold.\" <em>(approaching Vordt)</em></li>\n</ul>\n<h2>Atmosphere / lore</h2>\n<ul>\n<li>\"Ahh, grave ahead.\"</li>\n<li>\"Therefore, hollow.\"</li>\n<li>\"Praise the Sun!\"</li>\n<li>\"Could this be a bonfire?\"</li>\n<li>\"Likely a Lord of Cinder...\"</li>\n<li>\"Visions of home.\"</li>\n</ul>\n<h2>Lies &amp; troll messages (use sparingly)</h2>\n<ul>\n<li>\"Amazing chest ahead.\" <em>(there is no chest)</em></li>\n<li>\"Try jumping.\" <em>(off the rampart)</em></li>\n<li>\"Hidden path ahead.\" <em>(a wall)</em></li>\n<li>\"Treasure straight ahead.\" <em>(a cliff)</em></li>\n<li>\"Try hole.\"</li>\n</ul>\n<p>Players can be invited to leave their own message when they rest at a bonfire &mdash; a nice bit of player-authored flavor for the table.</p>"
+      }
+    }
+  ]
+}

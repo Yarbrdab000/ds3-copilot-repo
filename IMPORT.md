@@ -4,35 +4,34 @@ This guide is written for a **first-time DM**. You have two ways in — pick one
 
 ---
 
-## Option A — The easy way: drag-and-drop the World (recommended for your first run)
+## Option A — The easy way: install the module, then auto-assemble (recommended)
 
-The build produces a ready-to-play **world export** (everything pre-placed: scenes, NPCs on the
-maps, journals in folders). On The Forge this is the fastest path.
+The build produces an **installable module zip** with all content as compendiums, plus an
+**"Assemble Adventure"** macro that pours everything into a fresh world for you.
 
-1. Run `npm run build:world` to produce `dist/ashen-world.zip` (see `tools/`).
-2. Log in to **[The Forge](https://forge-vtt.com/)** → open the **Import Wizard** (the "Import
-   from Foundry" / drag-drop panel).
-3. Drag `ashen-world.zip` onto the wizard. It uploads the world, installs the **dnd5e** system if
-   needed, and drops all assets into your Assets Library automatically.
-4. Launch the world. You're in. Everything below "How to run it" applies.
-
-> No Forge account yet? You can do the exact same thing in a **local Foundry** install: unzip the
-> world into `Data/worlds/ashen/` and it appears on your Worlds list.
+1. Run `npm run build:world` to produce **`dist/ashen-of-lothric.zip`**.
+2. On **[The Forge](https://forge-vtt.com/)**: go to your **Bazaar / Content** → **Import** and
+   upload `ashen-of-lothric.zip` as a **module** (local Foundry: **Add-on Modules → Install Module
+   → Manifest URL or upload the zip**). It installs the **dnd5e** system if you don't have it.
+3. Create a **new dnd5e world**, launch it, and enable **"Ashen — A Dark Souls III One-Shot"** in
+   **Settings → Manage Modules**.
+4. Open the **Macros** compendium (right sidebar → **Compendium Packs → Ashen** folder → *Macros &
+   Trackers*), drag **"Ashen: Assemble Adventure"** to your hotbar, and click it. Confirm the prompt.
+   It imports every Ashen compendium into the world in labelled folders.
+5. You're in. Read **"How to run it"** below.
 
 ---
 
-## Option B — Install as a Module (portable, non-destructive)
+## Option B — Manual import (full control)
 
-Use this if you want to drop the content into an **existing** world.
+Use this to drop content into an **existing** world a piece at a time.
 
-1. Run `npm run build` to produce the compendium `packs/`.
-2. Zip the module folder (everything with `module.json` at the root), or host the `module.json`
-   URL, and install it via **Add-on Modules → Install Module** in Foundry / the Forge **Bazaar**.
-3. Enable **"Ashen — A Dark Souls III One-Shot"** in your world's module settings.
-4. Open the compendiums (right sidebar → **Compendium Packs** → the *Ashen* folder) and **import**
-   what you need: drag the Pregens, Bestiary, Scenes, and Journals into your world.
-5. Run the **"Assemble Adventure"** macro (in the *Ashen: Macros* pack) to auto-create the folder
-   structure and place tokens/journals for you.
+1. Run `npm run build` to produce the compendium `packs/` (or install the zip from Option A).
+2. Install + enable the module as above.
+3. Open the compendiums (right sidebar → **Compendium Packs** → the *Ashen* folder) and **import**
+   what you need: drag the Pregens, Bestiary, Scenes, Journals, Tables, and Macros into your world.
+   (Importing the **Bestiary** actors pack also brings in the **Bonfire Ledger** actor the souls
+   macros depend on.)
 
 ---
 
@@ -47,15 +46,21 @@ Open these in order — they're written to be read in ~20 minutes total:
 4. **Pregens** — let each player pick a class actor; drag it to their player.
 
 ### The trackers (set up once)
-- **Souls pool:** open the **Party** actor; its "Souls" is the shared pool. Use the
-  **Award/Spend/Bloodstain** macros during play.
-- **Frostbite & boss phases:** the **Frostbite** and **Boss Phase** macros handle the counters and
-  apply effects automatically — you just click.
+- **Souls pool:** the shared party souls live on the **Bonfire Ledger** actor (imported with the
+  Bestiary pack) as *banked* / *carried* / *bloodstain* totals. You never edit it by hand — use the
+  macros: **Award Souls**, **Bank Souls (at Bonfire)**, **Spend Banked Souls**, **Drop Bloodstain
+  (on Wipe)**, and **Reclaim Bloodstain**.
+- **Leveling:** the **Level Up** macro spends banked souls and tells each player which Level-Up Menu
+  Card to apply. **Bonfire Rest** restores HP/Estus/charges and reminds you to respawn enemies.
+- **Frostbite & embers:** **Add Frostbite Stack** advances the build-up bar (auto-applies Exhaustion
+  when it fills); **Kindle (Ember)** grants the temporary max-HP bump. Boss phases are HP-threshold
+  triggers spelled out in each **Bestiary** statblock and the **DM Handbook** Tell Ladders.
 
 ### Bring your own art & audio
 To respect copyright, the module ships **placeholder maps/tokens** and a **curated link list** of
-free/CC art & music (in the *Handouts → Asset Sources* journal). Swap in your own DS3 art/music via
-the Forge Assets Library and the scene's **Configure → Background** picker.
+free/CC art (in the **DM Handbook → *Maps & Scenes*** journal) and music (in the **DM Handbook →
+*Audio Cues*** journal). Swap in your own DS3 art/music via the Forge Assets Library and each
+scene's **Configure → Background** picker.
 
 ---
 

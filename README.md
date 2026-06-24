@@ -18,7 +18,7 @@ session without wrestling with mechanics or setup.
 | `src/actors/` | Pregen PCs (10 DS3 classes) + the bestiary (hollows + 5 bosses). |
 | `src/items/` | Weapons, Estus, Embers, catalysts, the spell catalog, attribute/level effects. |
 | `src/journals/` | Rules bible, DM handbook, codex, handouts, Tell-Ladder cards. |
-| `src/scenes/` | The 7 scene/map definitions. |
+| `src/scenes/` | The 8 scene/map definitions (7 encounter maps + a region overview). |
 | `src/tables/` | Roll tables (soul rewards, loot, upgrade costs). |
 | `src/macros/` | Souls tracker, frostbite, level-up helper, summon-sign macros. |
 | `maps/`, `tokens/` | Placeholder battlemap & token art + sourcing guidance. |

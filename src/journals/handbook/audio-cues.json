@@ -1,0 +1,16 @@
+{
+  "name": "Ashen — Audio Cues (DM)",
+  "flags": {},
+  "pages": [
+    {
+      "name": "Scene → Suggested Mood",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 100000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>DM tool.</em> A mood map for the session. <strong>No audio files ship with this module</strong> &mdash; supply your own or licensed tracks and wire them into Foundry's Playlists, then trigger per scene. The goal is just the right emotional register at each beat.</p>\n<table><thead><tr><th>Scene / Moment</th><th>Mood</th><th>What to reach for</th></tr></thead><tbody>\n<tr><td><strong>Cemetery of Ash</strong> (explore)</td><td>Bleak, hollow, lonely</td><td>Low drones, distant wind, sparse strings.</td></tr>\n<tr><td><strong>Iudex Gundyr</strong> (boss)</td><td>Solemn, building dread</td><td>Slow choral / cello boss theme; swell when the Pus of Man erupts.</td></tr>\n<tr><td><strong>Firelink Shrine</strong> (hub)</td><td>Calm, melancholy, safe</td><td>Soft solo harp / piano; the one place to breathe.</td></tr>\n<tr><td><strong>High Wall &amp; Courtyard</strong> (explore/farm)</td><td>Tense, ruined, watchful</td><td>Ambient unease; rising percussion when hollows swarm.</td></tr>\n<tr><td><strong>Dragon Bridge</strong> (hazard)</td><td>Awe + danger</td><td>Huge low brass on the fire rake; silence in the lulls.</td></tr>\n<tr><td><strong>Outrider Knight</strong> (mini-boss)</td><td>Fast, relentless</td><td>Driving strings/percussion; no breathing room.</td></tr>\n<tr><td><strong>Pus of Man</strong> (mini-boss)</td><td>Grotesque, panicked</td><td>Dissonant stabs, wet low textures; relief when fire lands.</td></tr>\n<tr><td><strong>Vordt of the Boreal Valley</strong> (boss)</td><td>Frozen menace → frenzy</td><td>Stately frost theme in P1; tempo and intensity spike at 50% (P2).</td></tr>\n<tr><td><strong>Generic combat</strong></td><td>Driving tension</td><td>A loopable battle bed for trash fights.</td></tr>\n<tr><td><strong>Victory / boss down</strong></td><td>Earned relief</td><td>A short triumphant sting, then back to ambient.</td></tr>\n<tr><td><strong>\"YOU DIED\"</strong></td><td>Gut-punch, then resolve</td><td>A heavy hit + silence; the iconic two-word beat. Let it land before play resumes.</td></tr>\n</tbody></table>\n<h2>Running it</h2>\n<ul>\n<li>Make a Foundry <strong>Playlist</strong> per mood; set boss themes to not-loop or loop deliberately.</li>\n<li>Keep a one-shot <strong>\"YOU DIED\"</strong> sound on a hotbar macro for instant punctuation.</li>\n<li>Free/CC audio: <em>Tabletop Audio</em>, <em>incompetech</em> (Kevin MacLeod), <em>Pixabay Music</em>, <em>FreePD</em>. Check each licence; none of these are FromSoftware tracks.</li>\n</ul>"
+      }
+    }
+  ]
+}

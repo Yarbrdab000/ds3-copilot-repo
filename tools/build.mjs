@@ -15,9 +15,10 @@
  * The pack <-> source-folder mapping is derived from module.json + SRC_MAP below.
  */
 
-import { readFile, writeFile, readdir, rm, mkdir } from "node:fs/promises";
+import { readFile, writeFile, readdir, rm, mkdir, cp } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { randomBytes } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 import url from "node:url";
 
@@ -214,13 +215,48 @@ async function cmdClean() {
   }
 }
 
+/** Zip a staged folder into `out` using whatever archiver the OS provides. */
+function zipDir(stageParent, folderName, out) {
+  if (process.platform === "win32") {
+    const ps =
+      `Compress-Archive -Path '${path.join(stageParent, folderName)}' ` +
+      `-DestinationPath '${out}' -Force`;
+    const r = spawnSync("powershell", ["-NoProfile", "-Command", ps], { stdio: "inherit" });
+    return r.status === 0;
+  }
+  let r = spawnSync("zip", ["-r", "-q", out, folderName], { cwd: stageParent, stdio: "inherit" });
+  if (r.error || r.status !== 0) {
+    // Fallback to tar (produces a .zip-named archive only if zip is unavailable).
+    r = spawnSync("tar", ["-a", "-c", "-f", out, folderName], { cwd: stageParent, stdio: "inherit" });
+  }
+  return !r.error && r.status === 0;
+}
+
 async function cmdWorld() {
   await cmdPack();
-  log(
-    "module packs built. To ship: zip the repo root (with module.json) and install\n" +
-      "        via Foundry/The Forge, or run the in-app 'Assemble Adventure' macro.\n" +
-      "        (A standalone world export can be produced from that assembled world.)"
-  );
+  const mod = await loadModule();
+  const dist = path.join(ROOT, "dist");
+  const stage = path.join(dist, mod.id);
+  await rm(dist, { recursive: true, force: true });
+  await mkdir(stage, { recursive: true });
+
+  // Stage the installable module: manifest + compiled packs + docs + placeholder media.
+  const include = ["module.json", "packs", "README.md", "IMPORT.md", "LICENSE", "maps", "tokens"];
+  for (const rel of include) {
+    const from = path.join(ROOT, rel);
+    if (existsSync(from)) await cp(from, path.join(stage, rel), { recursive: true });
+  }
+
+  const out = path.join(dist, `${mod.id}.zip`);
+  const ok = zipDir(dist, mod.id, out);
+  if (ok && existsSync(out)) {
+    log(`built ${path.relative(ROOT, out)} — drag this into Foundry/The Forge "Install Module", or upload it to the Forge Bazaar.`);
+  } else {
+    log(
+      `packs built and staged at ${path.relative(ROOT, stage)}, but no zip tool was found.\n` +
+        "        Zip that folder manually (module.json must be at its root) to get an installable module."
+    );
+  }
 }
 
 const COMMANDS = {

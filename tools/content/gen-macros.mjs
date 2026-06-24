@@ -43,6 +43,37 @@ async function askNumber(title, label) {
 
 const MACROS = [
   {
+    name: "Ashen: Assemble Adventure",
+    img: "icons/sundries/books/book-stack.webp",
+    body: `
+const MODULE_ID = "ashen-of-lothric";
+const packs = game.packs.filter(p => p.metadata.packageName === MODULE_ID);
+if (!packs.length) return ui.notifications.error("Ashen: module compendiums not found. Enable the 'Ashen' module first.");
+const proceed = await Dialog.confirm({
+  title: "Assemble Adventure",
+  content: "<p>Import <b>all Ashen content</b> (" + packs.length + " compendiums) into this world, each in its own labelled folder?</p><p>Best run once on a fresh world.</p>"
+});
+if (!proceed) return;
+let total = 0;
+for (const pack of packs) {
+  const folderName = String(pack.metadata.label || pack.metadata.name).replace(/^Ashen:\\s*/, "Ashen \\u2014 ");
+  try {
+    const imported = await pack.importAll({ folderName });
+    const n = Array.isArray(imported) ? imported.length : (pack.index?.size ?? 0);
+    total += n;
+    ui.notifications.info("Ashen: imported " + folderName + " (" + n + ").");
+  } catch (e) {
+    console.error("Ashen assemble error for " + pack.collection, e);
+    ui.notifications.warn("Ashen: failed to import " + folderName + " (see console).");
+  }
+}
+ChatMessage.create({ content: "<h3>Adventure assembled.</h3>" +
+  "<p>Imported " + total + " documents from " + packs.length + " Ashen compendiums into this world. Look for the <b>Ashen \\u2014</b> folders in the Journals, Actors, Items, Scenes, Tables and Macros tabs.</p>" +
+  "<p>Next: read the <b>Rules Bible</b> and <b>DM Handbook</b> journals, then drag the <b>Cemetery of Ash</b> scene onto the canvas to begin.</p>" });
+ui.notifications.info("Ashen: assembly complete (" + total + " documents).");
+`
+  },
+  {
     name: "Ashen: Award Souls",
     img: "icons/commodities/currency/coins-plain-gold.webp",
     body: `
