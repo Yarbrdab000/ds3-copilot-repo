@@ -58,7 +58,7 @@
     },
     {
       "name": "items-levels",
-      "label": "Ashen: Attribute & Level-Up Effects",
+      "label": "Ashen: Level-Up Menu Effects",
       "path": "packs/items-levels",
       "type": "Item",
       "system": "dnd5e"
