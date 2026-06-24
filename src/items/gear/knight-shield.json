@@ -3,10 +3,20 @@
   "type": "equipment",
   "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
   "effects": [],
-  "flags": {},
+  "flags": {
+    "ashen": {
+      "block": {
+        "physical": 0.7,
+        "fire": 0.4,
+        "lightning": 0.3,
+        "cold": 0.4,
+        "poison": 0.2
+      }
+    }
+  },
   "system": {
     "description": {
-      "value": "<p><em>A solid steel shield — the heart of the Block reaction.</em></p>",
+      "value": "<p><em>A solid steel shield — the heart of the Block reaction. It chips, it does not zero — a hard charge still gets a little through.</em></p><p><strong>Block reduction (no roll):</strong> when you spend your reaction to Block, incoming damage of each type is reduced by this much, then dealt. Some moves are <em>unblockable</em> (100% through). A shield never staggers an enemy — that is parry's job.</p><table><tr><td><strong>Damage type</strong></td><td><strong>Reduced by</strong></td></tr><tr><td>Physical</td><td>70%</td></tr><tr><td>Fire</td><td>40%</td></tr><tr><td>Lightning</td><td>30%</td></tr><tr><td>Cold</td><td>40%</td></tr><tr><td>Poison</td><td>20%</td></tr></table>",
       "chat": ""
     },
     "source": {

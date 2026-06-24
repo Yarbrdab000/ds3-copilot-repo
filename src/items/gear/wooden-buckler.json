@@ -3,10 +3,20 @@
   "type": "equipment",
   "img": "icons/equipment/shield/buckler-wooden-boss-steel.webp",
   "effects": [],
-  "flags": {},
+  "flags": {
+    "ashen": {
+      "block": {
+        "physical": 0.5,
+        "fire": 0.25,
+        "lightning": 0.2,
+        "cold": 0.25,
+        "poison": 0.1
+      }
+    }
+  },
   "system": {
     "description": {
-      "value": "<p><em>Light and quick; better for parrying than turtling.</em></p>",
+      "value": "<p><em>Light and quick; better for parrying than turtling. Weak as a wall — it is a parry tool first.</em></p><p><strong>Block reduction (no roll):</strong> when you spend your reaction to Block, incoming damage of each type is reduced by this much, then dealt. Some moves are <em>unblockable</em> (100% through). A shield never staggers an enemy — that is parry's job.</p><table><tr><td><strong>Damage type</strong></td><td><strong>Reduced by</strong></td></tr><tr><td>Physical</td><td>50%</td></tr><tr><td>Fire</td><td>25%</td></tr><tr><td>Lightning</td><td>20%</td></tr><tr><td>Cold</td><td>25%</td></tr><tr><td>Poison</td><td>10%</td></tr></table>",
       "chat": ""
     },
     "source": {

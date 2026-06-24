@@ -92,11 +92,23 @@ function weapon({ name, img, wtype, baseItem, n, d, dtypes, props = [], versatil
   };
 }
 
-function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, flavor }) {
+function blockTable(block) {
+  const rows = Object.entries(block)
+    .map(([type, pct]) => `<tr><td>${type[0].toUpperCase() + type.slice(1)}</td><td>${Math.round(pct * 100)}%</td></tr>`)
+    .join("");
+  return (
+    `<p><strong>Block reduction (no roll):</strong> when you spend your reaction to Block, ` +
+    `incoming damage of each type is reduced by this much, then dealt. Some moves are ` +
+    `<em>unblockable</em> (100% through). A shield never staggers an enemy — that is parry's job.</p>` +
+    `<table><tr><td><strong>Damage type</strong></td><td><strong>Reduced by</strong></td></tr>${rows}</table>`
+  );
+}
+
+function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, flavor, block = null }) {
   return {
-    name, type: "equipment", img, effects: [], flags: {},
+    name, type: "equipment", img, effects: [], flags: block ? { ashen: { block } } : {},
     system: {
-      description: { value: `<p><em>${flavor}</em></p>`, chat: "" },
+      description: { value: `<p><em>${flavor}</em></p>${block ? blockTable(block) : ""}`, chat: "" },
       source: source("DS3 armor"),
       quantity: 1, weight: { value: 20, units: "lb" }, price: { value: 0, denomination: "gp" },
       attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
@@ -243,8 +255,8 @@ const ARMOR = [
   armor({ name: "Knight's Plate", img: "icons/equipment/chest/breastplate-helmet-metal.webp", atype: "heavy", ac: 18, dex: 0, strength: 15, stealth: true, flavor: "Full steel \u2014 the Lothric ideal of defense." }),
   armor({ name: "Chainmail", img: "icons/equipment/chest/shirt-collared-chain-steel.webp", atype: "heavy", ac: 16, dex: 0, strength: 13, stealth: true, flavor: "Interlocked rings, heavy but trusted." }),
   armor({ name: "Hard Leather Armor", img: "icons/equipment/chest/breastplate-cuirass-leather-brown.webp", atype: "light", ac: 11, dex: null, flavor: "Boiled leather for those who'd rather move." }),
-  armor({ name: "Knight Shield", img: "icons/equipment/shield/heater-steel-segmented-grey.webp", atype: "shield", ac: 2, flavor: "A solid steel shield \u2014 the heart of the Block reaction." }),
-  armor({ name: "Wooden Buckler", img: "icons/equipment/shield/buckler-wooden-boss-steel.webp", atype: "shield", ac: 2, flavor: "Light and quick; better for parrying than turtling." })
+  armor({ name: "Knight Shield", img: "icons/equipment/shield/heater-steel-segmented-grey.webp", atype: "shield", ac: 2, flavor: "A solid steel shield \u2014 the heart of the Block reaction. It chips, it does not zero \u2014 a hard charge still gets a little through.", block: { physical: 0.70, fire: 0.40, lightning: 0.30, cold: 0.40, poison: 0.20 } }),
+  armor({ name: "Wooden Buckler", img: "icons/equipment/shield/buckler-wooden-boss-steel.webp", atype: "shield", ac: 2, flavor: "Light and quick; better for parrying than turtling. Weak as a wall \u2014 it is a parry tool first.", block: { physical: 0.50, fire: 0.25, lightning: 0.20, cold: 0.25, poison: 0.10 } })
 ];
 
 const FOCI = [

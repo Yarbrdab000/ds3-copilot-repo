@@ -104,6 +104,15 @@ function npc({ name, img, ac, hp, hpFormula, walk = 30, fly = 0, reach = 5, cr, 
 
 const FIRE = "fire", COLD = "cold", PI = "piercing", SL = "slashing", BL = "bludgeoning";
 
+// Boss HP model (spec §11): HP is NOT an attrition clock — successful defenses negate damage,
+// so HP measures "how many rounds of correct reading the party must sustain."
+//   HP = target_rounds × party_size × expected_damage_per_turn
+// 4-player baseline at ~10 expected dmg/turn (TUNABLE). expected_dmg already bakes in misses.
+// RE-AUDIT after a real pregen damage test, then rescale by your actual headcount (see DM Handbook).
+const PARTY_BASELINE = 4;
+const DMG_PER_TURN = 10;
+function bossHP(targetRounds) { return Math.round(targetRounds * PARTY_BASELINE * DMG_PER_TURN); }
+
 function card(title, moves, tell) {
   let h = `<p><em>${title}</em></p><p><strong>Moveset (full Defensive Profiles in the DM Codex):</strong></p><ul>`;
   for (const m of moves) h += `<li>${m}</li>`;
