@@ -1,0 +1,36 @@
+{
+  "name": "Ashen — Firelink Services (Shop & Forge)",
+  "flags": {},
+  "pages": [
+    {
+      "name": "The Shrine Handmaid — Shop",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 100000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>\"Ahh, hello. Have you come for goods? Or perhaps... to relieve yourself of souls?\"</em></p>\n<p>The hunched Handmaid trades in <strong>banked souls</strong> (spend from the Bonfire Ledger). Prices are deliberately few &mdash; this is a one-shot, not a marketplace. Roll the <em>Shrine Handmaid — Restock</em> table between visits if you want her stock to drift.</p>\n<h2>Stock</h2>\n<table><thead><tr><th>Item</th><th>Cost (souls)</th><th>Notes</th></tr></thead><tbody>\n<tr><td><strong>Estus Shard</strong></td><td>1,000</td><td>Give to the Fire Keeper to add +1 Estus charge (cap 6).</td></tr>\n<tr><td><strong>Sorcerer's Staff</strong> / <strong>Talisman</strong></td><td>1,500</td><td>A catalyst, if a caster lost theirs or a martial wants to dabble.</td></tr>\n<tr><td><strong>Firebomb</strong></td><td>50</td><td>Thrown, 2d6 fire in a 5-ft burst (Dex save for half). Stock up before the Pus of Man.</td></tr>\n<tr><td><strong>Titanite Shard</strong></td><td>1,500</td><td>Pricey on purpose &mdash; finding them is the intended path. For Andre's forge.</td></tr>\n<tr><td><strong>Ember</strong></td><td>1,200</td><td>Kindle at the bonfire for +10 max HP until death (Kindle macro).</td></tr>\n</tbody></table>\n<p><strong>Selling:</strong> the Handmaid buys nothing useful back &mdash; souls are the only currency that matters. (If a player insists on selling loot, value it at the table; it isn't part of the intended economy.)</p>"
+      }
+    },
+    {
+      "name": "Andre of Astora — The Forge (Upgrades)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 200000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>\"Need something reinforced? You've come to the right place. Titanite, and I'll see to the rest.\"</em></p>\n<p>Andre reinforces weapons and catalysts with <strong>titanite + souls</strong>. Each <strong>+1</strong> adds <strong>+1 to attack and damage</strong>; the one-shot cap is <strong>+3</strong>. (Full grid and the scaling system are in the <em>Weapon Scaling &amp; Upgrades</em> handbook.)</p>\n<h2>Weapon &amp; catalyst reinforcement</h2>\n<table><thead><tr><th>Reinforce to</th><th>Cost (cumulative)</th><th>Effect</th></tr></thead><tbody>\n<tr><td><strong>+1</strong></td><td>1 Titanite Shard + 200 souls</td><td>+1 attack / +1 damage</td></tr>\n<tr><td><strong>+2</strong></td><td>2 Titanite Shards + 400 souls</td><td>+2 attack / +2 damage</td></tr>\n<tr><td><strong>+3</strong></td><td>3 Titanite Shards <em>(or 1 Titanite Chunk)</em> + 600 souls</td><td>+3 attack / +3 damage</td></tr>\n</tbody></table>\n<p>On a catalyst, the +N adds to <strong>spell attack rolls and spell damage</strong> instead. Titanite drops from elites, bosses, and the loot tables (or buy Shards from the Handmaid in a pinch).</p>\n<h2>Estus reinforcement (the Fire Keeper's domain)</h2>\n<p>Andre can also strengthen the Estus Flask itself if the Fire Keeper kindles it: each <strong>Estus +N</strong> raises healing by one step (2d4+2 &rarr; 2d4+4 &rarr; 2d6+4). Optional for a one-shot &mdash; offer it only if the party banks a surplus.</p>\n<h2>DM: applying an upgrade in Foundry</h2>\n<p>Bump the weapon's <code>flags.ashen.upgrade</code> and add the same +N to the attack activity's <em>attack bonus</em> and <em>damage bonus</em>. Or simply narrate it and have the player add the flat number by hand &mdash; the math is identical, and the weapon card's <em>Upgrade</em> line is just a reminder.</p>"
+      }
+    },
+    {
+      "name": "The Fire Keeper — Leveling (pointer)",
+      "type": "text",
+      "title": { "show": true, "level": 1 },
+      "sort": 300000,
+      "text": {
+        "format": 1,
+        "content": "<p><em>\"Welcome to Firelink Shrine, Unkindled One. I shall stay by your side... until the day you become Cinder.\"</em></p>\n<p>The Fire Keeper spends <strong>banked souls</strong> to raise levels. The full procedure and the per-level choice menu live in the <strong>Level-Up Menu Cards</strong> journal; run the <strong>Level Up</strong> macro to spend souls from the Bonfire Ledger and announce the new level.</p>\n<p>Quick reminder of the cost curve: 3&rarr;4 <strong>500</strong> &middot; 4&rarr;5 <strong>800</strong> &middot; 5&rarr;6 <strong>1,200</strong> &middot; 6&rarr;7 <strong>1,800</strong> &middot; 7&rarr;8 <strong>2,600</strong> &middot; 8&rarr;9 <strong>3,600</strong> &middot; 9&rarr;10 <strong>5,000</strong>.</p>"
+      }
+    }
+  ]
+}

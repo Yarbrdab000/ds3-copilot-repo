@@ -217,18 +217,86 @@ function buildActor(p, gear, spells, levels) {
 
 function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
 
+// The shared souls pool the economy macros read/write (flag ashen.role === "souls").
+// A flagged, item-free character so it imports cleanly and is trivial to reset between runs.
+function bonfireLedger() {
+  const abilities = {};
+  for (const ab of ["str", "dex", "con", "int", "wis", "cha"]) {
+    abilities[ab] = { value: 10, proficient: 0, max: null, bonuses: { check: "", save: "" } };
+  }
+  return {
+    name: "Bonfire Ledger", type: "character",
+    img: "icons/magic/fire/flame-burning-embers-orange.webp",
+    effects: [], flags: { ashen: { role: "souls", ledger: true, carried: 0, banked: 0, bloodstain: 0 } },
+    system: {
+      abilities,
+      attributes: {
+        ac: { flat: 10, calc: "flat", formula: "" },
+        hp: { value: 1, max: 1, temp: null, tempmax: null, bonuses: { level: "", overall: "" } },
+        init: { ability: "", bonus: "0", roll: { min: null, max: null, mode: 0 } },
+        movement: { burrow: null, climb: null, fly: null, swim: null, walk: 0, units: "ft", hover: false },
+        attunement: { max: 3 },
+        senses: { darkvision: 0, blindsight: 0, tremorsense: 0, truesight: 0, units: "ft", special: "" },
+        spellcasting: "",
+        death: { success: 0, failure: 0, ability: "", roll: { min: null, max: null, mode: 0 } },
+        exhaustion: 0, inspiration: false,
+        concentration: { ability: "", bonuses: { save: "" }, limit: 1, roll: { min: null, max: null, mode: 0 } }
+      },
+      details: {
+        biography: { value: "<p><strong>The shared souls pool.</strong> This isn't a character &mdash; it's the party's bonfire ledger. The Ashen economy macros (Award / Bank / Spend Souls, Drop &amp; Reclaim Bloodstain, Level Up) read and write three flags on this actor:</p><ul><li><strong>carried</strong> &mdash; souls held on the body, lost as a bloodstain on a wipe.</li><li><strong>banked</strong> &mdash; souls safely spent-able for levels &amp; shopping (banked at a bonfire).</li><li><strong>bloodstain</strong> &mdash; the souls dropped at the last place of death, reclaimable once.</li></ul><p>To reset for a new run, set all three flags to 0 (or re-import this actor).</p>", public: "" },
+        alignment: "", race: null, background: null, originalClass: "",
+        xp: { value: 0 }, level: 1,
+        appearance: "", trait: "", ideal: "", bond: "", flaw: ""
+      },
+      traits: {
+        size: "med",
+        di: { value: [], bypasses: [], custom: "" }, dr: { value: [], bypasses: [], custom: "" },
+        dv: { value: [], bypasses: [], custom: "" }, ci: { value: [], custom: "" },
+        languages: { value: [], custom: "" },
+        weaponProf: { value: [], custom: "", mastery: { value: [], bonus: [] } },
+        armorProf: { value: [], custom: "" }, dm: { amount: {}, bypasses: [] }
+      },
+      skills: SK([]),
+      bonuses: {
+        mwak: { attack: "", damage: "" }, rwak: { attack: "", damage: "" },
+        msak: { attack: "", damage: "" }, rsak: { attack: "", damage: "" },
+        abilities: { check: "", save: "", skill: "" }, spell: { dc: "" }
+      },
+      spells: Object.fromEntries(["spell1","spell2","spell3","spell4","spell5","spell6","spell7","spell8","spell9","pact","spell0"].map(k => [k, { value: 0, override: null }])),
+      currency: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 },
+      tools: {},
+      resources: {
+        primary: { value: null, max: null, sr: false, lr: false, label: "" },
+        secondary: { value: null, max: null, sr: false, lr: false, label: "" },
+        tertiary: { value: null, max: null, sr: false, lr: false, label: "" }
+      },
+      favorites: [], bastion: { name: "", description: "" }
+    },
+    items: [],
+    prototypeToken: {
+      name: "Bonfire Ledger", displayName: 0, actorLink: true, width: 1, height: 1, lockRotation: false, rotation: 0,
+      disposition: 0, displayBars: 0, bar1: { attribute: "" }, bar2: { attribute: "" },
+      randomImg: false, alpha: 1, flags: {},
+      texture: { src: "icons/magic/fire/flame-burning-embers-orange.webp", tint: "#ffffff", scaleX: 1, scaleY: 1, offsetX: 0, offsetY: 0, rotation: 0, anchorX: 0.5, anchorY: 0.5, fit: "contain", alphaThreshold: 0.75 },
+      sight: { angle: 360, enabled: false, range: 0, brightness: 0, visionMode: "basic", color: null, attenuation: 0.1, saturation: 0, contrast: 0 },
+      detectionModes: [], appendNumber: false, prependAdjective: false
+    }
+  };
+}
+
 async function main() {
   const gear = await loadDir(path.join(ROOT, "src/items/gear"));
   const spells = await loadDir(path.join(ROOT, "src/items/spells"));
   const levels = await loadDir(path.join(ROOT, "src/items/levels"));
   await rm(OUT, { recursive: true, force: true });
   await mkdir(OUT, { recursive: true });
+  await writeFile(path.join(OUT, "00-bonfire-ledger.json"), JSON.stringify(bonfireLedger(), null, 2));
   let i = 0;
   for (const p of PREGENS) {
     const actor = buildActor(p, gear, spells, levels);
     await writeFile(path.join(OUT, `${String(++i).padStart(2, "0")}-${slug(p.n)}.json`), JSON.stringify(actor, null, 2));
   }
-  console.log(`Generated ${PREGENS.length} pregens.`);
+  console.log(`Generated ${PREGENS.length} pregens + Bonfire Ledger.`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
