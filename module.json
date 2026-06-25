@@ -3,6 +3,9 @@
   "title": "Ashen — A Dark Souls III One-Shot",
   "description": "A 4–6 hour Dark Souls III–themed D&D 5e one-shot for 3–6 players. Awaken in the Cemetery of Ash, fall to Iudex Gundyr, rest at Firelink Shrine, and climb the High Wall of Lothric to face Vordt of the Boreal Valley. Includes a Soulslike rules layer (bonfires, Estus, shared souls, the death-loop) and a windowed dodge/parry/block defense system. Original fan content; D&D mechanics use SRD 5.1 only.",
   "version": "0.1.0",
+  "url": "https://github.com/Yarbrdab000/ashen-of-lothric",
+  "manifest": "https://github.com/Yarbrdab000/ashen-of-lothric/releases/latest/download/module.json",
+  "download": "https://github.com/Yarbrdab000/ashen-of-lothric/releases/latest/download/ashen-of-lothric.zip",
   "compatibility": {
     "minimum": "12",
     "verified": "13",

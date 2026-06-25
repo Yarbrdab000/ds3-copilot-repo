@@ -9,6 +9,7 @@
     "build:world": "node tools/build.mjs world",
     "print": "node tools/print.mjs",
     "maps": "node tools/content/gen-maps.mjs",
+    "release": "node tools/release.mjs",
     "unpack": "node tools/build.mjs unpack",
     "clean": "node tools/build.mjs clean",
     "validate": "node tools/build.mjs validate"
