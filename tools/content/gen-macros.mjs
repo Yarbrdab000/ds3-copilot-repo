@@ -39,6 +39,26 @@ async function askNumber(title, label) {
     }).render(true);
   });
 }
+// Active Effect helpers (dnd5e v5 schema).
+async function createEffect(actor, label, icon, changes = []) {
+  if (!actor) return;
+  const existing = actor.effects.find(e => e.name === label);
+  if (existing) return existing;
+  return await actor.createEmbeddedDocuments("ActiveEffect", [{
+    name: label, icon, origin: actor.uuid,
+    disabled: false, changes: changes.map(([k, v]) => ({ key: k, mode: 2, value: v }))
+  }]);
+}
+async function removeEffectByName(actor, label) {
+  if (!actor) return;
+  const fx = actor.effects.find(e => e.name === label);
+  if (fx) await fx.delete();
+}
+async function removeAllAshenEffects(actor) {
+  if (!actor) return;
+  const fx = actor.effects.filter(e => ["Exhaustion (Auto)", "Embered", "Frostbite (Build-up)"].includes(e.name));
+  if (fx.length) await actor.deleteEmbeddedDocuments("ActiveEffect", fx.map(e => e.id));
+}
 `;
 
 const MACROS = [
@@ -231,9 +251,11 @@ const THRESH = 5;
 const cur = Number(t.actor.getFlag("ashen", "frostbite") ?? 0) + 1;
 if (cur >= THRESH) {
   await t.actor.setFlag("ashen", "frostbite", 0);
-  const exh = (t.actor.system?.attributes?.exhaustion ?? 0) + 1;
-  try { await t.actor.update({ "system.attributes.exhaustion": exh }); } catch (e) {}
-  ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s frostbite bar FILLS \u2014 a level of <b>Exhaustion</b> sets in, and the bar resets." });
+  // Add Exhaustion via Active Effect.
+  const exhLevel = (t.actor.system?.attributes?.exhaustion ?? 0) + 1;
+  await createEffect(t.actor, "Exhaustion (Auto)", "icons/svg/poison.svg", 
+   [["system.attributes.exhaustion", String(exhLevel)]]);
+  ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s frostbite bar FILLS \\u2014 <b>Exhaustion " + exhLevel + "</b> applied, and frostbite resets." });
 } else {
   await t.actor.setFlag("ashen", "frostbite", cur);
   ChatMessage.create({ content: t.actor.name + " gains a frostbite stack (" + cur + "/" + THRESH + ")." });
@@ -249,9 +271,11 @@ if (!t?.actor) return ui.notifications.warn("Ashen: select your token first.");
 const bonus = 10;
 const hp = t.actor.system?.attributes?.hp;
 if (!hp) return ui.notifications.warn("Ashen: this actor has no HP to kindle.");
-await t.actor.update({ "system.attributes.hp.tempmax": (hp.tempmax || 0) + bonus, "system.attributes.hp.value": hp.value + bonus });
+// Add bonus HP via Active Effect.
+await createEffect(t.actor, "Embered", "icons/magic/fire/flame-burning-fist-orange.webp",
+  [["system.attributes.hp.tempmax", String(bonus)]]);
 await t.actor.setFlag("ashen", "kindled", true);
-ChatMessage.create({ content: "<b>" + t.actor.name + "</b> kindles the bonfire \u2014 +" + bonus + " maximum HP until death." });
+ChatMessage.create({ content: "<b>" + t.actor.name + "</b> kindles the bonfire \\u2014 <b>+" + bonus + " maximum HP</b> (Embered) until death." });
 ui.notifications.info("Ashen: kindled (+" + bonus + " max HP). Removed on death.");
 `
   },
@@ -440,6 +464,63 @@ ChatMessage.create({ content: "<h3>World reset.</h3><p>Removed <b>" + deleted + 
     ? "Reload the world (F5) and accept the welcome prompt to re-import a fresh copy, or run <b>Assemble Adventure</b> from the Ashen Macros compendium."
     : "Run <b>Ashen: Assemble Adventure</b> (choose <i>Fill gaps</i>) to import a fresh copy.") + "</p>" });
 ui.notifications.info("Ashen: teardown complete \\u2014 " + deleted + " document(s) removed.");
+`
+  },
+  {
+    name: "Ashen: Override — Clear Exhaustion",
+    img: "icons/svg/heal.svg",
+    body: `
+const t = canvas.tokens.controlled[0];
+if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
+await removeEffectByName(t.actor, "Exhaustion (Auto)");
+t.actor.update({ "system.attributes.exhaustion": 0 });
+ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s Exhaustion cleared (override)." });
+ui.notifications.info("Ashen: Exhaustion cleared.");
+`
+  },
+  {
+    name: "Ashen: Override — Set Exhaustion Level",
+    img: "icons/svg/poison.svg",
+    body: `
+const t = canvas.tokens.controlled[0];
+if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
+const level = await askNumber("Set Exhaustion", "Exhaustion level (0-6):");
+if (level === null) return;
+await removeEffectByName(t.actor, "Exhaustion (Auto)");
+await t.actor.update({ "system.attributes.exhaustion": Math.min(6, Math.max(0, level)) });
+ChatMessage.create({ content: "<b>" + t.actor.name + "</b> Exhaustion set to <b>" + level + "</b> (override)." });
+ui.notifications.info("Ashen: Exhaustion set to " + level + ".");
+`
+  },
+  {
+    name: "Ashen: Override — Clear Embered",
+    img: "icons/svg/heal.svg",
+    body: `
+const t = canvas.tokens.controlled[0];
+if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
+await removeEffectByName(t.actor, "Embered");
+await t.actor.setFlag("ashen", "kindled", false);
+ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s Embered status cleared (override)." });
+ui.notifications.info("Ashen: Embered cleared.");
+`
+  },
+  {
+    name: "Ashen: Override — Purge All Effects",
+    img: "icons/magic/unholy/curse-wave-purple.webp",
+    body: `
+const t = canvas.tokens.controlled[0];
+if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
+const confirm = await Dialog.confirm({
+  title: "Purge all Ashen effects?",
+  content: "<p>Remove Exhaustion (Auto), Embered, Frostbite effects from <b>" + t.actor.name + "</b>. This cannot be undone.</p>"
+});
+if (!confirm) return;
+await removeAllAshenEffects(t.actor);
+t.actor.update({ "system.attributes.exhaustion": 0 });
+await t.actor.setFlag("ashen", "frostbite", 0);
+await t.actor.setFlag("ashen", "kindled", false);
+ChatMessage.create({ content: "<b>" + t.actor.name + "</b> — all Ashen status effects purged (override)." });
+ui.notifications.warn("Ashen: all effects cleared for " + t.actor.name + ".");
 `
   }
 ];
