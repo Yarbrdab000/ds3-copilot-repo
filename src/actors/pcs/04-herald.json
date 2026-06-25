@@ -753,7 +753,8 @@
             "lightning": 0.3,
             "cold": 0.4,
             "poison": 0.2
-          }
+          },
+          "damageReduction": 0
         }
       },
       "system": {
@@ -809,10 +810,15 @@
       "type": "equipment",
       "img": "icons/equipment/chest/shirt-collared-chain-steel.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "block": null,
+          "damageReduction": 2
+        }
+      },
       "system": {
         "description": {
-          "value": "<p><em>Interlocked rings, heavy but trusted.</em></p>",
+          "value": "<p><em>Interlocked rings, heavy but trusted.</em></p><p><strong>Armor reduction:</strong> incoming damage reduced by <strong>2</strong> (minimum 1 damage).</p>",
           "chat": ""
         },
         "source": {

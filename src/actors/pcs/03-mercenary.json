@@ -935,10 +935,15 @@
       "type": "equipment",
       "img": "icons/equipment/chest/breastplate-cuirass-leather-brown.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "block": null,
+          "damageReduction": 1
+        }
+      },
       "system": {
         "description": {
-          "value": "<p><em>Boiled leather for those who'd rather move.</em></p>",
+          "value": "<p><em>Boiled leather for those who'd rather move.</em></p><p><strong>Armor reduction:</strong> incoming damage reduced by <strong>1</strong> (minimum 1 damage).</p>",
           "chat": ""
         },
         "source": {

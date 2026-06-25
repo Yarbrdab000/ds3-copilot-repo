@@ -750,7 +750,8 @@
             "lightning": 0.3,
             "cold": 0.4,
             "poison": 0.2
-          }
+          },
+          "damageReduction": 0
         }
       },
       "system": {
@@ -806,10 +807,15 @@
       "type": "equipment",
       "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "block": null,
+          "damageReduction": 3
+        }
+      },
       "system": {
         "description": {
-          "value": "<p><em>Full steel — the Lothric ideal of defense.</em></p>",
+          "value": "<p><em>Full steel — the Lothric ideal of defense.</em></p><p><strong>Armor reduction:</strong> incoming damage reduced by <strong>3</strong> (minimum 1 damage).</p>",
           "chat": ""
         },
         "source": {

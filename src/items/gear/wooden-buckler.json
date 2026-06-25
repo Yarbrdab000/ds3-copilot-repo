@@ -11,7 +11,8 @@
         "lightning": 0.2,
         "cold": 0.25,
         "poison": 0.1
-      }
+      },
+      "damageReduction": 0
     }
   },
   "system": {
