@@ -1,0 +1,20 @@
+{
+  "_comment": "Item (weapon/gear) template for Ashen campaign reuse. Swap name, damage, scaling — pricing logic stays same.",
+  "name": "Weapon Name",
+  "type": "weapon",
+  "rarity": "uncommon",
+  "price": 500,
+  "weight": 6,
+  "damage": {
+    "base": "1d6",
+    "type": "slashing"
+  },
+  "properties": ["versatile (1d8)", "finesse"],
+  "scaling": {
+    "dex": 1.0,
+    "str": 0.5
+  },
+  "description": "A masterwork blade. Scales with DEX and STR.",
+  "magical": false,
+  "attunement": false
+}

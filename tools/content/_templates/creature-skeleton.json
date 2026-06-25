@@ -1,0 +1,53 @@
+{
+  "_comment": "Creature template for Ashen campaign reuse. Swap name, CR, abilities, loot — all macro calls remain.",
+  "name": "Boss Name",
+  "type": "npc",
+  "cr": 7,
+  "hp": 150,
+  "ac": 16,
+  "abilities": {
+    "str": 18,
+    "dex": 14,
+    "con": 16,
+    "int": 10,
+    "wis": 12,
+    "cha": 8
+  },
+  "skills": ["Athletics +7", "Intimidation +2"],
+  "immunities": ["poison", "psychic"],
+  "resistances": ["cold"],
+  "senses": ["darkvision 60 ft.", "passive Perception 11"],
+  "languages": "understands all but can't speak",
+  "actions": [
+    {
+      "name": "Multiattack",
+      "description": "Makes two weapon attacks."
+    },
+    {
+      "name": "Melee Weapon Attack",
+      "hit": "+7 to hit",
+      "reach": "5 ft.",
+      "damage": "2d8 + 4 slashing"
+    }
+  ],
+  "legendary_actions": [
+    {
+      "name": "Move",
+      "description": "Move up to its speed."
+    },
+    {
+      "name": "Attack",
+      "description": "Make one weapon attack."
+    }
+  ],
+  "loot": [
+    {
+      "item": "Soul Reward (in GP)",
+      "amount": 300
+    },
+    {
+      "item": "Key Drop",
+      "amount": 1
+    }
+  ]
+}

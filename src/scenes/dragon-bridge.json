@@ -51,11 +51,240 @@
   "fogExploredColor": "#000000",
   "drawings": [],
   "tokens": [],
-  "lights": [],
+  "lights": [
+    {
+      "x": 2000,
+      "y": 1000,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "light": {
+        "dim": 15,
+        "bright": 8,
+        "angle": 360,
+        "color": "#ff8844",
+        "intensity": 0.8,
+        "alpha": 1,
+        "animation": "none",
+        "shadow": 0
+      }
+    }
+  ],
   "notes": [],
   "sounds": [],
   "templates": [],
   "tiles": [],
-  "walls": [],
+  "walls": [
+    {
+      "c": [
+        0,
+        0,
+        4000,
+        0
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        4000,
+        0,
+        4000,
+        2000
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        4000,
+        2000,
+        0,
+        2000
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        0,
+        2000,
+        0,
+        0
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        100,
+        200,
+        3900,
+        200
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        100,
+        1800,
+        3900,
+        1800
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        600,
+        400,
+        700,
+        700
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        700,
+        700,
+        600,
+        800
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1200,
+        350,
+        1300,
+        650
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1300,
+        650,
+        1200,
+        750
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        2000,
+        600,
+        2200,
+        900
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        2200,
+        900,
+        2000,
+        1200
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        3000,
+        400,
+        3100,
+        750
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        3100,
+        750,
+        3000,
+        850
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    }
+  ],
   "regions": []
 }
