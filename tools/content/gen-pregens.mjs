@@ -266,8 +266,8 @@ function bonfireLedger() {
       currency: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 },
       tools: {},
       resources: {
-        primary: { value: null, max: null, sr: false, lr: false, label: "" },
-        secondary: { value: null, max: null, sr: false, lr: false, label: "" },
+        primary: { value: null, max: null, sr: false, lr: false, label: "Cinders (Lives)" },
+        secondary: { value: 0, max: 3, sr: false, lr: false, label: "Shop Tier (0-3)" },
         tertiary: { value: null, max: null, sr: false, lr: false, label: "" }
       },
       favorites: [], bastion: { name: "", description: "" }

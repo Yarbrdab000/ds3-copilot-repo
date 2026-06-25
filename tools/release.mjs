@@ -13,6 +13,16 @@
  *   (paste the manifest URL into Foundry → Add-on Modules → Install Module)
  *   node tools/release.mjs down         # flip the release repo back to PRIVATE (module keeps working)
  *
+ * ── Iteration loop (tuning a system between test runs) ───────────────────────
+ *   1. (dev)     edit source/generators, then:  npm run release republish
+ *                  (bumps the version, regenerates + repacks + zips, publishes the update)
+ *   2. (Foundry) Settings → Manage Modules → Update (or reload); the compendiums refresh
+ *   3. (Foundry) run "Ashen: Teardown / Reset World" (Full wipe after a module update)
+ *   4. (Foundry) reload → accept the welcome prompt (or run Assemble) → re-test
+ *   then:        node tools/release.mjs down               # re-private the artifact
+ *
+ *   npm run rebuild                                   # regenerate + repack + zip only (no publish)
+ *   node tools/release.mjs bump [patch|minor|major]   # just bump module.json version
  *   node tools/release.mjs up           # re-publish access later (e.g. reinstall on a new world)
  *   node tools/release.mjs nuke         # delete the release repo entirely
  *   node tools/release.mjs status       # show repo visibility + latest release
@@ -21,7 +31,7 @@
  * delete_repo scope (gh auth refresh -h github.com -s delete_repo).
  */
 
-import { readFile, copyFile, access } from "node:fs/promises";
+import { readFile, writeFile, copyFile, access } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import url from "node:url";
@@ -131,8 +141,41 @@ function status() {
   console.log(r.out || "(no releases)");
 }
 
+async function bump(kind = "patch") {
+  const file = path.join(ROOT, "module.json");
+  const mod = JSON.parse(await readFile(file, "utf8"));
+  const [maj, min, pat] = String(mod.version).split(".").map((n) => parseInt(n, 10) || 0);
+  let next;
+  if (kind === "major") next = `${maj + 1}.0.0`;
+  else if (kind === "minor") next = `${maj}.${min + 1}.0`;
+  else next = `${maj}.${min}.${pat + 1}`;
+  mod.version = next;
+  await writeFile(file, JSON.stringify(mod, null, 2) + "\n");
+  console.log(`> module.json version ${maj}.${min}.${pat} -> ${next}`);
+  return next;
+}
+
+async function republish() {
+  // Bump (default patch) then regenerate everything from source and publish, so
+  // Foundry's "Check for Updates" sees a new version and re-downloads the module on
+  // the test instance. The fast iteration path: one command from edit to deployed.
+  await bump(process.argv[3] || "patch");
+  console.log("> regenerating content (node tools/build.mjs rebuild) ...");
+  const r = sh(["node", "tools/build.mjs", "rebuild"]);
+  if (r.status !== 0) { console.error("! rebuild failed"); process.exit(1); }
+  await publish();
+}
+
 const cmd = process.argv[2] || "publish";
-const table = { publish, down: () => setVisibility("private"), up: () => setVisibility("public"), nuke, status };
+const table = {
+  publish,
+  republish,
+  bump: () => bump(process.argv[3]),
+  down: () => setVisibility("private"),
+  up: () => setVisibility("public"),
+  nuke,
+  status
+};
 const fn = table[cmd];
 if (!fn) { console.error(`Unknown command: ${cmd}\nUse: ${Object.keys(table).join(", ")}`); process.exit(1); }
 await fn();

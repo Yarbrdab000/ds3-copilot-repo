@@ -335,6 +335,112 @@ for (const act of game.actors) {
 ChatMessage.create({ content: "<h3>A new flame is lit.</h3><p>Cinders set to <b>" + cind + "</b>, Shop Tier reset to <b>0</b>, souls cleared, and <b>" + rested + "</b> pregen(s) restored to full.</p><p><i>The cycle begins again. Don't go Hollow.</i></p>" });
 ui.notifications.info("Ashen: new run ready \u2014 Cinders " + cind + ", " + rested + " pregens rested.");
 `
+  },
+  {
+    name: "Ashen: Teardown / Reset World",
+    img: "icons/magic/unholy/strike-beam-blood-red-purple.webp",
+    body: `
+const MODULE_ID = "ashen-of-lothric";
+const FPREFIX = "Ashen \\u2014 ";
+if (!game.user.isGM) return ui.notifications.warn("Ashen: only the GM can run Teardown.");
+
+// World collections this macro manages (primary documents only).
+const COLLS = [
+  ["Actor", game.actors, "Actors"],
+  ["Item", game.items, "Items"],
+  ["JournalEntry", game.journal, "Journals"],
+  ["Scene", game.scenes, "Scenes"],
+  ["RollTable", game.tables, "Roll Tables"],
+  ["Macro", game.macros, "Macros"],
+  ["Playlist", game.playlists, "Playlists"]
+];
+
+// A doc is "Ashen" if it was imported from our compendium (v12/v13 _stats marker
+// or v11 sourceId flag) or lives in an "Ashen \\u2014" folder. We deliberately do NOT
+// match on flags.ashen, so a player's own token that picked up a frostbite/kindle
+// flag is never deleted.
+function isAshen(doc) {
+  const cs = doc?._stats?.compendiumSource;
+  if (typeof cs === "string" && cs.indexOf("Compendium." + MODULE_ID + ".") === 0) return true;
+  const sid = doc?.flags?.core?.sourceId;
+  if (typeof sid === "string" && sid.indexOf("Compendium." + MODULE_ID + ".") === 0) return true;
+  const fn = doc?.folder?.name;
+  if (typeof fn === "string" && fn.indexOf(FPREFIX) === 0) return true;
+  return false;
+}
+
+const mode = await new Promise((resolve) => {
+  new Dialog({
+    title: "Ashen \\u2014 Teardown / Reset World",
+    content: "<p>Remove imported Ashen content from <b>this world</b> so you can re-import a clean copy. " +
+      "Your module compendiums (the source) are <b>not</b> touched \\u2014 this only clears what was imported here. " +
+      "Use it between test runs whenever a system needs adjusting.</p>" +
+      "<p><b>Reset content</b> keeps the macro toolbar, so you can immediately re-run <i>Assemble Adventure</i> " +
+      "(pick <i>Fill gaps</i>) for the fastest loop. <b>Full wipe</b> removes everything including macros &amp; folders; " +
+      "reload the world afterwards and the welcome prompt re-imports a fresh copy (use this after updating the module).</p>",
+    buttons: {
+      keep: { label: "Reset content (keep macros)", callback: () => resolve("keep") },
+      full: { label: "Full wipe (everything)", callback: () => resolve("full") },
+      cancel: { label: "Cancel", callback: () => resolve(null) }
+    },
+    default: "keep", close: () => resolve(null)
+  }).render(true);
+});
+if (!mode) return;
+
+const targets = {};
+let total = 0;
+const summary = [];
+for (const [type, coll, label] of COLLS) {
+  if (mode === "keep" && type === "Macro") continue;
+  const ids = coll.filter(isAshen).map((d) => d.id);
+  if (ids.length) { targets[type] = { coll, ids }; total += ids.length; summary.push(ids.length + " " + label); }
+}
+const ashenSceneIds = new Set(targets["Scene"]?.ids ?? []);
+const folders = game.folders.filter((f) =>
+  typeof f.name === "string" && f.name.indexOf(FPREFIX) === 0 && (mode === "full" || f.type !== "Macro"));
+
+if (!total && !folders.length) return ui.notifications.info("Ashen: nothing to tear down \\u2014 no imported Ashen content in this world.");
+
+const confirm = await Dialog.confirm({
+  title: "Confirm teardown \\u2014 this cannot be undone",
+  content: "<p>Permanently delete from this world:</p><p><b>" + (summary.join(", ") || "0 documents") + "</b>" +
+    (folders.length ? (" and <b>" + folders.length + "</b> Ashen folder(s)") : "") + ".</p>" +
+    "<p>Re-import any time with <b>Assemble Adventure</b>" + (mode === "full" ? " or by reloading the world" : "") + ".</p>"
+});
+if (!confirm) return;
+
+// If the canvas is showing a scene we're about to delete, switch away first.
+try {
+  if (canvas?.scene && ashenSceneIds.has(canvas.scene.id)) {
+    const other = game.scenes.find((s) => !ashenSceneIds.has(s.id));
+    if (other) await other.view();
+  }
+} catch (e) { /* deleting the active scene still works; canvas just clears */ }
+
+// Drop any combats tied to the scenes we're removing.
+try {
+  const combatIds = game.combats.filter((c) => c.scene && ashenSceneIds.has(c.scene.id)).map((c) => c.id);
+  if (combatIds.length) await Combat.deleteDocuments(combatIds);
+} catch (e) { console.error("Ashen teardown: combat cleanup", e); }
+
+let deleted = 0;
+for (const [type, entry] of Object.entries(targets)) {
+  try { await entry.coll.documentClass.deleteDocuments(entry.ids); deleted += entry.ids.length; }
+  catch (e) { console.error("Ashen teardown: failed deleting " + type, e); ui.notifications.warn("Ashen: some " + type + " could not be deleted (see console)."); }
+}
+try {
+  const fids = folders.map((f) => f.id);
+  if (fids.length) await Folder.deleteDocuments(fids);
+} catch (e) { console.error("Ashen teardown: folder cleanup", e); }
+
+ChatMessage.create({ content: "<h3>World reset.</h3><p>Removed <b>" + deleted + "</b> Ashen document(s)" +
+  (folders.length ? (" and " + folders.length + " folder(s)") : "") + " from this world.</p>" +
+  "<p>" + (mode === "full"
+    ? "Reload the world (F5) and accept the welcome prompt to re-import a fresh copy, or run <b>Assemble Adventure</b> from the Ashen Macros compendium."
+    : "Run <b>Ashen: Assemble Adventure</b> (choose <i>Fill gaps</i>) to import a fresh copy.") + "</p>" });
+ui.notifications.info("Ashen: teardown complete \\u2014 " + deleted + " document(s) removed.");
+`
   }
 ];
 

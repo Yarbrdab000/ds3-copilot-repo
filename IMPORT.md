@@ -63,6 +63,24 @@ Open these in order — they're written to be read in ~20 minutes total:
   when it fills); **Kindle (Ember)** grants the temporary max-HP bump. Boss phases are HP-threshold
   triggers spelled out in each **Bestiary** statblock and the **DM Handbook** Tell Ladders.
 
+### Iterating between test runs
+Use this loop whenever you tweak rules, prices, encounter math, or module content and want a clean
+re-test without hand-cleaning the world.
+
+1. On your dev machine, run `npm run release republish`. That bumps `module.json`, regenerates all
+   generated content, repacks the module, zips it, and republishes the latest install artifact.
+2. In Foundry, update the module (or reload the world) so the refreshed compendiums are available.
+3. Run **Ashen: Teardown / Reset World**.
+   - **Reset content (keep macros)** is the fast loop when you're just clearing imported docs and want
+     to rerun **Assemble Adventure** immediately.
+   - **Full wipe (everything)** is the safe choice after a module update; it removes the imported Ashen
+     folders and macros so the next reload behaves like a fresh install.
+4. Reload the world. If you chose **Full wipe**, accept the welcome prompt. Otherwise run
+   **Ashen: Assemble Adventure** and choose **Fill gaps**.
+5. Re-test the scene, fight, or system you changed.
+
+If you only want a fresh zip locally and are not publishing an update yet, run `npm run rebuild`.
+
 ### Bring your own art & audio
 To respect copyright, the module ships **placeholder maps/tokens** and a **curated link list** of
 free/CC art (in the **DM Handbook → *Maps & Scenes*** journal) and music (in the **DM Handbook →

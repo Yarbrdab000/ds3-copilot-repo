@@ -228,11 +228,31 @@ function ember() {
     system: {
       description: { value: "<p><em>A warm cinder, the last of someone's fire.</em></p><p><strong>Use at a bonfire (Kindle macro):</strong> gain +10 maximum HP until you die. Lost on death.</p>", chat: "" },
       source: source("DS3 ember"),
-      quantity: 1, weight: { value: 0, units: "lb" }, price: { value: 0, denomination: "gp" },
+      quantity: 1, weight: { value: 0, units: "lb" }, price: { value: 600, denomination: "gp" },
       attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
       type: { value: "trinket", subtype: "" }, properties: [],
       uses: { max: "1", spent: 0, recovery: [], autoDestroy: true },
       activities: {}, identifier: "ember"
+    }
+  };
+}
+
+function twinkling() {
+  return {
+    name: "Twinkling Titanite",
+    type: "loot",
+    img: "icons/commodities/gems/gem-faceted-radiant-blue.webp",
+    effects: [], flags: {},
+    system: {
+      description: {
+        value: "<p><em>A rare, shimmering titanite. Reinforces what ordinary shards cannot &mdash; unique blades and the Pyromancy Flame.</em></p><p><strong>Andre&rsquo;s forge:</strong> spend one to ascend a unique weapon or the Pyromancy Flame one reinforcement step beyond the reach of common titanite.</p>",
+        chat: ""
+      },
+      source: source("DS3 material"),
+      quantity: 1, weight: { value: 0.1, units: "lb" }, price: { value: 2000, denomination: "gp" },
+      rarity: "rare", identified: true, container: null,
+      type: { value: "material" }, properties: [],
+      identifier: "twinkling-titanite"
     }
   };
 }
@@ -273,7 +293,8 @@ async function main() {
     estus(), firebomb(), ember(),
     loot({ name: "Estus Shard", img: "icons/commodities/gems/gem-faceted-radiant-orange.webp", subtype: "material", price: 1000, flavor: "A shard of an Estus Flask; the Fire Keeper can use it to add a charge." }),
     loot({ name: "Titanite Shard", img: "icons/commodities/metal/ingot-stamped-silver.webp", subtype: "material", price: 200, flavor: "Reinforces equipment. Andre needs these to upgrade weapons." }),
-    loot({ name: "Titanite Chunk", img: "icons/commodities/metal/ingot-stamped-gold.webp", subtype: "material", price: 800, flavor: "Heavier titanite for greater reinforcement." })
+    loot({ name: "Titanite Chunk", img: "icons/commodities/metal/ingot-stamped-gold.webp", subtype: "material", price: 800, flavor: "Heavier titanite for greater reinforcement." }),
+    twinkling()
   ];
   for (const d of all) {
     await writeFile(path.join(OUT, slug(d.name) + ".json"), JSON.stringify(d, null, 2));

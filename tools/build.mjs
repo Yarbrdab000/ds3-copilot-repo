@@ -11,6 +11,7 @@
  *   node tools/build.mjs validate   Parse every source JSON and report problems
  *   node tools/build.mjs clean      Remove compiled packs/
  *   node tools/build.mjs world      Pack, then zip the module into dist/
+ *   node tools/build.mjs rebuild    Regenerate generated source, then world-build
  *
  * The pack <-> source-folder mapping is derived from module.json + SRC_MAP below.
  */
@@ -259,12 +260,40 @@ async function cmdWorld() {
   }
 }
 
+async function cmdRebuild() {
+  // Deterministic source -> installable zip. Runs every content generator, then
+  // packs and zips. gen-scenes must precede gen-maps (maps read scene dimensions).
+  // Hand-authored journals are not generated and are left untouched.
+  const generators = [
+    "gen-spells.mjs",
+    "gen-gear.mjs",
+    "gen-levels.mjs",
+    "gen-pregens.mjs",
+    "gen-bestiary.mjs",
+    "gen-tables.mjs",
+    "gen-macros.mjs",
+    "gen-scenes.mjs",
+    "gen-maps.mjs"
+  ];
+  for (const g of generators) {
+    log(`generate ${g}`);
+    const r = spawnSync(process.execPath, [path.join(ROOT, "tools", "content", g)], { stdio: "inherit" });
+    if (r.status !== 0) {
+      console.error(`  x generator failed: ${g}`);
+      process.exit(1);
+    }
+  }
+  await cmdWorld();
+  log("rebuild complete — dist/ holds a fresh installable module.");
+}
+
 const COMMANDS = {
   validate: cmdValidate,
   pack: cmdPack,
   unpack: cmdUnpack,
   clean: cmdClean,
-  world: cmdWorld
+  world: cmdWorld,
+  rebuild: cmdRebuild
 };
 
 const cmd = process.argv[2] ?? "pack";
