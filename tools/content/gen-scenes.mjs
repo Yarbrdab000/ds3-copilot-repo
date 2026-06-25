@@ -3,10 +3,15 @@
  * Generator for the Ashen scenes pack. Editable SOURCE for src/scenes/.
  * Re-run `node tools/content/gen-scenes.mjs`.
  *
- * Copyright-safe approach: we ship grid-ready, blank placeholder battlemaps (square 5-ft grid,
- * neutral background colour, NO FromSoftware art) sized to the encounter. The DM drops in their
- * own / free-CC map art (sources listed in the "Maps & Scene Briefs" journal) and the tokens.
- * Each scene carries a short layout brief on flags.ashen so it is self-documenting on import.
+ * Copyright-safe approach: each scene ships with an ORIGINAL, grid-aligned tactical battlemap
+ * rendered by tools/content/gen-maps.mjs into maps/<slug>.webp (square 5-ft grid, NO FromSoftware
+ * art, no baked gridlines — Foundry draws the grid). The map is wired in as background.src below,
+ * so backgrounds appear with zero setup. A DM who prefers painted art can swap the file or use the
+ * AI-prompt / free-CC sources in the "Maps & Scenes" journal. Each scene also carries a short layout
+ * brief on flags.ashen so it is self-documenting on import.
+ *
+ * NOTE: scene filename slug and map filename slug both derive from slug(navName||name) — keep them
+ * in lockstep with gen-maps.mjs (which reads these scene files for dimensions).
  */
 
 import { writeFile, mkdir, rm } from "node:fs/promises";
@@ -17,11 +22,12 @@ const OUT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "../.
 function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
 
 function scene({ name, navName, order, sqW, sqH, bg = "#0b0d10", gridType = 1, brief }) {
+  const fileSlug = slug(navName || name);
   return {
     name, active: false, navigation: true, navName: navName || "", navOrder: order, sort: order * 100,
     folder: null, ownership: { default: 0 },
     flags: { ashen: { brief } },
-    background: { src: null, offsetX: 0, offsetY: 0, fit: "fill", tint: "#ffffff" },
+    background: { src: `modules/ashen-of-lothric/maps/${fileSlug}.webp`, offsetX: 0, offsetY: 0, fit: "fill", tint: "#ffffff" },
     foreground: null, foregroundElevation: 20, thumb: null,
     width: sqW * 100, height: sqH * 100, padding: 0.25,
     initial: { x: null, y: null, scale: null },

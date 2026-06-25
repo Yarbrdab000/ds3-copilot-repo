@@ -8,11 +8,13 @@
     "build": "node tools/build.mjs pack",
     "build:world": "node tools/build.mjs world",
     "print": "node tools/print.mjs",
+    "maps": "node tools/content/gen-maps.mjs",
     "unpack": "node tools/build.mjs unpack",
     "clean": "node tools/build.mjs clean",
     "validate": "node tools/build.mjs validate"
   },
   "devDependencies": {
-    "@foundryvtt/foundryvtt-cli": "^1.0.0"
+    "@foundryvtt/foundryvtt-cli": "^1.0.0",
+    "@napi-rs/canvas": "^1.0.1"
   }
 }

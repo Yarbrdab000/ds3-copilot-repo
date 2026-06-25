@@ -15,7 +15,7 @@
     }
   },
   "background": {
-    "src": null,
+    "src": "modules/ashen-of-lothric/maps/cemetery.webp",
     "offsetX": 0,
     "offsetY": 0,
     "fit": "fill",
