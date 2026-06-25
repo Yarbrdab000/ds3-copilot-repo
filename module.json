@@ -13,6 +13,9 @@
       "name": "Ashen One-Shot Team"
     }
   ],
+  "esmodules": [
+    "scripts/ashen.mjs"
+  ],
   "relationships": {
     "systems": [
       {

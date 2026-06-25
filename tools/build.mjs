@@ -241,7 +241,7 @@ async function cmdWorld() {
   await mkdir(stage, { recursive: true });
 
   // Stage the installable module: manifest + compiled packs + docs + placeholder media.
-  const include = ["module.json", "packs", "README.md", "IMPORT.md", "LICENSE", "maps", "tokens"];
+  const include = ["module.json", "packs", "scripts", "README.md", "IMPORT.md", "LICENSE", "maps", "tokens"];
   for (const rel of include) {
     const from = path.join(ROOT, rel);
     if (existsSync(from)) await cp(from, path.join(stage, rel), { recursive: true });

@@ -15,11 +15,11 @@ The build produces an **installable module zip** with all content as compendiums
    → Manifest URL or upload the zip**). It installs the **dnd5e** system if you don't have it.
 3. Create a **new dnd5e world**, launch it, and enable **"Ashen — A Dark Souls III One-Shot"** in
    **Settings → Manage Modules**.
-4. Open the **Macros** compendium (right sidebar → **Compendium Packs → Ashen** folder → *Macros &
-   Trackers*), drag **"Ashen: Assemble Adventure"** to your hotbar, and click it. Confirm the prompt.
-   It imports every Ashen compendium into the world in labelled folders and initialises the souls
-   tracker. **Safe to re-run** — if you click it again it offers to fill only what's missing instead
-   of duplicating content.
+4. **The first time you enter the world, Ashen greets you and offers to set everything up — click
+   _Yes_.** It imports every compendium into labelled folders, initialises the souls tracker, and
+   pins your tracker macros to the hotbar. (Prefer to do it by hand, or need to re-run it later? Drag
+   **"Ashen: Assemble Adventure"** from the *Macros & Trackers* compendium to your hotbar and click it
+   — **safe to re-run**; it fills only what's missing instead of duplicating content.)
 5. You're in. Read **"How to run it"** below.
 
 ---
@@ -55,6 +55,10 @@ Open these in order — they're written to be read in ~20 minutes total:
   totals to 0 for you.)
 - **Leveling:** the **Level Up** macro spends banked souls and tells each player which Level-Up Menu
   Card to apply. **Bonfire Rest** restores HP/Estus/charges and reminds you to respawn enemies.
+- **Lives & shops:** **New Run / Reset Bonfire** sets the party's **Cinders** (4 × players), resets the
+  Shop Tier, and clears souls — run it at the start of a game or between the two sessions of a two-shot.
+  **Spend a Cinder** burns one shared life when a hero falls; **Boss Defeated** awards souls and grows
+  the Firelink shop one tier.
 - **Frostbite & embers:** **Add Frostbite Stack** advances the build-up bar (auto-applies Exhaustion
   when it fills); **Kindle (Ember)** grants the temporary max-HP bump. Boss phases are HP-threshold
   triggers spelled out in each **Bestiary** statblock and the **DM Handbook** Tell Ladders.

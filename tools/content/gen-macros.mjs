@@ -254,6 +254,87 @@ await t.actor.setFlag("ashen", "kindled", true);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b> kindles the bonfire \u2014 +" + bonus + " maximum HP until death." });
 ui.notifications.info("Ashen: kindled (+" + bonus + " max HP). Removed on death.");
 `
+  },
+  {
+    name: "Ashen: Spend a Cinder",
+    img: "icons/magic/fire/flame-burning-fist-orange.webp",
+    body: `
+async function getRes(x, slot) { return Number(x?.system?.resources?.[slot]?.value ?? 0); }
+async function setRes(x, slot, v, max) { const u = {}; u["system.resources." + slot + ".value"] = Math.max(0, Math.round(v)); if (max != null) u["system.resources." + slot + ".max"] = Math.max(0, Math.round(max)); return x.update(u); }
+const a = getLedger(); if (!a) return;
+const cur = await getRes(a, "primary");
+if (cur <= 0) {
+  return Dialog.prompt({ title: "No Cinders left", label: "Understood",
+    content: "<p>The party is <b>out of Cinders</b>. The next fall is final \u2014 this is the moment the stakes turn real. (DM Handbook: <i>Cinders \u2014 How to Run Them</i>.)</p>" });
+}
+const ok = await Dialog.confirm({ title: "Spend a Cinder",
+  content: "<p>Spend one Cinder to raise a fallen hero (or respawn after a wipe)?</p><p>Cinders: <b>" + cur + "</b> \u2192 <b>" + (cur - 1) + "</b>.</p>" });
+if (!ok) return;
+const left = cur - 1;
+await setRes(a, "primary", left);
+let msg = "<b>A Cinder is spent.</b> Ash stirs, and a fallen Unkindled rises. Cinders remaining: <b>" + left + "</b>.";
+if (left === 0) msg += " <span style=\\"color:#a33\\">That was the last one \u2014 from here, death is final.</span>";
+else if (left <= 2) msg += " <i>The fire is guttering.</i>";
+ChatMessage.create({ content: msg });
+ui.notifications.info("Ashen: Cinder spent. " + left + " remaining.");
+`
+  },
+  {
+    name: "Ashen: Boss Defeated",
+    img: "icons/skills/melee/strike-sword-blood-red.webp",
+    body: `
+async function getRes(x, slot) { return Number(x?.system?.resources?.[slot]?.value ?? 0); }
+async function setRes(x, slot, v, max) { const u = {}; u["system.resources." + slot + ".value"] = Math.max(0, Math.round(v)); if (max != null) u["system.resources." + slot + ".max"] = Math.max(0, Math.round(max)); return x.update(u); }
+const a = getLedger(); if (!a) return;
+const tier = await getRes(a, "secondary");
+const newTier = Math.min(3, tier + 1);
+const souls = await askNumber("Boss Defeated", "Souls to award the party (added to CARRIED). 0 to skip:");
+if (souls === null) return;
+if (souls > 0) { const carried = await getSouls(a, "carried"); await setSouls(a, "carried", carried + souls); }
+if (newTier !== tier) await setRes(a, "secondary", newTier, 3);
+const parts = ["<h3>A great soul is claimed.</h3>"];
+if (souls > 0) parts.push("<p><b>+" + souls + " souls</b> to the carried pool \u2014 bank them at the bonfire before you push on.</p>");
+if (newTier !== tier) parts.push("<p>The Firelink shops sense it: <b>Shop Tier " + tier + " \u2192 " + newTier + "</b>. Andre and the Handmaid lay out greater wares (see <i>Firelink Services</i>).</p>");
+else parts.push("<p>Shop Tier already at its cap (<b>3</b>).</p>");
+parts.push("<p style=\\"opacity:.8\\">Remember: each boss/mini-boss also frees a budget of <b>Cinders</b> \u2014 see the DM Handbook.</p>");
+ChatMessage.create({ content: parts.join("") });
+ui.notifications.info("Ashen: boss down \u2014 Shop Tier " + newTier + (souls > 0 ? (", +" + souls + " souls") : "") + ".");
+`
+  },
+  {
+    name: "Ashen: New Run / Reset Bonfire",
+    img: "icons/magic/fire/flame-burning-campfire-yellow.webp",
+    body: `
+async function getRes(x, slot) { return Number(x?.system?.resources?.[slot]?.value ?? 0); }
+async function setRes(x, slot, v, max) { const u = {}; u["system.resources." + slot + ".value"] = Math.max(0, Math.round(v)); if (max != null) u["system.resources." + slot + ".max"] = Math.max(0, Math.round(max)); return x.update(u); }
+const a = getLedger(); if (!a) return;
+const players = await askNumber("New Run \u2014 Reset the Bonfire", "How many players? (Cinders = 4 \u00d7 players)");
+if (players === null) return;
+const cind = players > 0 ? players * 4 : 0;
+const ok = await Dialog.confirm({ title: "Reset for a fresh run?",
+  content: "<p>This will:</p><ul>" +
+    "<li>Set <b>Cinders</b> to <b>" + cind + "</b> (" + players + " \u00d7 4).</li>" +
+    "<li>Reset <b>Shop Tier</b> to <b>0</b>.</li>" +
+    "<li>Zero <b>carried / banked / bloodstain</b> souls.</li>" +
+    "<li>Long-rest every pregen (full HP, Estus &amp; spell charges; clears Frostbite, kindle &amp; temp HP).</li>" +
+    "</ul><p>Use it to start a new game, or to reset between the two sessions of a two-shot.</p>" });
+if (!ok) return;
+await setRes(a, "primary", cind, cind);
+await setRes(a, "secondary", 0, 3);
+for (const k of ["carried", "banked", "bloodstain"]) await setSouls(a, k, 0);
+let rested = 0;
+for (const act of game.actors) {
+  if (act === a) continue;
+  if (act.getFlag("ashen", "role") === "souls") continue;
+  if (act.type !== "character") continue;
+  try { await act.longRest({ dialog: false, chat: false }); rested++; } catch (e) {}
+  try { await act.update({ "system.attributes.hp.tempmax": 0 }); } catch (e) {}
+  try { await act.setFlag("ashen", "frostbite", 0); } catch (e) {}
+  try { await act.unsetFlag("ashen", "kindled"); } catch (e) {}
+}
+ChatMessage.create({ content: "<h3>A new flame is lit.</h3><p>Cinders set to <b>" + cind + "</b>, Shop Tier reset to <b>0</b>, souls cleared, and <b>" + rested + "</b> pregen(s) restored to full.</p><p><i>The cycle begins again. Don't go Hollow.</i></p>" });
+ui.notifications.info("Ashen: new run ready \u2014 Cinders " + cind + ", " + rested + " pregens rested.");
+`
   }
 ];
 

@@ -20,7 +20,8 @@ session without wrestling with mechanics or setup.
 | `src/journals/` | Rules bible, DM handbook, codex, handouts, Tell-Ladder cards. |
 | `src/scenes/` | The 8 scene/map definitions (7 encounter maps + a region overview). |
 | `src/tables/` | Roll tables (soul rewards, loot, upgrade costs). |
-| `src/macros/` | Souls tracker, frostbite, level-up helper, summon-sign macros. |
+| `src/macros/` | Souls/Cinders trackers, frostbite, level-up, boss-defeated & new-run/reset helpers. |
+| `scripts/` | First-launch helper that offers one-click setup the first time the world opens. |
 | `maps/`, `tokens/` | Placeholder battlemap & token art + sourcing guidance. |
 | `tools/` | The Node build script (Foundry CLI pack/unpack). |
 | `packs/` | Compiled compendium packs (build output). |
