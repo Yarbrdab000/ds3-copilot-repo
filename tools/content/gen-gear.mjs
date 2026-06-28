@@ -104,11 +104,12 @@ function blockTable(block) {
   );
 }
 
-function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, flavor, block = null }) {
+function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, damageReduction = 0, flavor, block = null }) {
+  const dmgNote = damageReduction > 0 ? `<p><strong>Armor reduction:</strong> incoming damage reduced by <strong>${damageReduction}</strong> (minimum 1 damage).</p>` : "";
   return {
-    name, type: "equipment", img, effects: [], flags: block ? { ashen: { block } } : {},
+    name, type: "equipment", img, effects: [], flags: block || damageReduction > 0 ? { ashen: { block, damageReduction } } : {},
     system: {
-      description: { value: `<p><em>${flavor}</em></p>${block ? blockTable(block) : ""}`, chat: "" },
+      description: { value: `<p><em>${flavor}</em></p>${dmgNote}${block ? blockTable(block) : ""}`, chat: "" },
       source: source("DS3 armor"),
       quantity: 1, weight: { value: 20, units: "lb" }, price: { value: 0, denomination: "gp" },
       attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
@@ -272,11 +273,11 @@ const WEAPONS = [
 ];
 
 const ARMOR = [
-  armor({ name: "Knight's Plate", img: "icons/equipment/chest/breastplate-helmet-metal.webp", atype: "heavy", ac: 18, dex: 0, strength: 15, stealth: true, flavor: "Full steel \u2014 the Lothric ideal of defense." }),
-  armor({ name: "Chainmail", img: "icons/equipment/chest/shirt-collared-chain-steel.webp", atype: "heavy", ac: 16, dex: 0, strength: 13, stealth: true, flavor: "Interlocked rings, heavy but trusted." }),
-  armor({ name: "Hard Leather Armor", img: "icons/equipment/chest/breastplate-cuirass-leather-brown.webp", atype: "light", ac: 11, dex: null, flavor: "Boiled leather for those who'd rather move." }),
-  armor({ name: "Knight Shield", img: "icons/equipment/shield/heater-steel-segmented-grey.webp", atype: "shield", ac: 2, flavor: "A solid steel shield \u2014 the heart of the Block reaction. It chips, it does not zero \u2014 a hard charge still gets a little through.", block: { physical: 0.70, fire: 0.40, lightning: 0.30, cold: 0.40, poison: 0.20 } }),
-  armor({ name: "Wooden Buckler", img: "icons/equipment/shield/buckler-wooden-boss-steel.webp", atype: "shield", ac: 2, flavor: "Light and quick; better for parrying than turtling. Weak as a wall \u2014 it is a parry tool first.", block: { physical: 0.50, fire: 0.25, lightning: 0.20, cold: 0.25, poison: 0.10 } })
+  armor({ name: "Knight's Plate", img: "icons/equipment/chest/breastplate-helmet-metal.webp", atype: "heavy", ac: 18, dex: 0, strength: 15, stealth: true, damageReduction: 3, flavor: "Full steel — the Lothric ideal of defense." }),
+  armor({ name: "Chainmail", img: "icons/equipment/chest/shirt-collared-chain-steel.webp", atype: "heavy", ac: 16, dex: 0, strength: 13, stealth: true, damageReduction: 2, flavor: "Interlocked rings, heavy but trusted." }),
+  armor({ name: "Hard Leather Armor", img: "icons/equipment/chest/breastplate-cuirass-leather-brown.webp", atype: "light", ac: 11, dex: null, damageReduction: 1, flavor: "Boiled leather for those who'd rather move." }),
+  armor({ name: "Knight Shield", img: "icons/equipment/shield/heater-steel-segmented-grey.webp", atype: "shield", ac: 2, flavor: "A solid steel shield — the heart of the Block reaction. It chips, it does not zero — a hard charge still gets a little through.", block: { physical: 0.70, fire: 0.40, lightning: 0.30, cold: 0.40, poison: 0.20 } }),
+  armor({ name: "Wooden Buckler", img: "icons/equipment/shield/buckler-wooden-boss-steel.webp", atype: "shield", ac: 2, flavor: "Light and quick; better for parrying than turtling. Weak as a wall — it is a parry tool first.", block: { physical: 0.50, fire: 0.25, lightning: 0.20, cold: 0.25, poison: 0.10 } })
 ];
 
 const FOCI = [

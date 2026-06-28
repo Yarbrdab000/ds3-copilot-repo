@@ -1,0 +1,30 @@
+{
+  "_comment": "Scene template for Ashen campaign reuse. Coordinates in pixels (5 ft/grid = 100 px).",
+  "name": "X · Scene Name — Subtitle",
+  "navName": "ShortName",
+  "order": 1,
+  "sqW": 30,
+  "sqH": 24,
+  "bg": "#0c0a08",
+  "brief": "Tactical brief: layout, NPCs, hazards, teaching moment.",
+  "walls": [
+    {
+      "_comment": "Perimeter walls [x1, y1, x2, y2]. move=1 blocks movement, sight=1 blocks vision.",
+      "c": [0, 0, 3000, 0],
+      "move": 1,
+      "sight": 1
+    }
+  ],
+  "lights": [
+    {
+      "_comment": "Ambient light: x, y, dim radius px, bright radius px, angle degrees, color hex, animation type.",
+      "x": 1500,
+      "y": 1200,
+      "dim": 30,
+      "bright": 20,
+      "angle": 360,
+      "color": "#ff6600",
+      "animation": "torch"
+    }
+  ]
+}

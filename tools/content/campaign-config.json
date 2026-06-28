@@ -1,0 +1,55 @@
+{
+  "_comment": "Campaign scaling & mechanics config. Tweak these for difficulty, pacing, loot balance.",
+  "campaign_name": "Ashen of Lothric (DS3 One-Shot)",
+  "version": "0.1.0",
+  
+  "scaling": {
+    "hp_multiplier": 1.0,
+    "_comment_hp": "1.0 = baseline, 1.2 = +20% toughness (for deadly difficulty)",
+    
+    "loot_multiplier": 1.0,
+    "_comment_loot": "1.0 = baseline, 0.8 = leaner, 1.3 = generous",
+    
+    "soul_base": 100,
+    "_comment_soul": "Base souls per encounter. Adjusted by CR/level dynamically."
+  },
+  
+  "mechanics": {
+    "turn_limit": 10,
+    "_comment_turn": "Encounter ends in X turns if undecided. Forces decisive play.",
+    
+    "frostbite_threshold": 3,
+    "_comment_frost": "Frostbite exhaustion at 3 stacks. Use for Outrider/Vordt.",
+    
+    "kindle_bonus": 10,
+    "_comment_kindle": "Temp HP from Kindle. Flat +10, or adjust for party size.",
+    
+    "critical_death_threshold": 0,
+    "_comment_critical": "Teaching deaths occur at this damage threshold. 0 = instant, 5 = at -5 HP."
+  },
+  
+  "pacing": {
+    "session_minutes": 360,
+    "_comment_session": "Total planned session (4-6 hrs = 240-360 min).",
+    
+    "encounter_count": 8,
+    "_comment_encounter": "Total main encounters. 8 for one-shot, adjust for campaign.",
+    
+    "rest_frequency": "short",
+    "_comment_rest": "short = between encounters, long = hub only. Affects attrition."
+  },
+  
+  "theme_colors": {
+    "primary": "#0c0a08",
+    "_comment_primary": "DS3 dark grey. Swap for campaign theme (e.g. '#e6d5c3' for light temple).",
+    
+    "accent_fire": "#ff6600",
+    "_comment_fire": "Warm fire glow. Theme-specific.",
+    
+    "accent_frost": "#bbddff",
+    "_comment_frost": "Cool frost glow. Theme-specific.",
+    
+    "accent_lightning": "#ffdd44",
+    "_comment_lightning": "Lightning glow. Theme-specific."
+  }
+}

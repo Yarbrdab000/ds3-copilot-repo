@@ -51,11 +51,227 @@
   "fogExploredColor": "#000000",
   "drawings": [],
   "tokens": [],
-  "lights": [],
+  "lights": [
+    {
+      "x": 1800,
+      "y": 1400,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "light": {
+        "dim": 25,
+        "bright": 15,
+        "angle": 360,
+        "color": "#ffbb66",
+        "intensity": 0.8,
+        "alpha": 1,
+        "animation": "torch",
+        "shadow": 0
+      }
+    },
+    {
+      "x": 2800,
+      "y": 900,
+      "rotation": 0,
+      "alpha": 1,
+      "hidden": false,
+      "light": {
+        "dim": 20,
+        "bright": 12,
+        "angle": 360,
+        "color": "#ffbb66",
+        "intensity": 0.8,
+        "alpha": 1,
+        "animation": "none",
+        "shadow": 0
+      }
+    }
+  ],
   "notes": [],
   "sounds": [],
   "templates": [],
   "tiles": [],
-  "walls": [],
+  "walls": [
+    {
+      "c": [
+        0,
+        0,
+        3600,
+        0
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        3600,
+        0,
+        3600,
+        2800
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        3600,
+        2800,
+        0,
+        2800
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        0,
+        2800,
+        0,
+        0
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        800,
+        400,
+        900,
+        600
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1100,
+        400,
+        1200,
+        600
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1200,
+        1200,
+        1400,
+        1200
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        2000,
+        1000,
+        2200,
+        1100
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1600,
+        1600,
+        1800,
+        1700
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        2400,
+        1400,
+        2600,
+        1500
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        200,
+        600,
+        800,
+        700
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    },
+    {
+      "c": [
+        1800,
+        500,
+        2400,
+        600
+      ],
+      "move": 1,
+      "sight": 1,
+      "sound": 0,
+      "type": "light",
+      "dir": 0,
+      "door": 0,
+      "ds": 0
+    }
+  ],
   "regions": []
 }
