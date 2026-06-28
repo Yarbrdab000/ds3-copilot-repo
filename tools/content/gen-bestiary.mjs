@@ -170,7 +170,7 @@ const ACTORS = [
       attack({ name: "Grab", n: 1, d: 10, bonus: 4, types: [BL], reach: 15 }),
       attack({ name: "Ground Slam", n: 3, d: 8, bonus: 0, types: [BL], reach: 10 })
     ] }),
-  npc({ name: "Outrider Knight", img: "icons/creatures/magical/spirit-undead-armored-blue.webp", ac: 17, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "med", walk: 40,
+  npc({ name: "Outrider Knight", img: "modules/ashen-of-lothric/tokens/outrider-knight.png", ac: 17, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "med", walk: 40,
     str: 16, dex: 16, con: 14, ctype: "undead",
     bioHtml: card("Fast, relentless duel that PUNISHES passivity (Teaching Death #3). <strong>Anti-turtle:</strong> if no PC damaged it last round, it gains an extra action this round. Frost claws build Frostbite.",
       ["<strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.", "<strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; unblockable (a charge \u2014 don't try to wall it).", "<strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive."],
@@ -200,7 +200,7 @@ const ACTORS = [
       attack({ name: "Claw", n: 3, d: 8, bonus: 5, types: [SL], reach: 10 }),
       attack({ name: "Tail Sweep", n: 3, d: 10, bonus: 5, types: [BL], reach: 10 })
     ] }),
-  npc({ name: "Vordt of the Boreal Valley", img: "icons/skills/melee/strike-weapon-polearm-ice-blue.webp", ac: 18, ...bossHP(6, "vordt"), cr: 6, souls: 3000, role: "major-boss", size: "lg", walk: 40, legact: 3,
+  npc({ name: "Vordt of the Boreal Valley", img: "modules/ashen-of-lothric/tokens/vordt.png", ac: 18, ...bossHP(6, "vordt"), cr: 6, souls: 3000, role: "major-boss", size: "lg", walk: 40, legact: 3,
     str: 20, dex: 11, con: 15, ctype: "monstrosity", vuln: [FIRE, "lightning"],
     bioHtml: card("The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2\u20133 legendary actions.",
       ["<strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; blockable but chips hard (heavy).", "<strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.", "<strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on; unblockable (charge).", "<strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.", "<strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1."],
