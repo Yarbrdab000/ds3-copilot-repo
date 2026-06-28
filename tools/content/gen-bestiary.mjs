@@ -155,36 +155,63 @@ const ACTORS = [
     bioHtml: card("First major boss; the forgiving teacher. <strong>Be generous.</strong> At 0 HP he does NOT die \u2014 the Pus of Man erupts (deploy the <em>Pus of Man (Gundyr Eruption)</em> actor). 2 legendary actions: halberd jab 1d10+4; 5-ft reposition.",
       ["<strong>Overhead Chop</strong> (2d10+4): parry ADV W3 \u2014 the move that teaches parry.", "<strong>Wide Sweep</strong> (arc 2d10+4): dodge ADV W2; unparryable.", "<strong>Thrust Lunge</strong> (reach 2d10+4): dodge/parry ADV W2.", "<strong>Shield Kick</strong> (1d8+4, push): unparryable &amp; unblockable \u2014 it exists to punish turtling; dodge W2."],
       "(1) overhead hangs before it falls \u2192 parry it; (2) the sweep can only be slipped under; (3) his shield-bash can't be blocked or parried \u2014 don't raise your guard, just step out of it; (4) when he 'dies', he doesn't \u2014 keep a flask.") ,
-    attacks: [attack({ name: "Halberd Chop", n: 2, d: 10, bonus: 4, types: [SL], reach: 10 })] }),
+    attacks: [
+      attack({ name: "Overhead Chop", n: 2, d: 10, bonus: 4, types: [SL], reach: 10 }),
+      attack({ name: "Wide Sweep", n: 2, d: 10, bonus: 4, types: [SL], reach: 10 }),
+      attack({ name: "Thrust Lunge", n: 2, d: 10, bonus: 4, types: [PI], reach: 10 }),
+      attack({ name: "Shield Kick", n: 1, d: 8, bonus: 4, types: [BL], reach: 5 })
+    ] }),
   npc({ name: "Pus of Man (Gundyr Eruption)", img: "icons/creatures/tentacles/tentacles-thorned-purple.webp", ac: 15, ...bossHP(3, "act1"), cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
     str: 18, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("Phase 2 of Gundyr \u2014 the black tendril-mass. Souls roll into Gundyr's 2,500. <strong>Vulnerable to fire.</strong> This is Teaching Death #1 against a relieved, low-Estus party.",
       ["<strong>Tendril Multi-lash</strong> (up to 3 PCs, 2d8+4 each): dodge ADV W2; unparryable.", "<strong>Grab</strong> (1d10 + grappled 2d6/rd, escape DC 14): dodge EARLY on W1; un-block/parry.", "<strong>Ground Slam</strong> (10-ft burst 3d8 + prone): dodge out on W1; punishes clustering."]),
-    attacks: [attack({ name: "Tendril Lash", n: 2, d: 8, bonus: 4, types: [BL], reach: 15 })] }),
+    attacks: [
+      attack({ name: "Tendril Multi-lash", n: 2, d: 8, bonus: 4, types: [BL], reach: 15 }),
+      attack({ name: "Grab", n: 1, d: 10, bonus: 4, types: [BL], reach: 15 }),
+      attack({ name: "Ground Slam", n: 3, d: 8, bonus: 0, types: [BL], reach: 10 })
+    ] }),
   npc({ name: "Outrider Knight", img: "icons/creatures/magical/spirit-undead-armored-blue.webp", ac: 17, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "med", walk: 40,
     str: 16, dex: 16, con: 14, ctype: "undead",
     bioHtml: card("Fast, relentless duel that PUNISHES passivity (Teaching Death #3). <strong>Anti-turtle:</strong> if no PC damaged it last round, it gains an extra action this round. Frost claws build Frostbite.",
       ["<strong>Triple Claw Combo</strong> (3 x 1d8+3 + Frostbite): dodge ADV W2; parry ADV only on W3.", "<strong>Frost Lunge</strong> (40-ft gap-closer, 2d8+3): sidestep the LINE on W1; undodgeable head-on; unblockable (a charge \u2014 don't try to wall it).", "<strong>Pounce</strong> (turtle punish, 2d10+3 + prone): only when the party went passive."],
       "(1) standing still feeds it; (2) the triple-swipe over-commits on the last claw; (3) cut sideways out of its charge lane.") ,
-    attacks: [attack({ name: "Frost Claw", n: 1, d: 8, bonus: 3, types: [SL], ability: "dex" })] }),
+    attacks: [
+      attack({ name: "Triple Claw Combo", n: 1, d: 8, bonus: 3, types: [SL], ability: "dex", reach: 5 }),
+      attack({ name: "Frost Lunge", n: 2, d: 8, bonus: 3, types: [SL], ability: "dex", reach: 40 }),
+      attack({ name: "Pounce", n: 2, d: 10, bonus: 3, types: [BL], reach: 5 })
+    ] }),
   npc({ name: "Pus of Man (High Wall)", img: "icons/creatures/tentacles/tentacles-suctioncups-pink.webp", ac: 14, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "lg", reach: 15,
     str: 17, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("A 'dead' hollow on the wall bursts into an abomination as the party passes. <strong>Vulnerable to fire (takes double)</strong> \u2014 a firebomb or pyromancer roughly halves the fight.",
       ["<strong>Whipping Tendrils</strong> (up to 2 PCs, 2d6+3): dodge ADV W2; unparryable.", "<strong>Lunge Bite</strong> (2d8+3): parry ADV W2 \u2014 a clean, committed lunge.", "<strong>Black Spew</strong> (15-ft cone 3d6 poison + reduced healing): dodge out on W1; unparryable."],
       "One rung is enough: fire makes it scream and shrivel.") ,
-    attacks: [attack({ name: "Lunge Bite", n: 2, d: 8, bonus: 3, types: [PI], reach: 15 })] }),
+    attacks: [
+      attack({ name: "Whipping Tendrils", n: 2, d: 6, bonus: 3, types: [BL], reach: 15 }),
+      attack({ name: "Lunge Bite", n: 2, d: 8, bonus: 3, types: [PI], reach: 15 }),
+      attack({ name: "Black Spew", n: 3, d: 6, bonus: 0, types: ["poison"], reach: 15 })
+    ] }),
   npc({ name: "The Dragon", img: "icons/creatures/reptiles/dragon-fire-breathing-orange.webp", ac: 18, ...bossHP(5.5, "dragon"), cr: 8, souls: 4000, role: "secret-boss", size: "huge", walk: 40, fly: 80,
     str: 23, dex: 12, con: 19, ctype: "dragon",
     bioHtml: card("Optional, killable secret boss on the rampart \u2014 visible the whole time. Teaching Death #2: charging the open bridge = incineration. <strong>Three paths:</strong> (A) bypass via cover; (B) flank ~50 dmg in the dead zone \u2192 it flies to a new visible perch; (C) chase &amp; kill for the full reward + unique drop. Souls 3,000\u20134,000 (path C only).",
       ["<strong>Fire Breath</strong> (bridge rake, 4d8 fire): unblock/parry/dodge in the open \u2014 the ONLY answer is COVER. The dead zone beneath/behind it is safe.", "<strong>Tail Sweep</strong> (dead-zone, arc 3d10 + prone): dodge ADV W2; unparryable.", "<strong>Claw &amp; Bite</strong> (3d8+5): the bite (W3) is parryable \u2014 staggers a dragon."],
       "(1) the open bridge is a killing field; (2) the fire comes in waves \u2014 advance in the lulls; (3) beneath/behind it the flame can't reach, but mind the tail.") ,
-    attacks: [attack({ name: "Fire Breath (4d8, Dex save)", n: 4, d: 8, bonus: 0, types: [FIRE], ranged: true, range: [60, 60] }), attack({ name: "Claw", n: 3, d: 8, bonus: 5, types: [SL], reach: 10 })] }),
+    attacks: [
+      attack({ name: "Fire Breath (4d8, Dex save)", n: 4, d: 8, bonus: 0, types: [FIRE], ranged: true, range: [60, 60] }),
+      attack({ name: "Claw", n: 3, d: 8, bonus: 5, types: [SL], reach: 10 }),
+      attack({ name: "Tail Sweep", n: 3, d: 10, bonus: 5, types: [BL], reach: 10 })
+    ] }),
   npc({ name: "Vordt of the Boreal Valley", img: "icons/skills/melee/strike-weapon-polearm-ice-blue.webp", ac: 18, ...bossHP(6, "vordt"), cr: 6, souls: 3000, role: "major-boss", size: "lg", walk: 40, legact: 3,
     str: 20, dex: 11, con: 15, ctype: "monstrosity", vuln: [FIRE, "lightning"],
     bioHtml: card("The climax and final exam. <strong>Vulnerable to fire and thunder/lightning</strong> (frost-brittle joints). Builds Frostbite on frost hits. <strong>Phase 2 at 50% HP</strong> (Teaching Death #4): frenzy, cold aura (end turn within 10 ft = 1 Frostbite), adds Frostbreath Cone and Grab-Leap. 2\u20133 legendary actions.",
       ["<strong>Overhead Mace Smash</strong> (2d8+5): parry ADV W3; blockable but chips hard (heavy).", "<strong>Wide Sweep</strong> (arc 2d8+5 + Frostbite): dodge ADV W2; unparryable.", "<strong>Frost Charge</strong> (line 3d8+5 + heavy Frostbite + prone): sidestep the lane W1; undodgeable head-on; unblockable (charge).", "<strong>P2 Frostbreath Cone</strong> (20-ft 3d8 cold + 2 Frostbite): dodge out W1.", "<strong>P2 Grab-Leap</strong> (3d10 + prone + 2 Frostbite): dodge on the read W1."],
       "(1) the cold builds \u2014 don't huddle near him; (2) break sideways out of his charge, then punish the overhead; (3) fire and lightning crack his frozen joints.") ,
-    attacks: [attack({ name: "Great Mace", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 })] }),
+    attacks: [
+      attack({ name: "Overhead Mace Smash", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 }),
+      attack({ name: "Wide Sweep", n: 2, d: 8, bonus: 5, types: [BL], reach: 10 }),
+      attack({ name: "Frost Charge", n: 3, d: 8, bonus: 5, types: [BL], reach: 10 }),
+      attack({ name: "Frostbreath Cone", n: 3, d: 8, bonus: 0, types: ["cold"], reach: 20 }),
+      attack({ name: "Grab-Leap", n: 3, d: 10, bonus: 5, types: [BL], reach: 10 })
+    ] }),
 
   // ───── Firelink Shrine NPCs (friendly / service) ─────
   npc({ name: "Fire Keeper", img: "icons/magic/fire/flame-burning-women-blue.webp", ac: 12, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 0, role: "service-npc", disposition: 1,
