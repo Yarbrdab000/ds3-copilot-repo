@@ -150,7 +150,7 @@ const ACTORS = [
     attacks: [attack({ name: "Pounce", n: 1, d: 6, bonus: 2, types: [PI], ability: "dex" })] }),
 
   // ───── Bosses / minis (6) ─────
-  npc({ name: "Iudex Gundyr", img: "icons/skills/melee/strike-weapon-polearm-blood-red.webp", ac: 16, ...bossHP(3.4, "act1"), cr: 5, souls: 2500, role: "major-boss", size: "lg", legact: 2,
+  npc({ name: "Iudex Gundyr", img: "modules/ashen-of-lothric/tokens/iudex-gundyr.png", ac: 16, ...bossHP(3.4, "act1"), cr: 5, souls: 2500, role: "major-boss", size: "lg", legact: 2,
     str: 18, dex: 12, con: 15, ctype: "undead",
     bioHtml: card("First major boss; the forgiving teacher. <strong>Be generous.</strong> At 0 HP he does NOT die \u2014 the Pus of Man erupts (deploy the <em>Pus of Man (Gundyr Eruption)</em> actor). 2 legendary actions: halberd jab 1d10+4; 5-ft reposition.",
       ["<strong>Overhead Chop</strong> (2d10+4): parry ADV W3 \u2014 the move that teaches parry.", "<strong>Wide Sweep</strong> (arc 2d10+4): dodge ADV W2; unparryable.", "<strong>Thrust Lunge</strong> (reach 2d10+4): dodge/parry ADV W2.", "<strong>Shield Kick</strong> (1d8+4, push): unparryable &amp; unblockable \u2014 it exists to punish turtling; dodge W2."],
