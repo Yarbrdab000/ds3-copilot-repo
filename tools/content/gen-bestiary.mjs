@@ -161,7 +161,7 @@ const ACTORS = [
       attack({ name: "Thrust Lunge", n: 2, d: 10, bonus: 4, types: [PI], reach: 10 }),
       attack({ name: "Shield Kick", n: 1, d: 8, bonus: 4, types: [BL], reach: 5 })
     ] }),
-  npc({ name: "Pus of Man (Gundyr Eruption)", img: "icons/creatures/tentacles/tentacles-thorned-purple.webp", ac: 15, ...bossHP(3, "act1"), cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
+  npc({ name: "Pus of Man (Gundyr Eruption)", img: "modules/ashen-of-lothric/tokens/pus-of-man-gundyr.png", ac: 15, ...bossHP(3, "act1"), cr: 5, souls: 0, role: "major-boss-p2", size: "lg", reach: 15,
     str: 18, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("Phase 2 of Gundyr \u2014 the black tendril-mass. Souls roll into Gundyr's 2,500. <strong>Vulnerable to fire.</strong> This is Teaching Death #1 against a relieved, low-Estus party.",
       ["<strong>Tendril Multi-lash</strong> (up to 3 PCs, 2d8+4 each): dodge ADV W2; unparryable.", "<strong>Grab</strong> (1d10 + grappled 2d6/rd, escape DC 14): dodge EARLY on W1; un-block/parry.", "<strong>Ground Slam</strong> (10-ft burst 3d8 + prone): dodge out on W1; punishes clustering."]),
