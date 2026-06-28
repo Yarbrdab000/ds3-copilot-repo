@@ -1,0 +1,131 @@
+{
+  "id": "ashen-of-lothric",
+  "title": "Ashen — A Dark Souls III One-Shot",
+  "description": "A 4–6 hour Dark Souls III–themed D&D 5e one-shot for 3–6 players. Awaken in the Cemetery of Ash, fall to Iudex Gundyr, rest at Firelink Shrine, and climb the High Wall of Lothric to face Vordt of the Boreal Valley. Includes a Soulslike rules layer (bonfires, Estus, shared souls, the death-loop) and a windowed dodge/parry/block defense system. Original fan content; D&D mechanics use SRD 5.1 only.",
+  "version": "0.1.0",
+  "url": "https://github.com/Yarbrdab000/ashen-of-lothric",
+  "manifest": "https://github.com/Yarbrdab000/ashen-of-lothric/releases/latest/download/module.json",
+  "download": "https://github.com/Yarbrdab000/ashen-of-lothric/releases/latest/download/ashen-of-lothric.zip",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Ashen One-Shot Team"
+    }
+  ],
+  "esmodules": [
+    "scripts/ashen.mjs"
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "4.4.0",
+          "verified": "5.3.3"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "actors-pcs",
+      "label": "Ashen: Pregen Characters",
+      "path": "packs/actors-pcs",
+      "type": "Actor",
+      "system": "dnd5e",
+      "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "actors-bestiary",
+      "label": "Ashen: Bestiary",
+      "path": "packs/actors-bestiary",
+      "type": "Actor",
+      "system": "dnd5e",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "items-gear",
+      "label": "Ashen: Gear & Items",
+      "path": "packs/items-gear",
+      "type": "Item",
+      "system": "dnd5e"
+    },
+    {
+      "name": "items-spells",
+      "label": "Ashen: Sorceries, Miracles & Pyromancies",
+      "path": "packs/items-spells",
+      "type": "Item",
+      "system": "dnd5e"
+    },
+    {
+      "name": "items-levels",
+      "label": "Ashen: Level-Up Menu Effects",
+      "path": "packs/items-levels",
+      "type": "Item",
+      "system": "dnd5e"
+    },
+    {
+      "name": "journals-rules",
+      "label": "Ashen: Rules Bible",
+      "path": "packs/journals-rules",
+      "type": "JournalEntry"
+    },
+    {
+      "name": "journals-handbook",
+      "label": "Ashen: DM Handbook & Codex",
+      "path": "packs/journals-handbook",
+      "type": "JournalEntry",
+      "ownership": { "PLAYER": "NONE", "ASSISTANT": "OWNER" }
+    },
+    {
+      "name": "journals-handouts",
+      "label": "Ashen: Player Handouts",
+      "path": "packs/journals-handouts",
+      "type": "JournalEntry"
+    },
+    {
+      "name": "scenes",
+      "label": "Ashen: Scenes & Maps",
+      "path": "packs/scenes",
+      "type": "Scene"
+    },
+    {
+      "name": "tables",
+      "label": "Ashen: Roll Tables",
+      "path": "packs/tables",
+      "type": "RollTable"
+    },
+    {
+      "name": "macros",
+      "label": "Ashen: Macros & Trackers",
+      "path": "packs/macros",
+      "type": "Macro"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Ashen — A Dark Souls III One-Shot",
+      "sorting": "m",
+      "packs": [
+        "journals-rules",
+        "journals-handbook",
+        "journals-handouts",
+        "actors-pcs",
+        "actors-bestiary",
+        "items-gear",
+        "items-spells",
+        "items-levels",
+        "scenes",
+        "tables",
+        "macros"
+      ]
+    }
+  ],
+  "license": "LICENSE",
+  "readme": "README.md"
+}
