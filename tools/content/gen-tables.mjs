@@ -54,18 +54,40 @@ const TABLES = [
     ]),
 
   table("Loot \u2014 Weapon Find", "icons/weapons/swords/sword-guard-purple.webp",
-    "<p>Which weapon dropped? All live in the Ashen gear compendium.</p>",
+    "<p>Which weapon dropped? All live in the Ashen gear compendium \u2014 drag the named one. Pick the closest fit to the finder's class if the table is kinder than the build.</p>",
     [
-      [1, 1, "<strong>Longsword</strong>"],
-      [2, 2, "<strong>Greataxe</strong>"],
-      [3, 3, "<strong>Scimitar</strong>"],
-      [4, 4, "<strong>Spear</strong>"],
-      [5, 5, "<strong>Estoc</strong>"],
-      [6, 6, "<strong>Mace</strong>"],
-      [7, 7, "<strong>Dagger</strong>"],
-      [8, 8, "<strong>Light Crossbow</strong>"],
-      [9, 9, "<strong>Shortbow</strong>"],
-      [10, 10, "<strong>Club</strong> (the joke drop \u2014 unless you're the Deprived)."]
+      [1, 1, "<strong>Longsword</strong> / <strong>Broadsword</strong>"],
+      [2, 2, "<strong>Lothric Knight Sword</strong> (uncommon, quality)"],
+      [3, 3, "<strong>Claymore</strong> or <strong>Bastard Sword</strong> (greatsword)"],
+      [4, 4, "<strong>Zweihander</strong> / <strong>Astora Greatsword</strong> (ultra)"],
+      [5, 5, "<strong>Scimitar</strong> / <strong>Falchion</strong> (curved)"],
+      [6, 6, "<strong>Rapier</strong> / <strong>Estoc</strong> (thrusting)"],
+      [7, 7, "<strong>Battle Axe</strong> / <strong>Hand Axe</strong>"],
+      [8, 8, "<strong>Halberd</strong> or <strong>Glaive</strong> (reach)"],
+      [9, 9, "<strong>Partizan</strong> / <strong>Winged Spear</strong>"],
+      [10, 10, "<strong>Mace</strong> / <strong>Morning Star</strong>"],
+      [11, 11, "<strong>Great Mace</strong> / <strong>Large Club</strong> (great hammer)"],
+      [12, 12, "<strong>Dragonslayer Greataxe</strong> / <strong>Yhorm's Machete</strong>"],
+      [13, 13, "<strong>Bandit's Knife</strong> / <strong>Dagger</strong>"],
+      [14, 14, "<strong>Long Bow</strong> / <strong>Composite Bow</strong>"],
+      [15, 15, "<strong>Heavy Crossbow</strong> / <strong>Arbalest</strong>"],
+      [16, 16, "<strong>Dark Sword</strong> (uncommon)"],
+      [17, 17, "<strong>Sunlight Straight Sword</strong> (uncommon)"],
+      [18, 18, "<strong>Pontiff Knight Curved Sword</strong> (uncommon)"],
+      [19, 19, "<strong>Washing Pole</strong> / <strong>Black Blade</strong> (katana)"],
+      [20, 20, "<strong>Uchigatana</strong> or <strong>Ricard's Rapier</strong> (rare prize)"]
+    ]),
+
+  table("Loot \u2014 Shield Find", "icons/equipment/shield/heater-steel-segmented-grey.webp",
+    "<p>Which shield turned up? Each has a different Block profile (see its card) \u2014 match it to the threat ahead.</p>",
+    [
+      [1, 2, "<strong>Kite Shield</strong> \u2014 balanced all-rounder."],
+      [3, 3, "<strong>Grass Crest Shield</strong> \u2014 light, parry-leaning."],
+      [4, 4, "<strong>Spider Shield</strong> \u2014 near-immune to poison."],
+      [5, 5, "<strong>Dragon Crest Shield</strong> \u2014 eats fire."],
+      [6, 6, "<strong>Frost-Ward Shield</strong> \u2014 stops cold cold."],
+      [7, 7, "<strong>Black Knight Shield</strong> \u2014 high fire & physical."],
+      [8, 8, "<strong>Silver Knight Shield</strong> \u2014 100% physical, strong lightning."]
     ]),
 
   table("Loot \u2014 Catalyst Find", "icons/weapons/staves/staff-simple-gold.webp",
@@ -77,29 +99,30 @@ const TABLES = [
     ]),
 
   table("Loot \u2014 Mini-boss (Outrider / Pus of Man)", "icons/creatures/abilities/mouth-teeth-rows-red.webp",
-    "<p>Mini-boss kill. <strong>Souls: 1,000 (fixed)</strong> \u2014 plus a guaranteed bonus drop below.</p>",
+    "<p>Mini-boss kill. <strong>Souls: 1,000 (fixed)</strong> \u2014 plus a guaranteed drop. The Outrider always yields its armor; otherwise roll below.</p>",
     [
-      [1, 2, "<strong>Titanite Chunk</strong> \u00d71."],
+      [1, 1, "<strong>Outrider Knight Armor</strong> (unique, medium) \u2014 guaranteed off the Outrider; else Titanite Chunk \u00d72."],
+      [2, 2, "<strong>Titanite Chunk</strong> \u00d71."],
       [3, 3, "<strong>Ember</strong> \u00d71."],
       [4, 4, "<strong>Estus Shard</strong> \u00d71."],
       [5, 5, "A catalyst \u2014 roll on <em>Loot \u2014 Catalyst Find</em>."],
-      [6, 6, "<strong>Titanite Chunk</strong> \u00d72 (a fat haul)."]
+      [6, 6, "<strong>Lothric Knight Greatshield</strong> (unique) \u2014 drops if a Lothric Knight elite was the kill."]
     ]),
 
   table("Loot \u2014 Major Boss (Gundyr / Vordt)", "icons/skills/melee/strike-weapon-polearm-ice-blue.webp",
-    "<p>Major boss kill. Rewards are mostly fixed; roll 1d4 for a bonus material.</p><p><strong>Iudex Gundyr:</strong> 2,500 souls + the <em>Coiled Sword Fragment</em> (lore key). <strong>Vordt:</strong> 3,000 souls + the <em>Soul of Vordt</em> (trade to Andre/Handmaid for a unique upgrade or 3,000 souls).</p>",
+    "<p>Major boss kill. The signature weapon is guaranteed; roll 1d4 for a bonus material.</p><p><strong>Iudex Gundyr:</strong> 2,500 souls + <strong>Halberd of the Champion</strong> (unique). <strong>Vordt:</strong> 3,000 souls + <strong>Vordt's Great Hammer</strong> (unique). Drag the named weapon from the gear compendium, then roll below.</p>",
     [
       [1, 2, "Bonus: <strong>Titanite Chunk</strong> \u00d72."],
       [3, 3, "Bonus: <strong>Ember</strong> \u00d72."],
-      [4, 4, "Bonus: <strong>Twinkling Titanite</strong> \u00d71 (rare \u2014 a unique/legendary upgrade material)."]
+      [4, 4, "Bonus: <strong>Twinkling Titanite</strong> \u00d71 (rare \u2014 ascend the unique drop here)."]
     ]),
 
   table("Loot \u2014 Dragon Hoard (secret, path C only)", "icons/creatures/reptiles/dragon-fire-breathing-orange.webp",
-    "<p>Only if the party <em>hunts and kills</em> the bridge dragon. <strong>Souls: 3,000\u20134,000 (fixed)</strong> \u2014 about a level. Then roll for the unique hoard:</p>",
+    "<p>Only if the party <em>hunts and kills</em> the bridge dragon. <strong>Souls: 3,000\u20134,000 (fixed)</strong> \u2014 plus the <strong>Drakeblood Greatsword</strong> (unique, guaranteed). Then roll for the rest of the hoard:</p>",
     [
       [1, 2, "<strong>Titanite Chunk</strong> \u00d73 \u2014 enough to push a weapon or the Pyromancy Flame up a tier."],
       [3, 4, "<strong>Ember</strong> \u00d72 and <strong>Twinkling Titanite</strong> \u00d71."],
-      [5, 5, "<strong>Drake's Catalyst</strong> \u2014 a found catalyst (roll <em>Catalyst Find</em>) that comes pre-upgraded (+1 spell damage)."],
+      [5, 5, "<strong>Drake's Catalyst</strong> \u2014 a unique pre-upgraded catalyst (+1 spell attack & damage)."],
       [6, 6, "<strong>Jackpot:</strong> all of the above, plus a second <strong>Estus Shard</strong>."]
     ]),
 

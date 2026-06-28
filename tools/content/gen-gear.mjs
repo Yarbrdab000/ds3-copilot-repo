@@ -54,7 +54,7 @@ function attackActivity(kind) {
   };
 }
 
-function weapon({ name, img, wtype, baseItem, n, d, dtypes, props = [], versatile = null, range = null, scaleStat, scaleAbil, grade, upgrade = 0, flavor }) {
+function weapon({ name, img, wtype, baseItem, n, d, dtypes, props = [], versatile = null, range = null, scaleStat, scaleAbil, grade, upgrade = 0, flavor, rarity = "", perk = "" }) {
   const acts = attackActivity(range ? "ranged" : "melee");
   acts.dnd5eactivity000.attack.ability = scaleAbil;
   acts.dnd5eactivity000.attack.bonus = upgrade ? String(upgrade) : "";
@@ -65,14 +65,15 @@ function weapon({ name, img, wtype, baseItem, n, d, dtypes, props = [], versatil
       custom: { enabled: false, formula: "" }, scaling: { mode: "", number: null, formula: "" } }]
   };
   const versNote = versatile ? `<p><strong>Two-handed:</strong> ${versatile[0]}d${versatile[1]} instead.</p>` : "";
+  const perkNote = perk ? `<p><strong>Unique:</strong> ${perk}</p>` : "";
   return {
     name, type: "weapon", img, effects: [],
-    flags: { ashen: { scaling: { stat: scaleStat, ability: scaleAbil, grade, factor: FACTOR[grade] }, upgrade } },
+    flags: { ashen: { scaling: { stat: scaleStat, ability: scaleAbil, grade, factor: FACTOR[grade] }, upgrade, unique: !!perk } },
     system: {
-      description: { value: `<p><em>${flavor}</em></p>${versNote}${scalingBlock({ scaleStat, grade, upgrade })}`, chat: "" },
+      description: { value: `<p><em>${flavor}</em></p>${perkNote}${versNote}${scalingBlock({ scaleStat, grade, upgrade })}`, chat: "" },
       source: source("DS3 weapon"),
       quantity: 1, weight: { value: 3, units: "lb" }, price: { value: 0, denomination: "gp" },
-      attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
+      attunement: "", equipped: false, rarity, identified: true, container: null, crewed: false,
       range: range ? { value: String(range[0]), long: String(range[1]), units: "ft", reach: null }
                     : { value: null, long: null, units: "ft", reach: null },
       uses: { max: "", recovery: [], spent: 0 },
@@ -104,15 +105,16 @@ function blockTable(block) {
   );
 }
 
-function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, damageReduction = 0, flavor, block = null }) {
+function armor({ name, img, atype, ac, dex = null, props = [], strength = null, stealth = false, damageReduction = 0, flavor, block = null, rarity = "", perk = "" }) {
   const dmgNote = damageReduction > 0 ? `<p><strong>Armor reduction:</strong> incoming damage reduced by <strong>${damageReduction}</strong> (minimum 1 damage).</p>` : "";
+  const perkNote = perk ? `<p><strong>Unique:</strong> ${perk}</p>` : "";
   return {
-    name, type: "equipment", img, effects: [], flags: block || damageReduction > 0 ? { ashen: { block, damageReduction } } : {},
+    name, type: "equipment", img, effects: [], flags: block || damageReduction > 0 ? { ashen: { block, damageReduction, unique: !!perk } } : {},
     system: {
-      description: { value: `<p><em>${flavor}</em></p>${dmgNote}${block ? blockTable(block) : ""}`, chat: "" },
+      description: { value: `<p><em>${flavor}</em></p>${perkNote}${dmgNote}${block ? blockTable(block) : ""}`, chat: "" },
       source: source("DS3 armor"),
       quantity: 1, weight: { value: 20, units: "lb" }, price: { value: 0, denomination: "gp" },
-      attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
+      attunement: "", equipped: false, rarity, identified: true, container: null, crewed: false,
       armor: { value: ac, dex, magicalBonus: null },
       type: { value: atype, baseItem: "" },
       properties: stealth ? ["stealthDisadvantage", ...props] : props,
@@ -125,20 +127,22 @@ function armor({ name, img, atype, ac, dex = null, props = [], strength = null, 
   };
 }
 
-function focus({ name, img, schoolText, scaleStat, grade, flavor }) {
+function focus({ name, img, schoolText, scaleStat, grade, flavor, upgrade = 0, rarity = "", perk = "" }) {
   const [v2, v3, v4, v5] = scalingValues(grade);
   const scaleNote =
     `<hr><p><strong>Catalyst Scaling:</strong> ${scaleStat} &mdash; Grade ${grade}. ` +
     `Add this to each spell's damage/healing based on your ${scaleStat} modifier &mdash; ` +
     `<strong>+2:</strong> ${v2} &nbsp; <strong>+3:</strong> ${v3} &nbsp; <strong>+4:</strong> ${v4} &nbsp; <strong>+5:</strong> ${v5}.</p>`;
+  const upNote = upgrade ? `<p><strong>Reinforced +${upgrade}:</strong> add +${upgrade} to spell attack and spell damage.</p>` : "";
+  const perkNote = perk ? `<p><strong>Unique:</strong> ${perk}</p>` : "";
   return {
     name, type: "equipment", img, effects: [],
-    flags: { ashen: { catalyst: true, scaling: { stat: scaleStat, grade, factor: FACTOR[grade] } } },
+    flags: { ashen: { catalyst: true, scaling: { stat: scaleStat, grade, factor: FACTOR[grade] }, upgrade, unique: !!perk } },
     system: {
-      description: { value: `<p><em>${flavor}</em></p><p><strong>Spellcasting focus:</strong> ${schoolText}</p>${scaleNote}`, chat: "" },
+      description: { value: `<p><em>${flavor}</em></p><p><strong>Spellcasting focus:</strong> ${schoolText}</p>${perkNote}${upNote}${scaleNote}`, chat: "" },
       source: source("DS3 catalyst"),
       quantity: 1, weight: { value: 2, units: "lb" }, price: { value: 0, denomination: "gp" },
-      attunement: "", equipped: false, rarity: "", identified: true, container: null, crewed: false,
+      attunement: "", equipped: false, rarity, identified: true, container: null, crewed: false,
       armor: { value: null, dex: null, magicalBonus: null },
       type: { value: "trinket", baseItem: "" },
       properties: ["foc"],
@@ -286,11 +290,96 @@ const FOCI = [
   focus({ name: "Pyromancy Flame", img: "icons/magic/fire/flame-burning-hand-orange.webp", schoolText: "channels Pyromancies (scales with the higher of Intelligence or Faith).", scaleStat: "Int/Faith", grade: "B", flavor: "A smoldering glove cradling living flame; Andre tempers it with titanite." })
 ];
 
+// ── Unique drops: bosses and the secret dragon drop these. They are the "ooh, a new toy" rewards. ──
+const UNIQUES = [
+  weapon({ name: "Halberd of the Champion", img: "icons/weapons/polearms/halberd-crescent-engraved-steel.webp", wtype: "martialM", baseItem: "halberd", n: 1, d: 10, dtypes: [SL, PI], props: ["hvy", "rch", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", upgrade: 1, rarity: "rare",
+    flavor: "Gundyr's coiled halberd, freed from the Pus that took him. Long, sweeping, merciless.", perk: "Sweep: on a hit, you may also strike one adjacent foe for half damage. Reach 10 ft." }),
+  weapon({ name: "Vordt's Great Hammer", img: "icons/weapons/maces/mace-spiked-heavy-blue.webp", wtype: "martialM", baseItem: "maul", n: 2, d: 6, dtypes: [BL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "A", upgrade: 1, rarity: "rare",
+    flavor: "A frost-wreathed mace forged from the soul of the Boreal hound-knight.", perk: "Frost: on a hit, target gains 1 Frostbite stack. On a crit, knock Large-or-smaller prone." }),
+  weapon({ name: "Drakeblood Greatsword", img: "icons/weapons/swords/greatsword-blue.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 6, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", upgrade: 1, rarity: "rare",
+    flavor: "A blade slick with dragon blood, taken from the rampart wyrm. Path C only.", perk: "Lightning bite: +1d8 lightning damage on a hit. Vordt is vulnerable to it." }),
+  weapon({ name: "Uchigatana", img: "icons/weapons/swords/sword-katana-gray.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["fin", "ver"], versatile: [1, 10], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", rarity: "uncommon",
+    flavor: "The Sword Master's keen katana. Rewards a clean, patient hand.", perk: "Bleed: third consecutive hit on the same target deals +1d6. Crit on 19-20." }),
+  armor({ name: "Outrider Knight Armor", img: "icons/equipment/chest/breastplate-banded-steel-grey.webp", atype: "medium", ac: 15, dex: 2, damageReduction: 2, rarity: "rare",
+    flavor: "Frost-rimed plate from the maddened Outrider. Light enough to keep moving.", perk: "Cold ward: you take no extra Frostbite from environmental cold auras." }),
+  armor({ name: "Lothric Knight Greatshield", img: "icons/equipment/shield/oval-engraved-gold-grey.webp", atype: "shield", ac: 2, rarity: "rare",
+    flavor: "A tall wall of steel — the wall's last guard carried it. Heavy, but it does not chip.", perk: "Greatshield: blocks one extra reaction-cost attack per round, unblockable still excepted.", block: { physical: 0.85, fire: 0.55, lightning: 0.45, cold: 0.55, poison: 0.30 } }),
+  focus({ name: "Drake's Catalyst", img: "icons/weapons/staves/staff-ornate-eye.webp", schoolText: "channels Sorceries or Miracles (caster's choice).", scaleStat: "Int/Faith", grade: "A", upgrade: 1, rarity: "rare", flavor: "A horn catalyst pried from the bridge dragon's hoard, humming with power. Path C only.", perk: "Pre-tempered: already +1 to spell attack and damage; Andre may push it further." })
+];
+
+// ── Expanded findable arsenal: real DS3 weapons so each class has 3-4 things worth picking up. ──
+// Plain props, no perks (those are the uniques); rarity scales the pickup excitement. Pulled from the DS3 wiki.
+const EXTRA_WEAPONS = [
+  // Straight swords (STR/DEX C, 1d8 ver) — Knight / quality
+  weapon({ name: "Broadsword", img: "icons/weapons/swords/sword-guard-brass.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["ver"], versatile: [1, 10], scaleStat: "Strength", scaleAbil: "str", grade: "C", flavor: "A wide straight blade; wider arc, same reliable cut." }),
+  weapon({ name: "Lothric Knight Sword", img: "icons/weapons/swords/sword-guard-blue.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["ver", "fin"], versatile: [1, 10], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", rarity: "uncommon", flavor: "The wall guards' standard sword; balanced and refined." }),
+  weapon({ name: "Sunlight Straight Sword", img: "icons/weapons/swords/sword-guard-gold.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["ver"], versatile: [1, 10], scaleStat: "Strength", scaleAbil: "str", grade: "C", rarity: "uncommon", flavor: "Praise the sun. A warm, dependable blade of cooperation." }),
+  weapon({ name: "Dark Sword", img: "icons/weapons/swords/greatsword-crossguard-steel.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["ver"], versatile: [1, 10], scaleStat: "Strength", scaleAbil: "str", grade: "B", rarity: "uncommon", flavor: "Heavy straight sword of the Darkwraiths; brutal for its class." }),
+  // Greatswords (STR B, 2d6 hvy two)
+  weapon({ name: "Claymore", img: "icons/weapons/swords/greatsword-blue.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 6, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", flavor: "The classic knight's greatsword; reach and a wide sweep." }),
+  weapon({ name: "Bastard Sword", img: "icons/weapons/swords/greatsword-crossguard.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 6, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", flavor: "A blunt, brutal greatsword for raw strength." }),
+  weapon({ name: "Wolnir's Holy Sword", img: "icons/weapons/swords/greatsword-blue-glow.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 6, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Faith", scaleAbil: "wis", grade: "B", rarity: "uncommon", flavor: "A holy greatsword that drinks the dark; scales with faith." }),
+  // Ultra greatswords (STR A, 2d8 hvy two)
+  weapon({ name: "Zweihander", img: "icons/weapons/swords/greatsword-twohanded.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 8, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "A", rarity: "uncommon", flavor: "A massive flat blade; commit or be crushed." }),
+  weapon({ name: "Astora Greatsword", img: "icons/weapons/swords/greatsword-flamberge.webp", wtype: "martialM", baseItem: "greatsword", n: 2, d: 8, dtypes: [SL], props: ["hvy", "two", "fin"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", rarity: "uncommon", flavor: "A lightweight ultra greatsword; surprisingly nimble." }),
+  // Curved swords (DEX B, 1d6 fin lgt)
+  weapon({ name: "Falchion", img: "icons/weapons/swords/scimitar-worn-blue.webp", wtype: "martialM", baseItem: "scimitar", n: 1, d: 6, dtypes: [SL], props: ["fin", "lgt"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", flavor: "A short curved blade; fast bleeding cuts." }),
+  weapon({ name: "Pontiff Knight Curved Sword", img: "icons/weapons/swords/scimitar-guard-gold.webp", wtype: "martialM", baseItem: "scimitar", n: 1, d: 6, dtypes: [SL], props: ["fin", "lgt"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", rarity: "uncommon", flavor: "Frost-touched curved sword of the Pontiff's guard." }),
+  // Katanas (DEX A, 1d8 fin)
+  weapon({ name: "Washing Pole", img: "icons/weapons/swords/sword-katana.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["fin", "rch"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", rarity: "uncommon", flavor: "An absurdly long katana; reach for days." }),
+  weapon({ name: "Black Blade", img: "icons/weapons/swords/sword-katana-blue.webp", wtype: "martialM", baseItem: "longsword", n: 1, d: 8, dtypes: [SL], props: ["fin", "ver"], versatile: [1, 10], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", rarity: "uncommon", flavor: "A shortened soul-blade; quick and deadly." }),
+  // Thrusting swords (DEX C, 1d8 pi fin)
+  weapon({ name: "Rapier", img: "icons/weapons/swords/sword-guard-purple.webp", wtype: "martialM", baseItem: "rapier", n: 1, d: 8, dtypes: [PI], props: ["fin"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", flavor: "Light thrusting sword; pokes from behind a shield." }),
+  weapon({ name: "Ricard's Rapier", img: "icons/weapons/swords/sword-guard-gold.webp", wtype: "martialM", baseItem: "rapier", n: 1, d: 8, dtypes: [PI], props: ["fin"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", rarity: "uncommon", flavor: "An ornate rapier; flurries of precise thrusts." }),
+  // Axes (STR C 1d8) / Greataxes (STR A 1d12)
+  weapon({ name: "Hand Axe", img: "icons/weapons/axes/axe-broad-brown.webp", wtype: "martialM", baseItem: "handaxe", n: 1, d: 8, dtypes: [SL], props: ["lgt", "thr"], scaleStat: "Strength", scaleAbil: "str", grade: "C", flavor: "A plain woodsman's axe; cheap and dependable." }),
+  weapon({ name: "Battle Axe", img: "icons/weapons/axes/axe-broad-black.webp", wtype: "martialM", baseItem: "battleaxe", n: 1, d: 8, dtypes: [SL], props: ["ver"], versatile: [1, 10], scaleStat: "Strength", scaleAbil: "str", grade: "C", flavor: "A bearded war-axe; solid in any hand." }),
+  weapon({ name: "Dragonslayer Greataxe", img: "icons/weapons/axes/axe-double-engraved-red.webp", wtype: "martialM", baseItem: "greataxe", n: 1, d: 12, dtypes: [SL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "A", rarity: "uncommon", flavor: "A storm-charged greataxe; crushes guards." }),
+  weapon({ name: "Yhorm's Machete", img: "icons/weapons/axes/axe-battle-worn.webp", wtype: "martialM", baseItem: "greataxe", n: 1, d: 12, dtypes: [SL], props: ["two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", flavor: "A giant's crude machete; pure heft." }),
+  // Hammers (STR C) / Great hammers (STR A 2d6)
+  weapon({ name: "Reinforced Club", img: "icons/weapons/clubs/club-banded.webp", wtype: "simpleM", baseItem: "club", n: 1, d: 6, dtypes: [BL], props: ["lgt"], scaleStat: "Strength", scaleAbil: "str", grade: "C", flavor: "A club studded with iron; the Deprived's upgrade." }),
+  weapon({ name: "Morning Star", img: "icons/weapons/maces/mace-spiked-steel.webp", wtype: "martialM", baseItem: "morningstar", n: 1, d: 8, dtypes: [PI], scaleStat: "Strength", scaleAbil: "str", grade: "C", flavor: "Spiked head; bleeds and bludgeons." }),
+  weapon({ name: "Great Mace", img: "icons/weapons/maces/mace-round-spiked-black.webp", wtype: "martialM", baseItem: "maul", n: 2, d: 6, dtypes: [BL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "A", flavor: "A two-handed crushing maul; armor means nothing." }),
+  weapon({ name: "Large Club", img: "icons/weapons/clubs/club-heavy-barbed.webp", wtype: "martialM", baseItem: "maul", n: 2, d: 6, dtypes: [BL], props: ["hvy", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "A", flavor: "A massive tree-trunk club; slow, devastating." }),
+  // Spears (DEX/STR C 1d6 rch) / Halberds (B 1d10 rch)
+  weapon({ name: "Partizan", img: "icons/weapons/polearms/spear-flared-steel.webp", wtype: "martialM", baseItem: "spear", n: 1, d: 8, dtypes: [PI], props: ["thr", "rch"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "C", flavor: "A winged spear; thrusts with a wide guard." }),
+  weapon({ name: "Winged Spear", img: "icons/weapons/polearms/spear-simple-white.webp", wtype: "martialM", baseItem: "spear", n: 1, d: 6, dtypes: [PI], props: ["thr", "rch", "ver"], versatile: [1, 8], scaleStat: "Dexterity", scaleAbil: "dex", grade: "C", flavor: "A long reach spear; keep them at bay." }),
+  weapon({ name: "Halberd", img: "icons/weapons/polearms/halberd-crescent-steel.webp", wtype: "martialM", baseItem: "halberd", n: 1, d: 10, dtypes: [SL, PI], props: ["hvy", "rch", "two"], scaleStat: "Strength", scaleAbil: "str", grade: "B", flavor: "Axe-head on a pole; sweep or thrust." }),
+  weapon({ name: "Glaive", img: "icons/weapons/polearms/glaive-simple.webp", wtype: "martialM", baseItem: "glaive", n: 1, d: 10, dtypes: [SL], props: ["hvy", "rch", "two"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", flavor: "A sweeping blade-on-pole; favors dexterity." }),
+  // Daggers / fists
+  weapon({ name: "Bandit's Knife", img: "icons/weapons/daggers/dagger-curved-poison-green.webp", wtype: "simpleM", baseItem: "dagger", n: 1, d: 4, dtypes: [SL], props: ["fin", "lgt", "thr"], scaleStat: "Dexterity", scaleAbil: "dex", grade: "A", flavor: "A bleeding gut-hook knife for backstabs." }),
+  weapon({ name: "Caestus", img: "icons/weapons/fist/fist-knuckle-spiked.webp", wtype: "simpleM", baseItem: "club", n: 1, d: 4, dtypes: [BL], props: ["lgt"], scaleStat: "Strength", scaleAbil: "str", grade: "D", flavor: "Iron knuckles; a parry tool in a pinch." }),
+  // Bows / crossbows
+  weapon({ name: "Long Bow", img: "icons/weapons/bows/longbow-recurve-brown.webp", wtype: "martialR", baseItem: "longbow", n: 1, d: 8, dtypes: [PI], props: ["amm", "two"], range: [150, 600], scaleStat: "Dexterity", scaleAbil: "dex", grade: "C", flavor: "Tall hunting bow; reach across the arena." }),
+  weapon({ name: "Composite Bow", img: "icons/weapons/bows/shortbow-leather.webp", wtype: "martialR", baseItem: "shortbow", n: 1, d: 6, dtypes: [PI], props: ["amm", "two"], range: [100, 400], scaleStat: "Dexterity", scaleAbil: "dex", grade: "B", flavor: "Short bow that fires while moving." }),
+  weapon({ name: "Heavy Crossbow", img: "icons/weapons/crossbows/crossbow-heavy-brown.webp", wtype: "martialR", baseItem: "heavycrossbow", n: 1, d: 10, dtypes: [PI], props: ["amm", "lod", "two", "hvy"], range: [100, 400], scaleStat: "Strength", scaleAbil: "str", grade: "D", flavor: "Punishing bolts; slow to crank." }),
+  weapon({ name: "Arbalest", img: "icons/weapons/crossbows/crossbow-purple.webp", wtype: "martialR", baseItem: "heavycrossbow", n: 1, d: 12, dtypes: [PI], props: ["amm", "lod", "two", "hvy"], range: [120, 480], scaleStat: "Strength", scaleAbil: "str", grade: "D", rarity: "uncommon", flavor: "Siege-grade crossbow; one heavy shot." })
+];
+
+const EXTRA_FOCI = [
+  focus({ name: "Heretic's Staff", img: "icons/weapons/staves/staff-skull-purple.webp", schoolText: "channels Sorceries (Intelligence).", scaleStat: "Intelligence", grade: "S", rarity: "uncommon", flavor: "A fragile staff of pure raw power; high scaling, no upgrades." }),
+  focus({ name: "Cleric's Sacred Chime", img: "icons/magic/holy/chalice-glowing-gold.webp", schoolText: "channels Miracles (Faith).", scaleStat: "Faith", grade: "B", flavor: "A simple chime; sound it to invoke miracles." }),
+  focus({ name: "Sunlight Talisman", img: "icons/magic/holy/yin-yang-balance-symbol.webp", schoolText: "channels Miracles (Faith).", scaleStat: "Faith", grade: "A", rarity: "uncommon", flavor: "A warrior's talisman; faster casting under pressure." }),
+  focus({ name: "Great Swamp Pyromancy Flame", img: "icons/magic/fire/flame-burning-fist-orange.webp", schoolText: "channels Pyromancies (Int/Faith).", scaleStat: "Int/Faith", grade: "A", rarity: "uncommon", flavor: "A fiercer flame from the Great Swamp; burns hotter." })
+];
+
+// ── Shields with distinct guard profiles. Block %s are the per-type reduction. ──
+const EXTRA_SHIELDS = [
+  armor({ name: "Kite Shield", img: "icons/equipment/shield/heater-steel-worn.webp", atype: "shield", ac: 2, flavor: "Balanced steel kite shield; a dependable all-rounder.", block: { physical: 0.80, fire: 0.40, lightning: 0.30, cold: 0.45, poison: 0.30 } }),
+  armor({ name: "Black Knight Shield", img: "icons/equipment/shield/heater-crystal-black.webp", atype: "shield", ac: 2, rarity: "uncommon", flavor: "Charred shield of the Black Knights; eats fire for breakfast.", block: { physical: 0.90, fire: 0.95, lightning: 0.30, cold: 0.50, poison: 0.30 } }),
+  armor({ name: "Dragon Crest Shield", img: "icons/equipment/shield/round-dragon-gold.webp", atype: "shield", ac: 2, rarity: "uncommon", flavor: "A dragon-marked shield; flame washes off it.", block: { physical: 0.75, fire: 1.00, lightning: 0.50, cold: 0.45, poison: 0.30 } }),
+  armor({ name: "Silver Knight Shield", img: "icons/equipment/shield/round-segmented-silver.webp", atype: "shield", ac: 2, rarity: "uncommon", flavor: "Anor Londo silver; turns aside lightning and steel.", block: { physical: 1.00, fire: 0.50, lightning: 0.70, cold: 0.50, poison: 0.30 } }),
+  armor({ name: "Spider Shield", img: "icons/equipment/shield/round-wooden-boss-green.webp", atype: "shield", ac: 2, flavor: "A crude shield warded against venom.", block: { physical: 0.70, fire: 0.30, lightning: 0.30, cold: 0.30, poison: 0.95 } }),
+  armor({ name: "Grass Crest Shield", img: "icons/equipment/shield/heater-crest-green.webp", atype: "shield", ac: 2, flavor: "Light shield famed for stamina — a parry-leaning small shield.", block: { physical: 0.65, fire: 0.30, lightning: 0.40, cold: 0.30, poison: 0.20 } }),
+  armor({ name: "Frost-Ward Shield", img: "icons/equipment/shield/kite-steel-blue.webp", atype: "shield", ac: 2, rarity: "uncommon", flavor: "Boreal-forged; the cold cannot pass it.", block: { physical: 0.80, fire: 0.40, lightning: 0.40, cold: 1.00, poison: 0.30 } })
+];
+
+
 async function main() {
   await rm(OUT, { recursive: true, force: true });
   await mkdir(OUT, { recursive: true });
   const all = [
-    ...WEAPONS, ...ARMOR, ...FOCI,
+    ...WEAPONS, ...ARMOR, ...FOCI, ...UNIQUES, ...EXTRA_WEAPONS, ...EXTRA_FOCI, ...EXTRA_SHIELDS,
     estus(), firebomb(), ember(),
     loot({ name: "Estus Shard", img: "icons/commodities/gems/gem-faceted-radiant-orange.webp", subtype: "material", price: 1000, flavor: "A shard of an Estus Flask; the Fire Keeper can use it to add a charge." }),
     loot({ name: "Titanite Shard", img: "icons/commodities/metal/ingot-stamped-silver.webp", subtype: "material", price: 200, flavor: "Reinforces equipment. Andre needs these to upgrade weapons." }),
