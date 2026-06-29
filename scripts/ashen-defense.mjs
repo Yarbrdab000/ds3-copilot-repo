@@ -22,6 +22,19 @@ function ownerOf(token) {
          game.users.find((u) => !u.isGM && a.testUserPermission(u, "OWNER")) || null;
 }
 
+function guardBonus(actor) {
+  let armor = 0, shield = 0;
+  for (const it of actor?.items ?? []) {
+    if (!it.system?.equipped) continue;
+    const t = it.system?.type?.value;
+    const ac = Number(it.system?.armor?.value) || 0;
+    if (it.type === "equipment" && ["light", "medium", "heavy"].includes(t))
+      armor = Math.max(armor, t === "heavy" ? 3 : t === "medium" ? 2 : 1);
+    if (t === "shield" || ac === 2) shield = 1;
+  }
+  return Math.min(4, armor + shield);
+}
+
 function shieldBlock(actor, type) {
   const items = actor?.items ?? [];
   let best = 0;
@@ -89,10 +102,11 @@ async function resolve(d, w, atk, name, actor) {
     const dis = d === "parry" ? (w !== atk.pw) : false;
     const tag = adv ? "ADV" : dis ? "DIS" : "flat";
     const formula = adv ? "2d20kh1" : dis ? "2d20kl1" : "1d20";
-    const r = await new Roll(formula).roll();
-    await r.toMessage({ speaker: { alias: `Ashen — ${name}` }, flavor: `${d.toUpperCase()} ${w} (${tag}) vs DC ${atk.dc}` });
+    const g = guardBonus(actor);
+    const r = await new Roll(`${formula}${g ? ` + ${g}` : ""}`).roll();
+    await r.toMessage({ speaker: { alias: `Ashen — ${name}` }, flavor: `${d.toUpperCase()} ${w} (${tag}${g ? `, armor +${g}` : ""}) vs DC ${atk.dc}` });
     const ok = r.total >= atk.dc;
-    msg = `<b>${d.toUpperCase()} ${w}</b> (${tag}) — d20=${r.total} vs DC ${atk.dc}: ` +
+    msg = `<b>${d.toUpperCase()} ${w}</b> (${tag}${g ? `, +${g} armor` : ""}) — ${r.total} vs DC ${atk.dc}: ` +
       (ok ? (d === "parry" ? "<b>PARRY!</b> negated + stagger — party riposte!" : "<b>Dodge!</b> no damage, reposition 5 ft.")
           : "<b>miss</b> — full damage.");
   }
