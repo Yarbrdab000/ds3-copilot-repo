@@ -234,7 +234,15 @@
       "type": "weapon",
       "img": "icons/skills/melee/strike-slashes-orange.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "def": {
+            "dc": 14,
+            "dw": "W2",
+            "pw": "W3"
+          }
+        }
+      },
       "system": {
         "description": {
           "value": "",
@@ -392,7 +400,15 @@
       "type": "weapon",
       "img": "icons/skills/melee/strike-slashes-orange.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "def": {
+            "dc": 14,
+            "dw": "W2",
+            "np": true
+          }
+        }
+      },
       "system": {
         "description": {
           "value": "",
@@ -550,7 +566,15 @@
       "type": "weapon",
       "img": "icons/skills/melee/strike-slashes-orange.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "def": {
+            "dc": 14,
+            "dw": "W2",
+            "pw": "W2"
+          }
+        }
+      },
       "system": {
         "description": {
           "value": "",
@@ -708,7 +732,16 @@
       "type": "weapon",
       "img": "icons/skills/melee/strike-slashes-orange.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "def": {
+            "dc": 14,
+            "dw": "W2",
+            "np": true,
+            "nb": true
+          }
+        }
+      },
       "system": {
         "description": {
           "value": "",

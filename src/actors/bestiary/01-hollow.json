@@ -234,7 +234,15 @@
       "type": "weapon",
       "img": "icons/skills/melee/strike-slashes-orange.webp",
       "effects": [],
-      "flags": {},
+      "flags": {
+        "ashen": {
+          "def": {
+            "dc": 11,
+            "dw": "W2",
+            "pw": "W2"
+          }
+        }
+      },
       "system": {
         "description": {
           "value": "",

@@ -103,7 +103,9 @@ async function onAttack(item) {
   if (item?.actor?.type !== "npc") return;
   const targets = [...(game.user.targets ?? [])].filter((t) => t.actor?.type === "character");
   if (!targets.length) return;
-  const atk = await askGrid(item.actor.name);
+  let atk = item.getFlag?.(NS, "def");
+  if (atk) atk = { mv: item.name, dc: atk.dc ?? 12, dw: atk.dw ?? "W2", pw: atk.pw ?? "W3", nd: !!atk.nd, nb: !!atk.nb, np: !!atk.np };
+  else atk = await askGrid(item.actor.name);
   if (!atk) return;
   for (const t of targets) await promptDefense(t.document ?? t, atk);
 }
