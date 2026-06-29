@@ -5,9 +5,9 @@ defense windows, spells, gear, pregens, loot, maps, scenes, journals, macros, an
 It is written so a person **or an AI (ChatGPT/Copilot)** can take the zipped repo and build a
 brand-new campaign with zero prior context.
 
-> **Golden rule:** edit the **source** under `tools/content/*.mjs` and `src/`, then run one
-> command (`npm run rebuild`). Everything in `packs/`, `dist/`, `maps/` is **generated** — do
-> not edit those by hand; they get overwritten.
+> **Golden rule:** two ways to edit. (a) **No-code:** edit a `src/**/*.json` file, run
+> `npm run build`. (b) **Permanent:** edit the `gen-*.mjs` table, run `npm run rebuild`. `packs/`,
+> `dist/`, `maps/` are generated — never edit by hand. `rebuild` overwrites `src/`; `build` keeps it.
 
 ---
 
@@ -25,6 +25,32 @@ Two kinds of content:
 1. **Generated** (most of it): a `gen-*.mjs` script holds a JS table → writes `src/` JSON → packed.
    Edit the table, re-run, done.
 2. **Hand-written JSON**: the **journals** in `src/journals/` are edited directly (no generator).
+
+---
+
+## 0.5 The ChatGPT / no-code workflow (read this first)
+
+The fast path if you don't want to touch code:
+
+1. **Drop this file** (`AUTHORING.md`) into ChatGPT and say what you want to change
+   (e.g. "make Vordt hit harder", "add a new boss", "give the Cleric a new spell").
+2. ChatGPT tells you **which file(s)** to paste in — usually one `src/**/*.json` (a single boss,
+   item, spell, pregen, journal). Paste that file's contents.
+3. ChatGPT hands back the rewritten JSON. **Replace** that file in `src/` (same path/name).
+4. Build packs **without regenerating** so your hand edits aren't overwritten:
+   ```bash
+   npm run build      # ✅ packs src/ as-is — KEEPS your edits
+   ```
+   **Do NOT run `npm run rebuild`** — that re-runs the generators and clobbers hand edits.
+5. Zip + release (or just `npm run build:world`) and install the new module.
+
+⚠️ **build vs rebuild:** `build` = "use my JSON as-is." `rebuild` = "throw away src/ and regenerate
+from the gen-*.mjs scripts." Hand-editing JSON? Use **build**. Editing a generator table? Use
+**rebuild**. The two files that are *never* regenerated and always safe to hand-edit:
+`scripts/ashen-defense.mjs` and everything in `src/journals/`.
+
+For a permanent change that survives `rebuild`, make the edit in the matching `gen-*.mjs` instead
+(see §2). For one-off tweaks via ChatGPT, editing `src/` JSON + `npm run build` is the simplest.
 
 ---
 
@@ -52,7 +78,23 @@ Output to install: `dist/ashen-of-lothric.zip` and `dist/ashen-of-lothric/module
 
 ## 2. What each generator owns
 
-All live in `tools/content/`. Edit the table at the top, then `npm run rebuild`.
+**Where the JSON lives (give ChatGPT the file at this path):**
+
+| Content | src/ folder | generator |
+|---|---|---|
+| pregens | `src/actors/pcs/` | gen-pregens.mjs |
+| bosses/enemies | `src/actors/bestiary/` | gen-bestiary.mjs |
+| weapons/armor/items | `src/items/gear/` | gen-gear.mjs |
+| spells | `src/items/spells/` | gen-spells.mjs |
+| level-up cards | `src/items/levels/` | gen-levels.mjs |
+| loot tables | `src/tables/` | gen-tables.mjs |
+| macros | `src/macros/` | gen-macros.mjs |
+| scenes | `src/scenes/` | gen-scenes.mjs |
+| rules/handbook/handouts | `src/journals/**/` | hand-written |
+
+One JSON file = one boss/item/spell, so ChatGPT only needs the one file you want to change.
+
+All generators live in `tools/content/`. Edit the table at the top, then `npm run rebuild`.
 
 | File | Makes | Edit it to… |
 |---|---|---|
