@@ -87,13 +87,14 @@ async function resolve(d, w, atk, name, actor) {
   } else {
     const adv = d === "parry" ? (w === atk.pw) : (w === atk.dw);
     const dis = d === "parry" ? (w !== atk.pw) : false;
-    const r1 = await new Roll("1d20").roll(), r2 = await new Roll("1d20").roll();
-    const roll = adv ? Math.max(r1.total, r2.total) : dis ? Math.min(r1.total, r2.total) : r1.total;
-    const ok = roll >= atk.dc;
     const tag = adv ? "ADV" : dis ? "DIS" : "flat";
-    msg = `<b>${d.toUpperCase()} ${w}</b> (${tag}) \u2014 d20=${roll} vs DC ${atk.dc}: ` +
-      (ok ? (d === "parry" ? "<b>PARRY!</b> negated + stagger \u2014 party riposte!" : "<b>Dodge!</b> no damage, reposition 5 ft.")
-          : "<b>miss</b> \u2014 full damage.");
+    const formula = adv ? "2d20kh1" : dis ? "2d20kl1" : "1d20";
+    const r = await new Roll(formula).roll();
+    await r.toMessage({ speaker: { alias: `Ashen — ${name}` }, flavor: `${d.toUpperCase()} ${w} (${tag}) vs DC ${atk.dc}` });
+    const ok = r.total >= atk.dc;
+    msg = `<b>${d.toUpperCase()} ${w}</b> (${tag}) — d20=${r.total} vs DC ${atk.dc}: ` +
+      (ok ? (d === "parry" ? "<b>PARRY!</b> negated + stagger — party riposte!" : "<b>Dodge!</b> no damage, reposition 5 ft.")
+          : "<b>miss</b> — full damage.");
   }
   ChatMessage.create({ content: `<b>${name}:</b> ${msg}`, speaker: { alias: "Ashen \u2014 Defense" } });
 }
