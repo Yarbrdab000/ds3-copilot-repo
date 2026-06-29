@@ -229,7 +229,11 @@ const ACTORS = [
     bioHtml: card("<strong>Two roles.</strong> (1) Optional <em>duel</em> by the shrine steps \u2014 a fast, parry-heavy katana master who teaches the defensive game and drops 800 souls + a fine blade if bested (disposition starts neutral; he turns hostile only if challenged). (2) The <strong>mercy valve</strong>: after repeated wipes, the DM may drop him as a <em>controllable ally token</em> (a summon sign answered) to steady a struggling party for one fight. Set his disposition to friendly when summoned.",
       ["<strong>Iaido Double-Slash</strong> (2 x 1d8+4): dodge ADV W2; parry ADV only on W3 (the second cut).", "<strong>Parry Stance</strong> (reaction): he parries the next melee attack you telegraph \u2014 feint or go unorthodox.", "<strong>Step Thrust</strong> (reach 1d10+4): sidestep the line W1; parry ADV W2."],
       "(1) he reads obvious swings \u2014 mix your timing; (2) his double-slash over-commits on the second cut; (3) he's a teacher, not a wall \u2014 patience wins.") ,
-    attacks: [attack({ name: "Uchigatana", n: 1, d: 8, bonus: 4, types: [SL], ability: "dex" })] })
+    attacks: [
+      attack({ name: "Iaido Double-Slash", n: 2, d: 8, bonus: 4, types: [SL], ability: "dex" }),
+      attack({ name: "Step Thrust", n: 1, d: 10, bonus: 4, types: [SL], ability: "dex", reach: 10 }),
+      attack({ name: "Uchigatana", n: 1, d: 8, bonus: 4, types: [SL], ability: "dex" })
+    ] })
 ];
 
 async function main() {
