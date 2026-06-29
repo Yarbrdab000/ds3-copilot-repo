@@ -104,8 +104,9 @@ async function onAttack(item) {
   const stamp = `${item.id}:${Math.floor(Date.now() / 1500)}`;
   if (onAttack._last === stamp) return;
   onAttack._last = stamp;
-  const targets = [...(game.user.targets ?? [])].filter((t) => t.actor?.type === "character");
-  if (!targets.length) return;
+  const targets = [...(game.user.targets ?? [])].filter((t) => t.actor && t.actor.type !== "npc");
+  console.log(`[ashen-defense] attack by ${item.actor?.name} / ${item.name}; targets=${targets.length}`);
+  if (!targets.length) { ui.notifications?.info("Ashen: target a player (hover + T) before attacking to prompt defense."); return; }
   let atk = item.getFlag?.(NS, "def");
   if (atk) atk = { mv: item.name, dc: atk.dc ?? 12, dw: atk.dw ?? "W2", pw: atk.pw ?? "W3", nd: !!atk.nd, nb: !!atk.nb, np: !!atk.np };
   else atk = await askGrid(item.actor.name);
@@ -113,11 +114,23 @@ async function onAttack(item) {
   for (const t of targets) await promptDefense(t.document ?? t, atk);
 }
 
+function itemFromMessage(msg) {
+  const f = msg?.flags?.dnd5e ?? {};
+  const actorId = msg?.speaker?.actor;
+  const actor = actorId ? game.actors.get(actorId) : null;
+  const itemId = f.use?.itemId || f.item?.id || f.roll?.itemId || f.activity?.itemId;
+  return itemId && actor ? actor.items.get(itemId) : null;
+}
+
 // dnd5e v3 path: items fire dnd5e.useItem.
 Hooks.on("dnd5e.useItem", (item) => onAttack(item));
 // dnd5e v4/v5 path: items run "activities"; useItem is gone. Catch the activity instead.
 Hooks.on("dnd5e.postUseActivity", (activity) => onAttack(activity?.item));
 Hooks.on("dnd5e.useActivity", (activity) => onAttack(activity?.item));
+// Version-proof fallback: every attack posts a chat card; read the item off it.
+Hooks.on("createChatMessage", (msg) => { const it = itemFromMessage(msg); if (it) onAttack(it); });
+
+Hooks.once("ready", () => console.log("[ashen-defense] loaded. Target a player (T) + use an NPC attack to fire."));
 
 Hooks.on("renderChatMessage", (msg, html) => {
   html.find(".adf").on("click", (ev) => {
