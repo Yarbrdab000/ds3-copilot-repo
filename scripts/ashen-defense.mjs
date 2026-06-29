@@ -27,7 +27,7 @@ function shieldBlock(actor, type) {
   let best = 0;
   for (const it of items) {
     const eq = it.system?.equipped;
-    const b = it.getFlag?.(NS, "block");
+    const b = it.flags?.[NS]?.block;
     if (eq && b && typeof b[type] === "number") best = Math.max(best, b[type]);
   }
   return best;
@@ -107,7 +107,7 @@ async function onAttack(item) {
   const targets = [...(game.user.targets ?? [])].filter((t) => t.actor && t.actor.type !== "npc");
   console.log(`[ashen-defense] attack by ${item.actor?.name} / ${item.name}; targets=${targets.length}`);
   if (!targets.length) { ui.notifications?.info("Ashen: target a player (hover + T) before attacking to prompt defense."); return; }
-  let atk = item.getFlag?.(NS, "def");
+  let atk = item.flags?.[NS]?.def;
   if (atk) atk = { mv: item.name, dc: atk.dc ?? 12, dw: atk.dw ?? "W2", pw: atk.pw ?? "W3", nd: !!atk.nd, nb: !!atk.nb, np: !!atk.np };
   else atk = await askGrid(item.actor.name);
   if (!atk) return;
@@ -132,11 +132,12 @@ Hooks.on("createChatMessage", (msg) => { const it = itemFromMessage(msg); if (it
 
 Hooks.once("ready", () => console.log("[ashen-defense] loaded. Target a player (T) + use an NPC attack to fire."));
 
-Hooks.on("renderChatMessage", (msg, html) => {
-  html.find(".adf").on("click", (ev) => {
-    const root = ev.currentTarget.closest(".ashen-def");
-    const atk = JSON.parse(root.dataset.grid);
-    const actor = game.actors.get(root.dataset.actor);
-    resolve(ev.currentTarget.dataset.d, ev.currentTarget.dataset.w, atk, root.dataset.name || "Defender", actor);
-  });
+Hooks.on("renderChatMessageHTML", (msg, el) => {
+  const root = el instanceof HTMLElement ? el : el?.[0];
+  root?.querySelectorAll?.(".adf").forEach((btn) => btn.addEventListener("click", (ev) => {
+    const card = ev.currentTarget.closest(".ashen-def");
+    const atk = JSON.parse(card.dataset.grid);
+    const actor = game.actors.get(card.dataset.actor);
+    resolve(ev.currentTarget.dataset.d, ev.currentTarget.dataset.w, atk, card.dataset.name || "Defender", actor);
+  }));
 });
