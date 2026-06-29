@@ -95,9 +95,13 @@ async function resolve(d, w, atk, name, actor) {
   else if (d === "block" && atk.nb) msg = `<b>Unblockable.</b> Dodge it.`;
   else if (d === "parry" && atk.np) msg = `<b>Unparryable.</b>`;
   else if (d === "block") {
-    const pct = Math.round((shieldBlock(actor, "physical") || 0) * 100);
-    const dr = guardBonus(actor);
-    msg = `Blocks — reaction spent. Damage reduced <b>${pct || 40}%</b>${dr ? ` then subtract <b>${dr}</b> armor` : ""}, no stagger.`;
+    const shield = [...(actor?.items ?? [])].some((it) => it.system?.equipped && (it.system?.type?.value === "shield" || Number(it.system?.armor?.value) === 2));
+    if (!shield) { msg = `<b>No shield!</b> Can't block — full damage.`; }
+    else {
+      const pct = Math.round((shieldBlock(actor, "physical") || 0) * 100);
+      const dr = guardBonus(actor);
+      msg = `Blocks — reaction spent. Damage reduced <b>${pct || 40}%</b>${dr ? ` then subtract <b>${dr}</b> armor` : ""}, no stagger.`;
+    }
   } else {
     const adv = d === "parry" ? (w === atk.pw) : (w === atk.dw);
     const dis = d === "parry" ? (w !== atk.pw) : false;
