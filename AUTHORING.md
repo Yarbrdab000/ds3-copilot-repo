@@ -2,8 +2,9 @@
 
 This is the **complete** guide to changing anything in this module: new bosses, attacks,
 defense windows, spells, gear, pregens, loot, maps, scenes, journals, macros, and difficulty.
-It is written so a person **or an AI (ChatGPT/Copilot)** can take the zipped repo and build a
-brand-new campaign with zero prior context.
+It is written so a person **or a standard AI (ChatGPT/Claude, no repo access)** can take this file
+plus one exported JSON and build or edit a brand-new campaign with zero prior context — even with
+no code tools at all (see §0.6).
 
 > **Golden rule:** two ways to edit. (a) **No-code:** edit a `src/**/*.json` file, run
 > `npm run build`. (b) **Permanent:** edit the `gen-*.mjs` table, run `npm run rebuild`. `packs/`,
@@ -51,6 +52,25 @@ from the gen-*.mjs scripts." Hand-editing JSON? Use **build**. Editing a generat
 
 For a permanent change that survives `rebuild`, make the edit in the matching `gen-*.mjs` instead
 (see §2). For one-off tweaks via ChatGPT, editing `src/` JSON + `npm run build` is the simplest.
+
+---
+
+## 0.6 Zero tools — just ChatGPT/Claude + Foundry (no Node, no GitHub)
+
+If you don't want to install anything, never touch the build at all — use Foundry's own
+import/export and let a standard AI rewrite the JSON:
+
+1. In Foundry, open the compendium (e.g. **Ashen: Bestiary**), right-click an actor →
+   **Export Data** → saves a `.json`. (Items, spells, pregens, scenes all export the same way.)
+2. Upload that `.json` (and this `AUTHORING.md`) to ChatGPT/Claude. Say what you want changed.
+3. Paste the rewritten `.json` into a file. In Foundry, right-click the compendium →
+   **Import Data** → pick the file. New/edited content appears immediately.
+
+This needs **no repo, no npm, no rebuild** — the AI only edits a single exported JSON and Foundry
+imports it. Use the `flags.ashen.def` and damage rules in §3 so the defense system still works.
+The repo route (§0.5) is just for keeping a clean editable master; this route is enough to play.
+
+---
 
 ---
 
