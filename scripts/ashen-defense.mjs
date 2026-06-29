@@ -89,33 +89,42 @@ async function promptDefense(token, atk) {
   });
 }
 
+async function applyHit(actor, name, atk, mult, dr, note) {
+  if (mult <= 0 || !atk.dmg) { ChatMessage.create({ content: `<b>${name}:</b> ${note} — no damage.`, speaker: { alias: "Ashen — Defense" } }); return; }
+  const r = await new Roll(atk.dmg).roll();
+  await r.toMessage({ speaker: { alias: `Ashen — ${atk.mv}` }, flavor: `Damage vs ${name}` });
+  const taken = Math.max(0, Math.round(r.total * mult) - dr);
+  await actor?.applyDamage?.(taken);
+  ChatMessage.create({ content: `<b>${name}:</b> ${note} — takes <b>${taken}</b> (${r.total}×${mult}${dr ? ` −${dr} armor` : ""}).`, speaker: { alias: "Ashen — Defense" } });
+}
+
 async function resolve(d, w, atk, name, actor) {
-  let msg;
-  if (d === "dodge" && atk.nd) msg = `<b>Undodgeable.</b> Block or sidestep.`;
-  else if (d === "block" && atk.nb) msg = `<b>Unblockable.</b> Dodge it.`;
-  else if (d === "parry" && atk.np) msg = `<b>Unparryable.</b>`;
-  else if (d === "block") {
+  const dr = guardBonus(actor);
+  if (d === "dodge" && atk.nd) return applyHit(actor, name, atk, 1, dr, "Undodgeable");
+  if (d === "block" && atk.nb) return applyHit(actor, name, atk, 1, dr, "Unblockable");
+  if (d === "parry" && atk.np) return applyHit(actor, name, atk, 1, dr, "Unparryable");
+  if (d === "block") {
     const shield = [...(actor?.items ?? [])].some((it) => it.system?.equipped && (it.system?.type?.value === "shield" || Number(it.system?.armor?.value) === 2));
-    if (!shield) { msg = `<b>No shield!</b> Can't block — full damage.`; }
-    else {
-      const pct = Math.round((shieldBlock(actor, "physical") || 0) * 100);
-      const dr = guardBonus(actor);
-      msg = `Blocks — reaction spent. Damage reduced <b>${pct || 40}%</b>${dr ? ` then subtract <b>${dr}</b> armor` : ""}, no stagger.`;
-    }
-  } else {
-    const adv = d === "parry" ? (w === atk.pw) : (w === atk.dw);
-    const dis = d === "parry" ? (w !== atk.pw) : false;
-    const tag = adv ? "ADV" : dis ? "DIS" : "flat";
-    const formula = adv ? "2d20kh1" : dis ? "2d20kl1" : "1d20";
-    const r = await new Roll(formula).roll();
-    await r.toMessage({ speaker: { alias: `Ashen — ${name}` }, flavor: `${d.toUpperCase()} ${w} (${tag}) vs DC ${atk.dc}` });
-    const ok = r.total >= atk.dc;
-    const dr = guardBonus(actor);
-    msg = `<b>${d.toUpperCase()} ${w}</b> (${tag}) — ${r.total} vs DC ${atk.dc}: ` +
-      (ok ? (d === "parry" ? "<b>PARRY!</b> negated + stagger — party riposte!" : "<b>Dodge!</b> no damage, reposition 5 ft.")
-          : `<b>hit</b> — full damage${dr ? `, then subtract <b>${dr}</b> armor` : ""}.`);
+    if (!shield) return applyHit(actor, name, atk, 1, dr, "No shield — block fails");
+    const frac = shieldBlock(actor, "physical") || 0.4;
+    return applyHit(actor, name, atk, 1 - frac, dr, `Block (−${Math.round(frac * 100)}%)`);
   }
-  ChatMessage.create({ content: `<b>${name}:</b> ${msg}`, speaker: { alias: "Ashen \u2014 Defense" } });
+  const adv = d === "parry" ? (w === atk.pw) : (w === atk.dw);
+  const dis = d === "parry" ? (w !== atk.pw) : false;
+  const tag = adv ? "ADV" : dis ? "DIS" : "flat";
+  const r = await new Roll(adv ? "2d20kh1" : dis ? "2d20kl1" : "1d20").roll();
+  await r.toMessage({ speaker: { alias: `Ashen — ${name}` }, flavor: `${d.toUpperCase()} ${w} (${tag}) vs DC ${atk.dc}` });
+  if (r.total >= atk.dc) {
+    const win = d === "parry" ? "<b>PARRY!</b> negated + stagger — party riposte!" : "<b>Dodge!</b> no damage, reposition 5 ft.";
+    return ChatMessage.create({ content: `<b>${name}:</b> ${win}`, speaker: { alias: "Ashen — Defense" } });
+  }
+  return applyHit(actor, name, atk, 1, dr, `${d.toUpperCase()} ${w} fail`);
+}
+
+function dmgFormula(item) {
+  const b = item?.system?.damage?.base;
+  if (!b?.number || !b?.denomination) return null;
+  return `${b.number}d${b.denomination}${b.bonus ? `+${b.bonus}` : ""}`;
 }
 
 async function onAttack(item) {
@@ -127,9 +136,10 @@ async function onAttack(item) {
   const targets = [...(game.user.targets ?? [])].filter((t) => t.actor && t.actor.type !== "npc");
   console.log(`[ashen-defense] attack by ${item.actor?.name} / ${item.name}; targets=${targets.length}`);
   if (!targets.length) { ui.notifications?.info("Ashen: target a player (hover + T) before attacking to prompt defense."); return; }
+  const dmg = dmgFormula(item);
   let atk = item.flags?.[NS]?.def;
-  if (atk) atk = { mv: item.name, dc: atk.dc ?? 12, dw: atk.dw ?? "W2", pw: atk.pw ?? "W3", nd: !!atk.nd, nb: !!atk.nb, np: !!atk.np };
-  else atk = await askGrid(item.actor.name);
+  if (atk) atk = { mv: item.name, dc: atk.dc ?? 12, dw: atk.dw ?? "W2", pw: atk.pw ?? "W3", nd: !!atk.nd, nb: !!atk.nb, np: !!atk.np, dmg };
+  else { atk = await askGrid(item.actor.name); if (atk) atk.dmg = dmg; }
   if (!atk) return;
   for (const t of targets) await promptDefense(t.document ?? t, atk);
 }
