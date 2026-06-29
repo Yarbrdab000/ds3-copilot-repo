@@ -1,7 +1,7 @@
 {
   "name": "Loot — Mini-boss (Outrider / Pus of Man)",
   "img": "icons/creatures/abilities/mouth-teeth-rows-red.webp",
-  "description": "<p>Mini-boss kill. <strong>Souls: 1,000 (fixed)</strong> — plus a guaranteed bonus drop below.</p>",
+  "description": "<p>Mini-boss kill. <strong>Souls: 1,000 (fixed)</strong> — plus a guaranteed drop. The Outrider always yields its armor; otherwise roll below.</p>",
   "formula": "1d6",
   "replacement": true,
   "displayRoll": true,
@@ -10,11 +10,24 @@
   "results": [
     {
       "type": "text",
-      "text": "<strong>Titanite Chunk</strong> ×1.",
+      "text": "<strong>Outrider Knight Armor</strong> (unique, medium) — guaranteed off the Outrider; else Titanite Chunk ×2.",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
         1,
+        1
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Titanite Chunk</strong> ×1.",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        2,
         2
       ],
       "weight": 1,
@@ -62,7 +75,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Titanite Chunk</strong> ×2 (a fat haul).",
+      "text": "<strong>Lothric Knight Greatshield</strong> (unique) — drops if a Lothric Knight elite was the kill.",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [

@@ -1,0 +1,60 @@
+{
+  "name": "Outrider Knight Armor",
+  "type": "equipment",
+  "img": "icons/equipment/chest/breastplate-banded-steel-grey.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "block": null,
+      "damageReduction": 2,
+      "unique": true
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Frost-rimed plate from the maddened Outrider. Light enough to keep moving.</em></p><p><strong>Unique:</strong> Cold ward: you take no extra Frostbite from environmental cold auras.</p><p><strong>Armor reduction:</strong> incoming damage reduced by <strong>2</strong> (minimum 1 damage).</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 armor",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 20,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "rare",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": 15,
+      "dex": 2,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "medium",
+      "baseItem": ""
+    },
+    "properties": [],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "outrider-knight-armor"
+  }
+}

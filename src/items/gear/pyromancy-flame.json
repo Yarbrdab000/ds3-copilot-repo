@@ -10,7 +10,9 @@
         "stat": "Int/Faith",
         "grade": "B",
         "factor": 1
-      }
+      },
+      "upgrade": 0,
+      "unique": false
     }
   },
   "system": {

@@ -1,8 +1,8 @@
 {
   "name": "Loot — Weapon Find",
   "img": "icons/weapons/swords/sword-guard-purple.webp",
-  "description": "<p>Which weapon dropped? All live in the Ashen gear compendium.</p>",
-  "formula": "1d10",
+  "description": "<p>Which weapon dropped? All live in the Ashen gear compendium — drag the named one. Pick the closest fit to the finder's class if the table is kinder than the build.</p>",
+  "formula": "1d20",
   "replacement": true,
   "displayRoll": true,
   "sort": 0,
@@ -10,7 +10,7 @@
   "results": [
     {
       "type": "text",
-      "text": "<strong>Longsword</strong>",
+      "text": "<strong>Longsword</strong> / <strong>Broadsword</strong>",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -23,7 +23,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Greataxe</strong>",
+      "text": "<strong>Lothric Knight Sword</strong> (uncommon, quality)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -36,7 +36,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Scimitar</strong>",
+      "text": "<strong>Claymore</strong> or <strong>Bastard Sword</strong> (greatsword)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -49,7 +49,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Spear</strong>",
+      "text": "<strong>Zweihander</strong> / <strong>Astora Greatsword</strong> (ultra)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -62,7 +62,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Estoc</strong>",
+      "text": "<strong>Scimitar</strong> / <strong>Falchion</strong> (curved)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -75,7 +75,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Mace</strong>",
+      "text": "<strong>Rapier</strong> / <strong>Estoc</strong> (thrusting)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -88,7 +88,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Dagger</strong>",
+      "text": "<strong>Battle Axe</strong> / <strong>Hand Axe</strong>",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -101,7 +101,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Light Crossbow</strong>",
+      "text": "<strong>Halberd</strong> or <strong>Glaive</strong> (reach)",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -114,7 +114,7 @@
     },
     {
       "type": "text",
-      "text": "<strong>Shortbow</strong>",
+      "text": "<strong>Partizan</strong> / <strong>Winged Spear</strong>",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
@@ -127,12 +127,142 @@
     },
     {
       "type": "text",
-      "text": "<strong>Club</strong> (the joke drop — unless you're the Deprived).",
+      "text": "<strong>Mace</strong> / <strong>Morning Star</strong>",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [
         10,
         10
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Great Mace</strong> / <strong>Large Club</strong> (great hammer)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        11,
+        11
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Dragonslayer Greataxe</strong> / <strong>Yhorm's Machete</strong>",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        12,
+        12
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Bandit's Knife</strong> / <strong>Dagger</strong>",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        13,
+        13
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Long Bow</strong> / <strong>Composite Bow</strong>",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        14,
+        14
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Heavy Crossbow</strong> / <strong>Arbalest</strong>",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        15,
+        15
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Dark Sword</strong> (uncommon)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        16,
+        16
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Sunlight Straight Sword</strong> (uncommon)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        17,
+        17
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Pontiff Knight Curved Sword</strong> (uncommon)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        18,
+        18
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Washing Pole</strong> / <strong>Black Blade</strong> (katana)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        19,
+        19
+      ],
+      "weight": 1,
+      "drawn": false,
+      "flags": {}
+    },
+    {
+      "type": "text",
+      "text": "<strong>Uchigatana</strong> or <strong>Ricard's Rapier</strong> (rare prize)",
+      "description": "",
+      "img": "icons/svg/d20-black.svg",
+      "range": [
+        20,
+        20
       ],
       "weight": 1,
       "drawn": false,

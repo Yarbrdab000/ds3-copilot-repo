@@ -1,7 +1,7 @@
 {
   "name": "Loot — Major Boss (Gundyr / Vordt)",
   "img": "icons/skills/melee/strike-weapon-polearm-ice-blue.webp",
-  "description": "<p>Major boss kill. Rewards are mostly fixed; roll 1d4 for a bonus material.</p><p><strong>Iudex Gundyr:</strong> 2,500 souls + the <em>Coiled Sword Fragment</em> (lore key). <strong>Vordt:</strong> 3,000 souls + the <em>Soul of Vordt</em> (trade to Andre/Handmaid for a unique upgrade or 3,000 souls).</p>",
+  "description": "<p>Major boss kill. The signature weapon is guaranteed; roll 1d4 for a bonus material.</p><p><strong>Iudex Gundyr:</strong> 2,500 souls + <strong>Halberd of the Champion</strong> (unique). <strong>Vordt:</strong> 3,000 souls + <strong>Vordt's Great Hammer</strong> (unique). Drag the named weapon from the gear compendium, then roll below.</p>",
   "formula": "1d4",
   "replacement": true,
   "displayRoll": true,
@@ -36,7 +36,7 @@
     },
     {
       "type": "text",
-      "text": "Bonus: <strong>Twinkling Titanite</strong> ×1 (rare — a unique/legendary upgrade material).",
+      "text": "Bonus: <strong>Twinkling Titanite</strong> ×1 (rare — ascend the unique drop here).",
       "description": "",
       "img": "icons/svg/d20-black.svg",
       "range": [

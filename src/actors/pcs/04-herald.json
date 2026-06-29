@@ -557,7 +557,8 @@
             "grade": "C",
             "factor": 0.75
           },
-          "upgrade": 0
+          "upgrade": 0,
+          "unique": false
         }
       },
       "system": {
@@ -754,7 +755,8 @@
             "cold": 0.4,
             "poison": 0.2
           },
-          "damageReduction": 0
+          "damageReduction": 0,
+          "unique": false
         }
       },
       "system": {
@@ -813,7 +815,8 @@
       "flags": {
         "ashen": {
           "block": null,
-          "damageReduction": 2
+          "damageReduction": 2,
+          "unique": false
         }
       },
       "system": {
@@ -1018,7 +1021,9 @@
             "stat": "Faith",
             "grade": "A",
             "factor": 1.5
-          }
+          },
+          "upgrade": 0,
+          "unique": false
         }
       },
       "system": {

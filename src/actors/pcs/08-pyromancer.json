@@ -556,7 +556,9 @@
             "stat": "Int/Faith",
             "grade": "B",
             "factor": 1
-          }
+          },
+          "upgrade": 0,
+          "unique": false
         }
       },
       "system": {
@@ -622,7 +624,8 @@
             "grade": "A",
             "factor": 1.5
           },
-          "upgrade": 0
+          "upgrade": 0,
+          "unique": false
         }
       },
       "system": {
@@ -812,7 +815,8 @@
       "flags": {
         "ashen": {
           "block": null,
-          "damageReduction": 1
+          "damageReduction": 1,
+          "unique": false
         }
       },
       "system": {

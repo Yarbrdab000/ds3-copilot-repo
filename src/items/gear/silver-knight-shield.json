@@ -1,0 +1,66 @@
+{
+  "name": "Silver Knight Shield",
+  "type": "equipment",
+  "img": "icons/equipment/shield/round-segmented-silver.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "block": {
+        "physical": 1,
+        "fire": 0.5,
+        "lightning": 0.7,
+        "cold": 0.5,
+        "poison": 0.3
+      },
+      "damageReduction": 0,
+      "unique": false
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Anor Londo silver; turns aside lightning and steel.</em></p><p><strong>Block reduction (no roll):</strong> when you spend your reaction to Block, incoming damage of each type is reduced by this much, then dealt. Some moves are <em>unblockable</em> (100% through). A shield never staggers an enemy — that is parry's job.</p><table><tr><td><strong>Damage type</strong></td><td><strong>Reduced by</strong></td></tr><tr><td>Physical</td><td>100%</td></tr><tr><td>Fire</td><td>50%</td></tr><tr><td>Lightning</td><td>70%</td></tr><tr><td>Cold</td><td>50%</td></tr><tr><td>Poison</td><td>30%</td></tr></table>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 armor",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 20,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": 2,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "shield",
+      "baseItem": ""
+    },
+    "properties": [],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "silver-knight-shield"
+  }
+}

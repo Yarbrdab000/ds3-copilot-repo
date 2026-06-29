@@ -1,0 +1,66 @@
+{
+  "name": "Lothric Knight Greatshield",
+  "type": "equipment",
+  "img": "icons/equipment/shield/oval-engraved-gold-grey.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "block": {
+        "physical": 0.85,
+        "fire": 0.55,
+        "lightning": 0.45,
+        "cold": 0.55,
+        "poison": 0.3
+      },
+      "damageReduction": 0,
+      "unique": true
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A tall wall of steel — the wall's last guard carried it. Heavy, but it does not chip.</em></p><p><strong>Unique:</strong> Greatshield: blocks one extra reaction-cost attack per round, unblockable still excepted.</p><p><strong>Block reduction (no roll):</strong> when you spend your reaction to Block, incoming damage of each type is reduced by this much, then dealt. Some moves are <em>unblockable</em> (100% through). A shield never staggers an enemy — that is parry's job.</p><table><tr><td><strong>Damage type</strong></td><td><strong>Reduced by</strong></td></tr><tr><td>Physical</td><td>85%</td></tr><tr><td>Fire</td><td>55%</td></tr><tr><td>Lightning</td><td>45%</td></tr><tr><td>Cold</td><td>55%</td></tr><tr><td>Poison</td><td>30%</td></tr></table>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 armor",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 20,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "rare",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": 2,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "shield",
+      "baseItem": ""
+    },
+    "properties": [],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "lothric-knight-greatshield"
+  }
+}

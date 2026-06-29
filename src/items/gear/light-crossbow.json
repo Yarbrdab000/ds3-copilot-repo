@@ -11,7 +11,8 @@
         "grade": "D",
         "factor": 0.5
       },
-      "upgrade": 0
+      "upgrade": 0,
+      "unique": false
     }
   },
   "system": {

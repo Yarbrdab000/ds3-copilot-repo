@@ -10,7 +10,9 @@
         "stat": "Intelligence",
         "grade": "A",
         "factor": 1.5
-      }
+      },
+      "upgrade": 0,
+      "unique": false
     }
   },
   "system": {

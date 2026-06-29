@@ -1,0 +1,67 @@
+{
+  "name": "Great Swamp Pyromancy Flame",
+  "type": "equipment",
+  "img": "icons/magic/fire/flame-burning-fist-orange.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "catalyst": true,
+      "scaling": {
+        "stat": "Int/Faith",
+        "grade": "A",
+        "factor": 1.5
+      },
+      "upgrade": 0,
+      "unique": false
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A fiercer flame from the Great Swamp; burns hotter.</em></p><p><strong>Spellcasting focus:</strong> channels Pyromancies (Int/Faith).</p><hr><p><strong>Catalyst Scaling:</strong> Int/Faith &mdash; Grade A. Add this to each spell's damage/healing based on your Int/Faith modifier &mdash; <strong>+2:</strong> 3 &nbsp; <strong>+3:</strong> 4 &nbsp; <strong>+4:</strong> 6 &nbsp; <strong>+5:</strong> 7.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 catalyst",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "foc"
+    ],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "great-swamp-pyromancy-flame"
+  }
+}

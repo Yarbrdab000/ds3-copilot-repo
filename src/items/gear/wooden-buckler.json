@@ -12,7 +12,8 @@
         "cold": 0.25,
         "poison": 0.1
       },
-      "damageReduction": 0
+      "damageReduction": 0,
+      "unique": false
     }
   },
   "system": {

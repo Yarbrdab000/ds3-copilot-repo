@@ -1,0 +1,67 @@
+{
+  "name": "Heretic's Staff",
+  "type": "equipment",
+  "img": "icons/weapons/staves/staff-skull-purple.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "catalyst": true,
+      "scaling": {
+        "stat": "Intelligence",
+        "grade": "S",
+        "factor": 2
+      },
+      "upgrade": 0,
+      "unique": false
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A fragile staff of pure raw power; high scaling, no upgrades.</em></p><p><strong>Spellcasting focus:</strong> channels Sorceries (Intelligence).</p><hr><p><strong>Catalyst Scaling:</strong> Intelligence &mdash; Grade S. Add this to each spell's damage/healing based on your Intelligence modifier &mdash; <strong>+2:</strong> 4 &nbsp; <strong>+3:</strong> 6 &nbsp; <strong>+4:</strong> 8 &nbsp; <strong>+5:</strong> 10.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 catalyst",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "foc"
+    ],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "heretic-s-staff"
+  }
+}

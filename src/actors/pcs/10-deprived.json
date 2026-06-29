@@ -555,7 +555,8 @@
             "grade": "E",
             "factor": 0.25
           },
-          "upgrade": 0
+          "upgrade": 0,
+          "unique": false
         }
       },
       "system": {

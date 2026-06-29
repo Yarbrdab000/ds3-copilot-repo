@@ -1,0 +1,67 @@
+{
+  "name": "Cleric's Sacred Chime",
+  "type": "equipment",
+  "img": "icons/magic/holy/chalice-glowing-gold.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "catalyst": true,
+      "scaling": {
+        "stat": "Faith",
+        "grade": "B",
+        "factor": 1
+      },
+      "upgrade": 0,
+      "unique": false
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A simple chime; sound it to invoke miracles.</em></p><p><strong>Spellcasting focus:</strong> channels Miracles (Faith).</p><hr><p><strong>Catalyst Scaling:</strong> Faith &mdash; Grade B. Add this to each spell's damage/healing based on your Faith modifier &mdash; <strong>+2:</strong> 2 &nbsp; <strong>+3:</strong> 3 &nbsp; <strong>+4:</strong> 4 &nbsp; <strong>+5:</strong> 5.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 catalyst",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "foc"
+    ],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "cleric-s-sacred-chime"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Drake's Catalyst",
+  "type": "equipment",
+  "img": "icons/weapons/staves/staff-ornate-eye.webp",
+  "effects": [],
+  "flags": {
+    "ashen": {
+      "catalyst": true,
+      "scaling": {
+        "stat": "Int/Faith",
+        "grade": "A",
+        "factor": 1.5
+      },
+      "upgrade": 1,
+      "unique": true
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A horn catalyst pried from the bridge dragon's hoard, humming with power. Path C only.</em></p><p><strong>Spellcasting focus:</strong> channels Sorceries or Miracles (caster's choice).</p><p><strong>Unique:</strong> Pre-tempered: already +1 to spell attack and damage; Andre may push it further.</p><p><strong>Reinforced +1:</strong> add +1 to spell attack and spell damage.</p><hr><p><strong>Catalyst Scaling:</strong> Int/Faith &mdash; Grade A. Add this to each spell's damage/healing based on your Int/Faith modifier &mdash; <strong>+2:</strong> 3 &nbsp; <strong>+3:</strong> 4 &nbsp; <strong>+4:</strong> 6 &nbsp; <strong>+5:</strong> 7.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "DS3 catalyst",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "rare",
+    "identified": true,
+    "container": null,
+    "crewed": false,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "foc"
+    ],
+    "proficient": null,
+    "strength": null,
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "activities": {},
+    "identifier": "drake-s-catalyst"
+  }
+}

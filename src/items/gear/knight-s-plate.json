@@ -6,7 +6,8 @@
   "flags": {
     "ashen": {
       "block": null,
-      "damageReduction": 3
+      "damageReduction": 3,
+      "unique": false
     }
   },
   "system": {
