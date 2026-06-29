@@ -101,6 +101,9 @@ async function resolve(d, w, atk, name, actor) {
 async function onAttack(item) {
   if (!game.user.isGM) return;
   if (item?.actor?.type !== "npc") return;
+  const stamp = `${item.id}:${Math.floor(Date.now() / 1500)}`;
+  if (onAttack._last === stamp) return;
+  onAttack._last = stamp;
   const targets = [...(game.user.targets ?? [])].filter((t) => t.actor?.type === "character");
   if (!targets.length) return;
   let atk = item.getFlag?.(NS, "def");
@@ -110,7 +113,11 @@ async function onAttack(item) {
   for (const t of targets) await promptDefense(t.document ?? t, atk);
 }
 
+// dnd5e v3 path: items fire dnd5e.useItem.
 Hooks.on("dnd5e.useItem", (item) => onAttack(item));
+// dnd5e v4/v5 path: items run "activities"; useItem is gone. Catch the activity instead.
+Hooks.on("dnd5e.postUseActivity", (activity) => onAttack(activity?.item));
+Hooks.on("dnd5e.useActivity", (activity) => onAttack(activity?.item));
 
 Hooks.on("renderChatMessage", (msg, html) => {
   html.find(".adf").on("click", (ev) => {
