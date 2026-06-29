@@ -14,13 +14,14 @@
  */
 
 import { createCanvas } from "@napi-rs/canvas";
-import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from "node:fs";
 import path from "node:path";
 import url from "node:url";
 
 const ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "../..");
 const SCENES_DIR = path.join(ROOT, "src/scenes");
 const OUT = path.join(ROOT, "maps");
+const ART = path.join(ROOT, "art/maps");
 const MAX_BYTES = 2 * 1000 * 1000; // keep each map under 2 MB
 
 // ---------------------------------------------------------------------------
@@ -583,6 +584,13 @@ async function main() {
   let made = 0;
   for (const f of files) {
     const slug = slugFromFile(f);
+    const override = path.join(ART, slug + ".webp");
+    if (existsSync(override)) {
+      copyFileSync(override, path.join(OUT, slug + ".webp"));
+      made++;
+      console.log(`  ${slug.padEnd(14)} custom art (art/maps/${slug}.webp)`);
+      continue;
+    }
     const layout = LAYOUTS[slug];
     if (!layout) { console.warn("! no layout for", slug, "(skipping)"); continue; }
     const s = JSON.parse(readFileSync(path.join(SCENES_DIR, f), "utf8"));
