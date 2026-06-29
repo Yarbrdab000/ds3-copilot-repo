@@ -180,21 +180,46 @@ ChatMessage.create({ content: "Spent <b>" + n + " souls</b>. Banked remaining: "
     body: `
 const a = getLedger(); if (!a) return;
 const COST = { 4: 500, 5: 800, 6: 1200, 7: 1800, 8: 2600, 9: 3600, 10: 5000 };
-const buttons = {};
-for (const [lvl, c] of Object.entries(COST)) {
-  buttons["l" + lvl] = {
-    label: "\u2192 L" + lvl + " (" + c + ")",
-    callback: async () => {
-      const banked = await getSouls(a, "banked");
-      if (c > banked) return ui.notifications.warn("Ashen: need " + c + " banked souls, have " + banked + ".");
-      await setSouls(a, "banked", banked - c);
-      ChatMessage.create({ content: "A character ascends to <b>Level " + lvl + "</b> (-" + c + " souls). " +
-        "Bump your class level, then make your Ashen pick from the Level-Up Menu Card for L" + (lvl - 1) + " \u2192 " + lvl + "." });
-      ui.notifications.info("Ashen: leveled to " + lvl + ". Banked = " + (banked - c) + ".");
-    }
-  };
+const party = game.actors.filter(x => x.type === "character");
+if (!party.length) return ui.notifications.warn("Ashen: no player characters found. Import the Ashen pregens pack.");
+
+function dialogPick(title, intro, opts, dflt) {
+  const buttons = {};
+  for (const o of opts) buttons[o.id] = { label: o.label, callback: () => o.value };
+  return new Promise((resolve) => {
+    const d = new Dialog({ title, content: intro, buttons, default: dflt, close: () => resolve(null) }, { width: 460 });
+    for (const o of opts) { const cb = buttons[o.id].callback; buttons[o.id].callback = () => resolve(cb()); }
+    d.render(true);
+  });
 }
-new Dialog({ title: "Level Up at the Fire Keeper", content: "<p>Choose the level to purchase (cost in banked souls):</p>", buttons, default: "l4" }).render(true);
+
+async function grantPick(pc, name) {
+  let item = game.items.getName(name);
+  if (!item) { for (const p of game.packs) { if (p.documentName !== "Item") continue; const e = p.index.getName?.(name); if (e) { item = await p.getDocument(e._id); break; } } }
+  if (!item) { ui.notifications.warn("Ashen: pick '" + name + "' not found; add it from the Level-Up cards manually."); return; }
+  await pc.createEmbeddedDocuments("Item", [item.toObject()]);
+}
+
+const lvl = await dialogPick("Party Level Up at the Fire Keeper",
+  "<p>The whole party (<b>" + party.length + "</b> characters) ascends. Choose the level to purchase (cost in banked souls):</p>",
+  Object.entries(COST).map(([l, c]) => ({ id: "l" + l, label: "\u2192 L" + l + " (" + c + ")", value: { lvl: Number(l), cost: c } })), "l4");
+if (!lvl) return;
+const banked = await getSouls(a, "banked");
+if (lvl.cost > banked) return ui.notifications.warn("Ashen: need " + lvl.cost + " banked souls, have " + banked + ".");
+await setSouls(a, "banked", banked - lvl.cost);
+
+const PICKS = ["Attribute: Vigor +1","Attribute: Strength +1","Attribute: Dexterity +1","Attribute: Endurance +1","Attribute: Intelligence +1","Attribute: Faith +1","Attribute: Attunement +1","Dexterity: AC Milestone (+1 AC)","Weapon Art: Stomp","Weapon Art: Perseverance","Weapon Art: Spin Slash","Weapon Art: Charge","Weapon Art: Quickstep","Weapon Art: Leo Riposte","Weapon Art: Steady Chant","Weapon Art: Crystallize","Weapon Art: Pyromancer's Fervor","Weapon Art: Sage's Focus","Weapon Art: Estus Mastery"];
+const summary = [];
+for (const pc of party) {
+  const cls = pc.items.find(i => i.type === "class");
+  if (cls) await cls.update({ "system.levels": (cls.system.levels || 1) + 1 });
+  const pick = await dialogPick(pc.name + ": pick (L" + (lvl.lvl - 1) + " \u2192 " + lvl.lvl + ")",
+    "<p>Choose <b>" + pc.name + "</b>'s upgrade (auto-applied):</p>",
+    PICKS.map((n, i) => ({ id: "p" + i, label: n, value: n })), "p0");
+  if (pick) await grantPick(pc, pick);
+  summary.push("<b>" + pc.name + "</b>" + (pick ? " \u2014 " + pick : ""));
+}
+ChatMessage.create({ content: "<b>The party ascends to Level " + lvl.lvl + "</b> (-" + lvl.cost + " souls). Banked = " + (banked - lvl.cost) + ".<br>" + summary.join("<br>") });
 `
   },
   {

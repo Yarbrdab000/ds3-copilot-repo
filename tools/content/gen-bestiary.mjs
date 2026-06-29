@@ -214,7 +214,7 @@ const ACTORS = [
     ] }),
 
   // ───── Firelink Shrine NPCs (friendly / service) ─────
-  npc({ name: "Fire Keeper", img: "icons/magic/fire/flame-burning-women-blue.webp", ac: 12, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 0, role: "service-npc", disposition: 1,
+  npc({ name: "Fire Keeper", img: "modules/ashen-of-lothric/tokens/fire-keeper.png", ac: 12, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 0, role: "service-npc", disposition: 1,
     str: 9, dex: 12, con: 12, int: 13, wis: 16, cha: 15, ctype: "humanoid",
     bioHtml: "<p><em>\"Welcome to Firelink Shrine, Unkindled One. I shall stay by your side until the day you become Cinder.\"</em></p><p><strong>Service \u2014 leveling.</strong> Blind, gentle, and bound to the flame, the Fire Keeper turns banked souls into strength. Run the <strong>Level Up</strong> macro and walk the player through the <em>Level-Up Menu Cards</em> journal. She also reinforces the Estus Flask with Estus Shards (add a charge, cap 6). Non-combatant \u2014 if she is ever threatened, the scene is already lost.</p>" }),
   npc({ name: "Shrine Handmaid", img: "icons/magic/death/hand-withered-gray.webp", ac: 11, hp: 18, hpFormula: "4d8", cr: 0.5, souls: 0, role: "service-npc", disposition: 1,
