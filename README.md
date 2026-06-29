@@ -43,7 +43,8 @@ session without wrestling with mechanics or setup.
 ## Build & import
 
 See **[IMPORT.md](IMPORT.md)** for the dead-simple "drag it into The Forge and play" guide, and
-`tools/` for compiling the source into a module.
+**[AUTHORING.md](AUTHORING.md)** to edit/rebuild every piece (bosses, attacks, spells, gear,
+pregens, maps) or fork it into a brand-new campaign. `tools/` compiles the source into a module.
 
 ```bash
 npm install        # installs the Foundry CLI
