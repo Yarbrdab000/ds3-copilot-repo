@@ -1,7 +1,7 @@
 {
   "name": "Fire Keeper",
   "type": "npc",
-  "img": "icons/magic/fire/flame-burning-women-blue.webp",
+  "img": "modules/ashen-of-lothric/tokens/fire-keeper.png",
   "effects": [],
   "flags": {
     "ashen": {
@@ -249,7 +249,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/magic/fire/flame-burning-women-blue.webp",
+      "src": "modules/ashen-of-lothric/tokens/fire-keeper.png",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

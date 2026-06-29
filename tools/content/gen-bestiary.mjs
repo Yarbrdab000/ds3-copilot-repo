@@ -180,7 +180,7 @@ const ACTORS = [
       attack({ name: "Frost Lunge", n: 2, d: 8, bonus: 3, types: [SL], ability: "dex", reach: 40 }),
       attack({ name: "Pounce", n: 2, d: 10, bonus: 3, types: [BL], reach: 5 })
     ] }),
-  npc({ name: "Pus of Man (High Wall)", img: "icons/creatures/tentacles/tentacles-suctioncups-pink.webp", ac: 14, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "lg", reach: 15,
+  npc({ name: "Pus of Man (High Wall)", img: "modules/ashen-of-lothric/tokens/pus-of-man-gundyr.png", ac: 14, ...bossHP(4, "mini"), cr: 4, souls: 1000, role: "mini-boss", size: "lg", reach: 15,
     str: 17, dex: 10, con: 16, ctype: "aberration", vuln: [FIRE],
     bioHtml: card("A 'dead' hollow on the wall bursts into an abomination as the party passes. <strong>Vulnerable to fire (takes double)</strong> \u2014 a firebomb or pyromancer roughly halves the fight.",
       ["<strong>Whipping Tendrils</strong> (up to 2 PCs, 2d6+3): dodge ADV W2; unparryable.", "<strong>Lunge Bite</strong> (2d8+3): parry ADV W2 \u2014 a clean, committed lunge.", "<strong>Black Spew</strong> (15-ft cone 3d6 poison + reduced healing): dodge out on W1; unparryable."],
@@ -190,7 +190,7 @@ const ACTORS = [
       attack({ name: "Lunge Bite", n: 2, d: 8, bonus: 3, types: [PI], reach: 15 }),
       attack({ name: "Black Spew", n: 3, d: 6, bonus: 0, types: ["poison"], reach: 15 })
     ] }),
-  npc({ name: "The Dragon", img: "icons/creatures/reptiles/dragon-fire-breathing-orange.webp", ac: 18, ...bossHP(5.5, "dragon"), cr: 8, souls: 4000, role: "secret-boss", size: "huge", walk: 40, fly: 80,
+  npc({ name: "The Dragon", img: "modules/ashen-of-lothric/tokens/the-dragon.png", ac: 18, ...bossHP(5.5, "dragon"), cr: 8, souls: 4000, role: "secret-boss", size: "huge", walk: 40, fly: 80,
     str: 23, dex: 12, con: 19, ctype: "dragon",
     bioHtml: card("Optional, killable secret boss on the rampart \u2014 visible the whole time. Teaching Death #2: charging the open bridge = incineration. <strong>Three paths:</strong> (A) bypass via cover; (B) flank ~50 dmg in the dead zone \u2192 it flies to a new visible perch; (C) chase &amp; kill for the full reward + unique drop. Souls 3,000\u20134,000 (path C only).",
       ["<strong>Fire Breath</strong> (bridge rake, 4d8 fire): unblock/parry/dodge in the open \u2014 the ONLY answer is COVER. The dead zone beneath/behind it is safe.", "<strong>Tail Sweep</strong> (dead-zone, arc 3d10 + prone): dodge ADV W2; unparryable.", "<strong>Claw &amp; Bite</strong> (3d8+5): the bite (W3) is parryable \u2014 staggers a dragon."],

@@ -114,6 +114,20 @@ for (const pack of packs) {
   }
 }
 
+// Self-heal scene backgrounds: repoint any Ashen scene at the bundled map art (fixes stale Forge URLs).
+const SCENE_MAP = [
+  ["cemetery", "cemetery"], ["firelink", "firelink"], ["high wall", "high-wall"], ["dragon", "dragon-bridge"],
+  ["outrider", "outrider"], ["pus", "pus-wall"], ["vordt", "vordt"], ["region", "map"], ["overview", "map"]
+];
+let scenesFixed = 0;
+for (const sc of game.scenes) {
+  const nm = (sc.name || "").toLowerCase();
+  const hit = SCENE_MAP.find(([kw]) => nm.indexOf(kw) !== -1);
+  if (!hit) continue;
+  const want = "modules/" + MODULE_ID + "/maps/" + hit[1] + ".webp";
+  if (sc.background?.src !== want) { try { await sc.update({ "background.src": want }); scenesFixed++; } catch (e) {} }
+}
+
 // Make the souls tracker work out of the box: ensure the Bonfire Ledger has its flags initialised.
 const ledger = game.actors.find(x => x.getFlag("ashen", "role") === "souls") || game.actors.getName("Bonfire Ledger");
 if (ledger) {
@@ -126,6 +140,7 @@ const lines = ["<h3>Adventure assembled.</h3>"];
 lines.push("<p>Imported <b>" + imported + "</b> document(s)" +
   (skipped ? ", skipped <b>" + skipped + "</b> already present" : "") +
   (failed ? ", <b>" + failed + "</b> pack(s) failed (see console)" : "") +
+  (scenesFixed ? ", repaired <b>" + scenesFixed + "</b> scene background(s)" : "") +
   ". Find them under the <b>Ashen \\u2014</b> folders in the Journals, Actors, Items, Scenes, Tables and Macros tabs.</p>");
 lines.push("<p><b>Start here:</b> open the <b>Rules Bible</b>, then the <b>DM Handbook</b> (read its Quick-Start page), have each player grab a <b>Pregen</b>, and drag <b>1 \\u00b7 Cemetery of Ash</b> onto the canvas.</p>");
 lines.push("<p>The shared souls live on the <b>Bonfire Ledger</b> actor \\u2014 drive it with the Ashen tracker macros (Award / Bank / Spend / Bonfire Rest), never by hand.</p>");
