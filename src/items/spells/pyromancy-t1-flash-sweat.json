@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "pyromancy",
-      "charges": 1
+      "casts": 3
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A sheen of warding sweat blunts the next searing blow.</em></p><p><strong>Reaction when you take acid/cold/fire/lightning/thunder damage: resistance to that damage this turn, and +1d6 of that type on your next melee hit.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — costs <strong>1 charge</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Absorb Elements</em>.</p>",
+      "value": "<p><em>A sheen of warding sweat blunts the next searing blow.</em></p><p><strong>Reaction when you take acid/cold/fire/lightning/thunder damage: resistance to that damage this turn, and +1d6 of that type on your next melee hit.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Absorb Elements</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -66,8 +66,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -80,7 +85,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

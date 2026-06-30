@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "pyromancy",
-      "charges": 2
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>The signature pyromancy: a roaring blossom of flame.</em></p><p><strong>20-ft sphere; Dex save, 8d6 fire (half on save). The bread and butter of any pyromancer.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 pyromancy — costs <strong>2 charges</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Fireball</em>.</p>",
+      "value": "<p><em>The signature pyromancy: a roaring blossom of flame.</em></p><p><strong>20-ft sphere; Dex save, 8d6 fire (half on save). The bread and butter of any pyromancer.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 pyromancy — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Fireball</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -69,8 +69,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -83,7 +88,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

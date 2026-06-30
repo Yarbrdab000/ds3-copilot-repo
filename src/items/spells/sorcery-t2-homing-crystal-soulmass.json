@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "sorcery",
-      "charges": 2
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Shards of soul orbit you, then streak out to seek your foes.</em></p><p><strong>Loose three shards; make a separate spell attack for each, 2d6 force per hit.</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in force damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 2 sorcery — costs <strong>2 charges</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Scorching Ray</em>.</p>",
+      "value": "<p><em>Shards of soul orbit you, then streak out to seek your foes.</em></p><p><strong>Loose three shards; make a separate spell attack for each, 2d6 force per hit.</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in force damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 2 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Scorching Ray</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,8 +67,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -81,7 +86,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

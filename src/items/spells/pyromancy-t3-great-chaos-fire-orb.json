@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "pyromancy",
-      "charges": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A churning orb of chaos fire that leaves molten ruin.</em></p><p><strong>10-ft radius column; Dex save, 5d6 fire (half on save), and the ground burns (difficult, 1d6 fire to enter) for 1 minute.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 pyromancy — costs <strong>3 charges</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Flame Strike (fire)</em>.</p>",
+      "value": "<p><em>A churning orb of chaos fire that leaves molten ruin.</em></p><p><strong>10-ft radius column; Dex save, 5d6 fire (half on save), and the ground burns (difficult, 1d6 fire to enter) for 1 minute.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 pyromancy — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Flame Strike (fire)</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,8 +68,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -82,7 +87,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

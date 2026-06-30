@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "sorcery",
-      "charges": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A torrent of souls hardens into an impassable veil.</em></p><p><strong>Raise a wall of solid soul-force (as Wall of Force) for up to 10 minutes (concentration). Control the arena.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — costs <strong>3 charges</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Wall of Force</em>.</p>",
+      "value": "<p><em>A torrent of souls hardens into an impassable veil.</em></p><p><strong>Raise a wall of solid soul-force (as Wall of Force) for up to 10 minutes (concentration). Control the arena.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Wall of Force</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,8 +67,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -81,7 +86,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

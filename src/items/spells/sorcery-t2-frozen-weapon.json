@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "sorcery",
-      "charges": 2
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Rime sheaths a blade, biting with cold.</em></p><p><strong>A weapon gains +1 to attack and deals +1d4 cold for the scene (concentration, up to 1 hour).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 sorcery — costs <strong>2 charges</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Elemental Weapon</em>.</p>",
+      "value": "<p><em>Rime sheaths a blade, biting with cold.</em></p><p><strong>A weapon gains +1 to attack and deals +1d4 cold for the scene (concentration, up to 1 hour).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Elemental Weapon</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,8 +68,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -82,7 +87,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

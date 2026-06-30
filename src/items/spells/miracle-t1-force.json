@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "miracle",
-      "charges": 1
+      "casts": 3
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A pulse of divine will throws back all who crowd you.</em></p><p><strong>15-ft cube; Con save, 2d8 thunder and pushed 10 ft (half and no push on save). A panic button.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — costs <strong>1 charge</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Thunderwave</em>.</p>",
+      "value": "<p><em>A pulse of divine will throws back all who crowd you.</em></p><p><strong>15-ft cube; Con save, 2d8 thunder and pushed 10 ft (half and no push on save). A panic button.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Thunderwave</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,8 +68,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -82,7 +87,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

@@ -1,40 +1,14 @@
 {
-  "name": "Milestone: Arcane Attunement (+1 Spell Charge)",
+  "name": "Milestone: Arcane Attunement (+1 spell cast)",
   "type": "feat",
   "img": "icons/magic/light/explosion-star-glow-blue-purple.webp",
-  "effects": [
-    {
-      "name": "Arcane Attunement",
-      "img": "icons/magic/light/explosion-star-glow-blue-purple.webp",
-      "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "system.resources.primary.max",
-          "mode": 2,
-          "value": "1",
-          "priority": null
-        }
-      ],
-      "transfer": true,
-      "disabled": false,
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {},
-      "duration": {
-        "startTime": null, "seconds": null, "combat": null,
-        "rounds": null, "turns": null, "startRound": null, "startTurn": null
-      }
-    }
-  ],
+  "effects": [],
   "flags": {
     "ashen": { "milestone": "int" }
   },
   "system": {
     "description": {
-      "value": "<p><strong>Intelligence milestone \u2014 unlocked at INT 15.</strong></p><p><strong>Grants:</strong> +1 maximum <strong>Spell Charge</strong> for your sorceries. Your deepened arcane focus widens the pool you draw from between bonfires.</p><p><em>This card applies its bonus automatically while on your sheet (your Spell Charges max rises by 1).</em></p>",
+      "value": "<p><strong>Intelligence milestone \u2014 unlocked at INT 15.</strong></p><p><strong>Grants:</strong> +1 cast to <strong>every sorcery you know</strong> (and any you learn afterward). Each spell still refills its own casts at a bonfire.</p>",
       "chat": ""
     },
     "source": {

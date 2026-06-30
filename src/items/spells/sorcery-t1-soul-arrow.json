@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "sorcery",
-      "charges": 1
+      "casts": 3
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A bolt of distilled soul-stuff that never misses its mark.</em></p><p><strong>Three darts of soul energy strike unerringly (3 x 1d4+1 force, auto-hit). Split among up to three targets.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — costs <strong>1 charge</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Magic Missile</em>.</p>",
+      "value": "<p><em>A bolt of distilled soul-stuff that never misses its mark.</em></p><p><strong>Three darts of soul energy strike unerringly (3 x 1d4+1 force, auto-hit). Split among up to three targets.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Magic Missile</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,8 +67,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -81,7 +86,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

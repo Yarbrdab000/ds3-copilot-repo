@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "sorcery",
-      "charges": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>You exhale the breath of an Archdragon — a roaring cone of frost.</em></p><p><strong>60-ft cone; Con save, 8d8 cold (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — costs <strong>3 charges</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Cone of Cold</em>.</p>",
+      "value": "<p><em>You exhale the breath of an Archdragon — a roaring cone of frost.</em></p><p><strong>60-ft cone; Con save, 8d8 cold (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Cone of Cold</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -69,8 +69,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -83,7 +88,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

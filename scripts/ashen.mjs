@@ -150,12 +150,14 @@ const LU_ABIL = [
 const LU_MILESTONE = {
   str: "Milestone: Crushing Blow (+1 weapon die)",
   dex: "Milestone: Extra Strike (+1 attack)",
-  int: "Milestone: Arcane Attunement (+1 Spell Charge)",
-  wis: "Milestone: Divine Attunement (+1 Spell Charge)",
-  cha: "Milestone: Pyromantic Attunement (+1 Spell Charge)"
+  int: "Milestone: Arcane Attunement (+1 spell cast)",
+  wis: "Milestone: Divine Attunement (+1 spell cast)",
+  cha: "Milestone: Pyromantic Attunement (+1 spell cast)"
 };
 const LU_MS_AT = 15;
-const LU_CHARGE_KEYS = new Set(["int", "wis", "cha"]);
+// Caster milestones grant +1 cast to every spell of their school.
+const LU_MS_GROUP = { int: "sorcery", wis: "miracle", cha: "pyromancy" };
+const LU_GROUP_KEY = { sorcery: "int", miracle: "wis", pyromancy: "cha" };
 const LU_VIG_HP = 5;
 
 async function luRaiseAbility(actor, key) {
@@ -175,17 +177,27 @@ async function luRaiseAbility(actor, key) {
 }
 
 // Grant the milestone card for an ability if the actor has hit 15 and doesn't
-// already own it. Charge milestones carry an active effect that raises the
-// Spell Charges max; we top up the current value by 1 so it's usable now.
+// already own it. Caster milestones (int/wis/cha) also add +1 cast to every
+// spell of that school the actor currently knows.
 async function luGrantMilestone(actor, key) {
   const name = LU_MILESTONE[key];
   if (!name || actor.items.some((i) => i.name === name)) return false;
   if (!(await luGrant(actor, name))) return false;
-  if (LU_CHARGE_KEYS.has(key)) {
-    const r = actor.system.resources?.primary;
-    if (r && r.max != null) await actor.update({ "system.resources.primary.value": Math.min(Number(r.max), Number(r.value || 0) + 1) });
-  }
+  const group = LU_MS_GROUP[key];
+  if (group) await luBoostSchool(actor, group);
   return true;
+}
+
+// Add +1 use ("cast") to every spell of a school the actor knows. Used when a
+// caster's school milestone is first granted.
+async function luBoostSchool(actor, group) {
+  const updates = [];
+  for (const it of actor.items) {
+    if (it.type !== "spell" || it.flags?.ashen?.group !== group) continue;
+    const cur = Number(it.system?.uses?.max) || 0;
+    if (cur) updates.push({ _id: it.id, "system.uses.max": String(cur + 1) });
+  }
+  if (updates.length) await actor.updateEmbeddedDocuments("Item", updates);
 }
 
 // Ensure every ability at >=15 owns its milestone card. Idempotent; only adds
@@ -246,8 +258,17 @@ async function luGrant(actor, name) {
     }
   }
   if (!item) { ui.notifications.warn("Ashen: pick '" + name + "' not found; add it from the Level-Up cards manually."); return false; }
-  await actor.createEmbeddedDocuments("Item", [item.toObject()]);
-  return true;
+  const [created] = await actor.createEmbeddedDocuments("Item", [item.toObject()]);
+  // If this is a spell and the actor already owns the matching school milestone,
+  // the milestone's "+1 cast" applies to spells learned later too.
+  if (created?.type === "spell") {
+    const key = LU_GROUP_KEY[created.flags?.ashen?.group];
+    if (key && actor.items.some((i) => i.name === LU_MILESTONE[key])) {
+      const cur = Number(created.system?.uses?.max) || 0;
+      if (cur) await created.update({ "system.uses.max": String(cur + 1) });
+    }
+  }
+  return created || true;
 }
 
 // Tier-gated spell options, grouped by school. Reads flags.ashen.tier/group set by gen-spells.

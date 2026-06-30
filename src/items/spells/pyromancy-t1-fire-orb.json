@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "pyromancy",
-      "charges": 1
+      "casts": 3
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A gout of flame erupts from the pyromancy flame in your palm.</em></p><p><strong>15-ft cone; Dex save, 3d6 fire (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — costs <strong>1 charge</strong>. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Burning Hands</em>.</p>",
+      "value": "<p><em>A gout of flame erupts from the pyromancy flame in your palm.</em></p><p><strong>15-ft cone; Dex save, 3d6 fire (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Burning Hands</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,8 +68,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -82,7 +87,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

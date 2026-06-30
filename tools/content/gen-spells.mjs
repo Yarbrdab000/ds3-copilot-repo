@@ -6,9 +6,10 @@
  * items-spells pack: edit the SPELLS table and re-run `node tools/content/gen-spells.mjs`
  * to regenerate src/items/spells/*.json. The build then compiles those into the pack.
  *
- * Casting in Ashen uses a charge pool (T1=1, T2=2, T3=3 charges), not 5e slots — the
- * charge cost is stated in each description; the spell.level is set to the SRD-equivalent
- * so dnd5e renders damage/scaling correctly.
+ * Casting in Ashen uses PER-SPELL casts (each spell has its own uses, refilled at a
+ * bonfire / long rest): Tier 1 = 3 casts, Tier 2 = 2, Tier 3 = 2. There are no spell
+ * slots — spell.level is set to the SRD-equivalent only so dnd5e renders damage/scaling
+ * correctly. The 15-stat caster milestone adds +1 cast to every spell of that school.
  */
 
 import { writeFile, mkdir, rm } from "node:fs/promises";
@@ -18,6 +19,8 @@ import url from "node:url";
 const OUT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "../../src/items/spells");
 
 const TIER_CHARGES = { 1: 1, 2: 2, 3: 3 };
+// Per-spell casts (uses) by tier — each spell refills these at a bonfire (long rest).
+const TIER_USES = { 1: 3, 2: 2, 3: 2 };
 const SCHOOL_GROUP = {
   sorcery: { stat: "Intelligence", catalyst: "Staff / Catalyst", img: "icons/magic/light/projectile-bolts-salvo-blue.webp" },
   miracle: { stat: "Faith", catalyst: "Talisman / Chime", img: "icons/magic/holy/projectile-cross-glowing-yellow.webp" },
@@ -157,7 +160,7 @@ function buildActivity(s) {
   const base = {
     _id: "dnd5eactivity000",
     activation: { type: "action", value: 1, condition: "", override: false },
-    consumption: { targets: [], scaling: { allowed: false, max: "" }, spellSlot: false },
+    consumption: { targets: [{ type: "itemUses", target: "", value: "1", scaling: { mode: "", formula: "" } }], scaling: { allowed: false, max: "" }, spellSlot: false },
     description: { chatFlavor: "" },
     duration: { concentration: !!(s.properties || []).includes("concentration"), value: "", units: "inst", special: "", override: false },
     effects: [],
@@ -202,7 +205,7 @@ function buildActivity(s) {
 
 function buildSpell(s) {
   const g = SCHOOL_GROUP[s.group];
-  const charges = TIER_CHARGES[s.tier];
+  const casts = TIER_USES[s.tier];
   const valve = (s.activity === "attack" && s.parts && s.parts.length)
     ? `<p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in ${s.parts[0][3]} damage (minimum 1) — a caster always chips.</p>`
     : "";
@@ -210,7 +213,7 @@ function buildSpell(s) {
     `<p><em>${s.flavor}</em></p>` +
     `<p><strong>${s.rules}</strong></p>` +
     valve +
-    `<hr/><p><strong>Ashen:</strong> Tier ${s.tier} ${s.group} — costs <strong>${charges} charge${charges > 1 ? "s" : ""}</strong>. ` +
+    `<hr/><p><strong>Ashen:</strong> Tier ${s.tier} ${s.group} — <strong>${casts} cast${casts > 1 ? "s" : ""} per bonfire</strong> (refills on a long rest). ` +
     `Gated by ${g.stat}; requires a <strong>${g.catalyst}</strong> in hand. Based on SRD <em>${s.srd}</em>.</p>`;
   const template = s.template
     ? { type: s.template.type, size: String(s.template.size), units: "ft", width: s.template.width ? String(s.template.width) : "", contiguous: false }
@@ -223,7 +226,7 @@ function buildSpell(s) {
     type: "spell",
     img: g.img,
     effects: [],
-    flags: { ashen: { tier: s.tier, group: s.group, charges } },
+    flags: { ashen: { tier: s.tier, group: s.group, casts } },
     system: {
       description: { value: desc, chat: "" },
       source: { book: "Ashen", page: "", custom: `DS3 ${s.group}`, license: "CC-BY-4.0", rules: "2014" },
@@ -236,7 +239,7 @@ function buildSpell(s) {
       duration: { value: "", units: (s.properties || []).includes("concentration") ? "minute" : "inst" },
       range: { value: s.range?.value ?? "", units: s.range?.units ?? "self", special: "" },
       target: { affects, template },
-      uses: { max: "", recovery: [], spent: 0 },
+      uses: { max: String(TIER_USES[s.tier]), recovery: [{ period: "lr", type: "recoverAll" }], spent: 0 },
       activities: { dnd5eactivity000: buildActivity(s) },
       identifier: slug(s.name)
     }

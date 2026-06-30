@@ -427,7 +427,7 @@ function buildActor(p, gear, spells, levels) {
       currency: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 },
       tools: {},
       resources: {
-        primary: { value: p.spellAbility ? 3 : null, max: p.spellAbility ? 3 : null, sr: false, lr: true, label: p.spellAbility ? "Spell Charges" : "" },
+        primary: { value: null, max: null, sr: false, lr: false, label: "" },
         secondary: { value: null, max: null, sr: false, lr: false, label: "" },
         tertiary: { value: null, max: null, sr: false, lr: false, label: "" }
       },

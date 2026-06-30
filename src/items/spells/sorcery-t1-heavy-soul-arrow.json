@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "sorcery",
-      "charges": 1
+      "casts": 3
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A heavier, slower lance of soul that arcs to its target and clings.</em></p><p><strong>Spell attack; on hit 1d12 force, and each later turn you may use an action to deal 1d12 again (concentration).</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in force damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — costs <strong>1 charge</strong>. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Witch Bolt</em>.</p>",
+      "value": "<p><em>A heavier, slower lance of soul that arcs to its target and clings.</em></p><p><strong>Spell attack; on hit 1d12 force, and each later turn you may use an action to deal 1d12 again (concentration).</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in force damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Witch Bolt</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,8 +68,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -82,7 +87,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

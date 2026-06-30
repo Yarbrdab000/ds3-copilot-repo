@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "miracle",
-      "charges": 2
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A broader benediction mends the whole party.</em></p><p><strong>Up to 6 creatures within 30 ft each regain 2d8 + your Faith modifier HP (10-minute cast — between fights).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — costs <strong>2 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Prayer of Healing</em>.</p>",
+      "value": "<p><em>A broader benediction mends the whole party.</em></p><p><strong>Up to 6 creatures within 30 ft each regain 2d8 + your Faith modifier HP (10-minute cast — between fights).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Prayer of Healing</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -66,8 +66,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -80,7 +85,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

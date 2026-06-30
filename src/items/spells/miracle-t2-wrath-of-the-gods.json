@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "miracle",
-      "charges": 2
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Vengeful spirits wheel about you, smiting the wicked.</em></p><p><strong>15-ft aura for the scene (concentration); enemies entering take 3d8 radiant (Wis save halves) and are slowed.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — costs <strong>2 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Spirit Guardians</em>.</p>",
+      "value": "<p><em>Vengeful spirits wheel about you, smiting the wicked.</em></p><p><strong>15-ft aura for the scene (concentration); enemies entering take 3d8 radiant (Wis save halves) and are slowed.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Spirit Guardians</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -70,8 +70,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -84,7 +89,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""

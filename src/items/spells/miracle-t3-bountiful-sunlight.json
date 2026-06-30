@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "miracle",
-      "charges": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Warm sunlight floods the field, closing every wound it touches.</em></p><p><strong>Up to 6 creatures within a 30-ft sphere each regain 3d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 miracle — costs <strong>3 charges</strong>. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Mass Cure Wounds</em>.</p>",
+      "value": "<p><em>Warm sunlight floods the field, closing every wound it touches.</em></p><p><strong>Up to 6 creatures within a 30-ft sphere each regain 3d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Mass Cure Wounds</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,8 +67,13 @@
       }
     },
     "uses": {
-      "max": "",
-      "recovery": [],
+      "max": "2",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
       "spent": 0
     },
     "activities": {
@@ -81,7 +86,17 @@
           "override": false
         },
         "consumption": {
-          "targets": [],
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "",
+              "value": "1",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
           "scaling": {
             "allowed": false,
             "max": ""
