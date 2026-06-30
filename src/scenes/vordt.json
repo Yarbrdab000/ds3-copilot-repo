@@ -258,7 +258,7 @@
         750
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -273,7 +273,7 @@
         1700
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -288,7 +288,7 @@
         1700
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -303,7 +303,7 @@
         2500
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -318,7 +318,7 @@
         2500
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,

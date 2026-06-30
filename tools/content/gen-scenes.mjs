@@ -25,6 +25,12 @@ function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(
 function wall(c, move = 0, sight = 0, sound = 0) {
   return { c, move, sight, sound, type: "light", dir: 0, door: 0, ds: 0 };
 }
+// Interior obstacle: blocks MOVEMENT (cover / charge-lane breaker / cliff edge) but NOT
+// sight, so it never casts a vision shadow across an open arena. Only the perimeter walls
+// block sight (they sit at the map edge, so they can't wedge the play area).
+function cover(c) {
+  return wall(c, 1, 0);
+}
 
 // Light helpers: create ambient lights.
 // NOTE: Foundry v13 AmbientLight documents store their light settings under `config`
@@ -71,9 +77,9 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 3000, 0], 1, 1), wall([3000, 0, 3000, 2400], 1, 1), wall([3000, 2400, 0, 2400], 1, 1), wall([0, 2400, 0, 0], 1, 1),
       // Pillar covers (scattered obstacles in approach zone)
-      wall([800, 400, 900, 500], 1, 1), wall([900, 500, 800, 600], 1, 1), wall([800, 600, 700, 500], 1, 1), wall([700, 500, 800, 400], 1, 1),
-      wall([1400, 600, 1500, 700], 1, 1), wall([1500, 700, 1400, 800], 1, 1), wall([1400, 800, 1300, 700], 1, 1), wall([1300, 700, 1400, 600], 1, 1),
-      wall([1900, 800, 2000, 900], 1, 1), wall([2000, 900, 1900, 1000], 1, 1), wall([1900, 1000, 1800, 900], 1, 1), wall([1800, 900, 1900, 800], 1, 1),
+      cover([800, 400, 900, 500]), cover([900, 500, 800, 600]), cover([800, 600, 700, 500]), cover([700, 500, 800, 400]),
+      cover([1400, 600, 1500, 700]), cover([1500, 700, 1400, 800]), cover([1400, 800, 1300, 700]), cover([1300, 700, 1400, 600]),
+      cover([1900, 800, 2000, 900]), cover([2000, 900, 1900, 1000]), cover([1900, 1000, 1800, 900]), cover([1800, 900, 1900, 800]),
     ],
     lights: [
       light(2750, 2250, 30, 20, 360, "#ff6600", "torch"), // Coiled-sword bonfire (warm, dimmer before fight)
@@ -87,8 +93,8 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 2800, 0], 1, 1), wall([2800, 0, 2800, 2200], 1, 1), wall([2800, 2200, 0, 2200], 1, 1), wall([0, 2200, 0, 0], 1, 1),
       // Internal pillars/columns (decorative)
-      wall([600, 500, 600, 700], 1, 1), wall([2200, 500, 2200, 700], 1, 1),
-      wall([800, 1200, 1000, 1200], 1, 1), // Throne alcove
+      cover([600, 500, 600, 700]), cover([2200, 500, 2200, 700]),
+      cover([800, 1200, 1000, 1200]), // Throne alcove
     ],
     lights: [
       light(1400, 1100, 40, 25, 360, "#ffaa44", "torch"), // Central bonfire (warm, bright, sanctuary)
@@ -103,12 +109,12 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 3600, 0], 1, 1), wall([3600, 0, 3600, 2800], 1, 1), wall([3600, 2800, 0, 2800], 1, 1), wall([0, 2800, 0, 0], 1, 1),
       // Entry gate / columns
-      wall([800, 400, 900, 600], 1, 1), wall([1100, 400, 1200, 600], 1, 1),
+      cover([800, 400, 900, 600]), cover([1100, 400, 1200, 600]),
       // Courtyard farm walls (scattered obstacles)
-      wall([1200, 1200, 1400, 1200], 1, 1), wall([2000, 1000, 2200, 1100], 1, 1),
-      wall([1600, 1600, 1800, 1700], 1, 1), wall([2400, 1400, 2600, 1500], 1, 1),
+      cover([1200, 1200, 1400, 1200]), cover([2000, 1000, 2200, 1100]),
+      cover([1600, 1600, 1800, 1700]), cover([2400, 1400, 2600, 1500]),
       // Rampart edges (cliffs)
-      wall([200, 600, 800, 700], 1, 1), wall([1800, 500, 2400, 600], 1, 1),
+      cover([200, 600, 800, 700]), cover([1800, 500, 2400, 600]),
     ],
     lights: [
       light(1800, 1400, 25, 15, 360, "#ffbb66", "torch"), // Torches on ramparts
@@ -122,14 +128,14 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 4000, 0], 1, 1), wall([4000, 0, 4000, 2000], 1, 1), wall([4000, 2000, 0, 2000], 1, 1), wall([0, 2000, 0, 0], 1, 1),
       // Bridge railings
-      wall([100, 200, 3900, 200], 1, 1), wall([100, 1800, 3900, 1800], 1, 1),
+      cover([100, 200, 3900, 200]), cover([100, 1800, 3900, 1800]),
       // Archway covers (left side)
-      wall([600, 400, 700, 700], 1, 1), wall([700, 700, 600, 800], 1, 1),
-      wall([1200, 350, 1300, 650], 1, 1), wall([1300, 650, 1200, 750], 1, 1),
+      cover([600, 400, 700, 700]), cover([700, 700, 600, 800]),
+      cover([1200, 350, 1300, 650]), cover([1300, 650, 1200, 750]),
       // Fallen rubble (center)
-      wall([2000, 600, 2200, 900], 1, 1), wall([2200, 900, 2000, 1200], 1, 1),
+      cover([2000, 600, 2200, 900]), cover([2200, 900, 2000, 1200]),
       // Archway covers (right side)
-      wall([3000, 400, 3100, 750], 1, 1), wall([3100, 750, 3000, 850], 1, 1),
+      cover([3000, 400, 3100, 750]), cover([3100, 750, 3000, 850]),
     ],
     lights: [
       light(2000, 1000, 15, 8, 360, "#ff8844", "none"), // Dragon fire glow (ambient)
@@ -142,8 +148,8 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 2600, 0], 1, 1), wall([2600, 0, 2600, 2600], 1, 1), wall([2600, 2600, 0, 2600], 1, 1), wall([0, 2600, 0, 0], 1, 1),
       // Central pillars (2, to break charge lanes)
-      wall([800, 900, 900, 1100], 1, 1), wall([900, 1100, 800, 1200], 1, 1), wall([800, 1200, 700, 1100], 1, 1), wall([700, 1100, 800, 900], 1, 1),
-      wall([1700, 1400, 1800, 1600], 1, 1), wall([1800, 1600, 1700, 1700], 1, 1), wall([1700, 1700, 1600, 1600], 1, 1), wall([1600, 1600, 1700, 1400], 1, 1),
+      cover([800, 900, 900, 1100]), cover([900, 1100, 800, 1200]), cover([800, 1200, 700, 1100]), cover([700, 1100, 800, 900]),
+      cover([1700, 1400, 1800, 1600]), cover([1800, 1600, 1700, 1700]), cover([1700, 1700, 1600, 1600]), cover([1600, 1600, 1700, 1400]),
     ],
     lights: [
       light(1300, 1300, 20, 12, 360, "#bbddff", "none"), // Frost-touched ambient (cool blue)
@@ -156,9 +162,9 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 3000, 0], 1, 1), wall([3000, 0, 3000, 2200], 1, 1), wall([3000, 2200, 0, 2200], 1, 1), wall([0, 2200, 0, 0], 1, 1),
       // Rampart edges (cliffs)
-      wall([200, 400, 2800, 500], 1, 1), wall([200, 1700, 2800, 1800], 1, 1),
+      cover([200, 400, 2800, 500]), cover([200, 1700, 2800, 1800]),
       // Ladder well area
-      wall([400, 900, 600, 1100], 1, 1), wall([600, 1100, 400, 1300], 1, 1),
+      cover([400, 900, 600, 1100]), cover([600, 1100, 400, 1300]),
     ],
     lights: [
       light(1500, 1100, 15, 8, 360, "#cc9900", "torch"), // Torchlight on rampart
@@ -171,10 +177,10 @@ const SCENES = [
       // Perimeter
       wall([0, 0, 3000, 0], 1, 1), wall([3000, 0, 3000, 3000], 1, 1), wall([3000, 3000, 0, 3000], 1, 1), wall([0, 3000, 0, 0], 1, 1),
       // Fog gate area (pre-fight)
-      wall([1200, 600, 1800, 750], 1, 1),
+      cover([1200, 600, 1800, 750]),
       // Frozen hall columns (sparse)
-      wall([600, 1500, 700, 1700], 1, 1), wall([2300, 1500, 2400, 1700], 1, 1),
-      wall([400, 2300, 500, 2500], 1, 1), wall([2500, 2300, 2600, 2500], 1, 1),
+      cover([600, 1500, 700, 1700]), cover([2300, 1500, 2400, 1700]),
+      cover([400, 2300, 500, 2500]), cover([2500, 2300, 2600, 2500]),
     ],
     lights: [
       light(1500, 800, 12, 6, 360, "#bbddff", "none"), // Fog gate ambient (cool, eerie)

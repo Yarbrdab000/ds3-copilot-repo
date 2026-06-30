@@ -159,7 +159,7 @@
         500
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -174,7 +174,7 @@
         1800
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -189,7 +189,7 @@
         1100
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -204,7 +204,7 @@
         1300
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,

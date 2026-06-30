@@ -621,10 +621,12 @@ const data = await new Promise((resolve) => {
 if (!data) return;
 
 const px = Math.round(data.sz * canvas.grid.size);
+const AR = 387 / 512; // bonfire art is portrait; keep its native aspect so it isn't stretched
+const tw = Math.round(px * AR), th = px;
 const tile = {
   texture: { src: ART, scaleX: 1, scaleY: 1, offsetX: 0, offsetY: 0, rotation: 0, tint: null },
-  x: Math.round(cx - px / 2), y: Math.round(cy - px / 2),
-  width: px, height: px, rotation: 0, alpha: 1, hidden: false, locked: false, sort: 100,
+  x: Math.round(cx - tw / 2), y: Math.round(cy - th / 2),
+  width: tw, height: th, rotation: 0, alpha: 1, hidden: false, locked: false, sort: 100,
   flags: { ashen: { kind: "bonfire" } }
 };
 const created = { tiles: 0, lights: 0 };

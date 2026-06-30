@@ -159,7 +159,7 @@
         1100
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -174,7 +174,7 @@
         1200
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -189,7 +189,7 @@
         1100
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -204,7 +204,7 @@
         900
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -219,7 +219,7 @@
         1600
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -234,7 +234,7 @@
         1700
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -249,7 +249,7 @@
         1600
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
@@ -264,7 +264,7 @@
         1400
       ],
       "move": 1,
-      "sight": 1,
+      "sight": 0,
       "sound": 0,
       "type": "light",
       "dir": 0,
