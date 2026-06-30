@@ -231,22 +231,14 @@ if (!lvlPick) return;
 const lvl = Number(lvlPick);
 const cost = COST[lvl];
 
-// Souls economy is OPTIONAL — only enforced if a Bonfire Ledger exists. Without one, leveling is a DM override.
-let spend = 0, banked = 0;
+// Just subtract the cost from the ledger. Allow it to go negative (DM reconciles manually).
+// setSouls() clamps at 0, so write the flag directly here.
+let banked = 0;
 if (a) {
   banked = await getSouls(a, "banked");
-  spend = cost;
-  if (cost > banked) {
-    const ok = await Dialog.confirm({
-      title: "Not enough banked souls",
-      content: "<p>Level " + lvl + " costs <b>" + cost + "</b> banked souls, but the party has <b>" + banked + "</b>.</p>" +
-        "<p>Level the party anyway as a <b>DM override</b> (no souls spent)?</p>",
-      yes: () => true, no: () => false, defaultYes: false
-    });
-    if (!ok) return;
-    spend = 0;
-  }
-  await setSouls(a, "banked", banked - spend);
+  await a.setFlag("ashen", "banked", banked - cost);
+} else {
+  ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found \u2014 leveling the party without tracking souls.");
 }
 
 const PICKS = ["Attribute: Vigor +1","Attribute: Strength +1","Attribute: Dexterity +1","Attribute: Endurance +1","Attribute: Intelligence +1","Attribute: Faith +1","Attribute: Attunement +1","Dexterity: AC Milestone (+1 AC)","Weapon Art: Stomp","Weapon Art: Perseverance","Weapon Art: Spin Slash","Weapon Art: Charge","Weapon Art: Quickstep","Weapon Art: Leo Riposte","Weapon Art: Steady Chant","Weapon Art: Crystallize","Weapon Art: Pyromancer's Fervor","Weapon Art: Sage's Focus","Weapon Art: Estus Mastery"];
@@ -261,7 +253,7 @@ for (const pc of party) {
   if (pick) await grantPick(pc, pick);
   summary.push("<b>" + pc.name + "</b>" + (pick ? " \u2014 " + pick : " \u2014 (skipped)"));
 }
-ChatMessage.create({ content: "<b>The party ascends to Level " + lvl + "</b> (" + (spend ? "-" + spend + " souls" : "DM override \u2014 no souls spent") + ")." + (a ? " Banked = " + (banked - spend) + "." : "") + "<br>" + summary.join("<br>") });
+ChatMessage.create({ content: "<b>The party ascends to Level " + lvl + "</b> (" + (a ? "-" + cost + " souls" : "no ledger \u2014 souls not tracked") + ")." + (a ? " Banked = " + (banked - cost) + "." : "") + "<br>" + summary.join("<br>") });
 `
   },
   {
