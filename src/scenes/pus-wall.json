@@ -56,17 +56,33 @@
       "x": 1500,
       "y": 1100,
       "rotation": 0,
-      "alpha": 1,
+      "walls": false,
+      "vision": false,
       "hidden": false,
-      "light": {
-        "dim": 15,
-        "bright": 8,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
         "angle": 360,
+        "bright": 8,
         "color": "#cc9900",
-        "intensity": 0.8,
-        "alpha": 1,
-        "animation": "torch",
-        "shadow": 0
+        "coloration": 1,
+        "dim": 15,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "torch",
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        }
       }
     }
   ],

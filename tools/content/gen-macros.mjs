@@ -562,6 +562,92 @@ await t.actor.setFlag("ashen", "kindled", false);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b> — all Ashen status effects purged (override)." });
 ui.notifications.warn("Ashen: all effects cleared for " + t.actor.name + ".");
 `
+  },
+  {
+    name: "Ashen: Place Bonfire",
+    img: "modules/ashen-of-lothric/tokens/bonfire.webp",
+    body: `
+const MODULE_ID = "ashen-of-lothric";
+const ART = "modules/" + MODULE_ID + "/tokens/bonfire.webp";
+if (!canvas?.scene) return ui.notifications.warn("Ashen: open a scene first.");
+
+// Anchor point: a selected token's center, else the centre of the current view.
+let cx, cy;
+const tok = canvas.tokens?.controlled?.[0];
+if (tok) { cx = tok.center.x; cy = tok.center.y; }
+else { cx = canvas.stage.pivot.x; cy = canvas.stage.pivot.y; }
+
+const data = await new Promise((resolve) => {
+  new Dialog({
+    title: "Place Bonfire",
+    content: '<form>' +
+      '<p style="margin:.2em 0 .6em;opacity:.8;font-size:12px">Drops the coiled-sword bonfire art plus a warm flickering glow. Place it on a selected token, or at the centre of your current view. You can drag / resize it afterwards.</p>' +
+      '<div class="form-group"><label>Size (squares across)</label><input type="number" name="sz" value="3" min="1" step="1" autofocus/></div>' +
+      '<div class="form-group"><label>Bright glow radius (ft)</label><input type="number" name="b" value="15" min="0"/></div>' +
+      '<div class="form-group"><label>Dim glow radius (ft)</label><input type="number" name="d" value="35" min="0"/></div>' +
+      '<div class="form-group"><label>Lit (emit flickering light)?</label><input type="checkbox" name="lit" checked/></div>' +
+      '</form>',
+    buttons: {
+      ok: { icon: '<i class="fas fa-fire"></i>', label: "Place", callback: (h) => resolve({
+        sz: Number(h[0].querySelector('[name=sz]').value) || 3,
+        b: Math.max(0, Number(h[0].querySelector('[name=b]').value) || 0),
+        d: Math.max(0, Number(h[0].querySelector('[name=d]').value) || 0),
+        lit: h[0].querySelector('[name=lit]').checked
+      }) },
+      cancel: { label: "Cancel", callback: () => resolve(null) }
+    },
+    default: "ok", close: () => resolve(null)
+  }).render(true);
+});
+if (!data) return;
+
+const px = Math.round(data.sz * canvas.grid.size);
+const tile = {
+  texture: { src: ART, scaleX: 1, scaleY: 1, offsetX: 0, offsetY: 0, rotation: 0, tint: null },
+  x: Math.round(cx - px / 2), y: Math.round(cy - px / 2),
+  width: px, height: px, rotation: 0, alpha: 1, hidden: false, locked: false, sort: 100,
+  flags: { ashen: { kind: "bonfire" } }
+};
+const created = { tiles: 0, lights: 0 };
+const t = await canvas.scene.createEmbeddedDocuments("Tile", [tile]);
+created.tiles = t.length;
+
+if (data.lit) {
+  const lightDoc = {
+    x: Math.round(cx), y: Math.round(cy - px * 0.08),
+    rotation: 0, walls: false, vision: false, hidden: false,
+    config: {
+      negative: false, priority: 0, alpha: 0.55, angle: 360, bright: data.b, color: "#ff7a18",
+      coloration: 1, dim: data.d, attenuation: 0.6, luminosity: 0.5, saturation: 0.1, contrast: 0, shadows: 0,
+      animation: { type: "torch", speed: 3, intensity: 4, reverse: false },
+      darkness: { min: 0, max: 1 }
+    },
+    flags: { ashen: { kind: "bonfire" } }
+  };
+  const l = await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightDoc]);
+  created.lights = l.length;
+}
+ui.notifications.info("Bonfire placed (" + created.tiles + " tile, " + created.lights + " light). Drag to position; double-click the tile to resize. Use 'Ashen: Clear Bonfires' to remove.");
+`
+  },
+  {
+    name: "Ashen: Clear Bonfires (this scene)",
+    img: "icons/magic/fire/flame-burning-skull-orange.webp",
+    body: `
+if (!canvas?.scene) return ui.notifications.warn("Ashen: open a scene first.");
+const isBonfire = (doc) => doc.getFlag?.("ashen", "kind") === "bonfire" || doc.flags?.ashen?.kind === "bonfire";
+const tiles = canvas.scene.tiles.filter(isBonfire).map(d => d.id);
+const lights = canvas.scene.lights.filter(isBonfire).map(d => d.id);
+if (!tiles.length && !lights.length) return ui.notifications.info("Ashen: no placed bonfires found in this scene.");
+const ok = await Dialog.confirm({
+  title: "Clear bonfires?",
+  content: "<p>Remove <b>" + tiles.length + "</b> bonfire tile(s) and <b>" + lights.length + "</b> glow light(s) placed by 'Ashen: Place Bonfire' in this scene? (Hand-built scene torches are not affected.)</p>"
+});
+if (!ok) return;
+if (tiles.length) await canvas.scene.deleteEmbeddedDocuments("Tile", tiles);
+if (lights.length) await canvas.scene.deleteEmbeddedDocuments("AmbientLight", lights);
+ui.notifications.info("Ashen: cleared " + tiles.length + " bonfire(s).");
+`
   }
 ];
 

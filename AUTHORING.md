@@ -198,6 +198,18 @@ from gear `flags.ashen.block`; tweak text/multipliers in `resolve()`. Bump `vers
 - **Maps:** `gen-maps.mjs` renders placeholder webp into `maps/<slug>.webp`. Drop your own art
   in `art/maps/<slug>.webp` to override (kept committed; overrides survive rebuild).
 - **Tokens:** images in `tokens/`, referenced as `modules/ashen-of-lothric/tokens/<file>.png`.
+- **Bonfire object:** the coiled-sword bonfire art lives at `tokens/bonfire.webp` (source PNG kept in
+  `art/tokens/`). The **"Ashen: Place Bonfire"** macro drops that art + a warm flickering `torch`
+  light anywhere (on a selected token, or the view centre); **"Ashen: Clear Bonfires (this scene)"**
+  removes ones it placed. To swap the art, replace `tokens/bonfire.webp` (square, transparent PNG/webp)
+  and `npm run build:world`.
+
+### Scene lighting schema (important)
+
+Foundry v13 stores each scene light's settings under **`config`** (a `LightData` object), and
+`animation` is an **object** `{ type, speed, intensity, reverse }` — *not* a `light:{}` key with an
+`animation:"torch"` string (that older shape is silently ignored and the light won't glow). The
+`light()` helper in `gen-scenes.mjs` already emits the correct shape; keep new lights going through it.
 
 ---
 

@@ -56,51 +56,99 @@
       "x": 1400,
       "y": 1100,
       "rotation": 0,
-      "alpha": 1,
+      "walls": false,
+      "vision": false,
       "hidden": false,
-      "light": {
-        "dim": 40,
-        "bright": 25,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
         "angle": 360,
+        "bright": 25,
         "color": "#ffaa44",
-        "intensity": 0.8,
-        "alpha": 1,
-        "animation": "torch",
-        "shadow": 0
+        "coloration": 1,
+        "dim": 40,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": "torch",
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        }
       }
     },
     {
       "x": 400,
       "y": 800,
       "rotation": 0,
-      "alpha": 1,
+      "walls": false,
+      "vision": false,
       "hidden": false,
-      "light": {
-        "dim": 20,
-        "bright": 10,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
         "angle": 360,
+        "bright": 10,
         "color": "#ffcc88",
-        "intensity": 0.8,
-        "alpha": 1,
-        "animation": "none",
-        "shadow": 0
+        "coloration": 1,
+        "dim": 20,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        }
       }
     },
     {
       "x": 2400,
       "y": 1800,
       "rotation": 0,
-      "alpha": 1,
+      "walls": false,
+      "vision": false,
       "hidden": false,
-      "light": {
-        "dim": 15,
-        "bright": 8,
+      "config": {
+        "negative": false,
+        "priority": 0,
+        "alpha": 0.5,
         "angle": 360,
+        "bright": 8,
         "color": "#ffcc88",
-        "intensity": 0.8,
-        "alpha": 1,
-        "animation": "none",
-        "shadow": 0
+        "coloration": 1,
+        "dim": 15,
+        "attenuation": 0.5,
+        "luminosity": 0.5,
+        "saturation": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "animation": {
+          "type": null,
+          "speed": 5,
+          "intensity": 5,
+          "reverse": false
+        },
+        "darkness": {
+          "min": 0,
+          "max": 1
+        }
       }
     }
   ],

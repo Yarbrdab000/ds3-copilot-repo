@@ -26,11 +26,22 @@ function wall(c, move = 0, sight = 0, sound = 0) {
   return { c, move, sight, sound, type: "light", dir: 0, door: 0, ds: 0 };
 }
 
-// Light helpers: create ambient lights
-function light(x, y, dim, bright, angle = 360, color = "#ffffff", animation = "none") {
+// Light helpers: create ambient lights.
+// NOTE: Foundry v13 AmbientLight documents store their light settings under `config`
+// (a LightData object) — NOT a `light` key — and `animation` is an object
+// { type, speed, intensity, reverse }, not a string. Using the old `light:{ animation:"torch" }`
+// shape made Foundry silently drop the settings, so scene lights never actually glowed.
+function light(x, y, dim, bright, angle = 360, color = "#ffffff", animation = "none", { speed = 5, intensity = 5, alpha = 0.5 } = {}) {
+  const animType = (!animation || animation === "none") ? null : animation;
   return {
-    x, y, rotation: 0, alpha: 1, hidden: false,
-    light: { dim, bright, angle, color, intensity: 0.8, alpha: 1, animation, shadow: 0 }
+    x, y, rotation: 0, walls: false, vision: false, hidden: false,
+    config: {
+      negative: false, priority: 0, alpha, angle, bright, color,
+      coloration: 1, dim, attenuation: 0.5, luminosity: 0.5,
+      saturation: 0, contrast: 0, shadows: 0,
+      animation: { type: animType, speed, intensity, reverse: false },
+      darkness: { min: 0, max: 1 }
+    }
   };
 }
 
