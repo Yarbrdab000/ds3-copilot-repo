@@ -135,11 +135,71 @@ Hooks.once("ready", async () => {
 // behalf of an absent player. Players never touch the shared souls ledger.
 // ---------------------------------------------------------------------------
 
-const LU_ATTR = [
-  "Attribute: Vigor +1", "Attribute: Strength +1", "Attribute: Dexterity +1",
-  "Attribute: Endurance +1", "Attribute: Intelligence +1", "Attribute: Faith +1",
-  "Attribute: Attunement +1", "Dexterity: AC Milestone (+1 AC)"
+// Leveling now raises a REAL ability score (+1). con is labelled Vigor, cha is
+// Inner Will (see the setup hook). Reaching 15 in a score unlocks its milestone.
+const LU_ABIL = [
+  { key: "str", ab: "STR", name: "Strength" },
+  { key: "dex", ab: "DEX", name: "Dexterity" },
+  { key: "con", ab: "VIG", name: "Vigor" },
+  { key: "int", ab: "INT", name: "Intelligence" },
+  { key: "wis", ab: "WIS", name: "Wisdom" },
+  { key: "cha", ab: "IW", name: "Inner Will" }
 ];
+// Score-15 milestone card per ability (VIG/con has none - it is pure HP).
+// Names MUST match the feat items in the "Levels" compendium.
+const LU_MILESTONE = {
+  str: "Milestone: Crushing Blow (+1 weapon die)",
+  dex: "Milestone: Extra Strike (+1 attack)",
+  int: "Milestone: Arcane Attunement (+1 Spell Charge)",
+  wis: "Milestone: Divine Attunement (+1 Spell Charge)",
+  cha: "Milestone: Pyromantic Attunement (+1 Spell Charge)"
+};
+const LU_MS_AT = 15;
+const LU_CHARGE_KEYS = new Set(["int", "wis", "cha"]);
+const LU_VIG_HP = 5;
+
+async function luRaiseAbility(actor, key) {
+  const cur = Number(actor.system.abilities?.[key]?.value ?? 10);
+  const next = cur + 1;
+  const upd = { ["system.abilities." + key + ".value"]: next };
+  // Vigor (con) is the HP stat with no milestone, so each Vigor pick grants
+  // flat HP on top of the per-level baseline (dnd5e won't auto-add it because
+  // the pregens store an explicit hp.max override).
+  if (key === "con") {
+    const hp = actor.system.attributes.hp;
+    upd["system.attributes.hp.max"] = (Number(hp.max) || 0) + LU_VIG_HP;
+    upd["system.attributes.hp.value"] = (Number(hp.value) || 0) + LU_VIG_HP;
+  }
+  await actor.update(upd);
+  return next;
+}
+
+// Grant the milestone card for an ability if the actor has hit 15 and doesn't
+// already own it. Charge milestones carry an active effect that raises the
+// Spell Charges max; we top up the current value by 1 so it's usable now.
+async function luGrantMilestone(actor, key) {
+  const name = LU_MILESTONE[key];
+  if (!name || actor.items.some((i) => i.name === name)) return false;
+  if (!(await luGrant(actor, name))) return false;
+  if (LU_CHARGE_KEYS.has(key)) {
+    const r = actor.system.resources?.primary;
+    if (r && r.max != null) await actor.update({ "system.resources.primary.value": Math.min(Number(r.max), Number(r.value || 0) + 1) });
+  }
+  return true;
+}
+
+// Ensure every ability at >=15 owns its milestone card. Idempotent; only adds
+// (scores only climb in this game), so re-running is safe. Returns granted keys.
+async function luSyncMilestones(actor) {
+  const granted = [];
+  for (const a of LU_ABIL) {
+    if (!LU_MILESTONE[a.key]) continue;
+    const score = Number(actor.system.abilities?.[a.key]?.value ?? 0);
+    if (score < LU_MS_AT) continue;
+    if (await luGrantMilestone(actor, a.key)) granted.push(a.key);
+  }
+  return granted;
+}
 const LU_ARTS = [
   "Weapon Art: Stomp", "Weapon Art: Perseverance", "Weapon Art: Spin Slash",
   "Weapon Art: Charge", "Weapon Art: Quickstep", "Weapon Art: Leo Riposte",
@@ -180,7 +240,8 @@ async function luGrant(actor, name) {
   if (!item) {
     for (const p of game.packs) {
       if (p.documentName !== "Item") continue;
-      const e = p.index.getName?.(name);
+      let e = p.index.getName?.(name);
+      if (!e) { try { await p.getIndex(); e = p.index.getName?.(name); } catch (_) {} }
       if (e) { item = await p.getDocument(e._id); break; }
     }
   }
@@ -210,12 +271,32 @@ async function luSpells(maxTier) {
 async function luChoose(actor, lvl) {
   const tier = luMaxTier(lvl);
   const spellOpts = await luSpells(tier);
-  const mainOpts = [...LU_ATTR.map((n) => ({ group: "Attribute (+1)", label: n, value: n })), ...spellOpts];
+  // Ability options raise a REAL score by 1; show current -> next and flag 15.
+  const ab = actor.system.abilities || {};
+  const abilOpts = LU_ABIL.map((a) => {
+    const cur = Number(ab[a.key]?.value ?? 10);
+    const next = cur + 1;
+    const ms = LU_MILESTONE[a.key];
+    let hint = "";
+    if (ms && cur < LU_MS_AT && next >= LU_MS_AT) hint = "  \u2605 unlocks milestone!";
+    else if (ms && cur >= LU_MS_AT) hint = "  (milestone owned)";
+    return { group: "Attribute +1 (raises your score)", label: a.name + " (" + a.ab + ") " + cur + " \u2192 " + next + hint, value: "abil:" + a.key };
+  });
+  const mainOpts = [...abilOpts, ...spellOpts];
   const got = [];
   const pick = await luSelect(actor.name + ": choose an upgrade (now L" + lvl + ")",
-    "<p>Pick <b>" + actor.name + "</b>'s upgrade - an <b>Attribute</b> or a <b>Spell</b> (up to <b>Tier " + tier + "</b>):</p>",
-    mainOpts, LU_ATTR[0]);
-  if (pick && await luGrant(actor, pick)) got.push(pick);
+    "<p>Pick <b>" + actor.name + "</b>'s upgrade - <b>+1 to an ability score</b> or a <b>Spell</b> (up to <b>Tier " + tier + "</b>). Reaching <b>15</b> in a score unlocks that ability's milestone.</p>",
+    mainOpts, abilOpts[0].value);
+  if (pick && pick.indexOf("abil:") === 0) {
+    const key = pick.slice(5);
+    const a = LU_ABIL.find((x) => x.key === key);
+    const newVal = await luRaiseAbility(actor, key);
+    got.push(a.name + " (" + a.ab + ") \u2192 " + newVal);
+    const granted = await luSyncMilestones(actor);
+    for (const gk of granted) got.push("\u2605 " + LU_MILESTONE[gk]);
+  } else if (pick && await luGrant(actor, pick)) {
+    got.push(pick);
+  }
   if (luArtsLevel(lvl)) {
     const art = await luSelect(actor.name + ": choose a Weapon Art (skill level " + lvl + ")",
       "<p><b>" + actor.name + "</b> also learns a <b>Weapon Art</b> at this level - pick one (or Skip):</p>",
@@ -257,6 +338,17 @@ function luBind(message, html) {
 Hooks.on("renderChatMessageHTML", (message, html) => luBind(message, html));
 Hooks.on("renderChatMessage", (message, html) => luBind(message, html));
 
-Hooks.once("ready", () => {
-  try { const m = game.modules.get(MODULE_ID); if (m) m.api = Object.assign(m.api || {}, { luChoose, luSpells }); } catch (e) {}
+Hooks.once("ready", async () => {
+  try { const m = game.modules.get(MODULE_ID); if (m) m.api = Object.assign(m.api || {}, { luChoose, luSpells, luSyncMilestones }); } catch (e) {}
+  // GM only: reconcile every character's score-15 milestones on load, so pregens
+  // and PCs that start at 15 (or were raised) show their milestone cards.
+  if (!game.user.isGM) return;
+  try {
+    for (const a of game.actors) {
+      if (a.type !== "character") continue;
+      if (a.flags?.[MODULE_ID]?.role === "souls") continue;
+      const granted = await luSyncMilestones(a);
+      if (granted.length) console.log("Ashen: granted milestones to " + a.name + ":", granted.join(", "));
+    }
+  } catch (e) { console.error("Ashen: milestone sync on ready failed", e); }
 });

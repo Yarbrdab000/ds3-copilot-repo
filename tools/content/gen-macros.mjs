@@ -242,6 +242,17 @@ try {
   for (const pc of party) {
     const cls = pc.items.find(i => i.type === "class");
     if (cls) await cls.update({ "system.levels": (cls.system.levels || 1) + 1 });
+    // Baseline HP per level for EVERYONE: dnd5e won't auto-grant HP on a scripted
+    // level bump (and the pregens use an explicit hp.max override), so apply the
+    // class hit-die average directly to max + current HP.
+    const hdStr = String(cls?.system?.hd?.denomination || cls?.system?.hitDice || cls?.system?.hitDie || "d8");
+    const die = parseInt(hdStr.replace(/[^0-9]/g, ""), 10) || 8;
+    const hpGain = Math.floor(die / 2) + 1;
+    const hp = pc.system.attributes.hp;
+    await pc.update({
+      "system.attributes.hp.max": (Number(hp.max) || 0) + hpGain,
+      "system.attributes.hp.value": (Number(hp.value) || 0) + hpGain
+    });
     await pc.setFlag("ashen-of-lothric", "pendingUpgrade", { lvl });
     buttons.push('<button type="button" class="ashen-levelup-btn" data-actor-id="' + pc.id + '" data-lvl="' + lvl + '" style="display:block;width:100%;margin:3px 0">Choose upgrade - ' + pc.name + '</button>');
   }
@@ -253,6 +264,7 @@ try {
     content: '<div class="ashen-levelup-card">' +
       "<h3>The party ascends to Level " + lvl + "</h3>" +
       "<p>" + (a ? ("Spent " + cost + " souls (banked now " + (banked - cost) + ").") : "Souls not tracked (no ledger).") + "</p>" +
+      "<p><i>Every hero gains Hit Points this level.</i></p>" +
       "<p><b>Each player:</b> click your character below to choose your upgrade - an <b>Attribute</b> or a <b>Spell</b> (up to <b>" + TIERNOTE + "</b>)." + artsNote + " The GM can click for an absent player.</p>" +
       buttons.join("") +
       "</div>"

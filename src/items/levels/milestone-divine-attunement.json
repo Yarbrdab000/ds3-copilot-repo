@@ -1,0 +1,56 @@
+{
+  "name": "Milestone: Divine Attunement (+1 Spell Charge)",
+  "type": "feat",
+  "img": "icons/magic/holy/angel-wings-gray.webp",
+  "effects": [
+    {
+      "name": "Divine Attunement",
+      "img": "icons/magic/holy/angel-wings-gray.webp",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.resources.primary.max",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "transfer": true,
+      "disabled": false,
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "duration": {
+        "startTime": null, "seconds": null, "combat": null,
+        "rounds": null, "turns": null, "startRound": null, "startTurn": null
+      }
+    }
+  ],
+  "flags": {
+    "ashen": { "milestone": "wis" }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Wisdom milestone \u2014 unlocked at WIS 15.</strong></p><p><strong>Grants:</strong> +1 maximum <strong>Spell Charge</strong> for your miracles. Your deepened faith widens the pool you draw from between bonfires.</p><p><em>This card applies its bonus automatically while on your sheet (your Spell Charges max rises by 1).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Milestone",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": { "max": "", "spent": 0, "recovery": [] },
+    "activities": {},
+    "type": { "value": "feat", "subtype": "" },
+    "requirements": "WIS 15",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": { "level": null },
+    "identifier": "milestone-divine-attunement"
+  }
+}

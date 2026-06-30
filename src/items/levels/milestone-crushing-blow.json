@@ -1,0 +1,30 @@
+{
+  "name": "Milestone: Crushing Blow (+1 weapon die)",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "effects": [],
+  "flags": {
+    "ashen": { "milestone": "str" }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Strength milestone \u2014 unlocked at STR 15.</strong></p><p><strong>Grants:</strong> Crushing Blow. Add <strong>one extra weapon damage die</strong> to your melee weapon hits (e.g. a Greataxe deals 2d12 instead of 1d12, then adds scaling and upgrade as normal).</p><p>Where Dexterity gives you <em>more</em> strikes, Strength makes each strike <em>bigger</em>.</p><p><em>Table reminder: roll the extra die by hand on melee hits \u2014 this card documents the milestone, the DM adjudicates the die.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Ashen",
+      "page": "",
+      "custom": "Milestone",
+      "license": "CC-BY-4.0",
+      "rules": "2014"
+    },
+    "uses": { "max": "", "spent": 0, "recovery": [] },
+    "activities": {},
+    "type": { "value": "feat", "subtype": "" },
+    "requirements": "STR 15",
+    "properties": [],
+    "enchant": {},
+    "prerequisites": { "level": null },
+    "identifier": "milestone-crushing-blow"
+  }
+}
