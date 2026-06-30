@@ -13,6 +13,23 @@
 const MODULE_ID = "ashen-of-lothric";
 const FPREFIX = "Ashen \u2014 ";
 
+/**
+ * Re-skin two 5e ability scores to their Dark Souls identities, since DS3 has no
+ * "Constitution" or "Charisma". CON governs HP/durability = Vigor; CHA is the
+ * Pyromancer's casting stat = Inner Will (force of the inner flame). Cosmetic only:
+ * it relabels the headers/tooltips, all underlying mechanics are unchanged.
+ */
+Hooks.once("setup", () => {
+  try {
+    const ab = CONFIG.DND5E?.abilities;
+    if (!ab) return;
+    if (ab.con) { ab.con.label = "Vigor"; ab.con.abbreviation = "Vig"; }
+    if (ab.cha) { ab.cha.label = "Inner Will"; ab.cha.abbreviation = "IW"; }
+  } catch (e) {
+    console.warn("Ashen: ability relabel failed", e);
+  }
+});
+
 /** Tracker macros to drop on the hotbar, in slot order, after import. */
 const HOTBAR = [
   "Ashen: Award Souls",

@@ -1,6 +1,6 @@
 {
   "name": "ashen-of-lothric",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "private": true,
   "description": "Build tooling for the Ashen Dark Souls III one-shot Foundry VTT module.",
   "type": "module",

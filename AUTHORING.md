@@ -281,7 +281,7 @@ at the wrong repo — release manually as above.)
 | Want to change | File | Then |
 |---|---|---|
 | Boss/enemy + windows | `tools/content/gen-bestiary.mjs` | `npm run rebuild` |
-| Defense math | `scripts/ashen-defense.mjs` | bump version, rebuild |
+| Defense math / ability re-skins | `scripts/ashen-defense.mjs` / `scripts/ashen.mjs` | bump version, rebuild |
 | Spells | `tools/content/gen-spells.mjs` | rebuild |
 | Gear/shields | `tools/content/gen-gear.mjs` | rebuild |
 | Pregens | `tools/content/gen-pregens.mjs` | rebuild |
