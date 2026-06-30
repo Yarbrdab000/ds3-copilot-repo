@@ -225,12 +225,22 @@ async function grantPick(pc, name) {
 try {
   const a = getLedger();
   const COST = { 4: 500, 5: 800, 6: 1200, 7: 1800, 8: 2600, 9: 3600, 10: 5000 };
-  const party = game.actors.filter(x => x.type === "character");
-  if (!party.length) { ui.notifications.error("Ashen: no player characters in this world. Run 'Ashen: Assemble Adventure' first."); return; }
+  // The "party" is the player characters at the table \u2014 NOT every character-type actor.
+  // The 10 pregen templates and the Bonfire Ledger are also type "character", so filter them out:
+  //   1) drop the Bonfire Ledger (role flag),
+  //   2) prefer characters a player actually owns (the real party),
+  //   3) if none are player-owned (solo prep), fall back to characters outside the "Pregen" folder.
+  const isLedger = x => x.flags?.["ashen-of-lothric"]?.role === "souls";
+  let party = game.actors.filter(x => x.type === "character" && !isLedger(x));
+  const owned = party.filter(x => x.hasPlayerOwner);
+  if (owned.length) party = owned;
+  else party = party.filter(x => !/pregen/i.test(x.folder?.name || ""));
+  if (!party.length) { ui.notifications.error("Ashen: no player characters found. Assign a player to your PCs (right-click \u2192 Configure Ownership), or keep them out of the 'Pregen' folder."); return; }
 
+  const roster = party.map(p => p.name).join(", ");
   const levelOpts = Object.entries(COST).map(([l, c]) => ({ label: "\u2192 Level " + l + "  (" + c + " souls)", value: l }));
   const lvlPick = await dialogSelect("Party Level Up at the Fire Keeper",
-    "<p>The whole party (<b>" + party.length + "</b> characters) ascends. Choose the level to purchase:</p>",
+    "<p>Leveling <b>" + party.length + "</b> character(s): <i>" + roster + "</i>.</p><p>Choose the level to purchase:</p>",
     levelOpts, "4");
   if (!lvlPick) { ui.notifications.info("Ashen: Level Up cancelled."); return; }
   const lvl = Number(lvlPick);
