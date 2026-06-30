@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "sorcery",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>You veil yourself in shadow, slipping from sight.</em></p><p><strong>You become invisible until you attack or cast (concentration, up to 1 hour). Great for repositioning into a backstab.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Invisibility (self)</em>.</p>",
+      "value": "<p><em>You veil yourself in shadow, slipping from sight.</em></p><p><strong>You become invisible until you attack or cast (concentration, up to 1 hour). Great for repositioning into a backstab.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 sorcery</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Invisibility (self)</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,7 +68,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

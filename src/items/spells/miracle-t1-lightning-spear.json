@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "miracle",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Hurl a spear of sunlight forged from faith.</em></p><p><strong>Spell attack; 4d6 radiant, and the next attack against the target has advantage.</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in radiant damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Guiding Bolt</em>.</p>",
+      "value": "<p><em>Hurl a spear of sunlight forged from faith.</em></p><p><strong>Spell attack; 4d6 radiant, and the next attack against the target has advantage.</strong></p><p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in radiant damage (minimum 1) — a caster always chips.</p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 miracle</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Guiding Bolt</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

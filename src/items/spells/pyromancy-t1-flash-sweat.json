@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "pyromancy",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A sheen of warding sweat blunts the next searing blow.</em></p><p><strong>Reaction when you take acid/cold/fire/lightning/thunder damage: resistance to that damage this turn, and +1d6 of that type on your next melee hit.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Absorb Elements</em>.</p>",
+      "value": "<p><em>A sheen of warding sweat blunts the next searing blow.</em></p><p><strong>Reaction when you take acid/cold/fire/lightning/thunder damage: resistance to that damage this turn, and +1d6 of that type on your next melee hit.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 pyromancy</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Absorb Elements</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -66,7 +66,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

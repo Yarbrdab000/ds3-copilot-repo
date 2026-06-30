@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "miracle",
-      "casts": 2
+      "casts": 1
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>The gods deny death its due — once.</em></p><p><strong>For the next hour, the first time the target would drop to 0 HP it instead drops to 1. The ultimate clutch save.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Death Ward</em>.</p>",
+      "value": "<p><em>The gods deny death its due — once.</em></p><p><strong>For the next hour, the first time the target would drop to 0 HP it instead drops to 1. The ultimate clutch save.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 2 miracle</strong> — <strong>1 cast per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Death Ward</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "1",
       "recovery": [
         {
           "period": "lr",

@@ -194,8 +194,9 @@ async function luBoostSchool(actor, group) {
   const updates = [];
   for (const it of actor.items) {
     if (it.type !== "spell" || it.flags?.ashen?.group !== group) continue;
-    const cur = Number(it.system?.uses?.max) || 0;
-    if (cur) updates.push({ _id: it.id, "system.uses.max": String(cur + 1) });
+    const raw = it.system?.uses?.max;
+    if (raw === "" || raw == null) continue; // untracked / unlimited
+    updates.push({ _id: it.id, "system.uses.max": String((Number(raw) || 0) + 1) });
   }
   if (updates.length) await actor.updateEmbeddedDocuments("Item", updates);
 }
@@ -264,8 +265,8 @@ async function luGrant(actor, name) {
   if (created?.type === "spell") {
     const key = LU_GROUP_KEY[created.flags?.ashen?.group];
     if (key && actor.items.some((i) => i.name === LU_MILESTONE[key])) {
-      const cur = Number(created.system?.uses?.max) || 0;
-      if (cur) await created.update({ "system.uses.max": String(cur + 1) });
+      const raw = created.system?.uses?.max;
+      if (raw !== "" && raw != null) await created.update({ "system.uses.max": String((Number(raw) || 0) + 1) });
     }
   }
   return created || true;

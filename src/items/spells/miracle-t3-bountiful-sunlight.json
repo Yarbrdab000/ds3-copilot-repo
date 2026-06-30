@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "miracle",
-      "casts": 2
+      "casts": 0
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Warm sunlight floods the field, closing every wound it touches.</em></p><p><strong>Up to 6 creatures within a 30-ft sphere each regain 3d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Mass Cure Wounds</em>.</p>",
+      "value": "<p><em>Warm sunlight floods the field, closing every wound it touches.</em></p><p><strong>Up to 6 creatures within a 30-ft sphere each regain 3d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 3 miracle</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Mass Cure Wounds</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "0",
       "recovery": [
         {
           "period": "lr",

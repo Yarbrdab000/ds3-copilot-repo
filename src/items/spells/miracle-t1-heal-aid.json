@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "miracle",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A small mercy of the gods knits flesh and bone.</em></p><p><strong>Touch; restore 1d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Cure Wounds</em>.</p>",
+      "value": "<p><em>A small mercy of the gods knits flesh and bone.</em></p><p><strong>Touch; restore 1d8 + your Faith modifier HP.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 miracle</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Cure Wounds</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

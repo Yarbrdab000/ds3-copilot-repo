@@ -7,9 +7,11 @@
  * to regenerate src/items/spells/*.json. The build then compiles those into the pack.
  *
  * Casting in Ashen uses PER-SPELL casts (each spell has its own uses, refilled at a
- * bonfire / long rest): Tier 1 = 3 casts, Tier 2 = 2, Tier 3 = 2. There are no spell
+ * bonfire / long rest): Tier 1 = 2 casts, Tier 2 = 1, Tier 3 = 0. There are no spell
  * slots — spell.level is set to the SRD-equivalent only so dnd5e renders damage/scaling
- * correctly. The 15-stat caster milestone adds +1 cast to every spell of that school.
+ * correctly. The 15-stat caster milestone adds +1 cast to every spell of that school,
+ * so a milestone caster gets T1 = 3, T2 = 2, T3 = 1; a caster WITHOUT the milestone
+ * cannot cast Tier-3 spells at all (they stay at 0 casts).
  */
 
 import { writeFile, mkdir, rm } from "node:fs/promises";
@@ -20,7 +22,9 @@ const OUT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "../.
 
 const TIER_CHARGES = { 1: 1, 2: 2, 3: 3 };
 // Per-spell casts (uses) by tier — each spell refills these at a bonfire (long rest).
-const TIER_USES = { 1: 3, 2: 2, 3: 2 };
+// T3 is 0 at base: only a caster with their school's 15 milestone (+1) can cast a
+// Tier-3 spell, and even then just once per bonfire.
+const TIER_USES = { 1: 2, 2: 1, 3: 0 };
 const SCHOOL_GROUP = {
   sorcery: { stat: "Intelligence", catalyst: "Staff / Catalyst", img: "icons/magic/light/projectile-bolts-salvo-blue.webp" },
   miracle: { stat: "Faith", catalyst: "Talisman / Chime", img: "icons/magic/holy/projectile-cross-glowing-yellow.webp" },
@@ -206,6 +210,9 @@ function buildActivity(s) {
 function buildSpell(s) {
   const g = SCHOOL_GROUP[s.group];
   const casts = TIER_USES[s.tier];
+  const castNote = s.tier === 3
+    ? `<strong>Tier 3 ${s.group}</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast)`
+    : `<strong>Tier ${s.tier} ${s.group}</strong> — <strong>${casts} cast${casts === 1 ? "" : "s"} per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1`;
   const valve = (s.activity === "attack" && s.parts && s.parts.length)
     ? `<p><strong>Mercy valve:</strong> on a miss this still deals your spellcasting modifier in ${s.parts[0][3]} damage (minimum 1) — a caster always chips.</p>`
     : "";
@@ -213,7 +220,7 @@ function buildSpell(s) {
     `<p><em>${s.flavor}</em></p>` +
     `<p><strong>${s.rules}</strong></p>` +
     valve +
-    `<hr/><p><strong>Ashen:</strong> Tier ${s.tier} ${s.group} — <strong>${casts} cast${casts > 1 ? "s" : ""} per bonfire</strong> (refills on a long rest). ` +
+    `<hr/><p><strong>Ashen:</strong> ${castNote}. ` +
     `Gated by ${g.stat}; requires a <strong>${g.catalyst}</strong> in hand. Based on SRD <em>${s.srd}</em>.</p>`;
   const template = s.template
     ? { type: s.template.type, size: String(s.template.size), units: "ft", width: s.template.width ? String(s.template.width) : "", contiguous: false }

@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "pyromancy",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A gout of flame erupts from the pyromancy flame in your palm.</em></p><p><strong>15-ft cone; Dex save, 3d6 fire (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 pyromancy — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Burning Hands</em>.</p>",
+      "value": "<p><em>A gout of flame erupts from the pyromancy flame in your palm.</em></p><p><strong>15-ft cone; Dex save, 3d6 fire (half on save).</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 pyromancy</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Burning Hands</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,7 +68,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

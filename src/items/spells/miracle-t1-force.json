@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "miracle",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A pulse of divine will throws back all who crowd you.</em></p><p><strong>15-ft cube; Con save, 2d8 thunder and pushed 10 ft (half and no push on save). A panic button.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 miracle — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Thunderwave</em>.</p>",
+      "value": "<p><em>A pulse of divine will throws back all who crowd you.</em></p><p><strong>15-ft cube; Con save, 2d8 thunder and pushed 10 ft (half and no push on save). A panic button.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 miracle</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Thunderwave</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,7 +68,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

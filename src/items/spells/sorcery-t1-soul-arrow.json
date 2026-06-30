@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 1,
       "group": "sorcery",
-      "casts": 3
+      "casts": 2
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A bolt of distilled soul-stuff that never misses its mark.</em></p><p><strong>Three darts of soul energy strike unerringly (3 x 1d4+1 force, auto-hit). Split among up to three targets.</strong></p><hr/><p><strong>Ashen:</strong> Tier 1 sorcery — <strong>3 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Magic Missile</em>.</p>",
+      "value": "<p><em>A bolt of distilled soul-stuff that never misses its mark.</em></p><p><strong>Three darts of soul energy strike unerringly (3 x 1d4+1 force, auto-hit). Split among up to three targets.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 1 sorcery</strong> — <strong>2 casts per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Magic Missile</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "3",
+      "max": "2",
       "recovery": [
         {
           "period": "lr",

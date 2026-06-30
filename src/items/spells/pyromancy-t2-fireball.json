@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "pyromancy",
-      "casts": 2
+      "casts": 1
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>The signature pyromancy: a roaring blossom of flame.</em></p><p><strong>20-ft sphere; Dex save, 8d6 fire (half on save). The bread and butter of any pyromancer.</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 pyromancy — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Fireball</em>.</p>",
+      "value": "<p><em>The signature pyromancy: a roaring blossom of flame.</em></p><p><strong>20-ft sphere; Dex save, 8d6 fire (half on save). The bread and butter of any pyromancer.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 2 pyromancy</strong> — <strong>1 cast per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Fireball</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -69,7 +69,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "1",
       "recovery": [
         {
           "period": "lr",

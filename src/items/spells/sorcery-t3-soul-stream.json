@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "sorcery",
-      "casts": 2
+      "casts": 0
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A torrent of souls hardens into an impassable veil.</em></p><p><strong>Raise a wall of solid soul-force (as Wall of Force) for up to 10 minutes (concentration). Control the arena.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Wall of Force</em>.</p>",
+      "value": "<p><em>A torrent of souls hardens into an impassable veil.</em></p><p><strong>Raise a wall of solid soul-force (as Wall of Force) for up to 10 minutes (concentration). Control the arena.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 3 sorcery</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Wall of Force</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -67,7 +67,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "0",
       "recovery": [
         {
           "period": "lr",

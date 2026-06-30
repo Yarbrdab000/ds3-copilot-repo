@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "sorcery",
-      "casts": 2
+      "casts": 0
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>You exhale the breath of an Archdragon — a roaring cone of frost.</em></p><p><strong>60-ft cone; Con save, 8d8 cold (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Cone of Cold</em>.</p>",
+      "value": "<p><em>You exhale the breath of an Archdragon — a roaring cone of frost.</em></p><p><strong>60-ft cone; Con save, 8d8 cold (half on save).</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 3 sorcery</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Cone of Cold</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -69,7 +69,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "0",
       "recovery": [
         {
           "period": "lr",

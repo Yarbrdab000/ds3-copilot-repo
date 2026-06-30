@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 2,
       "group": "sorcery",
-      "casts": 2
+      "casts": 1
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>A crystalline lance of soul punches through everything in a line.</em></p><p><strong>100-ft line; Dex save, 8d6 force (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 2 sorcery — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Lightning Bolt</em>.</p>",
+      "value": "<p><em>A crystalline lance of soul punches through everything in a line.</em></p><p><strong>100-ft line; Dex save, 8d6 force (half on save).</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 2 sorcery</strong> — <strong>1 cast per bonfire</strong> (refills on a long rest); your school's 15 milestone adds +1. Gated by Intelligence; requires a <strong>Staff / Catalyst</strong> in hand. Based on SRD <em>Lightning Bolt</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,7 +68,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "1",
       "recovery": [
         {
           "period": "lr",

@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "miracle",
-      "casts": 2
+      "casts": 0
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Call down a pillar of the gods' own lightning.</em></p><p><strong>10-ft radius column; Dex save, 4d6 radiant + 4d6 lightning (half on save).</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 miracle — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Flame Strike (lightning)</em>.</p>",
+      "value": "<p><em>Call down a pillar of the gods' own lightning.</em></p><p><strong>10-ft radius column; Dex save, 4d6 radiant + 4d6 lightning (half on save).</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 3 miracle</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast). Gated by Faith; requires a <strong>Talisman / Chime</strong> in hand. Based on SRD <em>Flame Strike (lightning)</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -68,7 +68,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "0",
       "recovery": [
         {
           "period": "lr",

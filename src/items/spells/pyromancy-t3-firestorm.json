@@ -7,12 +7,12 @@
     "ashen": {
       "tier": 3,
       "group": "pyromancy",
-      "casts": 2
+      "casts": 0
     }
   },
   "system": {
     "description": {
-      "value": "<p><em>Chaos vestiges rain fire across the battlefield.</em></p><p><strong>20-ft sphere; Dex save, 6d6 fire (half on save). A wide-area finisher for clustered foes.</strong></p><hr/><p><strong>Ashen:</strong> Tier 3 pyromancy — <strong>2 casts per bonfire</strong> (refills on a long rest). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Flame Strike (wide)</em>.</p>",
+      "value": "<p><em>Chaos vestiges rain fire across the battlefield.</em></p><p><strong>20-ft sphere; Dex save, 6d6 fire (half on save). A wide-area finisher for clustered foes.</strong></p><hr/><p><strong>Ashen:</strong> <strong>Tier 3 pyromancy</strong> — 1 cast per bonfire, and <strong>only</strong> once you've unlocked your school's 15 milestone (without it this spell sits at <strong>0 casts</strong> and cannot be cast). Gated by the Pyromancy Flame; requires a <strong>Pyromancy Flame</strong> in hand. Based on SRD <em>Flame Strike (wide)</em>.</p>",
       "chat": ""
     },
     "source": {
@@ -69,7 +69,7 @@
       }
     },
     "uses": {
-      "max": "2",
+      "max": "0",
       "recovery": [
         {
           "period": "lr",
