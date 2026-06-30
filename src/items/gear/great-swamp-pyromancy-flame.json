@@ -1,7 +1,7 @@
 {
   "name": "Great Swamp Pyromancy Flame",
   "type": "equipment",
-  "img": "icons/magic/fire/flame-burning-fist-orange.webp",
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
   "effects": [],
   "flags": {
     "ashen": {

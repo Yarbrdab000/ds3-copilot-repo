@@ -1,11 +1,11 @@
 {
   "name": "Attribute: Vigor +1",
   "type": "feat",
-  "img": "icons/magic/life/heart-cross-strong-red.webp",
+  "img": "icons/magic/life/heart-glowing-red.webp",
   "effects": [
     {
       "name": "Vigor",
-      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "img": "icons/magic/life/heart-glowing-red.webp",
       "type": "base",
       "system": {},
       "changes": [

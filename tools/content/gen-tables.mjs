@@ -33,7 +33,7 @@ function table(name, img, description, rows) {
 }
 
 const TABLES = [
-  table("Loot \u2014 Hollow (common)", "icons/creatures/skeletons/skeleton-worn-skull-tan.webp",
+  table("Loot \u2014 Hollow (common)", "icons/magic/death/skeleton-worn-skull-tan.webp",
     "<p>Roll when a common Hollow dies. <strong>Souls: 30\u201360 (fixed).</strong> The roll decides any extra drop.</p>",
     [
       [1, 5, "Nothing but souls \u2014 just the kill (30\u201360 souls)."],
@@ -43,7 +43,7 @@ const TABLES = [
       [10, 10, "<strong>Estus Shard fragment</strong> \u2014 the DM notes it; 3 fragments fuse into 1 Estus Shard."]
     ]),
 
-  table("Loot \u2014 Elite (Manservant / Lothric Knight)", "icons/equipment/chest/breastplate-helmet-metal.webp",
+  table("Loot \u2014 Elite (Manservant / Lothric Knight)", "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
     "<p>Roll when an elite dies. <strong>Souls: 100\u2013150 (fixed).</strong></p>",
     [
       [1, 3, "<strong>Titanite Shard</strong> \u00d71."],
@@ -78,7 +78,7 @@ const TABLES = [
       [20, 20, "<strong>Uchigatana</strong> or <strong>Ricard's Rapier</strong> (rare prize)"]
     ]),
 
-  table("Loot \u2014 Shield Find", "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  table("Loot \u2014 Shield Find", "icons/equipment/shield/heater-steel-grey.webp",
     "<p>Which shield turned up? Each has a different Block profile (see its card) \u2014 match it to the threat ahead.</p>",
     [
       [1, 2, "<strong>Kite Shield</strong> \u2014 balanced all-rounder."],
@@ -117,7 +117,7 @@ const TABLES = [
       [4, 4, "Bonus: <strong>Twinkling Titanite</strong> \u00d71 (rare \u2014 ascend the unique drop here)."]
     ]),
 
-  table("Loot \u2014 Dragon Hoard (secret, path C only)", "icons/creatures/reptiles/dragon-fire-breathing-orange.webp",
+  table("Loot \u2014 Dragon Hoard (secret, path C only)", "icons/creatures/reptiles/dragon-winged-blue.webp",
     "<p>Only if the party <em>hunts and kills</em> the bridge dragon. <strong>Souls: 3,000\u20134,000 (fixed)</strong> \u2014 plus the <strong>Drakeblood Greatsword</strong> (unique, guaranteed). Then roll for the rest of the hoard:</p>",
     [
       [1, 2, "<strong>Titanite Chunk</strong> \u00d73 \u2014 enough to push a weapon or the Pyromancy Flame up a tier."],
@@ -144,7 +144,7 @@ const TABLES = [
       [6, 6, "<strong>Ember</strong> in stock (600 souls)."]
     ]),
 
-  table("Farm Pocket \u2014 Hollow Courtyard", "icons/environment/settlement/wall-tower-gray.webp",
+  table("Farm Pocket \u2014 Hollow Courtyard", "icons/environment/settlement/city-wall.webp",
     "<p>The High Wall courtyard respawns on rest. Roll once per cleared wave to keep the grind interesting. <strong>Each wave \u2248 120\u2013240 souls (fixed).</strong></p>",
     [
       [1, 4, "Just souls \u2014 the grind pays out (120\u2013240)."],

@@ -1,7 +1,7 @@
 {
   "name": "Wrath of the Gods",
   "type": "spell",
-  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "effects": [],
   "flags": {
     "ashen": {

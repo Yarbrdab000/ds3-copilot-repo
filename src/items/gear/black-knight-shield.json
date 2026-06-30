@@ -1,7 +1,7 @@
 {
   "name": "Black Knight Shield",
   "type": "equipment",
-  "img": "icons/equipment/shield/heater-crystal-black.webp",
+  "img": "icons/equipment/shield/heater-crystal-blue.webp",
   "effects": [],
   "flags": {
     "ashen": {

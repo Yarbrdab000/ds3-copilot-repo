@@ -1,7 +1,7 @@
 {
   "name": "Warrior (Bruiser)",
   "type": "character",
-  "img": "icons/weapons/axes/axe-double-engraved-red.webp",
+  "img": "icons/weapons/axes/axe-double-engraved.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -488,7 +488,7 @@
     {
       "name": "Barbarian",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -529,7 +529,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -566,7 +566,7 @@
     {
       "name": "Art of War: Spin Slash",
       "type": "feat",
-      "img": "icons/skills/melee/sword-twirl-blue.webp",
+      "img": "icons/skills/melee/sword-twirl-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -716,7 +716,7 @@
     {
       "name": "Greataxe",
       "type": "weapon",
-      "img": "icons/weapons/axes/axe-double-engraved-red.webp",
+      "img": "icons/weapons/axes/axe-double-engraved.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -912,7 +912,7 @@
     {
       "name": "Hard Leather Armor",
       "type": "equipment",
-      "img": "icons/equipment/chest/breastplate-cuirass-leather-brown.webp",
+      "img": "icons/equipment/chest/breastplate-layered-leather-brown.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -972,7 +972,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1113,11 +1113,11 @@
     {
       "name": "Attribute: Strength +1",
       "type": "feat",
-      "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+      "img": "icons/skills/melee/hand-grip-sword-red.webp",
       "effects": [
         {
           "name": "Strength",
-          "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+          "img": "icons/skills/melee/hand-grip-sword-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1187,11 +1187,11 @@
     {
       "name": "Attribute: Strength +1",
       "type": "feat",
-      "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+      "img": "icons/skills/melee/hand-grip-sword-red.webp",
       "effects": [
         {
           "name": "Strength",
-          "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+          "img": "icons/skills/melee/hand-grip-sword-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1262,7 +1262,7 @@
       "_id": "AshWarriorBks000",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1401,7 +1401,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/weapons/axes/axe-double-engraved-red.webp",
+      "src": "icons/weapons/axes/axe-double-engraved.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

@@ -488,7 +488,7 @@
     {
       "name": "Fighter",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -529,7 +529,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -928,7 +928,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1069,11 +1069,11 @@
     {
       "name": "Attribute: Vigor +1",
       "type": "feat",
-      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "img": "icons/magic/life/heart-glowing-red.webp",
       "effects": [
         {
           "name": "Vigor",
-          "img": "icons/magic/life/heart-cross-strong-red.webp",
+          "img": "icons/magic/life/heart-glowing-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1137,11 +1137,11 @@
     {
       "name": "Attribute: Strength +1",
       "type": "feat",
-      "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+      "img": "icons/skills/melee/hand-grip-sword-red.webp",
       "effects": [
         {
           "name": "Strength",
-          "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+          "img": "icons/skills/melee/hand-grip-sword-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1286,7 +1286,7 @@
       "_id": "AshDeprivedBks00",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {

@@ -1,7 +1,7 @@
 {
   "name": "Sunlight Straight Sword",
   "type": "weapon",
-  "img": "icons/weapons/swords/sword-guard-gold.webp",
+  "img": "icons/weapons/swords/sword-guard-worn-gold.webp",
   "effects": [],
   "flags": {
     "ashen": {

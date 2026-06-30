@@ -1,7 +1,7 @@
 {
   "name": "Large Club",
   "type": "weapon",
-  "img": "icons/weapons/clubs/club-heavy-barbed.webp",
+  "img": "icons/weapons/clubs/club-heavy-barbed-brown.webp",
   "effects": [],
   "flags": {
     "ashen": {

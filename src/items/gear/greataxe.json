@@ -1,7 +1,7 @@
 {
   "name": "Greataxe",
   "type": "weapon",
-  "img": "icons/weapons/axes/axe-double-engraved-red.webp",
+  "img": "icons/weapons/axes/axe-double-engraved.webp",
   "effects": [],
   "flags": {
     "ashen": {

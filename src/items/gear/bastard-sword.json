@@ -1,7 +1,7 @@
 {
   "name": "Bastard Sword",
   "type": "weapon",
-  "img": "icons/weapons/swords/greatsword-crossguard.webp",
+  "img": "icons/weapons/swords/greatsword-crossguard-blue.webp",
   "effects": [],
   "flags": {
     "ashen": {

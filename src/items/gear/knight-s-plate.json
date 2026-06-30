@@ -1,7 +1,7 @@
 {
   "name": "Knight's Plate",
   "type": "equipment",
-  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "img": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {

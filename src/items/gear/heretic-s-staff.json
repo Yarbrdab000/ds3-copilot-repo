@@ -1,7 +1,7 @@
 {
   "name": "Heretic's Staff",
   "type": "equipment",
-  "img": "icons/weapons/staves/staff-skull-purple.webp",
+  "img": "icons/weapons/staves/staff-animal-skull.webp",
   "effects": [],
   "flags": {
     "ashen": {

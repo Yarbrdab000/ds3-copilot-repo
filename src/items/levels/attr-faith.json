@@ -1,7 +1,7 @@
 {
   "name": "Attribute: Faith +1",
   "type": "feat",
-  "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
   "effects": [],
   "flags": {
     "ashen": {

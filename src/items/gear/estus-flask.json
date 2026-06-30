@@ -1,7 +1,7 @@
 {
   "name": "Estus Flask",
   "type": "consumable",
-  "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+  "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
   "effects": [],
   "flags": {
     "ashen": {

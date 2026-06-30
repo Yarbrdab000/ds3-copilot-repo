@@ -1,7 +1,7 @@
 {
   "name": "Broadsword",
   "type": "weapon",
-  "img": "icons/weapons/swords/sword-guard-brass.webp",
+  "img": "icons/weapons/swords/sword-guard-brass-worn.webp",
   "effects": [],
   "flags": {
     "ashen": {

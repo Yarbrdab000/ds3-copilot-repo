@@ -143,7 +143,7 @@ const ACTORS = [
   npc({ name: "Hollow Manservant", img: "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp", ac: 13, hp: 22, hpFormula: "4d8+4", cr: 1, souls: 100, role: "elite-farm", str: 15, dex: 10, con: 13,
     bioHtml: card("Elite cleaver-wielder; the reliable courtyard farm target.", ["<strong>Heavy Cleaver Overhead</strong> (2d6+3): dodge ADV W2; parry ADV W3; blockable but chips through (heavy)."]),
     attacks: [attack({ name: "Heavy Cleaver", n: 2, d: 6, bonus: 3, types: [SL], def: { dc: 13, dw: "W2", pw: "W3" } })] }),
-  npc({ name: "Lothric Knight", img: "icons/equipment/chest/breastplate-helmet-metal.webp", ac: 17, hp: 30, hpFormula: "4d8+12", cr: 2, souls: 150, role: "elite-guard", str: 15, dex: 13, con: 14,
+  npc({ name: "Lothric Knight", img: "icons/equipment/chest/breastplate-metal-scaled-grey.webp", ac: 17, hp: 30, hpFormula: "4d8+12", cr: 2, souls: 150, role: "elite-guard", str: 15, dex: 13, con: 14,
     bioHtml: card("Disciplined elite guard. A real threat in numbers; the wall's last line before Vordt.", ["<strong>Disciplined Thrust</strong> (1d10+4, reach): dodge ADV (sidestep) W2; parry ADV W2 (clean thrust)."]),
     attacks: [attack({ name: "Disciplined Thrust", n: 1, d: 10, bonus: 4, types: [PI], reach: 10, def: { dc: 13, dw: "W2", pw: "W2" } })] }),
   npc({ name: "Starving Hound", img: "icons/creatures/abilities/wolf-howl-moon-purple.webp", ac: 13, hp: 9, hpFormula: "2d6+2", cr: 0.25, souls: 40, role: "fast-pack", ctype: "beast", str: 12, dex: 15, con: 12,

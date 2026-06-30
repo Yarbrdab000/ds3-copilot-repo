@@ -1,7 +1,7 @@
 {
   "name": "Wolnir's Holy Sword",
   "type": "weapon",
-  "img": "icons/weapons/swords/greatsword-blue-glow.webp",
+  "img": "icons/weapons/swords/greatsword-blue.webp",
   "effects": [],
   "flags": {
     "ashen": {

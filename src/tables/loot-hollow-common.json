@@ -1,6 +1,6 @@
 {
   "name": "Loot — Hollow (common)",
-  "img": "icons/creatures/skeletons/skeleton-worn-skull-tan.webp",
+  "img": "icons/magic/death/skeleton-worn-skull-tan.webp",
   "description": "<p>Roll when a common Hollow dies. <strong>Souls: 30–60 (fixed).</strong> The roll decides any extra drop.</p>",
   "formula": "1d10",
   "replacement": true,

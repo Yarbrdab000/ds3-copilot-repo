@@ -1,7 +1,7 @@
 {
   "name": "Assassin (Trickster)",
   "type": "character",
-  "img": "icons/weapons/swords/sword-flanged-ler.webp",
+  "img": "icons/weapons/swords/sword-guard-flanged.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -498,7 +498,7 @@
     {
       "name": "Rogue",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -541,7 +541,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -578,7 +578,7 @@
     {
       "name": "Sneak Attack",
       "type": "feat",
-      "img": "icons/weapons/swords/sword-flanged-ler.webp",
+      "img": "icons/weapons/swords/sword-guard-flanged.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -730,7 +730,7 @@
     {
       "name": "Estoc",
       "type": "weapon",
-      "img": "icons/weapons/swords/sword-flanged-ler.webp",
+      "img": "icons/weapons/swords/sword-guard-flanged.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -925,7 +925,7 @@
     {
       "name": "Hard Leather Armor",
       "type": "equipment",
-      "img": "icons/equipment/chest/breastplate-cuirass-leather-brown.webp",
+      "img": "icons/equipment/chest/breastplate-layered-leather-brown.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -985,7 +985,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1193,7 +1193,7 @@
     {
       "name": "Soul Arrow",
       "type": "spell",
-      "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+      "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1362,7 +1362,7 @@
     {
       "name": "Hidden Body",
       "type": "spell",
-      "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+      "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1583,7 +1583,7 @@
       "_id": "AshAssassinBks00",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1722,7 +1722,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/weapons/swords/sword-flanged-ler.webp",
+      "src": "icons/weapons/swords/sword-guard-flanged.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

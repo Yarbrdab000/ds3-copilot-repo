@@ -1,7 +1,7 @@
 {
   "name": "Winged Spear",
   "type": "weapon",
-  "img": "icons/weapons/polearms/spear-simple-white.webp",
+  "img": "icons/weapons/polearms/spear-simple-barbed.webp",
   "effects": [],
   "flags": {
     "ashen": {

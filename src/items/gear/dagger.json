@@ -1,7 +1,7 @@
 {
   "name": "Dagger",
   "type": "weapon",
-  "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+  "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
   "effects": [],
   "flags": {
     "ashen": {

@@ -1,7 +1,7 @@
 {
   "name": "Knight (Tank)",
   "type": "character",
-  "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  "img": "icons/equipment/shield/heater-steel-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -488,7 +488,7 @@
     {
       "name": "Fighter",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -529,7 +529,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -930,7 +930,7 @@
     {
       "name": "Knight Shield",
       "type": "equipment",
-      "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+      "img": "icons/equipment/shield/heater-steel-grey.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -996,7 +996,7 @@
     {
       "name": "Knight's Plate",
       "type": "equipment",
-      "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+      "img": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1058,7 +1058,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1199,11 +1199,11 @@
     {
       "name": "Attribute: Vigor +1",
       "type": "feat",
-      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "img": "icons/magic/life/heart-glowing-red.webp",
       "effects": [
         {
           "name": "Vigor",
-          "img": "icons/magic/life/heart-cross-strong-red.webp",
+          "img": "icons/magic/life/heart-glowing-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1267,11 +1267,11 @@
     {
       "name": "Attribute: Vigor +1",
       "type": "feat",
-      "img": "icons/magic/life/heart-cross-strong-red.webp",
+      "img": "icons/magic/life/heart-glowing-red.webp",
       "effects": [
         {
           "name": "Vigor",
-          "img": "icons/magic/life/heart-cross-strong-red.webp",
+          "img": "icons/magic/life/heart-glowing-red.webp",
           "type": "base",
           "system": {},
           "changes": [
@@ -1336,7 +1336,7 @@
       "_id": "AshKnightBks0000",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1475,7 +1475,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+      "src": "icons/equipment/shield/heater-steel-grey.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

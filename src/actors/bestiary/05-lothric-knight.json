@@ -1,7 +1,7 @@
 {
   "name": "Lothric Knight",
   "type": "npc",
-  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "img": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -416,7 +416,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/equipment/chest/breastplate-helmet-metal.webp",
+      "src": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

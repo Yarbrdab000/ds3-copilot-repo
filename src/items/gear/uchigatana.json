@@ -1,7 +1,7 @@
 {
   "name": "Uchigatana",
   "type": "weapon",
-  "img": "icons/weapons/swords/sword-katana-gray.webp",
+  "img": "icons/weapons/swords/sword-katana.webp",
   "effects": [],
   "flags": {
     "ashen": {

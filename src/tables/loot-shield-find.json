@@ -1,6 +1,6 @@
 {
   "name": "Loot — Shield Find",
-  "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  "img": "icons/equipment/shield/heater-steel-grey.webp",
   "description": "<p>Which shield turned up? Each has a different Block profile (see its card) — match it to the threat ahead.</p>",
   "formula": "1d8",
   "replacement": true,

@@ -1,6 +1,6 @@
 {
   "name": "Farm Pocket — Hollow Courtyard",
-  "img": "icons/environment/settlement/wall-tower-gray.webp",
+  "img": "icons/environment/settlement/city-wall.webp",
   "description": "<p>The High Wall courtyard respawns on rest. Roll once per cleared wave to keep the grind interesting. <strong>Each wave ≈ 120–240 souls (fixed).</strong></p>",
   "formula": "1d8",
   "replacement": true,

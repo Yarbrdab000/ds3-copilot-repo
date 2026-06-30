@@ -1,7 +1,7 @@
 {
   "name": "Milestone: Extra Strike (+1 attack)",
   "type": "feat",
-  "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+  "img": "icons/skills/melee/blade-tips-triple-steel.webp",
   "effects": [],
   "flags": {
     "ashen": { "milestone": "dex" }

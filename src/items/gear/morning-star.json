@@ -1,7 +1,7 @@
 {
   "name": "Morning Star",
   "type": "weapon",
-  "img": "icons/weapons/maces/mace-spiked-steel.webp",
+  "img": "icons/weapons/maces/mace-spiked-steel-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {

@@ -1,7 +1,7 @@
 {
   "name": "Hidden Body",
   "type": "spell",
-  "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+  "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
   "effects": [],
   "flags": {
     "ashen": {

@@ -26,8 +26,8 @@ const TIER_CHARGES = { 1: 1, 2: 2, 3: 3 };
 // Tier-3 spell, and even then just once per bonfire.
 const TIER_USES = { 1: 2, 2: 1, 3: 0 };
 const SCHOOL_GROUP = {
-  sorcery: { stat: "Intelligence", catalyst: "Staff / Catalyst", img: "icons/magic/light/projectile-bolts-salvo-blue.webp" },
-  miracle: { stat: "Faith", catalyst: "Talisman / Chime", img: "icons/magic/holy/projectile-cross-glowing-yellow.webp" },
+  sorcery: { stat: "Intelligence", catalyst: "Staff / Catalyst", img: "icons/magic/light/projectile-bolts-salvo-white.webp" },
+  miracle: { stat: "Faith", catalyst: "Talisman / Chime", img: "icons/magic/holy/prayer-hands-glowing-yellow.webp" },
   pyromancy: { stat: "the Pyromancy Flame", catalyst: "Pyromancy Flame", img: "icons/magic/fire/projectile-fireball-orange.webp" }
 };
 

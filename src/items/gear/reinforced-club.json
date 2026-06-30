@@ -1,7 +1,7 @@
 {
   "name": "Reinforced Club",
   "type": "weapon",
-  "img": "icons/weapons/clubs/club-banded.webp",
+  "img": "icons/weapons/clubs/club-banded-brown.webp",
   "effects": [],
   "flags": {
     "ashen": {

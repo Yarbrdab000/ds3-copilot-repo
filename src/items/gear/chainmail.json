@@ -1,7 +1,7 @@
 {
   "name": "Chainmail",
   "type": "equipment",
-  "img": "icons/equipment/chest/shirt-collared-chain-steel.webp",
+  "img": "icons/equipment/chest/breastplate-collared-steel.webp",
   "effects": [],
   "flags": {
     "ashen": {

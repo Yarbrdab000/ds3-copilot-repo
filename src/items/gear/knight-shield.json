@@ -1,7 +1,7 @@
 {
   "name": "Knight Shield",
   "type": "equipment",
-  "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  "img": "icons/equipment/shield/heater-steel-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {

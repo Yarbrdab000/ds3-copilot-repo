@@ -30,7 +30,7 @@ const clone = (o) => JSON.parse(JSON.stringify(o));
 
 function classItem({ name, identifier, hitDice, saves, ability }) {
   return {
-    name, type: "class", img: "icons/sundries/books/book-embossed-jewel-gold.webp",
+    name, type: "class", img: "icons/sundries/books/book-embossed-jewel-gold-green.webp",
     effects: [], flags: {},
     system: {
       identifier, levels: 3, hitDice, hitDiceUsed: 0,
@@ -47,7 +47,7 @@ function classItem({ name, identifier, hitDice, saves, ability }) {
 function baseActionsFeat() {
   return {
     name: "Base Actions (Strike / Dodge / Block / Parry)", type: "feat",
-    img: "icons/skills/melee/blade-tips-triple-bronze.webp", effects: [], flags: {},
+    img: "icons/skills/melee/blade-tips-triple-steel.webp", effects: [], flags: {},
     system: {
       description: { value: "<p><strong>Strike</strong> \u2014 a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> \u2014 always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe \u2192 advantage next attack).</p><p><strong>Block</strong> \u2014 costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> \u2014 sidestep the lane instead.</p><p><strong>Parry</strong> \u2014 costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><strong>Backstab (any class)</strong> \u2014 a positional finisher. When the DM rules you're striking from <em>directly behind</em> a foe (e.g. you dodged, repositioned behind it, and it didn't turn to face you), you may use the <strong>Backstab</strong> action on your sheet (it's favourited on your front panel) instead of a Strike. It <strong>auto-hits</strong> off your equipped weapon and deals <strong>\u00d71.5 weapon damage</strong> (<strong>\u00d73 with a dagger</strong>), and cannot be Blocked or Parried. The DM tells you when you qualify.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>", chat: "" },
       source: { book: "Ashen", page: "", custom: "Core", license: "CC-BY-4.0", rules: "2014" },
@@ -100,7 +100,7 @@ function backstabFeat(weaponItem, id) {
     `any greatsword. The DM tells you when you qualify.</p>`;
   return {
     _id: id,
-    name: "Backstab", type: "feat", img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    name: "Backstab", type: "feat", img: "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
     effects: [], flags: { ashen: { backstab: true } },
     system: {
       description: { value: desc, chat: "" },
@@ -197,7 +197,7 @@ const ARTS = {
   },
   "Warrior": {
     name: "Art of War: Spin Slash", actName: "Spin Slash",
-    img: "icons/skills/melee/sword-twirl-blue.webp",
+    img: "icons/skills/melee/sword-twirl-orange.webp",
     abil: "str", factor: 1.5, statName: "Strength",
     dmg: [{ n: 1, d: 12, types: ["slashing"] }],
     blurb: "You whirl the great axe in a full circle, carving everything in reach.",
@@ -205,7 +205,7 @@ const ARTS = {
   },
   "Mercenary": {
     name: "Art of War: Sellsword Flurry", actName: "Sellsword Flurry",
-    img: "icons/skills/melee/strike-sword-pommel-glowing.webp",
+    img: "icons/skills/melee/strike-sword-blood-red.webp",
     abil: "dex", factor: 1.0, statName: "Dexterity",
     dmg: [{ n: 2, d: 6, types: ["slashing"] }],
     blurb: "A blinding two-blade flurry that ends with you already somewhere else.",
@@ -228,7 +228,7 @@ const ARTS = {
 const SNEAK = {
   "Thief": {
     name: "Sneak Attack", actName: "Sneak Attack", atWill: true, kindLabel: "Rogue feature",
-    img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    img: "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
     abil: "dex", factor: 1.5, statName: "Dexterity",
     dmg: [{ n: 1, d: 4, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
     blurb: "You wait for the opening, then bury the dagger where the armour gaps.",
@@ -236,7 +236,7 @@ const SNEAK = {
   },
   "Assassin": {
     name: "Sneak Attack", actName: "Sneak Attack", atWill: true, kindLabel: "Rogue feature",
-    img: "icons/weapons/swords/sword-flanged-ler.webp",
+    img: "icons/weapons/swords/sword-guard-flanged.webp",
     abil: "dex", factor: 0.75, statName: "Dexterity",
     dmg: [{ n: 1, d: 8, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
     blurb: "A single surgical thrust into the gap \u2014 over before they feel it.",
@@ -258,13 +258,13 @@ const SK = (skills) => {
 // className labels for the class item come from DS3 flavor; identifier maps to a dnd5e class.
 const PREGENS = [
   { n: "Knight", cls: "Fighter", id: "fighter", hd: "d10", saves: ["str","con"], save: "str",
-    icon: "icons/equipment/shield/heater-steel-segmented-grey.webp",
+    icon: "icons/equipment/shield/heater-steel-grey.webp",
     abil: { str: 15, dex: 10, con: 14, int: 10, wis: 11, cha: 9 }, hp: 30, spellAbility: "",
     gear: [["Longsword", true], ["Knight Shield", true], ["Knight's Plate", true]], skills: ["ath","prc"],
     attrs: ["Attribute: Vigor +1", "Attribute: Vigor +1"], spells: [], catalyst: null,
     role: "Tank", blurb: "A Lothric knight clad in steel. Holds the line, blocks for the party, and never breaks." },
   { n: "Warrior", cls: "Barbarian", id: "barbarian", hd: "d12", saves: ["str","con"], save: "str",
-    icon: "icons/weapons/axes/axe-double-engraved-red.webp",
+    icon: "icons/weapons/axes/axe-double-engraved.webp",
     abil: { str: 16, dex: 13, con: 15, int: 8, wis: 10, cha: 9 }, hp: 33, spellAbility: "",
     gear: [["Greataxe", true], ["Hard Leather Armor", true]], skills: ["ath","sur"],
     attrs: ["Attribute: Strength +1", "Attribute: Strength +1"], spells: [], catalyst: null,
@@ -282,13 +282,13 @@ const PREGENS = [
     attrs: ["Attribute: Faith +1"], spells: ["Heal Aid", "Lightning Spear"], catalyst: "Talisman",
     role: "Battle-healer", blurb: "Spear, shield, and faith. Fights in the front rank and keeps the party standing." },
   { n: "Thief", cls: "Rogue", id: "rogue", hd: "d8", saves: ["dex","int"], save: "dex",
-    icon: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    icon: "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
     abil: { str: 9, dex: 16, con: 12, int: 12, wis: 11, cha: 10 }, hp: 21, spellAbility: "",
     gear: [["Dagger", true], ["Dagger", true], ["Hard Leather Armor", true], ["Shortbow", false]], skills: ["ste","acr","slt","prc"],
     attrs: ["Attribute: Dexterity +1"], spells: [], catalyst: null,
     role: "Striker", blurb: "Daggers from the dark. Lives for the backstab \u2014 Sneak Attack rewards good positioning." },
   { n: "Assassin", cls: "Rogue", id: "rogue", hd: "d8", saves: ["dex","int"], save: "dex",
-    icon: "icons/weapons/swords/sword-flanged-ler.webp",
+    icon: "icons/weapons/swords/sword-guard-flanged.webp",
     abil: { str: 9, dex: 15, con: 12, int: 14, wis: 10, cha: 11 }, hp: 21, spellAbility: "int",
     gear: [["Estoc", true], ["Hard Leather Armor", true]], skills: ["ste","arc","acr","dec"],
     attrs: ["Attribute: Dexterity +1"], spells: ["Soul Arrow", "Hidden Body"], catalyst: "Sorcerer's Staff",

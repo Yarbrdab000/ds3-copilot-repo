@@ -1,11 +1,11 @@
 {
   "name": "Attribute: Strength +1",
   "type": "feat",
-  "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+  "img": "icons/skills/melee/hand-grip-sword-red.webp",
   "effects": [
     {
       "name": "Strength",
-      "img": "icons/skills/melee/hand-grip-sword-strength-red.webp",
+      "img": "icons/skills/melee/hand-grip-sword-red.webp",
       "type": "base",
       "system": {},
       "changes": [

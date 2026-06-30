@@ -1,7 +1,7 @@
 {
   "name": "Black Blade",
   "type": "weapon",
-  "img": "icons/weapons/swords/sword-katana-blue.webp",
+  "img": "icons/weapons/swords/sword-katana-purple.webp",
   "effects": [],
   "flags": {
     "ashen": {

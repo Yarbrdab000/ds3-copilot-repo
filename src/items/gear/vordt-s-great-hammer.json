@@ -1,7 +1,7 @@
 {
   "name": "Vordt's Great Hammer",
   "type": "weapon",
-  "img": "icons/weapons/maces/mace-spiked-heavy-blue.webp",
+  "img": "icons/weapons/maces/mace-cube-spiked-steel.webp",
   "effects": [],
   "flags": {
     "ashen": {

@@ -164,7 +164,7 @@ ChatMessage.create({ content: "<b>+" + n + " souls</b> reclaimed from the fallen
   },
   {
     name: "Ashen: Bank Souls (at Bonfire)",
-    img: "icons/commodities/currency/coins-stack-gold.webp",
+    img: "icons/commodities/currency/coins-plain-stack-gold.webp",
     body: `
 const a = getLedger(); if (!a) return;
 const carried = await getSouls(a, "carried");
@@ -351,7 +351,7 @@ const bonus = 10;
 const hp = t.actor.system?.attributes?.hp;
 if (!hp) return ui.notifications.warn("Ashen: this actor has no HP to kindle.");
 // Add bonus HP via Active Effect.
-await createEffect(t.actor, "Embered", "icons/magic/fire/flame-burning-fist-orange.webp",
+await createEffect(t.actor, "Embered", "icons/magic/fire/flame-burning-fist-strike.webp",
   [["system.attributes.hp.tempmax", String(bonus)]]);
 await t.actor.setFlag("ashen-of-lothric", "kindled", true);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b> kindles the bonfire \\u2014 <b>+" + bonus + " maximum HP</b> (Embered) until death." });
@@ -360,7 +360,7 @@ ui.notifications.info("Ashen: kindled (+" + bonus + " max HP). Removed on death.
   },
   {
     name: "Ashen: Spend a Cinder",
-    img: "icons/magic/fire/flame-burning-fist-orange.webp",
+    img: "icons/magic/fire/flame-burning-fist-strike.webp",
     body: `
 async function getRes(x, slot) { return Number(x?.system?.resources?.[slot]?.value ?? 0); }
 async function setRes(x, slot, v, max) { const u = {}; u["system.resources." + slot + ".value"] = Math.max(0, Math.round(v)); if (max != null) u["system.resources." + slot + ".max"] = Math.max(0, Math.round(max)); return x.update(u); }
@@ -406,7 +406,7 @@ ui.notifications.info("Ashen: boss down \u2014 Shop Tier " + newTier + (souls > 
   },
   {
     name: "Ashen: New Run / Reset Bonfire",
-    img: "icons/magic/fire/flame-burning-campfire-yellow.webp",
+    img: "icons/magic/fire/flame-burning-campfire-orange.webp",
     body: `
 async function getRes(x, slot) { return Number(x?.system?.resources?.[slot]?.value ?? 0); }
 async function setRes(x, slot, v, max) { const u = {}; u["system.resources." + slot + ".value"] = Math.max(0, Math.round(v)); if (max != null) u["system.resources." + slot + ".max"] = Math.max(0, Math.round(max)); return x.update(u); }
@@ -585,7 +585,7 @@ ui.notifications.info("Ashen: Embered cleared.");
   },
   {
     name: "Ashen: Override — Purge All Effects",
-    img: "icons/magic/unholy/curse-wave-purple.webp",
+    img: "icons/magic/unholy/beam-impact-purple.webp",
     body: `
 const t = canvas.tokens.controlled[0];
 if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");

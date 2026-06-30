@@ -1,7 +1,7 @@
 {
   "name": "Caestus",
   "type": "weapon",
-  "img": "icons/weapons/fist/fist-knuckle-spiked.webp",
+  "img": "icons/weapons/fist/fist-knuckles-spiked-brown.webp",
   "effects": [],
   "flags": {
     "ashen": {

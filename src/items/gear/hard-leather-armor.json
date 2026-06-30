@@ -1,7 +1,7 @@
 {
   "name": "Hard Leather Armor",
   "type": "equipment",
-  "img": "icons/equipment/chest/breastplate-cuirass-leather-brown.webp",
+  "img": "icons/equipment/chest/breastplate-layered-leather-brown.webp",
   "effects": [],
   "flags": {
     "ashen": {

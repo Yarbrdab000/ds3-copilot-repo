@@ -1,7 +1,7 @@
 {
   "name": "Shortbow",
   "type": "weapon",
-  "img": "icons/weapons/bows/shortbow-recurve-brown.webp",
+  "img": "icons/weapons/bows/shortbow-recurve.webp",
   "effects": [],
   "flags": {
     "ashen": {

@@ -493,7 +493,7 @@
     {
       "name": "Cleric",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -536,7 +536,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -766,7 +766,7 @@
     {
       "name": "Knight Shield",
       "type": "equipment",
-      "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
+      "img": "icons/equipment/shield/heater-steel-grey.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -832,7 +832,7 @@
     {
       "name": "Chainmail",
       "type": "equipment",
-      "img": "icons/equipment/chest/shirt-collared-chain-steel.webp",
+      "img": "icons/equipment/chest/breastplate-collared-steel.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -894,7 +894,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1102,7 +1102,7 @@
     {
       "name": "Heal Aid",
       "type": "spell",
-      "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+      "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1264,7 +1264,7 @@
     {
       "name": "Force",
       "type": "spell",
-      "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+      "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1439,7 +1439,7 @@
     {
       "name": "Attribute: Faith +1",
       "type": "feat",
-      "img": "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+      "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1481,7 +1481,7 @@
       "_id": "AshClericBks0000",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {

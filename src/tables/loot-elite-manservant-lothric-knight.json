@@ -1,6 +1,6 @@
 {
   "name": "Loot — Elite (Manservant / Lothric Knight)",
-  "img": "icons/equipment/chest/breastplate-helmet-metal.webp",
+  "img": "icons/equipment/chest/breastplate-metal-scaled-grey.webp",
   "description": "<p>Roll when an elite dies. <strong>Souls: 100–150 (fixed).</strong></p>",
   "formula": "1d8",
   "replacement": true,

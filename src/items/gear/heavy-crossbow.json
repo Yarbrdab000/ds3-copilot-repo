@@ -1,7 +1,7 @@
 {
   "name": "Heavy Crossbow",
   "type": "weapon",
-  "img": "icons/weapons/crossbows/crossbow-heavy-brown.webp",
+  "img": "icons/weapons/crossbows/crossbow-heavy.webp",
   "effects": [],
   "flags": {
     "ashen": {

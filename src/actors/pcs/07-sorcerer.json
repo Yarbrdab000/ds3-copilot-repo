@@ -488,7 +488,7 @@
     {
       "name": "Wizard",
       "type": "class",
-      "img": "icons/sundries/books/book-embossed-jewel-gold.webp",
+      "img": "icons/sundries/books/book-embossed-jewel-gold-green.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -531,7 +531,7 @@
     {
       "name": "Base Actions (Strike / Dodge / Block / Parry)",
       "type": "feat",
-      "img": "icons/skills/melee/blade-tips-triple-bronze.webp",
+      "img": "icons/skills/melee/blade-tips-triple-steel.webp",
       "effects": [],
       "flags": {},
       "system": {
@@ -635,7 +635,7 @@
     {
       "name": "Dagger",
       "type": "weapon",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -832,7 +832,7 @@
     {
       "name": "Estus Flask",
       "type": "consumable",
-      "img": "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp",
+      "img": "icons/consumables/potions/bottle-round-corked-orange.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -973,7 +973,7 @@
     {
       "name": "Soul Arrow",
       "type": "spell",
-      "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+      "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1142,7 +1142,7 @@
     {
       "name": "Heavy Soul Arrow",
       "type": "spell",
-      "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+      "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1325,7 +1325,7 @@
     {
       "name": "Attribute: Intelligence +1",
       "type": "feat",
-      "img": "icons/magic/light/projectile-bolts-salvo-blue.webp",
+      "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
       "effects": [],
       "flags": {
         "ashen": {
@@ -1367,7 +1367,7 @@
       "_id": "AshSorcererBks00",
       "name": "Backstab",
       "type": "feat",
-      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "img": "icons/weapons/daggers/dagger-poisoned-curved-green.webp",
       "effects": [],
       "flags": {
         "ashen": {

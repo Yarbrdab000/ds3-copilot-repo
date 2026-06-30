@@ -1,7 +1,7 @@
 {
   "name": "Grass Crest Shield",
   "type": "equipment",
-  "img": "icons/equipment/shield/heater-crest-green.webp",
+  "img": "icons/equipment/shield/heater-emossed-spiral-green.webp",
   "effects": [],
   "flags": {
     "ashen": {

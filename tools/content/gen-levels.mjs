@@ -28,14 +28,14 @@ const ADD = 2;
 
 // ───────────────────────── Attribute point cards ─────────────────────────
 const ATTRS = [
-  { key: "vigor", name: "Attribute: Vigor +1", img: "icons/magic/life/heart-cross-strong-red.webp",
+  { key: "vigor", name: "Attribute: Vigor +1", img: "icons/magic/life/heart-glowing-red.webp",
     grant: "+3 maximum HP.", note: "The tank pick. Each point is a flat, permanent +3 to your HP maximum.",
-    effects: [ae("Vigor", "icons/magic/life/heart-cross-strong-red.webp", [
+    effects: [ae("Vigor", "icons/magic/life/heart-glowing-red.webp", [
       { key: "system.attributes.hp.bonuses.overall", mode: ADD, value: "3", priority: null }
     ])] },
-  { key: "strength", name: "Attribute: Strength +1", img: "icons/skills/melee/hand-grip-sword-strength-red.webp",
+  { key: "strength", name: "Attribute: Strength +1", img: "icons/skills/melee/hand-grip-sword-red.webp",
     grant: "+1 to melee attack & damage rolls.", note: "Every 2 points invested, the DM unlocks a heavier weapon die for you.",
-    effects: [ae("Strength", "icons/skills/melee/hand-grip-sword-strength-red.webp", [
+    effects: [ae("Strength", "icons/skills/melee/hand-grip-sword-red.webp", [
       { key: "system.bonuses.mwak.attack", mode: ADD, value: "1", priority: null },
       { key: "system.bonuses.mwak.damage", mode: ADD, value: "1", priority: null }
     ])] },
@@ -45,13 +45,13 @@ const ATTRS = [
       { key: "system.bonuses.rwak.attack", mode: ADD, value: "1", priority: null },
       { key: "system.bonuses.rwak.damage", mode: ADD, value: "1", priority: null }
     ])] },
-  { key: "endurance", name: "Attribute: Endurance +1", img: "icons/equipment/shield/heater-steel-segmented-grey.webp",
+  { key: "endurance", name: "Attribute: Endurance +1", img: "icons/equipment/shield/heater-steel-grey.webp",
     grant: "+1 Poise.", note: "POISE is a homebrew counter tracked on your sheet. At Poise 3 you ignore stagger/forced movement from minor hits; at Poise 5 you gain +1 Defensive Reaction per round. No ActiveEffect — the DM tracks it.",
     flag: { poise: 1 }, effects: [] },
-  { key: "intelligence", name: "Attribute: Intelligence +1", img: "icons/magic/light/projectile-bolts-salvo-blue.webp",
+  { key: "intelligence", name: "Attribute: Intelligence +1", img: "icons/magic/light/projectile-bolts-salvo-white.webp",
     grant: "+1 sorcery damage.", note: "Invested points also GATE sorcery tiers: 1 -> T1, 3 -> T2, 5 -> T3. Homebrew bonus added to each sorcery's damage by the caster; the DM verifies the gate.",
     flag: { sorceryPower: 1 }, effects: [] },
-  { key: "faith", name: "Attribute: Faith +1", img: "icons/magic/holy/projectile-cross-glowing-yellow.webp",
+  { key: "faith", name: "Attribute: Faith +1", img: "icons/magic/holy/prayer-hands-glowing-yellow.webp",
     grant: "+1 miracle healing & damage.", note: "Invested points also GATE miracle tiers: 1 -> T1, 3 -> T2, 5 -> T3. Homebrew bonus added to each miracle by the caster; the DM verifies the gate.",
     flag: { miraclePower: 1 }, effects: [] },
   { key: "attunement", name: "Attribute: Attunement +1", img: "icons/magic/symbols/runes-star-orange.webp",
@@ -77,13 +77,13 @@ const ARTS = [
     text: "Bonus action: shove a creature within reach (Athletics vs Athletics/Acrobatics). On a success, your next attack against it this turn has advantage." },
   { name: "Weapon Art: Perseverance", img: "icons/magic/defensive/shield-barrier-glowing-blue.webp", cat: "Martial",
     text: "Reaction: gain temporary HP equal to your level and become immune to stagger/forced movement until the end of your next turn.", once: true },
-  { name: "Weapon Art: Spin Slash", img: "icons/skills/melee/sword-twirl-blue.webp", cat: "Martial",
+  { name: "Weapon Art: Spin Slash", img: "icons/skills/melee/sword-twirl-orange.webp", cat: "Martial",
     text: "Replace one Strike: make a single attack roll against every creature adjacent to you; apply it separately to each." },
   { name: "Weapon Art: Charge", img: "icons/skills/movement/arrow-upward-yellow.webp", cat: "Martial",
     text: "Move up to your speed in a straight line and make one attack; on a hit the target is knocked prone." },
   { name: "Weapon Art: Quickstep", img: "icons/skills/movement/feet-winged-sandals-tan.webp", cat: "Martial",
     text: "Bonus action: teleport up to 15 ft to a space you can see. This movement never provokes opportunity attacks." },
-  { name: "Weapon Art: Leo Riposte", img: "icons/skills/melee/strike-sword-pommel-glowing.webp", cat: "Martial",
+  { name: "Weapon Art: Leo Riposte", img: "icons/skills/melee/strike-sword-blood-red.webp", cat: "Martial",
     text: "Your ripostes (after a successful Parry) deal +2 weapon dice of damage." },
   // Caster
   { name: "Weapon Art: Steady Chant", img: "icons/magic/control/buff-flight-wings-blue.webp", cat: "Caster",
@@ -95,7 +95,7 @@ const ARTS = [
   { name: "Weapon Art: Sage's Focus", img: "icons/magic/light/projectile-flare-blue.webp", cat: "Caster",
     text: "Once per bonfire: cast a Tier-1 spell as a bonus action.", once: true },
   // Universal
-  { name: "Weapon Art: Estus Mastery", img: "icons/consumables/potions/bottle-bulb-corked-glowing-orange.webp", cat: "Universal",
+  { name: "Weapon Art: Estus Mastery", img: "icons/consumables/potions/bottle-round-corked-orange.webp", cat: "Universal",
     text: "Gain +1 Estus charge (raise your Estus Flask's max uses by 1), and you may quaff Estus as a bonus action." }
 ];
 
