@@ -543,6 +543,172 @@
       }
     },
     {
+      "name": "Art of War: Perseverance",
+      "type": "feat",
+      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "artOfWar": true
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>Signature Art of War.</em> <strong>3 charges</strong> &mdash; refill at any bonfire (a long rest).</p><p>You plant your feet and swing with stubborn, unkillable fury.</p><p>Its damage roll already bakes in your <strong>Strength scaling</strong> and your weapon dice, so it grows exactly as your weapon does &mdash; just point and click.</p><p><strong>Effect:</strong> You gain <strong>temporary HP equal to your level</strong> and cannot be knocked prone or pushed until the end of your next turn.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Art of War",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "3",
+          "spent": 0,
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ]
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "name": "Perseverance",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "itemUses",
+                  "target": "",
+                  "value": "1",
+                  "scaling": {
+                    "mode": "",
+                    "formula": ""
+                  }
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "str",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": false,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 4,
+                  "bonus": "floor(@abilities.str.mod * 0.25)",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                },
+                {
+                  "number": 1,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "Signature Art",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "art-of-war-perseverance"
+      }
+    },
+    {
       "name": "Club",
       "type": "weapon",
       "img": "icons/weapons/clubs/club-simple-barbed.webp",

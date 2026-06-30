@@ -187,6 +187,12 @@ from gear `flags.ashen.block`; tweak text/multipliers in `resolve()`. Bump `vers
 - **Gear** (`gen-gear.mjs`): weapons/armor/shields. Shields carry `flags.ashen.block.{physical}`
   (the block fraction). Set armor type light/medium/heavy for DR.
 - **Pregens** (`gen-pregens.mjs`): class, ability array, gear (copied from gear pack), 2 spells.
+  - **Arts of War** (non-caster pregens): the `ARTS` map gives Knight/Warrior/Mercenary/Thief/Deprived
+    one clickable signature feat (`artItem()`). Its attack re-uses the wielder's weapon dice plus the
+    *same* live scaling formula the weapon uses — `floor(@abilities.<abil>.mod * <factor>)` (`includeBase:false`,
+    so no double ability mod) — so the move scales with the character automatically. `uses.max:"3"` with
+    `lr` recovery = 3 charges per bonfire; the attack activity consumes one use per click. Casters are
+    skipped (they already start with spells).
 - **Tables** (`gen-tables.mjs`): loot tiers, souls per tier.
 - **Levels** (`gen-levels.mjs`): attribute/skill cards players drag on.
 

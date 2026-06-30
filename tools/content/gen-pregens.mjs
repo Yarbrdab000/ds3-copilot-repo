@@ -58,6 +58,99 @@ function baseActionsFeat() {
   };
 }
 
+function dpart(number, denomination, types, bonus = "") {
+  return { number, denomination, bonus, types,
+    custom: { enabled: false, formula: "" }, scaling: { mode: "", number: null, formula: "" } };
+}
+
+// Signature "Art of War" moves for the non-caster pregens. Each is a real, clickable feat
+// whose attack rolls the wielder's weapon dice PLUS the same live scaling formula the weapon
+// uses (floor(stat mod * grade factor)) — so the move tracks weapon scaling automatically —
+// plus a signature flourish die and a tactical rider. 3 charges, refilled at any bonfire.
+function artItem(def) {
+  const scale = `floor(@abilities.${def.abil}.mod * ${def.factor})`;
+  const parts = def.dmg.map((d, i) => dpart(d.n, d.d, d.types, i === 0 ? scale : ""));
+  const desc =
+    `<p><em>Signature Art of War.</em> <strong>3 charges</strong> &mdash; refill at any bonfire (a long rest).</p>` +
+    `<p>${def.blurb}</p>` +
+    `<p>Its damage roll already bakes in your <strong>${def.statName} scaling</strong> and your weapon dice, ` +
+    `so it grows exactly as your weapon does &mdash; just point and click.</p>` +
+    `<p><strong>Effect:</strong> ${def.rider}</p>`;
+  return {
+    name: def.name, type: "feat", img: def.img, effects: [], flags: { ashen: { artOfWar: true } },
+    system: {
+      description: { value: desc, chat: "" },
+      source: { book: "Ashen", page: "", custom: "Art of War", license: "CC-BY-4.0", rules: "2014" },
+      uses: { max: "3", spent: 0, recovery: [{ period: "lr", type: "recoverAll" }] },
+      activities: {
+        dnd5eactivity000: {
+          _id: "dnd5eactivity000", type: "attack", name: def.actName, img: "", sort: 0,
+          activation: { type: "action", value: 1, condition: "", override: false },
+          consumption: {
+            targets: [{ type: "itemUses", target: "", value: "1", scaling: { mode: "", formula: "" } }],
+            scaling: { allowed: false, max: "" }, spellSlot: false
+          },
+          description: { chatFlavor: "" },
+          duration: { concentration: false, value: "", units: "inst", special: "", override: false },
+          effects: [],
+          range: { value: "", units: "", special: "", override: false },
+          target: { template: { contiguous: false, units: "ft", type: "" }, affects: { choice: false }, override: false, prompt: true },
+          uses: { spent: 0, max: "", recovery: [] },
+          attack: { ability: def.abil, bonus: "", critical: { threshold: null }, flat: false, type: { value: "melee", classification: "weapon" } },
+          damage: { critical: { bonus: "" }, includeBase: false, parts }
+        }
+      },
+      type: { value: "feat", subtype: "" }, requirements: "Signature Art",
+      properties: [], enchant: {}, prerequisites: { level: null }, identifier: slug(def.name)
+    }
+  };
+}
+
+// One signature Art per non-caster pregen, keyed by pregen name. Damage parts: part[0] carries
+// the live weapon-scaling bonus; any further parts are the move's flourish dice.
+const ARTS = {
+  "Knight": {
+    name: "Art of War: Stomp", actName: "Stomp",
+    img: "icons/skills/melee/strike-hammer-destructive-orange.webp",
+    abil: "str", factor: 0.75, statName: "Strength",
+    dmg: [{ n: 1, d: 8, types: ["slashing"] }, { n: 1, d: 8, types: ["bludgeoning"] }],
+    blurb: "You raise your blade and bring your full weight down in a crushing overhead.",
+    rider: "On a hit the target must succeed on a Strength save (DC 8 + your proficiency + your Strength modifier) or be knocked <strong>prone</strong>."
+  },
+  "Warrior": {
+    name: "Art of War: Spin Slash", actName: "Spin Slash",
+    img: "icons/skills/melee/sword-twirl-blue.webp",
+    abil: "str", factor: 1.5, statName: "Strength",
+    dmg: [{ n: 1, d: 12, types: ["slashing"] }],
+    blurb: "You whirl the great axe in a full circle, carving everything in reach.",
+    rider: "Make this one attack roll and apply it to <strong>every creature within 5 ft of you</strong>; roll the damage once and deal it to each that is hit."
+  },
+  "Mercenary": {
+    name: "Art of War: Sellsword Flurry", actName: "Sellsword Flurry",
+    img: "icons/skills/melee/strike-sword-pommel-glowing.webp",
+    abil: "dex", factor: 1.0, statName: "Dexterity",
+    dmg: [{ n: 2, d: 6, types: ["slashing"] }],
+    blurb: "A blinding two-blade flurry that ends with you already somewhere else.",
+    rider: "After the strike you may move up to <strong>10 ft</strong> without provoking opportunity attacks."
+  },
+  "Thief": {
+    name: "Art of War: Backstab", actName: "Backstab",
+    img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    abil: "dex", factor: 1.5, statName: "Dexterity",
+    dmg: [{ n: 1, d: 4, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
+    blurb: "You slip behind your mark and drive the dagger into the gap in their guard.",
+    rider: "Usable only when you have advantage on the attack or are unseen by the target. This strike also <strong>triggers your Sneak Attack</strong> if you have it."
+  },
+  "Deprived": {
+    name: "Art of War: Perseverance", actName: "Perseverance",
+    img: "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+    abil: "str", factor: 0.25, statName: "Strength",
+    dmg: [{ n: 1, d: 4, types: ["bludgeoning"] }, { n: 1, d: 6, types: ["bludgeoning"] }],
+    blurb: "You plant your feet and swing with stubborn, unkillable fury.",
+    rider: "You gain <strong>temporary HP equal to your level</strong> and cannot be knocked prone or pushed until the end of your next turn."
+  }
+};
+
 const SK = (skills) => {
   const all = ["acr","ani","arc","ath","dec","his","ins","itm","inv","med","nat","prc","prf","per","rel","slt","ste","sur"];
   const abilityOf = { acr:"dex",ani:"wis",arc:"int",ath:"str",dec:"cha",his:"int",ins:"wis",itm:"cha",inv:"int",med:"wis",nat:"int",prc:"wis",prf:"cha",per:"cha",rel:"int",slt:"dex",ste:"dex",sur:"wis" };
@@ -134,6 +227,7 @@ function buildActor(p, gear, spells, levels) {
   const items = [];
   items.push(classItem({ name: p.cls, identifier: p.id, hitDice: p.hd, saves: p.saves, ability: p.spellAbility }));
   items.push(baseActionsFeat());
+  if (ARTS[p.n]) items.push(artItem(ARTS[p.n]));
 
   for (const [gname, equipped] of p.gear) {
     const g = gear.get(gname);
