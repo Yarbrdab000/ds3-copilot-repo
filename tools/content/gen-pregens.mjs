@@ -458,7 +458,7 @@ function bonfireLedger() {
   return {
     name: "Bonfire Ledger", type: "character",
     img: "icons/magic/fire/flame-burning-embers-orange.webp",
-    effects: [], flags: { ashen: { role: "souls", ledger: true, carried: 0, banked: 0, bloodstain: 0 } },
+    effects: [], flags: { "ashen-of-lothric": { role: "souls", ledger: true, carried: 0, banked: 0, bloodstain: 0 } },
     system: {
       abilities,
       attributes: {

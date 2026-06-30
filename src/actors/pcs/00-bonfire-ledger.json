@@ -4,7 +4,7 @@
   "img": "icons/magic/fire/flame-burning-embers-orange.webp",
   "effects": [],
   "flags": {
-    "ashen": {
+    "ashen-of-lothric": {
       "role": "souls",
       "ledger": true,
       "carried": 0,

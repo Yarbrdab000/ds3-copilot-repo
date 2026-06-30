@@ -79,11 +79,11 @@ async function assemble() {
   }
 
   const ledger =
-    game.actors.find((x) => x.getFlag("ashen", "role") === "souls") ||
+    game.actors.find((x) => x.getFlag("ashen-of-lothric", "role") === "souls") ||
     game.actors.getName("Bonfire Ledger");
   if (ledger) {
     for (const k of ["banked", "carried", "bloodstain"]) {
-      if (ledger.getFlag("ashen", k) == null) await ledger.setFlag("ashen", k, 0);
+      if (ledger.getFlag("ashen-of-lothric", k) == null) await ledger.setFlag("ashen-of-lothric", k, 0);
     }
   }
 

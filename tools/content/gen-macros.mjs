@@ -18,13 +18,13 @@ const OUT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "../.
 const HELPERS = `
 const A = globalThis;
 function getLedger() {
-  let a = game.actors.find(x => x.getFlag("ashen", "role") === "souls");
+  let a = game.actors.find(x => x.getFlag("ashen-of-lothric", "role") === "souls");
   if (!a) a = game.actors.getName("Bonfire Ledger");
   if (!a) ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found. Import the Ashen actors pack.");
   return a;
 }
-async function getSouls(a, k) { return Number(a?.getFlag("ashen", k) ?? 0); }
-async function setSouls(a, k, v) { return a.setFlag("ashen", k, Math.max(0, Math.round(v))); }
+async function getSouls(a, k) { return Number(a?.getFlag("ashen-of-lothric", k) ?? 0); }
+async function setSouls(a, k, v) { return a.setFlag("ashen-of-lothric", k, Math.max(0, Math.round(v))); }
 async function askNumber(title, label) {
   const content = '<form><div class="form-group"><label>' + label + '</label>' +
     '<input type="number" name="n" value="0" autofocus/></div></form>';
@@ -129,10 +129,10 @@ for (const sc of game.scenes) {
 }
 
 // Make the souls tracker work out of the box: ensure the Bonfire Ledger has its flags initialised.
-const ledger = game.actors.find(x => x.getFlag("ashen", "role") === "souls") || game.actors.getName("Bonfire Ledger");
+const ledger = game.actors.find(x => x.getFlag("ashen-of-lothric", "role") === "souls") || game.actors.getName("Bonfire Ledger");
 if (ledger) {
   for (const k of ["banked", "carried", "bloodstain"]) {
-    if (ledger.getFlag("ashen", k) == null) await ledger.setFlag("ashen", k, 0);
+    if (ledger.getFlag("ashen-of-lothric", k) == null) await ledger.setFlag("ashen-of-lothric", k, 0);
   }
 }
 
@@ -240,7 +240,7 @@ try {
   let banked = 0;
   if (a) {
     banked = await getSouls(a, "banked");
-    await a.setFlag("ashen", "banked", banked - cost);
+    await a.setFlag("ashen-of-lothric", "banked", banked - cost);
   } else {
     ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found \u2014 leveling without tracking souls.");
   }
@@ -315,16 +315,16 @@ ui.notifications.info("Ashen: bonfire rest applied. Remember to respawn cleared 
 const t = canvas.tokens.controlled[0];
 if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
 const THRESH = 5;
-const cur = Number(t.actor.getFlag("ashen", "frostbite") ?? 0) + 1;
+const cur = Number(t.actor.getFlag("ashen-of-lothric", "frostbite") ?? 0) + 1;
 if (cur >= THRESH) {
-  await t.actor.setFlag("ashen", "frostbite", 0);
+  await t.actor.setFlag("ashen-of-lothric", "frostbite", 0);
   // Add Exhaustion via Active Effect.
   const exhLevel = (t.actor.system?.attributes?.exhaustion ?? 0) + 1;
   await createEffect(t.actor, "Exhaustion (Auto)", "icons/svg/poison.svg", 
    [["system.attributes.exhaustion", String(exhLevel)]]);
   ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s frostbite bar FILLS \\u2014 <b>Exhaustion " + exhLevel + "</b> applied, and frostbite resets." });
 } else {
-  await t.actor.setFlag("ashen", "frostbite", cur);
+  await t.actor.setFlag("ashen-of-lothric", "frostbite", cur);
   ChatMessage.create({ content: t.actor.name + " gains a frostbite stack (" + cur + "/" + THRESH + ")." });
 }
 `
@@ -341,7 +341,7 @@ if (!hp) return ui.notifications.warn("Ashen: this actor has no HP to kindle.");
 // Add bonus HP via Active Effect.
 await createEffect(t.actor, "Embered", "icons/magic/fire/flame-burning-fist-orange.webp",
   [["system.attributes.hp.tempmax", String(bonus)]]);
-await t.actor.setFlag("ashen", "kindled", true);
+await t.actor.setFlag("ashen-of-lothric", "kindled", true);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b> kindles the bonfire \\u2014 <b>+" + bonus + " maximum HP</b> (Embered) until death." });
 ui.notifications.info("Ashen: kindled (+" + bonus + " max HP). Removed on death.");
 `
@@ -416,12 +416,12 @@ for (const k of ["carried", "banked", "bloodstain"]) await setSouls(a, k, 0);
 let rested = 0;
 for (const act of game.actors) {
   if (act === a) continue;
-  if (act.getFlag("ashen", "role") === "souls") continue;
+  if (act.getFlag("ashen-of-lothric", "role") === "souls") continue;
   if (act.type !== "character") continue;
   try { await act.longRest({ dialog: false, chat: false }); rested++; } catch (e) {}
   try { await act.update({ "system.attributes.hp.tempmax": 0 }); } catch (e) {}
-  try { await act.setFlag("ashen", "frostbite", 0); } catch (e) {}
-  try { await act.unsetFlag("ashen", "kindled"); } catch (e) {}
+  try { await act.setFlag("ashen-of-lothric", "frostbite", 0); } catch (e) {}
+  try { await act.unsetFlag("ashen-of-lothric", "kindled"); } catch (e) {}
 }
 ChatMessage.create({ content: "<h3>A new flame is lit.</h3><p>Cinders set to <b>" + cind + "</b>, Shop Tier reset to <b>0</b>, souls cleared, and <b>" + rested + "</b> pregen(s) restored to full.</p><p><i>The cycle begins again. Don't go Hollow.</i></p>" });
 ui.notifications.info("Ashen: new run ready \u2014 Cinders " + cind + ", " + rested + " pregens rested.");
@@ -566,7 +566,7 @@ ui.notifications.info("Ashen: Exhaustion set to " + level + ".");
 const t = canvas.tokens.controlled[0];
 if (!t?.actor) return ui.notifications.warn("Ashen: select one token first.");
 await removeEffectByName(t.actor, "Embered");
-await t.actor.setFlag("ashen", "kindled", false);
+await t.actor.setFlag("ashen-of-lothric", "kindled", false);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b>'s Embered status cleared (override)." });
 ui.notifications.info("Ashen: Embered cleared.");
 `
@@ -584,8 +584,8 @@ const confirm = await Dialog.confirm({
 if (!confirm) return;
 await removeAllAshenEffects(t.actor);
 t.actor.update({ "system.attributes.exhaustion": 0 });
-await t.actor.setFlag("ashen", "frostbite", 0);
-await t.actor.setFlag("ashen", "kindled", false);
+await t.actor.setFlag("ashen-of-lothric", "frostbite", 0);
+await t.actor.setFlag("ashen-of-lothric", "kindled", false);
 ChatMessage.create({ content: "<b>" + t.actor.name + "</b> — all Ashen status effects purged (override)." });
 ui.notifications.warn("Ashen: all effects cleared for " + t.actor.name + ".");
 `
@@ -664,7 +664,7 @@ ui.notifications.info("Bonfire placed (" + created.tiles + " tile, " + created.l
     img: "icons/magic/fire/flame-burning-skull-orange.webp",
     body: `
 if (!canvas?.scene) return ui.notifications.warn("Ashen: open a scene first.");
-const isBonfire = (doc) => doc.getFlag?.("ashen", "kind") === "bonfire" || doc.flags?.ashen?.kind === "bonfire";
+const isBonfire = (doc) => doc.flags?.ashen?.kind === "bonfire";
 const tiles = canvas.scene.tiles.filter(isBonfire).map(d => d.id);
 const lights = canvas.scene.lights.filter(isBonfire).map(d => d.id);
 if (!tiles.length && !lights.length) return ui.notifications.info("Ashen: no placed bonfires found in this scene.");
