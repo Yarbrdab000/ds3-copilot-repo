@@ -193,26 +193,25 @@ ChatMessage.create({ content: "Spent <b>" + n + " souls</b>. Banked remaining: "
     name: "Ashen: Level Up",
     img: "icons/magic/symbols/runes-star-orange.webp",
     body: `
-const a = getLedger();
-const COST = { 4: 500, 5: 800, 6: 1200, 7: 1800, 8: 2600, 9: 3600, 10: 5000 };
-const party = game.actors.filter(x => x.type === "character");
-if (!party.length) return ui.notifications.warn("Ashen: no player characters found. Import the Ashen pregens pack.");
+ui.notifications.info("Ashen: Level Up \u2014 opening\u2026");
 
 // v13-safe picker: resolve() is wired into each button AT CONSTRUCTION (the old version mutated
-// button callbacks after the Dialog was built, which the v13 DialogV2 shim ignores — so picking
-// did nothing). A <select> also handles the long upgrade list far better than a wall of buttons.
+// button callbacks after the Dialog was built, which the v13 DialogV2 shim ignores). bringToTop()
+// guarantees the dialog sits ABOVE the macro-config window if you ran this from the editor.
 function dialogSelect(title, intro, options, dflt) {
   const opts = options.map(o => '<option value="' + o.value + '"' + (String(o.value) === String(dflt) ? ' selected' : '') + '>' + o.label + '</option>').join("");
   const content = intro + '<form><div class="form-group"><label>Choose</label><select name="pick" style="width:100%">' + opts + '</select></div></form>';
   return new Promise((resolve) => {
-    new Dialog({
+    const dlg = new Dialog({
       title, content,
       buttons: {
         ok: { icon: '<i class="fas fa-check"></i>', label: "Apply", callback: (html) => resolve(html[0].querySelector('[name=pick]')?.value ?? null) },
         skip: { icon: '<i class="fas fa-forward"></i>', label: "Skip", callback: () => resolve(null) }
       },
       default: "ok", close: () => resolve(null)
-    }, { width: 480 }).render(true);
+    }, { width: 480 });
+    dlg.render(true);
+    setTimeout(() => { try { dlg.bringToTop?.(); } catch (e) {} }, 80);
   });
 }
 
@@ -223,37 +222,46 @@ async function grantPick(pc, name) {
   await pc.createEmbeddedDocuments("Item", [item.toObject()]);
 }
 
-const levelOpts = Object.entries(COST).map(([l, c]) => ({ label: "\u2192 Level " + l + "  (" + c + " souls)", value: l }));
-const lvlPick = await dialogSelect("Party Level Up at the Fire Keeper",
-  "<p>The whole party (<b>" + party.length + "</b> characters) ascends. Choose the level to purchase:</p>",
-  levelOpts, "4");
-if (!lvlPick) return;
-const lvl = Number(lvlPick);
-const cost = COST[lvl];
+try {
+  const a = getLedger();
+  const COST = { 4: 500, 5: 800, 6: 1200, 7: 1800, 8: 2600, 9: 3600, 10: 5000 };
+  const party = game.actors.filter(x => x.type === "character");
+  if (!party.length) { ui.notifications.error("Ashen: no player characters in this world. Run 'Ashen: Assemble Adventure' first."); return; }
 
-// Just subtract the cost from the ledger. Allow it to go negative (DM reconciles manually).
-// setSouls() clamps at 0, so write the flag directly here.
-let banked = 0;
-if (a) {
-  banked = await getSouls(a, "banked");
-  await a.setFlag("ashen", "banked", banked - cost);
-} else {
-  ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found \u2014 leveling the party without tracking souls.");
-}
+  const levelOpts = Object.entries(COST).map(([l, c]) => ({ label: "\u2192 Level " + l + "  (" + c + " souls)", value: l }));
+  const lvlPick = await dialogSelect("Party Level Up at the Fire Keeper",
+    "<p>The whole party (<b>" + party.length + "</b> characters) ascends. Choose the level to purchase:</p>",
+    levelOpts, "4");
+  if (!lvlPick) { ui.notifications.info("Ashen: Level Up cancelled."); return; }
+  const lvl = Number(lvlPick);
+  const cost = COST[lvl];
 
-const PICKS = ["Attribute: Vigor +1","Attribute: Strength +1","Attribute: Dexterity +1","Attribute: Endurance +1","Attribute: Intelligence +1","Attribute: Faith +1","Attribute: Attunement +1","Dexterity: AC Milestone (+1 AC)","Weapon Art: Stomp","Weapon Art: Perseverance","Weapon Art: Spin Slash","Weapon Art: Charge","Weapon Art: Quickstep","Weapon Art: Leo Riposte","Weapon Art: Steady Chant","Weapon Art: Crystallize","Weapon Art: Pyromancer's Fervor","Weapon Art: Sage's Focus","Weapon Art: Estus Mastery"];
-const pickOpts = PICKS.map(n => ({ label: n, value: n }));
-const summary = [];
-for (const pc of party) {
-  const cls = pc.items.find(i => i.type === "class");
-  if (cls) await cls.update({ "system.levels": (cls.system.levels || 1) + 1 });
-  const pick = await dialogSelect(pc.name + ": choose an upgrade (now L" + lvl + ")",
-    "<p>Pick <b>" + pc.name + "</b>'s upgrade card (auto-applied to their sheet):</p>",
-    pickOpts, PICKS[0]);
-  if (pick) await grantPick(pc, pick);
-  summary.push("<b>" + pc.name + "</b>" + (pick ? " \u2014 " + pick : " \u2014 (skipped)"));
+  // Just subtract the cost from the ledger. Allow it to go negative (DM reconciles manually).
+  let banked = 0;
+  if (a) {
+    banked = await getSouls(a, "banked");
+    await a.setFlag("ashen", "banked", banked - cost);
+  } else {
+    ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found \u2014 leveling without tracking souls.");
+  }
+
+  const PICKS = ["Attribute: Vigor +1","Attribute: Strength +1","Attribute: Dexterity +1","Attribute: Endurance +1","Attribute: Intelligence +1","Attribute: Faith +1","Attribute: Attunement +1","Dexterity: AC Milestone (+1 AC)","Weapon Art: Stomp","Weapon Art: Perseverance","Weapon Art: Spin Slash","Weapon Art: Charge","Weapon Art: Quickstep","Weapon Art: Leo Riposte","Weapon Art: Steady Chant","Weapon Art: Crystallize","Weapon Art: Pyromancer's Fervor","Weapon Art: Sage's Focus","Weapon Art: Estus Mastery"];
+  const pickOpts = PICKS.map(n => ({ label: n, value: n }));
+  const summary = [];
+  for (const pc of party) {
+    const cls = pc.items.find(i => i.type === "class");
+    if (cls) await cls.update({ "system.levels": (cls.system.levels || 1) + 1 });
+    const pick = await dialogSelect(pc.name + ": choose an upgrade (now L" + lvl + ")",
+      "<p>Pick <b>" + pc.name + "</b>'s upgrade card (auto-applied to their sheet):</p>",
+      pickOpts, PICKS[0]);
+    if (pick) await grantPick(pc, pick);
+    summary.push("<b>" + pc.name + "</b>" + (pick ? " \u2014 " + pick : " \u2014 (skipped)"));
+  }
+  ChatMessage.create({ content: "<b>The party ascends to Level " + lvl + "</b> (" + (a ? "-" + cost + " souls" : "no ledger \u2014 souls not tracked") + ")." + (a ? " Banked = " + (banked - cost) + "." : "") + "<br>" + summary.join("<br>") });
+} catch (err) {
+  console.error("Ashen: Level Up failed", err);
+  ui.notifications.error("Ashen: Level Up error \u2014 " + (err?.message || err) + " (press F12 \u2192 Console for details)");
 }
-ChatMessage.create({ content: "<b>The party ascends to Level " + lvl + "</b> (" + (a ? "-" + cost + " souls" : "no ledger \u2014 souls not tracked") + ")." + (a ? " Banked = " + (banked - cost) + "." : "") + "<br>" + summary.join("<br>") });
 `
   },
   {
