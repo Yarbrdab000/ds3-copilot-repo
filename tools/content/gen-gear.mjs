@@ -28,11 +28,11 @@ function scalingBlock({ scaleStat, grade, upgrade }) {
   const [v2, v3, v4, v5] = scalingValues(grade);
   return (
     `<hr><p><strong>Scaling:</strong> ${scaleStat} &mdash; Grade ${grade}. ` +
-    `Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) ` +
-    `based on your ${scaleStat} modifier &mdash; ` +
+    `The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability ` +
+    `bonus to damage), based on your ${scaleStat} modifier &mdash; ` +
     `<strong>+2:</strong> ${v2} &nbsp; <strong>+3:</strong> ${v3} &nbsp; <strong>+4:</strong> ${v4} &nbsp; <strong>+5:</strong> ${v5}.</p>` +
     `<p><strong>Upgrade:</strong> +${upgrade}. Andre reinforces with titanite up to +3 ` +
-    `(+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>`
+    `(+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>`
   );
 }
 
@@ -58,10 +58,14 @@ function weapon({ name, img, wtype, baseItem, n, d, dtypes, props = [], versatil
   const acts = attackActivity(range ? "ranged" : "melee");
   acts.dnd5eactivity000.attack.ability = scaleAbil;
   acts.dnd5eactivity000.attack.bonus = upgrade ? String(upgrade) : "";
-  // Damage = dice + upgrade only (no auto ability mod); scaling is added by hand from the grid.
+  // Damage = dice + auto weapon scaling + upgrade. Scaling = floor(stat mod * grade factor),
+  // evaluated live from the wielder's sheet. includeBase stays false so dnd5e does NOT also add
+  // the raw ability mod on top (the scaling number replaces it — no double-count).
+  const scaleFormula = `floor(@abilities.${scaleAbil}.mod * ${FACTOR[grade]})`;
+  const dmgBonus = upgrade ? `${scaleFormula} + ${upgrade}` : scaleFormula;
   acts.dnd5eactivity000.damage = {
     critical: { bonus: "" }, includeBase: false,
-    parts: [{ number: n, denomination: d, bonus: upgrade ? String(upgrade) : "", types: dtypes,
+    parts: [{ number: n, denomination: d, bonus: dmgBonus, types: dtypes,
       custom: { enabled: false, formula: "" }, scaling: { mode: "", number: null, formula: "" } }]
   };
   const versNote = versatile ? `<p><strong>Two-handed:</strong> ${versatile[0]}d${versatile[1]} instead.</p>` : "";

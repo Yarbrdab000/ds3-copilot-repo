@@ -17,7 +17,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>A long reach spear; keep them at bay.</em></p><p><strong>Two-handed:</strong> 1d8 instead.</p><hr><p><strong>Scaling:</strong> Dexterity &mdash; Grade C. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Dexterity modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 2 &nbsp; <strong>+4:</strong> 3 &nbsp; <strong>+5:</strong> 3.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "value": "<p><em>A long reach spear; keep them at bay.</em></p><p><strong>Two-handed:</strong> 1d8 instead.</p><hr><p><strong>Scaling:</strong> Dexterity &mdash; Grade C. The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability bonus to damage), based on your Dexterity modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 2 &nbsp; <strong>+4:</strong> 3 &nbsp; <strong>+5:</strong> 3.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>",
       "chat": ""
     },
     "source": {
@@ -175,7 +175,7 @@
             {
               "number": 1,
               "denomination": 6,
-              "bonus": "",
+              "bonus": "floor(@abilities.dex.mod * 0.75)",
               "types": [
                 "piercing"
               ],

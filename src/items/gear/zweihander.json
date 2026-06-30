@@ -17,7 +17,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>A massive flat blade; commit or be crushed.</em></p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade A. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Strength modifier &mdash; <strong>+2:</strong> 3 &nbsp; <strong>+3:</strong> 4 &nbsp; <strong>+4:</strong> 6 &nbsp; <strong>+5:</strong> 7.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "value": "<p><em>A massive flat blade; commit or be crushed.</em></p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade A. The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability bonus to damage), based on your Strength modifier &mdash; <strong>+2:</strong> 3 &nbsp; <strong>+3:</strong> 4 &nbsp; <strong>+4:</strong> 6 &nbsp; <strong>+5:</strong> 7.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>",
       "chat": ""
     },
     "source": {
@@ -172,7 +172,7 @@
             {
               "number": 2,
               "denomination": 8,
-              "bonus": "",
+              "bonus": "floor(@abilities.str.mod * 1.5)",
               "types": [
                 "slashing"
               ],

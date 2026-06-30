@@ -17,7 +17,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>Gundyr's coiled halberd, freed from the Pus that took him. Long, sweeping, merciless.</em></p><p><strong>Unique:</strong> Sweep: on a hit, you may also strike one adjacent foe for half damage. Reach 10 ft.</p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade B. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Strength modifier &mdash; <strong>+2:</strong> 2 &nbsp; <strong>+3:</strong> 3 &nbsp; <strong>+4:</strong> 4 &nbsp; <strong>+5:</strong> 5.</p><p><strong>Upgrade:</strong> +1. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "value": "<p><em>Gundyr's coiled halberd, freed from the Pus that took him. Long, sweeping, merciless.</em></p><p><strong>Unique:</strong> Sweep: on a hit, you may also strike one adjacent foe for half damage. Reach 10 ft.</p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade B. The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability bonus to damage), based on your Strength modifier &mdash; <strong>+2:</strong> 2 &nbsp; <strong>+3:</strong> 3 &nbsp; <strong>+4:</strong> 4 &nbsp; <strong>+5:</strong> 5.</p><p><strong>Upgrade:</strong> +1. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>",
       "chat": ""
     },
     "source": {
@@ -174,7 +174,7 @@
             {
               "number": 1,
               "denomination": 10,
-              "bonus": "1",
+              "bonus": "floor(@abilities.str.mod * 1) + 1",
               "types": [
                 "slashing",
                 "piercing"

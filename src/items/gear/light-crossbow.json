@@ -17,7 +17,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>Mechanical reach for the careful; the bolt does the work, not the arm.</em></p><hr><p><strong>Scaling:</strong> Dexterity &mdash; Grade D. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Dexterity modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 1 &nbsp; <strong>+4:</strong> 2 &nbsp; <strong>+5:</strong> 2.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "value": "<p><em>Mechanical reach for the careful; the bolt does the work, not the arm.</em></p><hr><p><strong>Scaling:</strong> Dexterity &mdash; Grade D. The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability bonus to damage), based on your Dexterity modifier &mdash; <strong>+2:</strong> 1 &nbsp; <strong>+3:</strong> 1 &nbsp; <strong>+4:</strong> 2 &nbsp; <strong>+5:</strong> 2.</p><p><strong>Upgrade:</strong> +0. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>",
       "chat": ""
     },
     "source": {
@@ -173,7 +173,7 @@
             {
               "number": 1,
               "denomination": 8,
-              "bonus": "",
+              "bonus": "floor(@abilities.dex.mod * 0.5)",
               "types": [
                 "piercing"
               ],

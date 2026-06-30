@@ -17,7 +17,7 @@
   },
   "system": {
     "description": {
-      "value": "<p><em>A blade slick with dragon blood, taken from the rampart wyrm. Path C only.</em></p><p><strong>Unique:</strong> Lightning bite: +1d8 lightning damage on a hit. Vordt is vulnerable to it.</p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade B. Add this scaling bonus to each hit (it replaces the normal ability bonus to damage) based on your Strength modifier &mdash; <strong>+2:</strong> 2 &nbsp; <strong>+3:</strong> 3 &nbsp; <strong>+4:</strong> 4 &nbsp; <strong>+5:</strong> 5.</p><p><strong>Upgrade:</strong> +1. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage.</p>",
+      "value": "<p><em>A blade slick with dragon blood, taken from the rampart wyrm. Path C only.</em></p><p><strong>Unique:</strong> Lightning bite: +1d8 lightning damage on a hit. Vordt is vulnerable to it.</p><hr><p><strong>Scaling:</strong> Strength &mdash; Grade B. The damage roll <em>automatically</em> adds this scaling bonus (it replaces the normal ability bonus to damage), based on your Strength modifier &mdash; <strong>+2:</strong> 2 &nbsp; <strong>+3:</strong> 3 &nbsp; <strong>+4:</strong> 4 &nbsp; <strong>+5:</strong> 5.</p><p><strong>Upgrade:</strong> +1. Andre reinforces with titanite up to +3 (+1 / +2 / +3 costs 1 / 2 / 3 Titanite Shards); each level adds +1 to attack and damage (applied automatically).</p>",
       "chat": ""
     },
     "source": {
@@ -172,7 +172,7 @@
             {
               "number": 2,
               "denomination": 6,
-              "bonus": "1",
+              "bonus": "floor(@abilities.str.mod * 1) + 1",
               "types": [
                 "slashing"
               ],
