@@ -1,7 +1,7 @@
 {
   "name": "Thief (Striker)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1424,7 +1424,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/weapons/daggers/dagger-curved-poison-green.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

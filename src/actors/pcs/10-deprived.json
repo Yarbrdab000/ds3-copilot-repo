@@ -1,7 +1,7 @@
 {
   "name": "Deprived (Wildcard)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/weapons/clubs/club-simple-barbed.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1113,7 +1113,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/weapons/clubs/club-simple-barbed.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

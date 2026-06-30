@@ -1,7 +1,7 @@
 {
   "name": "Pyromancer (Blaster)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/magic/fire/flame-burning-hand-orange.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1394,7 +1394,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/magic/fire/flame-burning-hand-orange.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

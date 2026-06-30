@@ -1,7 +1,7 @@
 {
   "name": "Cleric (Healer)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/magic/holy/chalice-glowing-gold.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1438,7 +1438,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/magic/holy/chalice-glowing-gold.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

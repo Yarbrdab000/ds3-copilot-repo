@@ -1,7 +1,7 @@
 {
   "name": "Mercenary (Skirmisher)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/weapons/swords/scimitar-worn-blue.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1227,7 +1227,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/weapons/swords/scimitar-worn-blue.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

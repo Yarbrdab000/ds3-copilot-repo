@@ -1,7 +1,7 @@
 {
   "name": "Sorcerer (Arcane DPS)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/weapons/staves/staff-simple-gold.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1329,7 +1329,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/weapons/staves/staff-simple-gold.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,

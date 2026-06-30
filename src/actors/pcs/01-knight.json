@@ -1,7 +1,7 @@
 {
   "name": "Knight (Tank)",
   "type": "character",
-  "img": "icons/sundries/gaming/chess-pawn-white.webp",
+  "img": "icons/equipment/shield/heater-steel-segmented-grey.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -1163,7 +1163,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/sundries/gaming/chess-pawn-white.webp",
+      "src": "icons/equipment/shield/heater-steel-segmented-grey.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,
