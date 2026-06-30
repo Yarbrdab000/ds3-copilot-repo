@@ -49,7 +49,7 @@ function baseActionsFeat() {
     name: "Base Actions (Strike / Dodge / Block / Parry)", type: "feat",
     img: "icons/skills/melee/blade-tips-triple-bronze.webp", effects: [], flags: {},
     system: {
-      description: { value: "<p><strong>Strike</strong> \u2014 a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> \u2014 always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe \u2192 advantage next attack).</p><p><strong>Block</strong> \u2014 costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> \u2014 sidestep the lane instead.</p><p><strong>Parry</strong> \u2014 costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>", chat: "" },
+      description: { value: "<p><strong>Strike</strong> \u2014 a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> \u2014 always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe \u2192 advantage next attack).</p><p><strong>Block</strong> \u2014 costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> \u2014 sidestep the lane instead.</p><p><strong>Parry</strong> \u2014 costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><strong>Backstab (any class)</strong> \u2014 a positional finisher. When the DM rules you're striking from <em>directly behind</em> a foe (e.g. you dodged, repositioned behind it, and it didn't turn to face you), you may use the <strong>Backstab</strong> action on your sheet (it's favourited on your front panel) instead of a Strike. It <strong>auto-hits</strong> off your equipped weapon and deals <strong>\u00d71.5 weapon damage</strong> (<strong>\u00d73 with a dagger</strong>), and cannot be Blocked or Parried. The DM tells you when you qualify.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>", chat: "" },
       source: { book: "Ashen", page: "", custom: "Core", license: "CC-BY-4.0", rules: "2014" },
       uses: { max: "", spent: 0, recovery: [] }, activities: {},
       type: { value: "feat", subtype: "" }, requirements: "Everyone",
@@ -63,6 +63,73 @@ function dpart(number, denomination, types, bonus = "") {
     custom: { enabled: false, formula: "" }, scaling: { mode: "", number: null, formula: "" } };
 }
 
+// Deterministic 16-char document id (so we can reference an embedded item from system.favorites).
+// build.mjs only auto-generates an _id when one is absent, so a fixed id here survives packing.
+function mkId(seed) {
+  let s = ("Ash" + seed).replace(/[^A-Za-z0-9]/g, "").slice(0, 16);
+  while (s.length < 16) s += "0";
+  return s;
+}
+
+// Universal Backstab: a clickable, on-sheet positional finisher available to EVERY pregen.
+// It is DM-gated (the DM tells the player when they're behind a foe) and auto-hits. Damage is
+// derived live from the wielder's own weapon (dice + the weapon's scaling bonus) and multiplied:
+// daggers x3 (a knife in the gap is deadlier than a greatsword), everything else x1.5. Built from
+// the actual weapon item so dice / damage type / scaling never drift from the gear pack.
+function backstabFeat(weaponItem, id) {
+  const act = weaponItem.system?.activities?.dnd5eactivity000;
+  const part = act?.damage?.parts?.[0];
+  const n = part?.number ?? weaponItem.system?.damage?.base?.number ?? 1;
+  const d = part?.denomination ?? weaponItem.system?.damage?.base?.denomination ?? 4;
+  const dtype = (part?.types?.[0]) || (weaponItem.system?.damage?.base?.types?.[0]) || "piercing";
+  const scaleBonus = part?.bonus || "";
+  const dice = `${n}d${d}`;
+  const inner = scaleBonus ? `(${dice} + ${scaleBonus})` : dice;
+  const isDagger = weaponItem.system?.type?.baseItem === "dagger";
+  const mult = isDagger ? 3 : 1.5;
+  const formula = `floor(${inner} * ${mult})`;
+  const multLabel = isDagger ? "&times;3 (dagger critical)" : "&times;1.5";
+  const desc =
+    `<p><em>Positional finisher &mdash; any class.</em> When the DM rules you're striking from ` +
+    `<strong>directly behind</strong> a foe (e.g. you dodged, slipped behind it, and it didn't turn ` +
+    `to face you), use this instead of a Strike.</p>` +
+    `<p>It <strong>auto-hits</strong> (no attack roll) and <strong>cannot be Blocked or Parried</strong>. ` +
+    `Damage = your <strong>${weaponItem.name}</strong> hit &times; the backstab multiplier: <strong>${multLabel}</strong>. ` +
+    `Your weapon scaling is already baked into the roll.</p>` +
+    `<p><strong>Daggers backstab for &times;3</strong> &mdash; in the gap of a guard, a knife is deadlier than ` +
+    `any greatsword. The DM tells you when you qualify.</p>`;
+  return {
+    _id: id,
+    name: "Backstab", type: "feat", img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    effects: [], flags: { ashen: { backstab: true } },
+    system: {
+      description: { value: desc, chat: "" },
+      source: { book: "Ashen", page: "", custom: "Backstab", license: "CC-BY-4.0", rules: "2014" },
+      uses: { max: "", spent: 0, recovery: [] },
+      activities: {
+        dnd5eactivity000: {
+          _id: "dnd5eactivity000", type: "damage", name: "Backstab", img: "", sort: 0,
+          activation: { type: "action", value: 1, condition: "", override: false },
+          consumption: { targets: [], scaling: { allowed: false, max: "" }, spellSlot: false },
+          description: { chatFlavor: "" },
+          duration: { concentration: false, value: "", units: "inst", special: "", override: false },
+          effects: [],
+          range: { value: "", units: "", special: "", override: false },
+          target: { template: { contiguous: false, units: "ft", type: "" }, affects: { choice: false }, override: false, prompt: true },
+          uses: { spent: 0, max: "", recovery: [] },
+          damage: {
+            critical: { allow: false },
+            parts: [{ number: null, denomination: null, bonus: "", types: [dtype],
+              custom: { enabled: true, formula }, scaling: { mode: "", number: null, formula: "" } }]
+          }
+        }
+      },
+      type: { value: "feat", subtype: "" }, requirements: "Everyone",
+      properties: [], enchant: {}, prerequisites: { level: null }, identifier: "backstab"
+    }
+  };
+}
+
 // Signature "Art of War" moves for the non-caster pregens. Each is a real, clickable feat
 // whose attack rolls the wielder's weapon dice PLUS the same live scaling formula the weapon
 // uses (floor(stat mod * grade factor)) — so the move tracks weapon scaling automatically —
@@ -70,24 +137,35 @@ function dpart(number, denomination, types, bonus = "") {
 function artItem(def) {
   const scale = `floor(@abilities.${def.abil}.mod * ${def.factor})`;
   const parts = def.dmg.map((d, i) => dpart(d.n, d.d, d.types, i === 0 ? scale : ""));
+  const atWill = !!def.atWill;
+  const intro = atWill
+    ? `<p><em>${def.kindLabel || "Class feature"}.</em> At-will, but only <strong>once per turn</strong>.</p>`
+    : `<p><em>Signature Art of War.</em> <strong>3 charges</strong> &mdash; refill at any bonfire (a long rest).</p>`;
   const desc =
-    `<p><em>Signature Art of War.</em> <strong>3 charges</strong> &mdash; refill at any bonfire (a long rest).</p>` +
+    intro +
     `<p>${def.blurb}</p>` +
     `<p>Its damage roll already bakes in your <strong>${def.statName} scaling</strong> and your weapon dice, ` +
     `so it grows exactly as your weapon does &mdash; just point and click.</p>` +
     `<p><strong>Effect:</strong> ${def.rider}</p>`;
+  const uses = atWill
+    ? { max: "", spent: 0, recovery: [] }
+    : { max: "3", spent: 0, recovery: [{ period: "lr", type: "recoverAll" }] };
+  const consumeTargets = atWill
+    ? []
+    : [{ type: "itemUses", target: "", value: "1", scaling: { mode: "", formula: "" } }];
   return {
-    name: def.name, type: "feat", img: def.img, effects: [], flags: { ashen: { artOfWar: true } },
+    name: def.name, type: "feat", img: def.img, effects: [],
+    flags: { ashen: atWill ? { sneakAttack: true } : { artOfWar: true } },
     system: {
       description: { value: desc, chat: "" },
-      source: { book: "Ashen", page: "", custom: "Art of War", license: "CC-BY-4.0", rules: "2014" },
-      uses: { max: "3", spent: 0, recovery: [{ period: "lr", type: "recoverAll" }] },
+      source: { book: "Ashen", page: "", custom: atWill ? "Rogue" : "Art of War", license: "CC-BY-4.0", rules: "2014" },
+      uses,
       activities: {
         dnd5eactivity000: {
           _id: "dnd5eactivity000", type: "attack", name: def.actName, img: "", sort: 0,
           activation: { type: "action", value: 1, condition: "", override: false },
           consumption: {
-            targets: [{ type: "itemUses", target: "", value: "1", scaling: { mode: "", formula: "" } }],
+            targets: consumeTargets,
             scaling: { allowed: false, max: "" }, spellSlot: false
           },
           description: { chatFlavor: "" },
@@ -100,7 +178,7 @@ function artItem(def) {
           damage: { critical: { bonus: "" }, includeBase: false, parts }
         }
       },
-      type: { value: "feat", subtype: "" }, requirements: "Signature Art",
+      type: { value: "feat", subtype: "" }, requirements: atWill ? "Rogue" : "Signature Art",
       properties: [], enchant: {}, prerequisites: { level: null }, identifier: slug(def.name)
     }
   };
@@ -133,14 +211,6 @@ const ARTS = {
     blurb: "A blinding two-blade flurry that ends with you already somewhere else.",
     rider: "After the strike you may move up to <strong>10 ft</strong> without provoking opportunity attacks."
   },
-  "Thief": {
-    name: "Art of War: Backstab", actName: "Backstab",
-    img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
-    abil: "dex", factor: 1.5, statName: "Dexterity",
-    dmg: [{ n: 1, d: 4, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
-    blurb: "You slip behind your mark and drive the dagger into the gap in their guard.",
-    rider: "Usable only when you have advantage on the attack or are unseen by the target. This strike also <strong>triggers your Sneak Attack</strong> if you have it."
-  },
   "Deprived": {
     name: "Art of War: Perseverance", actName: "Perseverance",
     img: "icons/magic/defensive/shield-barrier-glowing-blue.webp",
@@ -150,6 +220,32 @@ const ARTS = {
     rider: "You gain <strong>temporary HP equal to your level</strong> and cannot be knocked prone or pushed until the end of your next turn."
   }
 };
+
+// Sneak Attack is the Rogue class feature, kept SEPARATE from the universal Backstab (the
+// "Ashen: Backstab" macro any class can use from behind). It's a clickable strike that already
+// includes the +2d6 sneak dice; at-will but usable once per turn when you qualify. Both Rogue
+// pregens (Thief, Assassin) get it.
+const SNEAK = {
+  "Thief": {
+    name: "Sneak Attack", actName: "Sneak Attack", atWill: true, kindLabel: "Rogue feature",
+    img: "icons/weapons/daggers/dagger-curved-poison-green.webp",
+    abil: "dex", factor: 1.5, statName: "Dexterity",
+    dmg: [{ n: 1, d: 4, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
+    blurb: "You wait for the opening, then bury the dagger where the armour gaps.",
+    rider: "Use when you have <strong>advantage</strong>, or when an ally is within 5 ft of the target and you don't have disadvantage \u2014 with a finesse or ranged weapon. <strong>Once per turn.</strong> The +2d6 is already in the roll. This is your class feature; it's separate from a <em>Backstab</em>, which any class can do from directly behind a foe."
+  },
+  "Assassin": {
+    name: "Sneak Attack", actName: "Sneak Attack", atWill: true, kindLabel: "Rogue feature",
+    img: "icons/weapons/swords/sword-flanged-ler.webp",
+    abil: "dex", factor: 0.75, statName: "Dexterity",
+    dmg: [{ n: 1, d: 8, types: ["piercing"] }, { n: 2, d: 6, types: ["piercing"] }],
+    blurb: "A single surgical thrust into the gap \u2014 over before they feel it.",
+    rider: "Use when you have <strong>advantage</strong>, or when an ally is within 5 ft of the target and you don't have disadvantage \u2014 with a finesse or ranged weapon. <strong>Once per turn.</strong> The +2d6 is already in the roll. This is your class feature; it's separate from a <em>Backstab</em>, which any class can do from directly behind a foe."
+  }
+};
+
+// Combined map: Arts of War (non-casters, 3/bonfire) + Sneak Attack (Rogues, at-will once/turn).
+const MOVES = { ...ARTS, ...SNEAK };
 
 const SK = (skills) => {
   const all = ["acr","ani","arc","ath","dec","his","ins","itm","inv","med","nat","prc","prf","per","rel","slt","ste","sur"];
@@ -225,33 +321,63 @@ const PREGENS = [
 
 function buildActor(p, gear, spells, levels) {
   const items = [];
+  const favorites = [];
+  let fsort = 100000;
+  const fav = (id) => { favorites.push({ type: "item", id: `.Item.${id}`, sort: fsort }); fsort += 100000; };
+
   items.push(classItem({ name: p.cls, identifier: p.id, hitDice: p.hd, saves: p.saves, ability: p.spellAbility }));
   items.push(baseActionsFeat());
-  if (ARTS[p.n]) items.push(artItem(ARTS[p.n]));
+  if (MOVES[p.n]) {
+    const move = artItem(MOVES[p.n]);
+    move._id = mkId(p.n + "Art");
+    items.push(move);
+  }
 
+  // Equip + clone gear; remember the weapon clones so Backstab can derive its damage from the
+  // wielder's real weapon (prefer an equipped weapon; fall back to any carried weapon).
+  const weaponClones = [];
   for (const [gname, equipped] of p.gear) {
     const g = gear.get(gname);
     if (!g) { console.warn("  missing gear:", gname); continue; }
     const c = clone(g);
     c.system.equipped = !!equipped;
+    if (c.type === "weapon") weaponClones.push(c);
     items.push(c);
   }
   // Estus for everyone
-  items.push((() => { const e = clone(gear.get("Estus Flask")); e.system.equipped = true; return e; })());
+  const estus = (() => { const e = clone(gear.get("Estus Flask")); e.system.equipped = true; return e; })();
+  estus._id = mkId(p.n + "Est");
+  items.push(estus);
 
   if (p.catalyst && !p.gear.some(([g]) => g === p.catalyst)) {
     const c = clone(gear.get(p.catalyst)); c.system.equipped = true; items.push(c);
   }
-  for (const sp of p.spells) {
-    const s = spells.get(sp);
-    if (!s) { console.warn("  missing spell:", sp); continue; }
-    items.push(clone(s));
+  for (let i = 0; i < p.spells.length; i++) {
+    const s = spells.get(p.spells[i]);
+    if (!s) { console.warn("  missing spell:", p.spells[i]); continue; }
+    const sc = clone(s); sc._id = mkId(p.n + "Sp" + i); items.push(sc);
   }
   for (const a of p.attrs) {
     const card = levels.get(a);
     if (!card) { console.warn("  missing attr card:", a); continue; }
     items.push(clone(card));
   }
+
+  // Universal Backstab (every pregen) derived from the primary weapon.
+  const primaryWeapon = weaponClones.find(w => w.system.equipped) || weaponClones[0];
+  if (primaryWeapon) {
+    primaryWeapon._id = primaryWeapon._id || mkId(p.n + "Wpn");
+    const bks = backstabFeat(primaryWeapon, mkId(p.n + "Bks"));
+    items.push(bks);
+    // Favorites = the player's combat "action bar" on the sheet's front panel.
+    if (primaryWeapon.system.equipped) fav(primaryWeapon._id);   // Strike
+    if (MOVES[p.n]) fav(mkId(p.n + "Art"));                       // Art of War / Sneak Attack
+    fav(bks._id);                                                 // Backstab
+  } else if (MOVES[p.n]) {
+    fav(mkId(p.n + "Art"));
+  }
+  for (let i = 0; i < p.spells.length; i++) fav(mkId(p.n + "Sp" + i)); // signature spells
+  fav(estus._id);                                                       // Estus Flask
 
   const abilities = {};
   for (const ab of ["str","dex","con","int","wis","cha"]) {
@@ -305,7 +431,7 @@ function buildActor(p, gear, spells, levels) {
         secondary: { value: null, max: null, sr: false, lr: false, label: "" },
         tertiary: { value: null, max: null, sr: false, lr: false, label: "" }
       },
-      favorites: [], bastion: { name: "", description: "" }
+      favorites, bastion: { name: "", description: "" }
     },
     items,
     prototypeToken: {

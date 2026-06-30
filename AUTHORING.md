@@ -187,12 +187,26 @@ from gear `flags.ashen.block`; tweak text/multipliers in `resolve()`. Bump `vers
 - **Gear** (`gen-gear.mjs`): weapons/armor/shields. Shields carry `flags.ashen.block.{physical}`
   (the block fraction). Set armor type light/medium/heavy for DR.
 - **Pregens** (`gen-pregens.mjs`): class, ability array, gear (copied from gear pack), 2 spells.
-  - **Arts of War** (non-caster pregens): the `ARTS` map gives Knight/Warrior/Mercenary/Thief/Deprived
+  - **Arts of War** (non-caster pregens): the `ARTS` map gives Knight/Warrior/Mercenary/Deprived
     one clickable signature feat (`artItem()`). Its attack re-uses the wielder's weapon dice plus the
     *same* live scaling formula the weapon uses — `floor(@abilities.<abil>.mod * <factor>)` (`includeBase:false`,
     so no double ability mod) — so the move scales with the character automatically. `uses.max:"3"` with
-    `lr` recovery = 3 charges per bonfire; the attack activity consumes one use per click. Casters are
-    skipped (they already start with spells).
+    `lr` recovery = 3 charges per bonfire; the attack activity consumes one use per click.
+  - **Sneak Attack** (Thief + Assassin): the `SNEAK` map reuses `artItem()` with `atWill:true` — no
+    charges, no use consumption, `flags.ashen.sneakAttack` — a clickable attack that bakes in the +2d6
+    once-per-turn dice. Kept separate from Backstab (a Rogue class feature, not a positional move).
+  - **Backstab** (EVERY pregen): `backstabFeat(weaponItem, id)` derives a clickable, **DM-gated**,
+    auto-hit `damage`-type feat from the pregen's primary weapon — reads its dice / damage type /
+    scaling bonus and multiplies: **×3 if `system.type.baseItem === "dagger"`, else ×1.5**, via a
+    `custom.enabled` damage part `floor((<dice> + <scaling>) * <mult>)`. Picks the first equipped
+    `type:"weapon"` (fallback: any carried weapon — covers casters' stowed dagger). No attack roll
+    (auto-hit); the DM adjudicates positioning.
+  - **Favorites / "action bar":** each pregen sets `system.favorites` (front-panel quick buttons) to
+    its weapon (Strike), Art of War / Sneak Attack, Backstab, signature spells, and Estus. This is
+    how the default dnd5e v5 sheet surfaces combat actions — **there is no "Actions" tab** on that
+    sheet (tabs: Details/Inventory/Features/Spells/Effects/Biography); active feats live under
+    Features → Active. Favorites need stable item `_id`s, so `mkId(seed)` makes deterministic 16-char
+    ids (build.mjs only auto-generates an `_id` when absent) and favorites reference `.Item.<id>`.
 - **Tables** (`gen-tables.mjs`): loot tiers, souls per tier.
 - **Levels** (`gen-levels.mjs`): attribute/skill cards players drag on.
 

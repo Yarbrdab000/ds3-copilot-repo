@@ -457,7 +457,38 @@
         "label": ""
       }
     },
-    "favorites": [],
+    "favorites": [
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinWpn00",
+        "sort": 100000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinArt00",
+        "sort": 200000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinBks00",
+        "sort": 300000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinSp000",
+        "sort": 400000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinSp100",
+        "sort": 500000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshAssassinEst00",
+        "sort": 600000
+      }
+    ],
     "bastion": {
       "name": "",
       "description": ""
@@ -515,7 +546,7 @@
       "flags": {},
       "system": {
         "description": {
-          "value": "<p><strong>Strike</strong> — a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> — always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe → advantage next attack).</p><p><strong>Block</strong> — costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> — sidestep the lane instead.</p><p><strong>Parry</strong> — costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>",
+          "value": "<p><strong>Strike</strong> — a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> — always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe → advantage next attack).</p><p><strong>Block</strong> — costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> — sidestep the lane instead.</p><p><strong>Parry</strong> — costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><strong>Backstab (any class)</strong> — a positional finisher. When the DM rules you're striking from <em>directly behind</em> a foe (e.g. you dodged, repositioned behind it, and it didn't turn to face you), you may use the <strong>Backstab</strong> action on your sheet (it's favourited on your front panel) instead of a Strike. It <strong>auto-hits</strong> off your equipped weapon and deals <strong>×1.5 weapon damage</strong> (<strong>×3 with a dagger</strong>), and cannot be Blocked or Parried. The DM tells you when you qualify.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>",
           "chat": ""
         },
         "source": {
@@ -543,6 +574,158 @@
         },
         "identifier": "base-actions"
       }
+    },
+    {
+      "name": "Sneak Attack",
+      "type": "feat",
+      "img": "icons/weapons/swords/sword-flanged-ler.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "sneakAttack": true
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>Rogue feature.</em> At-will, but only <strong>once per turn</strong>.</p><p>A single surgical thrust into the gap — over before they feel it.</p><p>Its damage roll already bakes in your <strong>Dexterity scaling</strong> and your weapon dice, so it grows exactly as your weapon does &mdash; just point and click.</p><p><strong>Effect:</strong> Use when you have <strong>advantage</strong>, or when an ally is within 5 ft of the target and you don't have disadvantage — with a finesse or ranged weapon. <strong>Once per turn.</strong> The +2d6 is already in the roll. This is your class feature; it's separate from a <em>Backstab</em>, which any class can do from directly behind a foe.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Rogue",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "name": "Sneak Attack",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "dex",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": false,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 8,
+                  "bonus": "floor(@abilities.dex.mod * 0.75)",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                },
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "Rogue",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "sneak-attack"
+      },
+      "_id": "AshAssassinArt00"
     },
     {
       "name": "Estoc",
@@ -736,7 +919,8 @@
           }
         },
         "identifier": "estoc"
-      }
+      },
+      "_id": "AshAssassinWpn00"
     },
     {
       "name": "Hard Leather Armor",
@@ -936,7 +1120,8 @@
           }
         },
         "identifier": "estus-flask"
-      }
+      },
+      "_id": "AshAssassinEst00"
     },
     {
       "name": "Sorcerer's Staff",
@@ -1156,7 +1341,8 @@
           }
         },
         "identifier": "soul-arrow"
-      }
+      },
+      "_id": "AshAssassinSp000"
     },
     {
       "name": "Hidden Body",
@@ -1286,7 +1472,8 @@
           }
         },
         "identifier": "hidden-body"
-      }
+      },
+      "_id": "AshAssassinSp100"
     },
     {
       "name": "Attribute: Dexterity +1",
@@ -1360,6 +1547,128 @@
           "level": null
         },
         "identifier": "attribute-dexterity-1"
+      }
+    },
+    {
+      "_id": "AshAssassinBks00",
+      "name": "Backstab",
+      "type": "feat",
+      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "backstab": true
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>Positional finisher &mdash; any class.</em> When the DM rules you're striking from <strong>directly behind</strong> a foe (e.g. you dodged, slipped behind it, and it didn't turn to face you), use this instead of a Strike.</p><p>It <strong>auto-hits</strong> (no attack roll) and <strong>cannot be Blocked or Parried</strong>. Damage = your <strong>Estoc</strong> hit &times; the backstab multiplier: <strong>&times;1.5</strong>. Your weapon scaling is already baked into the roll.</p><p><strong>Daggers backstab for &times;3</strong> &mdash; in the gap of a guard, a knife is deadlier than any greatsword. The DM tells you when you qualify.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Backstab",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "damage",
+            "name": "Backstab",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "critical": {
+                "allow": false
+              },
+              "parts": [
+                {
+                  "number": null,
+                  "denomination": null,
+                  "bonus": "",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": true,
+                    "formula": "floor((1d8 + floor(@abilities.dex.mod * 0.75)) * 1.5)"
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "Everyone",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "backstab"
       }
     }
   ],

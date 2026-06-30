@@ -457,7 +457,33 @@
         "label": ""
       }
     },
-    "favorites": [],
+    "favorites": [
+      {
+        "type": "item",
+        "id": ".Item.AshClericWpn0000",
+        "sort": 100000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshClericBks0000",
+        "sort": 200000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshClericSp00000",
+        "sort": 300000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshClericSp10000",
+        "sort": 400000
+      },
+      {
+        "type": "item",
+        "id": ".Item.AshClericEst0000",
+        "sort": 500000
+      }
+    ],
     "bastion": {
       "name": "",
       "description": ""
@@ -515,7 +541,7 @@
       "flags": {},
       "system": {
         "description": {
-          "value": "<p><strong>Strike</strong> — a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> — always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe → advantage next attack).</p><p><strong>Block</strong> — costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> — sidestep the lane instead.</p><p><strong>Parry</strong> — costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>",
+          "value": "<p><strong>Strike</strong> — a weapon Attack. You get a 2nd strike at L5 (Extra Attack) and a 3rd once you've invested 3 points in your attack stat (Dex for finesse/ranged, Str for melee); cap 3. Dual-wielders add an off-hand strike as a bonus action.</p><p><strong>Dodge</strong> — always available, unlimited: flat d20 vs the move's Dodge DC, quality set by the window you call. Success negates damage and repositions 5 ft (end behind the foe → advantage next attack).</p><p><strong>Block</strong> — costs your reaction, <strong>no roll</strong>: deterministic per-damage-type reduction from your shield (see its card). It chips at low tiers and <strong>never staggers</strong>. Charges, shield-kicks and grabs are <em>unblockable</em> — sidestep the lane instead.</p><p><strong>Parry</strong> — costs your reaction: flat d20 vs the move's Parry DC; only the ideal window gives advantage, all others disadvantage. Success negates AND staggers (party riposte window); failure takes full damage. Only clean weapon swings are parryable.</p><p><strong>Backstab (any class)</strong> — a positional finisher. When the DM rules you're striking from <em>directly behind</em> a foe (e.g. you dodged, repositioned behind it, and it didn't turn to face you), you may use the <strong>Backstab</strong> action on your sheet (it's favourited on your front panel) instead of a Strike. It <strong>auto-hits</strong> off your equipped weapon and deals <strong>×1.5 weapon damage</strong> (<strong>×3 with a dagger</strong>), and cannot be Blocked or Parried. The DM tells you when you qualify.</p><p><em>Reaction economy:</em> Block &amp; Parry share your one reaction/round; Endurance/Poise 5 grants a second. Casters with Int/Faith 5 may fire one Tier-1 spell as a bonus action. See the Rules bible.</p>",
           "chat": ""
         },
         "source": {
@@ -734,7 +760,8 @@
           }
         },
         "identifier": "mace"
-      }
+      },
+      "_id": "AshClericWpn0000"
     },
     {
       "name": "Knight Shield",
@@ -1002,7 +1029,8 @@
           }
         },
         "identifier": "estus-flask"
-      }
+      },
+      "_id": "AshClericEst0000"
     },
     {
       "name": "Talisman",
@@ -1215,7 +1243,8 @@
           }
         },
         "identifier": "heal-aid"
-      }
+      },
+      "_id": "AshClericSp00000"
     },
     {
       "name": "Force",
@@ -1374,7 +1403,8 @@
           }
         },
         "identifier": "force"
-      }
+      },
+      "_id": "AshClericSp10000"
     },
     {
       "name": "Attribute: Faith +1",
@@ -1415,6 +1445,128 @@
           "level": null
         },
         "identifier": "attribute-faith-1"
+      }
+    },
+    {
+      "_id": "AshClericBks0000",
+      "name": "Backstab",
+      "type": "feat",
+      "img": "icons/weapons/daggers/dagger-curved-poison-green.webp",
+      "effects": [],
+      "flags": {
+        "ashen": {
+          "backstab": true
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>Positional finisher &mdash; any class.</em> When the DM rules you're striking from <strong>directly behind</strong> a foe (e.g. you dodged, slipped behind it, and it didn't turn to face you), use this instead of a Strike.</p><p>It <strong>auto-hits</strong> (no attack roll) and <strong>cannot be Blocked or Parried</strong>. Damage = your <strong>Mace</strong> hit &times; the backstab multiplier: <strong>&times;1.5</strong>. Your weapon scaling is already baked into the roll.</p><p><strong>Daggers backstab for &times;3</strong> &mdash; in the gap of a guard, a knife is deadlier than any greatsword. The DM tells you when you qualify.</p>",
+          "chat": ""
+        },
+        "source": {
+          "book": "Ashen",
+          "page": "",
+          "custom": "Backstab",
+          "license": "CC-BY-4.0",
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "damage",
+            "name": "Backstab",
+            "img": "",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": false
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "critical": {
+                "allow": false
+              },
+              "parts": [
+                {
+                  "number": null,
+                  "denomination": null,
+                  "bonus": "",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": true,
+                    "formula": "floor((1d6 + floor(@abilities.str.mod * 0.75)) * 1.5)"
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "type": {
+          "value": "feat",
+          "subtype": ""
+        },
+        "requirements": "Everyone",
+        "properties": [],
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "identifier": "backstab"
       }
     }
   ],
