@@ -193,39 +193,12 @@ ChatMessage.create({ content: "Spent <b>" + n + " souls</b>. Banked remaining: "
     name: "Ashen: Level Up",
     img: "icons/magic/symbols/runes-star-orange.webp",
     body: `
-ui.notifications.info("Ashen: Level Up \u2014 opening\u2026");
-
-// v13-safe picker: resolve() is wired into each button AT CONSTRUCTION (the old version mutated
-// button callbacks after the Dialog was built, which the v13 DialogV2 shim ignores). bringToTop()
-// guarantees the dialog sits ABOVE the macro-config window if you ran this from the editor.
-function dialogSelect(title, intro, options, dflt) {
-  const opts = options.map(o => '<option value="' + o.value + '"' + (String(o.value) === String(dflt) ? ' selected' : '') + '>' + o.label + '</option>').join("");
-  const content = intro + '<form><div class="form-group"><label>Choose</label><select name="pick" style="width:100%">' + opts + '</select></div></form>';
-  return new Promise((resolve) => {
-    const dlg = new Dialog({
-      title, content,
-      buttons: {
-        ok: { icon: '<i class="fas fa-check"></i>', label: "Apply", callback: (html) => resolve(html[0].querySelector('[name=pick]')?.value ?? null) },
-        skip: { icon: '<i class="fas fa-forward"></i>', label: "Skip", callback: () => resolve(null) }
-      },
-      default: "ok", close: () => resolve(null)
-    }, { width: 480 });
-    dlg.render(true);
-    setTimeout(() => { try { dlg.bringToTop?.(); } catch (e) {} }, 80);
-  });
-}
-
-async function grantPick(pc, name) {
-  let item = game.items.getName(name);
-  if (!item) { for (const p of game.packs) { if (p.documentName !== "Item") continue; const e = p.index.getName?.(name); if (e) { item = await p.getDocument(e._id); break; } } }
-  if (!item) { ui.notifications.warn("Ashen: pick '" + name + "' not found; add it from the Level-Up cards manually."); return; }
-  await pc.createEmbeddedDocuments("Item", [item.toObject()]);
-}
-
+ui.notifications.info("Ashen: Level Up - opening...");
 try {
+  if (!game.user.isGM) return ui.notifications.warn("Ashen: only the GM runs Level Up. Players choose their upgrade from the chat card it posts.");
   const a = getLedger();
   const COST = { 4: 500, 5: 800, 6: 1200, 7: 1800, 8: 2600, 9: 3600, 10: 5000 };
-  // The "party" is the player characters at the table \u2014 NOT every character-type actor.
+  // The "party" is the player characters at the table - NOT every character-type actor.
   // The 10 pregen templates and the Bonfire Ledger are also type "character", so filter them out:
   //   1) drop the Bonfire Ledger (role flag),
   //   2) prefer characters a player actually owns (the real party),
@@ -235,42 +208,59 @@ try {
   const owned = party.filter(x => x.hasPlayerOwner);
   if (owned.length) party = owned;
   else party = party.filter(x => !/pregen/i.test(x.folder?.name || ""));
-  if (!party.length) { ui.notifications.error("Ashen: no player characters found. Assign a player to your PCs (right-click \u2192 Configure Ownership), or keep them out of the 'Pregen' folder."); return; }
+  if (!party.length) { ui.notifications.error("Ashen: no player characters found. Assign a player to your PCs (right-click > Configure Ownership), or keep them out of the 'Pregen' folder."); return; }
 
   const roster = party.map(p => p.name).join(", ");
-  const levelOpts = Object.entries(COST).map(([l, c]) => ({ label: "\u2192 Level " + l + "  (" + c + " souls)", value: l }));
-  const lvlPick = await dialogSelect("Party Level Up at the Fire Keeper",
-    "<p>Leveling <b>" + party.length + "</b> character(s): <i>" + roster + "</i>.</p><p>Choose the level to purchase:</p>",
-    levelOpts, "4");
+  const levelOpts = Object.entries(COST).map(([l, c]) => '<option value="' + l + '">Level ' + l + '  (' + c + ' souls)</option>').join("");
+  const lvlPick = await new Promise((resolve) => {
+    const dlg = new Dialog({
+      title: "Party Level Up at the Fire Keeper",
+      content: "<p>Leveling <b>" + party.length + "</b> character(s): <i>" + roster + "</i>.</p>" +
+        '<form><div class="form-group"><label>Level to purchase</label>' +
+        '<select name="lvl" style="width:100%">' + levelOpts + '</select></div></form>',
+      buttons: {
+        ok: { icon: '<i class="fas fa-check"></i>', label: "Spend and raise", callback: (h) => resolve(h[0].querySelector('[name=lvl]')?.value ?? null) },
+        cancel: { label: "Cancel", callback: () => resolve(null) }
+      },
+      default: "ok", close: () => resolve(null)
+    }, { width: 460 });
+    dlg.render(true);
+    setTimeout(() => { try { dlg.bringToTop?.(); } catch (e) {} }, 80);
+  });
   if (!lvlPick) { ui.notifications.info("Ashen: Level Up cancelled."); return; }
   const lvl = Number(lvlPick);
   const cost = COST[lvl];
 
-  // Just subtract the cost from the ledger. Allow it to go negative (DM reconciles manually).
+  // Spend souls ONCE here (GM client). Allow negative; the DM reconciles manually.
   let banked = 0;
-  if (a) {
-    banked = await getSouls(a, "banked");
-    await a.setFlag("ashen-of-lothric", "banked", banked - cost);
-  } else {
-    ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found \u2014 leveling without tracking souls.");
-  }
+  if (a) { banked = await getSouls(a, "banked"); await a.setFlag("ashen-of-lothric", "banked", banked - cost); }
+  else { ui.notifications.warn("Ashen: no 'Bonfire Ledger' actor found - leveling without tracking souls."); }
 
-  const PICKS = ["Attribute: Vigor +1","Attribute: Strength +1","Attribute: Dexterity +1","Attribute: Endurance +1","Attribute: Intelligence +1","Attribute: Faith +1","Attribute: Attunement +1","Dexterity: AC Milestone (+1 AC)","Weapon Art: Stomp","Weapon Art: Perseverance","Weapon Art: Spin Slash","Weapon Art: Charge","Weapon Art: Quickstep","Weapon Art: Leo Riposte","Weapon Art: Steady Chant","Weapon Art: Crystallize","Weapon Art: Pyromancer's Fervor","Weapon Art: Sage's Focus","Weapon Art: Estus Mastery"];
-  const pickOpts = PICKS.map(n => ({ label: n, value: n }));
-  const summary = [];
+  // Raise each PC class level, stamp a pending-upgrade marker, and build one chat button per PC.
+  // The actual attribute/spell/art pick happens on the PLAYER's screen (scripts/ashen.mjs handles the click).
+  const buttons = [];
   for (const pc of party) {
     const cls = pc.items.find(i => i.type === "class");
     if (cls) await cls.update({ "system.levels": (cls.system.levels || 1) + 1 });
-    const pick = await dialogSelect(pc.name + ": choose an upgrade (now L" + lvl + ")",
-      "<p>Pick <b>" + pc.name + "</b>'s upgrade card (auto-applied to their sheet):</p>",
-      pickOpts, PICKS[0]);
-    if (pick) await grantPick(pc, pick);
-    summary.push("<b>" + pc.name + "</b>" + (pick ? " \u2014 " + pick : " \u2014 (skipped)"));
+    await pc.setFlag("ashen-of-lothric", "pendingUpgrade", { lvl });
+    buttons.push('<button type="button" class="ashen-levelup-btn" data-actor-id="' + pc.id + '" data-lvl="' + lvl + '" style="display:block;width:100%;margin:3px 0">Choose upgrade - ' + pc.name + '</button>');
   }
-  ChatMessage.create({ content: "<b>The party ascends to Level " + lvl + "</b> (" + (a ? "-" + cost + " souls" : "no ledger \u2014 souls not tracked") + ")." + (a ? " Banked = " + (banked - cost) + "." : "") + "<br>" + summary.join("<br>") });
+
+  const TIERNOTE = { 4: "Tier 1", 5: "Tier 1", 6: "Tier 2", 7: "Tier 2", 8: "Tier 2", 9: "Tier 3", 10: "Tier 3" }[lvl];
+  const artsNote = (lvl === 6 || lvl === 9) ? " Each character also picks a <b>Weapon Art</b> this level." : "";
+  await ChatMessage.create({
+    speaker: { alias: "Fire Keeper" },
+    content: '<div class="ashen-levelup-card">' +
+      "<h3>The party ascends to Level " + lvl + "</h3>" +
+      "<p>" + (a ? ("Spent " + cost + " souls (banked now " + (banked - cost) + ").") : "Souls not tracked (no ledger).") + "</p>" +
+      "<p><b>Each player:</b> click your character below to choose your upgrade - an <b>Attribute</b> or a <b>Spell</b> (up to <b>" + TIERNOTE + "</b>)." + artsNote + " The GM can click for an absent player.</p>" +
+      buttons.join("") +
+      "</div>"
+  });
+  ui.notifications.info("Ashen: Level " + lvl + " purchased. Players - click your button in chat to pick your upgrade.");
 } catch (err) {
   console.error("Ashen: Level Up failed", err);
-  ui.notifications.error("Ashen: Level Up error \u2014 " + (err?.message || err) + " (press F12 \u2192 Console for details)");
+  ui.notifications.error("Ashen: Level Up error - " + (err?.message || err) + " (press F12 > Console for details)");
 }
 `
   },
