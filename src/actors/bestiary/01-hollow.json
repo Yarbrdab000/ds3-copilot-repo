@@ -1,7 +1,7 @@
 {
   "name": "Hollow",
   "type": "npc",
-  "img": "icons/creatures/skeletons/skeleton-worn-skull-tan.webp",
+  "img": "icons/magic/death/skeleton-worn-skull-tan.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -416,7 +416,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/creatures/skeletons/skeleton-worn-skull-tan.webp",
+      "src": "icons/magic/death/skeleton-worn-skull-tan.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,
@@ -441,6 +441,18 @@
     },
     "detectionModes": [],
     "appendNumber": true,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "ring": {
+      "enabled": true,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    }
   }
 }

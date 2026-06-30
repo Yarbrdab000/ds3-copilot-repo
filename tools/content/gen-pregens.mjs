@@ -210,7 +210,8 @@ function buildActor(p, gear, spells, levels) {
       randomImg: false, alpha: 1, flags: {},
       texture: { src: "icons/sundries/gaming/chess-pawn-white.webp", tint: "#ffffff", scaleX: 1, scaleY: 1, offsetX: 0, offsetY: 0, rotation: 0, anchorX: 0.5, anchorY: 0.5, fit: "contain", alphaThreshold: 0.75 },
       sight: { angle: 360, enabled: true, range: 0, brightness: 0, visionMode: "basic", color: null, attenuation: 0.1, saturation: 0, contrast: 0 },
-      detectionModes: [], appendNumber: false, prependAdjective: false
+      detectionModes: [], appendNumber: false, prependAdjective: false,
+      ring: { enabled: true, colors: { ring: null, background: null }, effects: 1, subject: { scale: 1, texture: null } }
     }
   };
 }

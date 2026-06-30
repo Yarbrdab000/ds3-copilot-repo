@@ -940,6 +940,18 @@
     },
     "detectionModes": [],
     "appendNumber": true,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "ring": {
+      "enabled": true,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    }
   }
 }

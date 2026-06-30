@@ -1,7 +1,7 @@
 {
   "name": "Sword Master",
   "type": "npc",
-  "img": "icons/skills/melee/sword-katana-gray.webp",
+  "img": "icons/weapons/swords/sword-katana.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -748,7 +748,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/skills/melee/sword-katana-gray.webp",
+      "src": "icons/weapons/swords/sword-katana.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,
@@ -773,6 +773,18 @@
     },
     "detectionModes": [],
     "appendNumber": true,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "ring": {
+      "enabled": true,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    }
   }
 }

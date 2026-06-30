@@ -97,7 +97,8 @@ function npc({ name, img, ac, hp, hpFormula, walk = 30, fly = 0, reach = 5, cr, 
       bar1: { attribute: "attributes.hp" }, bar2: { attribute: null }, randomImg: false, alpha: 1, flags: {},
       texture: { src: img || "icons/svg/mystery-man.svg", tint: "#ffffff", scaleX: 1, scaleY: 1, offsetX: 0, offsetY: 0, rotation: 0, anchorX: 0.5, anchorY: 0.5, fit: "contain", alphaThreshold: 0.75 },
       sight: { angle: 360, enabled: false, range: 0, brightness: 0, visionMode: "basic", color: null, attenuation: 0.1, saturation: 0, contrast: 0 },
-      detectionModes: [], appendNumber: true, prependAdjective: false
+      detectionModes: [], appendNumber: true, prependAdjective: false,
+      ring: { enabled: true, colors: { ring: null, background: null }, effects: 1, subject: { scale: 1, texture: null } }
     }
   };
 }
@@ -130,10 +131,10 @@ function card(title, moves, tell) {
 
 const ACTORS = [
   // ───── Regular roster (6) ─────
-  npc({ name: "Hollow", img: "icons/creatures/skeletons/skeleton-worn-skull-tan.webp", ac: 10, hp: 7, hpFormula: "2d6", cr: 0.125, souls: 30, role: "fodder", str: 9, dex: 9, con: 10,
+  npc({ name: "Hollow", img: "icons/magic/death/skeleton-worn-skull-tan.webp", ac: 10, hp: 7, hpFormula: "2d6", cr: 0.125, souls: 30, role: "fodder", str: 9, dex: 9, con: 10,
     bioHtml: card("Crawling fodder. Teaches the W1/W2/W3 rhythm in one exchange.", ["<strong>Desperate Lunge</strong> (1d6+1): dodge ADV on W2; parryable W2."]),
     attacks: [attack({ name: "Desperate Lunge", n: 1, d: 6, bonus: 1, types: [SL], def: { dc: 11, dw: "W2", pw: "W2" } })] }),
-  npc({ name: "Hollow Soldier", img: "icons/creatures/magical/spirit-undead-armored-grey.webp", ac: 14, hp: 16, hpFormula: "3d8+3", cr: 0.5, souls: 50, role: "backbone", str: 13, dex: 11, con: 12,
+  npc({ name: "Hollow Soldier", img: "icons/creatures/magical/spirit-undead-ghost-blue.webp", ac: 14, hp: 16, hpFormula: "3d8+3", cr: 0.5, souls: 50, role: "backbone", str: 13, dex: 11, con: 12,
     bioHtml: card("Sword &amp; shield backbone. The baseline parry trainer. A Hollow Soldier is what erupts into the Pus of Man.", ["<strong>Shielded Chop</strong> (1d8+2): dodge ADV W2; parry ADV W3 (clean swing)."]),
     attacks: [attack({ name: "Shielded Chop", n: 1, d: 8, bonus: 2, types: [SL], def: { dc: 12, dw: "W2", pw: "W3" } })] }),
   npc({ name: "Hollow Assassin", img: "icons/creatures/magical/spirit-undead-ghost-purple.webp", ac: 13, hp: 12, hpFormula: "3d8-1", cr: 0.5, souls: 60, role: "ranged", str: 9, dex: 15, con: 10,
@@ -224,7 +225,7 @@ const ACTORS = [
     str: 16, dex: 12, con: 16, int: 11, wis: 12, cha: 12, ctype: "humanoid",
     bioHtml: "<p><em>\"Need something reinforced? You've come to the right place. Titanite, and I'll see to the rest.\"</em></p><p><strong>Service \u2014 the forge.</strong> A tireless blacksmith who reinforces weapons and catalysts with titanite + souls (cap +3) and stokes the Pyromancy Flame. Upgrade tables are in the <em>Firelink Services</em> and <em>Weapon Scaling &amp; Upgrades</em> journals. Burly enough to defend himself, but not meant to fight.</p>",
     attacks: [attack({ name: "Smith's Hammer", n: 1, d: 8, bonus: 3, types: [BL], def: { dc: 12, dw: "W2", pw: "W2" } })] }),
-  npc({ name: "Sword Master", img: "icons/skills/melee/sword-katana-gray.webp", ac: 16, hp: 60, hpFormula: "8d8+24", cr: 4, souls: 800, role: "duel-npc-and-mercy-valve", disposition: 0, walk: 35,
+  npc({ name: "Sword Master", img: "icons/weapons/swords/sword-katana.webp", ac: 16, hp: 60, hpFormula: "8d8+24", cr: 4, souls: 800, role: "duel-npc-and-mercy-valve", disposition: 0, walk: 35,
     str: 13, dex: 18, con: 16, int: 12, wis: 14, cha: 11, ctype: "humanoid",
     bioHtml: card("<strong>Two roles.</strong> (1) Optional <em>duel</em> by the shrine steps \u2014 a fast, parry-heavy katana master who teaches the defensive game and drops 800 souls + a fine blade if bested (disposition starts neutral; he turns hostile only if challenged). (2) The <strong>mercy valve</strong>: after repeated wipes, the DM may drop him as a <em>controllable ally token</em> (a summon sign answered) to steady a struggling party for one fight. Set his disposition to friendly when summoned.",
       ["<strong>Iaido Double-Slash</strong> (2 x 1d8+4): dodge ADV W2; parry ADV only on W3 (the second cut).", "<strong>Parry Stance</strong> (reaction): he parries the next melee attack you telegraph \u2014 feint or go unorthodox.", "<strong>Step Thrust</strong> (reach 1d10+4): sidestep the line W1; parry ADV W2."],

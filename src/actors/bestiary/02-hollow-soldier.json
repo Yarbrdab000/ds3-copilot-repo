@@ -1,7 +1,7 @@
 {
   "name": "Hollow Soldier",
   "type": "npc",
-  "img": "icons/creatures/magical/spirit-undead-armored-grey.webp",
+  "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
   "effects": [],
   "flags": {
     "ashen": {
@@ -416,7 +416,7 @@
     "alpha": 1,
     "flags": {},
     "texture": {
-      "src": "icons/creatures/magical/spirit-undead-armored-grey.webp",
+      "src": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
       "tint": "#ffffff",
       "scaleX": 1,
       "scaleY": 1,
@@ -441,6 +441,18 @@
     },
     "detectionModes": [],
     "appendNumber": true,
-    "prependAdjective": false
+    "prependAdjective": false,
+    "ring": {
+      "enabled": true,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    }
   }
 }

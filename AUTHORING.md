@@ -198,6 +198,13 @@ from gear `flags.ashen.block`; tweak text/multipliers in `resolve()`. Bump `vers
 - **Maps:** `gen-maps.mjs` renders placeholder webp into `maps/<slug>.webp`. Drop your own art
   in `art/maps/<slug>.webp` to override (kept committed; overrides survive rebuild).
 - **Tokens:** images in `tokens/`, referenced as `modules/ashen-of-lothric/tokens/<file>.png`.
+- **Rounded tokens:** every actor's `prototypeToken` enables Foundry's **dynamic token ring**
+  (`ring: { enabled: true, effects: 1, subject: { scale: 1, … } }`) in `gen-bestiary.mjs` /
+  `gen-pregens.mjs`, which masks the art into a circle. Set `enabled: false` for a square token.
+- **Core icon paths must be exact:** when pointing an actor/token at a built-in Foundry icon
+  (`icons/…`), the path must exist in core or the token shows blank. Color/variant names are easy to
+  get wrong (e.g. `…-grey` vs `…-gray`, or the wrong folder). Verify by searching a known-good repo
+  (e.g. `foundryvtt/pf2e`) for the exact filename before using it, or bundle your own art in `tokens/`.
 - **Bonfire object:** the coiled-sword bonfire art lives at `tokens/bonfire.webp` (source PNG kept in
   `art/tokens/`). The **"Ashen: Place Bonfire"** macro drops that art + a warm flickering `torch`
   light anywhere (on a selected token, or the view centre); **"Ashen: Clear Bonfires (this scene)"**
